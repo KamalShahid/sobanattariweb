@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blood Donation Camp — Soban Attari</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:#0d0d0d;color:#fff;font-family:'Roboto',sans-serif;font-weight:400;line-height:1.7;-webkit-font-smoothing:antialiased;padding-top:64px;}
+    .section-tag{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#FFC40C;display:inline-block;margin-bottom:12px;}
+    .section-heading{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,5vw,68px);line-height:0.95;letter-spacing:0.02em;color:#fff;margin-bottom:20px;}
+    .section-heading span{color:#FFC40C;}
+    .section-sub{font-size:15px;line-height:1.75;color:rgba(255,255,255,0.5);max-width:600px;}
+    .btn-primary{display:inline-block;background:#FFC40C;color:#0d0d0d;font-family:'Roboto',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:14px 32px;text-decoration:none;transition:background 0.2s,transform 0.15s;}
+    .btn-primary:hover{background:#E8C96A;transform:translateY(-2px);}
+    .btn-outline{display:inline-block;border:1px solid rgba(255,255,255,0.25);color:#fff;font-family:'Roboto',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:13px 28px;text-decoration:none;transition:border-color 0.2s,color 0.2s;}
+    .btn-outline:hover{border-color:#FFC40C;color:#FFC40C;}
+    .reveal{opacity:0;transition:opacity 0.75s cubic-bezier(0.22,1,0.36,1),transform 0.75s cubic-bezier(0.22,1,0.36,1);}
+    .reveal.from-bottom{transform:translateY(50px);}
+    .reveal.from-left{transform:translateX(-60px);}
+    .reveal.from-right{transform:translateX(60px);}
+    .reveal.from-scale{transform:scale(0.92);}
+    .reveal.visible{opacity:1;transform:translate(0,0) scale(1);}
+    .reveal-stagger>*{opacity:0;transform:translateY(36px);transition:opacity 0.65s cubic-bezier(0.22,1,0.36,1),transform 0.65s cubic-bezier(0.22,1,0.36,1);}
+    .reveal-stagger.visible>*{opacity:1;transform:translateY(0);}
+    .reveal-stagger.visible>*:nth-child(1){transition-delay:0s;}
+    .reveal-stagger.visible>*:nth-child(2){transition-delay:0.08s;}
+    .reveal-stagger.visible>*:nth-child(3){transition-delay:0.16s;}
+    .reveal-stagger.visible>*:nth-child(4){transition-delay:0.24s;}
+    .reveal-stagger.visible>*:nth-child(5){transition-delay:0.32s;}
+    .reveal-stagger.visible>*:nth-child(6){transition-delay:0.40s;}
+    nav a:hover{color:#FFC40C !important;}
+    .form-label{display:block;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:8px;}
+    .form-input{width:100%;background:#161616;border:1px solid rgba(255,255,255,0.08);color:#fff;font-family:'Roboto',sans-serif;font-size:14px;padding:12px 16px;outline:none;transition:border-color 0.2s;display:block;margin-bottom:16px;}
+    .form-input:focus{border-color:#FFC40C;}
+    .form-input::placeholder{color:rgba(255,255,255,0.25);}
+    select.form-input option{background:#161616;}
+    .stat-card{border:1px solid rgba(255,255,255,0.06);padding:40px 32px;text-align:center;transition:border-color 0.2s;}
+    .stat-card:hover{border-color:rgba(255,196,12,0.3);}
+  </style>
+</head>
+<body>
+
+<nav style="position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,13,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);">
+  <div style="max-width:1300px;margin:0 auto;padding:0 6vw;height:64px;display:flex;align-items:center;justify-content:space-between;">
+    <a href="../index.html" style="text-decoration:none;"><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:0.06em;color:#fff;line-height:1;">SOBAN <span style="color:#FFC40C;">ATTARI</span></div></a>
+    <div style="display:flex;align-items:center;gap:24px;">
+      <a href="../index.html#about" style="font-size:12px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:#ccc;text-decoration:none;">About</a>
+      <a href="../blogs.html" style="font-size:12px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:#ccc;text-decoration:none;">Blogs</a>
+      <a href="../events.html" style="font-size:12px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:#ccc;text-decoration:none;">Events</a>
+      <a href="../index.html#booking" style="font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:8px 20px;background:#FFC40C;color:#0d0d0d;text-decoration:none;">Book Session</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="min-height:60vh;background:#0d0d0d;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:80px 6vw;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 60%,rgba(180,30,30,0.12) 0%,rgba(13,13,13,0) 70%);pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 40% 40% at 25% 30%,rgba(255,196,12,0.04) 0%,transparent 60%);pointer-events:none;"></div>
+  <div style="position:relative;z-index:1;" class="reveal from-bottom">
+    <div class="section-tag">Community Activities</div>
+    <h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,8vw,104px);line-height:0.88;letter-spacing:0.03em;color:#fff;margin-bottom:24px;">BLOOD<br/><span style="color:#FFC40C;">DONATION CAMP</span></h1>
+    <p style="font-size:16px;font-weight:300;color:rgba(255,255,255,0.5);max-width:520px;margin:0 auto;line-height:1.8;">Saving lives through the spirit of Islamic brotherhood and community care.</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section style="background:#161616;padding:100px 6vw;">
+  <div style="max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
+    <div class="reveal from-left">
+      <div class="section-tag">The Mission</div>
+      <h2 class="section-heading">SAVING LIVES<br/><span>TOGETHER</span></h2>
+      <p style="font-size:15px;line-height:1.85;color:rgba(255,255,255,0.5);margin-bottom:20px;">Inspired by the Islamic principle that saving one life is like saving all of humanity, Soban Attari organizes regular blood donation camps across Pakistan. These camps bring together volunteers, medical teams, and communities in a powerful act of collective compassion.</p>
+      <p style="font-size:15px;line-height:1.85;color:rgba(255,255,255,0.5);">The Prophet Muhammad ﷺ said: "The most beloved people to Allah are those who are most beneficial to the people." Each blood donation camp is a direct embodiment of this beautiful principle — turning faith into action that saves real lives.</p>
+    </div>
+    <div class="reveal from-right">
+      <div style="background:#0d0d0d;border:1px solid rgba(255,255,255,0.06);padding:40px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,196,12,0.6);margin-bottom:16px;">Quranic Foundation</div>
+        <blockquote style="font-family:'Roboto Slab',serif;font-size:16px;line-height:1.85;color:rgba(255,255,255,0.65);margin-bottom:20px;">"Whoever saves one life, it is as if he has saved all of mankind."</blockquote>
+        <div style="font-size:12px;color:rgba(255,255,255,0.3);letter-spacing:0.05em;">— Quran 5:32</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT STATS -->
+<section style="background:#0d0d0d;padding:80px 6vw;">
+  <div style="max-width:1300px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:56px;" class="reveal from-bottom">
+      <div class="section-tag">Our Impact</div>
+      <h2 class="section-heading">THE NUMBERS<br/><span>SPEAK</span></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.04);" class="reveal-stagger">
+      <div class="stat-card" style="background:#0d0d0d;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,6vw,80px);color:#FFC40C;line-height:1;margin-bottom:12px;">2,400+</div>
+        <div style="font-size:13px;font-weight:600;color:#fff;letter-spacing:0.05em;margin-bottom:6px;">Units Donated</div>
+        <p style="font-size:12px;color:rgba(255,255,255,0.3);">Units of blood donated across all camps — potentially saving over 7,000 lives.</p>
+      </div>
+      <div class="stat-card" style="background:#0d0d0d;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,6vw,80px);color:#FFC40C;line-height:1;margin-bottom:12px;">18</div>
+        <div style="font-size:13px;font-weight:600;color:#fff;letter-spacing:0.05em;margin-bottom:6px;">Camps Held</div>
+        <p style="font-size:12px;color:rgba(255,255,255,0.3);">Organized across Pakistan since the initiative began — growing every year.</p>
+      </div>
+      <div class="stat-card" style="background:#0d0d0d;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,6vw,80px);color:#FFC40C;line-height:1;margin-bottom:12px;">12</div>
+        <div style="font-size:13px;font-weight:600;color:#fff;letter-spacing:0.05em;margin-bottom:6px;">Cities Reached</div>
+        <p style="font-size:12px;color:rgba(255,255,255,0.3);">From Karachi to Peshawar — every city a new chain of compassion.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO PARTICIPATE -->
+<section style="background:#161616;padding:100px 6vw;">
+  <div style="max-width:1300px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:64px;" class="reveal from-bottom">
+      <div class="section-tag">Join Us</div>
+      <h2 class="section-heading">HOW TO<br/><span>PARTICIPATE</span></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;" class="reveal-stagger">
+      <div style="padding:0 48px 0 0;position:relative;">
+        <div style="width:56px;height:56px;border-radius:50%;background:#FFC40C;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:24px;color:#0d0d0d;margin-bottom:24px;">1</div>
+        <div style="position:absolute;top:28px;left:56px;right:0;height:1px;background:rgba(255,196,12,0.15);"></div>
+        <div style="font-family:'Roboto Slab',serif;font-size:17px;font-weight:600;color:#fff;margin-bottom:10px;">Register</div>
+        <p style="font-size:14px;color:rgba(255,255,255,0.4);line-height:1.75;">Fill in the registration form below. Provide your blood group, city, and contact details.</p>
+      </div>
+      <div style="padding:0 48px;position:relative;">
+        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,196,12,0.12);border:1px solid rgba(255,196,12,0.3);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:24px;color:#FFC40C;margin-bottom:24px;">2</div>
+        <div style="position:absolute;top:28px;left:56px;right:0;height:1px;background:rgba(255,196,12,0.15);"></div>
+        <div style="font-family:'Roboto Slab',serif;font-size:17px;font-weight:600;color:#fff;margin-bottom:10px;">Show Up</div>
+        <p style="font-size:14px;color:rgba(255,255,255,0.4);line-height:1.75;">Our team will confirm the date, time, and location of the nearest camp to you. Just show up.</p>
+      </div>
+      <div style="padding:0 0 0 48px;">
+        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,196,12,0.12);border:1px solid rgba(255,196,12,0.3);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:24px;color:#FFC40C;margin-bottom:24px;">3</div>
+        <div style="font-family:'Roboto Slab',serif;font-size:17px;font-weight:600;color:#fff;margin-bottom:10px;">Donate & Save a Life</div>
+        <p style="font-size:14px;color:rgba(255,255,255,0.4);line-height:1.75;">In minutes, your donation goes directly to hospitals and patients in critical need across Pakistan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UPCOMING CAMP INFO -->
+<section style="background:#0d0d0d;padding:60px 6vw;">
+  <div style="max-width:1300px;margin:0 auto;" class="reveal from-bottom">
+    <div style="background:#FFC40C;padding:40px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
+      <div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(13,13,13,0.5);margin-bottom:8px;">Next Camp</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:0.04em;color:#0d0d0d;margin-bottom:4px;">May 15, 2026 · Jinnah Hospital, Karachi</div>
+        <div style="font-size:13px;color:rgba(13,13,13,0.6);">Doors open at 9:00 AM. Bring your CNIC. All blood groups welcome.</div>
+      </div>
+      <a href="#register" style="display:inline-block;background:#0d0d0d;color:#FFC40C;font-family:'Roboto',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:14px 28px;text-decoration:none;white-space:nowrap;transition:background 0.2s;" onmouseover="this.style.background='#1a1a1a'" onmouseout="this.style.background='#0d0d0d'">Register Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTRATION FORM -->
+<section id="register" style="background:#161616;padding:80px 6vw;">
+  <div style="max-width:600px;margin:0 auto;" class="reveal from-bottom">
+    <div class="section-tag">Register to Donate</div>
+    <h2 class="section-heading">JOIN THE<br/><span>CAMP</span></h2>
+    <p class="section-sub" style="margin-bottom:40px;">Register below and our team will reach out with confirmation and location details for the nearest camp.</p>
+    <form id="blood-form" onsubmit="handleBloodSubmit(event)">
+      <label class="form-label">Full Name *</label>
+      <input type="text" class="form-input" placeholder="Your full name" required />
+      <label class="form-label">Phone Number *</label>
+      <input type="tel" class="form-input" placeholder="+92 300 0000000" required />
+      <label class="form-label">Blood Group *</label>
+      <select class="form-input" required>
+        <option value="" style="background:#161616;">Select your blood group</option>
+        <option style="background:#161616;">A+</option>
+        <option style="background:#161616;">A-</option>
+        <option style="background:#161616;">B+</option>
+        <option style="background:#161616;">B-</option>
+        <option style="background:#161616;">AB+</option>
+        <option style="background:#161616;">AB-</option>
+        <option style="background:#161616;">O+</option>
+        <option style="background:#161616;">O-</option>
+      </select>
+      <label class="form-label">City *</label>
+      <input type="text" class="form-input" placeholder="Your city" required />
+      <button type="submit" class="btn-primary" style="width:100%;text-align:center;cursor:pointer;border:none;padding:16px;">Register for Blood Camp</button>
+    </form>
+    <div id="blood-success" style="display:none;padding:32px;background:rgba(255,196,12,0.05);border:1px solid rgba(255,196,12,0.2);margin-top:24px;text-align:center;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#FFC40C;margin-bottom:10px;">JazakAllah Khair!</div>
+      <p style="font-size:14px;color:rgba(255,255,255,0.5);">Your registration is confirmed. Our team will contact you with camp details. May Allah accept this act of service.</p>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#111;border-top:1px solid rgba(255,196,12,0.1);padding:60px 6vw 32px;">
+  <div style="max-width:1300px;margin:0 auto;">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,0.06);">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#fff;">SOBAN <span style="color:#FFC40C;">ATTARI</span></div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <a href="../index.html" style="font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;letter-spacing:0.05em;">Home</a>
+        <a href="../biography.html" style="font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;letter-spacing:0.05em;">Biography</a>
+        <a href="../events.html" style="font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;letter-spacing:0.05em;">Events</a>
+        <a href="../index.html#contact" style="font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;letter-spacing:0.05em;">Contact</a>
+      </div>
+    </div>
+    <div style="padding-top:24px;font-size:12px;color:rgba(255,255,255,0.2);">© 2025 Soban Attari. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+function handleBloodSubmit(e){
+  e.preventDefault();
+  e.target.style.display='none';
+  document.getElementById('blood-success').style.display='block';
+}
+const ro=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting){t.target.classList.add('visible');ro.unobserve(t.target);}});},{threshold:0.1});
+document.querySelectorAll('.reveal,.reveal-stagger').forEach(el=>ro.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blogs — Soban Attari</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:#0d0d0d;color:#fff;font-family:'Roboto',sans-serif;font-weight:400;line-height:1.7;-webkit-font-smoothing:antialiased;padding-top:64px;}
+    .section-tag{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#FFC40C;display:inline-block;margin-bottom:12px;}
+    .section-heading{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,5vw,68px);line-height:0.95;letter-spacing:0.02em;color:#fff;margin-bottom:20px;}
+    .section-heading span{color:#FFC40C;}
+    .section-sub{font-size:15px;line-height:1.75;color:rgba(255,255,255,0.5);max-width:600px;}
+    .btn-primary{display:inline-block;background:#FFC40C;color:#0d0d0d;font-family:'Roboto',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:14px 32px;text-decoration:none;transition:background 0.2s,transform 0.15s;}
+    .btn-primary:hover{background:#E8C96A;transform:translateY(-2px);}
+    .btn-outline{display:inline-block;border:1px solid rgba(255,255,255,0.25);color:#fff;font-family:'Roboto',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:13px 28px;text-decoration:none;transition:border-color 0.2s,color 0.2s;}
+    .btn-outline:hover{border-color:#FFC40C;color:#FFC40C;}
+    .reveal{opacity:0;transition:opacity 0.75s cubic-bezier(0.22,1,0.36,1),transform 0.75s cubic-bezier(0.22,1,0.36,1);}
+    .reveal.from-bottom{transform:translateY(50px);}
+    .reveal.from-left{transform:translateX(-60px);}
+    .reveal.from-right{transform:translateX(60px);}
+    .reveal.from-scale{transform:scale(0.92);}
+    .reveal.visible{opacity:1;transform:translate(0,0) scale(1);}
+    .reveal-stagger>*{opacity:0;transform:translateY(36px);transition:opacity 0.65s cubic-bezier(0.22,1,0.36,1),transform 0.65s cubic-bezier(0.22,1,0.36,1);}
+    .reveal-stagger.visible>*{opacity:1;transform:translateY(0);}
+    .reveal-stagger.visible>*:nth-child(1){transition-delay:0s;}
+    .reveal-stagger.visible>*:nth-child(2){transition-delay:0.08s;}
+    .reveal-stagger.visible>*:nth-child(3){transition-delay:0.16s;}
+    .reveal-stagger.visible>*:nth-child(4){transition-delay:0.24s;}
+    .reveal-stagger.visible>*:nth-child(5){transition-delay:0.32s;}
+    .reveal-stagger.visible>*:nth-child(6){transition-delay:0.40s;}
+    nav a:hover{color:#FFC40C !important;}
+    .form-label{display:block;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:8px;}
+    .form-input{width:100%;background:#161616;border:1px solid rgba(255,255,255,0.08);color:#fff;font-family:'Roboto',sans-serif;font-size:14px;padding:12px 16px;outline:none;transition:border-color 0.2s;display:block;margin-bottom:16px;}
+    .form-input:focus{border-color:#FFC40C;}
+    .form-input::placeholder{color:rgba(255,255,255,0.25);}
+    .blog-card{background:#161616;border:1px solid rgba(255,255,255,0.05);overflow:hidden;transition:border-color 0.2s,transform 0.25s;}
+    .blog-card:hover{border-color:rgba(255,196,12,0.25);transform:translateY(-6px);}
+    .blog-card:hover .read-more{color:#FFC40C;}
+    .read-more{font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s;}
+    .cat-badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;padding:4px 10px;margin-bottom:14px;}
+  </style>
+</head>
+<body>
+
+<nav style="position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,13,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);">
+  <div style="max-width:1300px;margin:0 auto;padding:0 6vw;height:64px;display:flex;align-items:center;justify-content:space-between;">
+    <a href="index.html" style="text-decoration:none;"><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:0.06em;color:#fff;line-height:1;">SOBAN <span style="color:#FFC40C;">ATTARI</span></div></a>
+    <div style="display:flex;align-items:center;gap:24px;">
+      <a href="index.html#about" style="font-size:12px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:#ccc;text-decoration:none;">About</a>
+      <a href="blogs.html" style="font-size:12px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:#FFC40C;text-decoration:none;">Blogs</a>
+      <a href="events.html" style="font-size:12px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:#ccc;text-decoration:none;">Events</a>
+      <a href="index.html#booking" style="font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:8px 20px;background:#FFC40C;color:#0d0d0d;text-decoration:none;">Book Session</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="min-height:40vh;background:#0d0d0d;display:flex;align-items:center;position:relative;overflow:hidden;padding:60px 6vw;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 20% 50%,rgba(255,196,12,0.07) 0%,transparent 65%);pointer-events:none;"></div>
+  <div style="max-width:1300px;margin:0 auto;width:100%;position:relative;z-index:1;" class="reveal from-bottom">
+    <div class="section-tag">Insights & Reflections</div>
+    <h1 class="section-heading">BLOGS &<br/><span>PERSPECTIVES</span></h1>
+    <p class="section-sub">Timeless wisdom for modern times — explore articles on faith, family, science, and personal growth.</p>
+  </div>
+</section>
+
+<!-- BLOG GRID -->
+<section style="background:#0d0d0d;padding:80px 6vw;">
+  <div style="max-width:1300px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;" class="reveal-stagger">
+
+      <!-- Blog 1 -->
+      <div class="blog-card">
+        <div style="position:relative;overflow:hidden;">
+          <img src="https://placehold.co/600x380/161616/FFC40C?text=BLOG" alt="Blog Cover" style="width:100%;height:220px;object-fit:cover;display:block;filter:brightness(0.85);transition:transform 0.4s;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(22,22,22,0.8) 0%,transparent 60%);"></div>
+        </div>
+        <div style="padding:28px;">
+          <div class="cat-badge" style="background:rgba(255,196,12,0.12);color:#FFC40C;">Faith</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:12px;letter-spacing:0.05em;">March 15, 2026</div>
+          <h3 style="font-family:'Roboto Slab',serif;font-size:17px;font-weight:600;color:#fff;margin-bottom:12px;line-height:1.4;">The Power of Istighfar in the Modern Age</h3>
+          <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.75;margin-bottom:20px;">In an age of anxiety and information overload, the ancient practice of seeking forgiveness holds more power than ever...</p>
+          <a href="#" class="read-more">Read More →</a>
+        </div>
+      </div>
+
+      <!-- Blog 2 -->
+      <div class="blog-card">
+        <div style="position:relative;overflow:hidden;">
+          <img src="https://placehold.co/600x380/161616/FFC40C?text=BLOG" alt="Blog Cover" style="width:100%;height:220px;object-fit:cover;display:block;filter:brightness(0.85);">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(22,22,22,0.8) 0%,transparent 60%);"></div>
+        </div>
+        <div style="padding:28px;">
+          <div class="cat-badge" style="background:rgba(120,200,100,0.12);color:#78C864;">Parenting</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:12px;letter-spacing:0.05em;">March 28, 2026</div>
+          <h3 style="font-family:'Roboto Slab',serif;font-size:17px;font-weight:600;color:#fff;margin-bottom:12px;line-height:1.4;">Raising Believers in a Digital World</h3>
+          <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.75;margin-bottom:20px;">How do we raise children who love Allah when every screen competes for their hearts and minds?...</p>
+          <a href="#" class="read-more">Read More →</a>
+        </div>
+      </div>
+
+      <!-- Blog 3 -->
+      <div class="blog-card">
+        <div style="position:relative;overflow:hidden;">
+          <img src="https://placehold.co/600x380/161616/FFC40C?text=BLOG" alt="Blog Cover" style="width:100%;height:220px;object-fit:cover;display:block;filter:brightness(0.85);">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(22,22,22,0.8) 0%,transparent 60%);"></div>
+        </div>
+        <div style="padding:28px;">
+          <div class="cat-badge" style="background:rgba(80,160,255,0.12);color:#50A0FF;">Science</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:12px;letter-spacing:0.05em;">April 5, 2026</div>
+          <h3 style="font-family:'Roboto Slab',serif;font-size:17px;font-weight:600;color:#fff;margin-bottom:12px;line-height:1.4;">Science and the Quran: A Journey of Harmony</h3>
+          <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.75;margin-bottom:20px;">The more I studied physics, biology and cosmology, the more I found myself reading Quran differently...</p>
+          <a href="#" class="read-more">Read More →</a>
+        </div>
+      </div>
+
+      <!-- Blog 4 -->
+      <div class="blog-card">
+        <div style="position:relative;overflow:hidden;">
+          <img src="https://placehold.co/600x380/161616/FFC40C?text=BLOG" alt="Blog Cover" style="width:100%;height:220px;object-fit:cover;display:block;filter:brightness(0.85);">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(22,22,22,0.8) 0%,transparent 60%);"></div>
+        </div>
+        <div style="padding:28px;">
+          <div class="cat-badge" style="background:rgba(180,120,255,0.12);color:#B478FF;">Spirituality</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:12px;letter-spacing:0.05em;">April 10, 2026</div>
+          <h3 style="font-family:'Roboto Slab',serif;font-size:17px;font-weight:600;color:#fff;margin-bottom:12px;line-height:1.4;">The Lost Art of Spiritual Reflection</h3>
+          <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.75;margin-bottom:20px;">Tafakkur — deep contemplation — was once the daily bread of scholars and believers alike. We have forgotten it...</p>
+          <a href="#" class="read-more">Read More →</a>
+        </div>
+      </div>
+
+      <!-- Blog 5 -->
+      <div class="blog-card">
+        <div style="position:relative;overflow:hidden;">
+          <img src="https://placehold.co/600x380/161616/FFC40C?text=BLOG" alt="Blog Cover" style="width:100%;height:220px;object-fit:cover;display:block;filter:brightness(0.85);">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(22,22,22,0.8) 0%,transparent 60%);"></div>
+        </div>
+        <div style="padding:28px;">
+          <div class="cat-badge" style="background:rgba(255,140,60,0.12);color:#FF8C3C;">Youth</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:12px;letter-spacing:0.05em;">April 15, 2026</div>
+          <h3 style="font-family:'Roboto Slab',serif;font-size:17px;font-weight:600;color:#fff;margin-bottom:12px;line-height:1.4;">Why Today's Youth Need Islamic Identity More Than Ever</h3>
+          <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.75;margin-bottom:20px;">Identity crisis is not a buzzword — it is a spiritual emergency for Muslim youth navigating modernity...</p>
+          <a href="#" class="read-more">Read More →</a>
+        </div>
+      </div>
+
+      <!-- Blog 6 -->
+      <div class="blog-card">
+        <div style="position:relative;overflow:hidden;">
+          <img src="https://placehold.co/600x380/161616/FFC40C?text=BLOG" alt="Blog Cover" style="width:100%;height:220px;object-fit:cover;display:block;filter:brightness(0.85);">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(22,22,22,0.8) 0%,transparent 60%);"></div>
+        </div>
+        <div style="padding:28px;">
+          <div class="cat-badge" style="background:rgba(60,200,180,0.12);color:#3CC8B4;">Psychology</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:12px;letter-spacing:0.05em;">April 20, 2026</div>
+          <h3 style="font-family:'Roboto Slab',serif;font-size:17px;font-weight:600;color:#fff;margin-bottom:12px;line-height:1.4;">Understanding Emotional Intelligence Through an Islamic Lens</h3>
+          <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.75;margin-bottom:20px;">Islam has always understood the human soul. The Prophet ﷺ was the greatest example of emotional intelligence...</p>
+          <a href="#" class="read-more">Read More →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER CTA -->
+<section style="background:#FFC40C;padding:80px 6vw;">
+  <div style="max-width:600px;margin:0 auto;text-align:center;" class="reveal from-bottom">
+    <div style="font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(13,13,13,0.5);margin-bottom:12px;">Stay Connected</div>
+    <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,56px);line-height:0.95;letter-spacing:0.02em;color:#0d0d0d;margin-bottom:16px;">STAY INSPIRED</h2>
+    <p style="font-size:15px;color:rgba(13,13,13,0.6);margin-bottom:36px;line-height:1.7;">Get new articles, reflections and insights delivered to your inbox.</p>
+    <form style="display:flex;gap:0;max-width:480px;margin:0 auto;" onsubmit="return false;">
+      <input type="email" placeholder="Your email address" style="flex:1;background:#0d0d0d;border:none;color:#fff;font-family:'Roboto',sans-serif;font-size:13px;padding:14px 18px;outline:none;" />
+      <button type="submit" style="background:#0d0d0d;color:#FFC40C;font-family:'Roboto',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:14px 24px;border:none;cursor:pointer;white-space:nowrap;transition:background 0.2s;" onmouseover="this.style.background='#1a1a1a'" onmouseout="this.style.background='#0d0d0d'">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<footer style="background:#111;border-top:1px solid rgba(255,196,12,0.1);padding:60px 6vw 32px;">
+  <div style="max-width:1300px;margin:0 auto;">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,0.06);">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#fff;">SOBAN <span style="color:#FFC40C;">ATTARI</span></div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <a href="index.html" style="font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;letter-spacing:0.05em;">Home</a>
+        <a href="biography.html" style="font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;letter-spacing:0.05em;">Biography</a>
+        <a href="blogs.html" style="font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;letter-spacing:0.05em;">Blogs</a>
+        <a href="events.html" style="font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;letter-spacing:0.05em;">Events</a>
+        <a href="index.html#contact" style="font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;letter-spacing:0.05em;">Contact</a>
+      </div>
+    </div>
+    <div style="padding-top:24px;font-size:12px;color:rgba(255,255,255,0.2);">© 2025 Soban Attari. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+const ro=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting){t.target.classList.add('visible');ro.unobserve(t.target);}});},{threshold:0.1});
+document.querySelectorAll('.reveal,.reveal-stagger').forEach(el=>ro.observe(el));
+</script>
+</body>
+</html>

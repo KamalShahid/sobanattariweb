@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flood Relief — Soban Attari</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:#0d0d0d;color:#fff;font-family:'Roboto',sans-serif;font-weight:400;line-height:1.7;-webkit-font-smoothing:antialiased;padding-top:64px;}
+    .section-tag{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#FFC40C;display:inline-block;margin-bottom:12px;}
+    .section-heading{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,5vw,68px);line-height:0.95;letter-spacing:0.02em;color:#fff;margin-bottom:20px;}
+    .section-heading span{color:#FFC40C;}
+    .section-sub{font-size:15px;line-height:1.75;color:rgba(255,255,255,0.5);max-width:600px;}
+    .btn-primary{display:inline-block;background:#FFC40C;color:#0d0d0d;font-family:'Roboto',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:14px 32px;text-decoration:none;transition:background 0.2s,transform 0.15s;}
+    .btn-primary:hover{background:#E8C96A;transform:translateY(-2px);}
+    .btn-outline{display:inline-block;border:1px solid rgba(255,255,255,0.25);color:#fff;font-family:'Roboto',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:13px 28px;text-decoration:none;transition:border-color 0.2s,color 0.2s;}
+    .btn-outline:hover{border-color:#FFC40C;color:#FFC40C;}
+    .reveal{opacity:0;transition:opacity 0.75s cubic-bezier(0.22,1,0.36,1),transform 0.75s cubic-bezier(0.22,1,0.36,1);}
+    .reveal.from-bottom{transform:translateY(50px);}
+    .reveal.from-left{transform:translateX(-60px);}
+    .reveal.from-right{transform:translateX(60px);}
+    .reveal.from-scale{transform:scale(0.92);}
+    .reveal.visible{opacity:1;transform:translate(0,0) scale(1);}
+    .reveal-stagger>*{opacity:0;transform:translateY(36px);transition:opacity 0.65s cubic-bezier(0.22,1,0.36,1),transform 0.65s cubic-bezier(0.22,1,0.36,1);}
+    .reveal-stagger.visible>*{opacity:1;transform:translateY(0);}
+    .reveal-stagger.visible>*:nth-child(1){transition-delay:0s;}
+    .reveal-stagger.visible>*:nth-child(2){transition-delay:0.08s;}
+    .reveal-stagger.visible>*:nth-child(3){transition-delay:0.16s;}
+    .reveal-stagger.visible>*:nth-child(4){transition-delay:0.24s;}
+    .reveal-stagger.visible>*:nth-child(5){transition-delay:0.32s;}
+    .reveal-stagger.visible>*:nth-child(6){transition-delay:0.40s;}
+    nav a:hover{color:#FFC40C !important;}
+    .form-label{display:block;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:8px;}
+    .form-input{width:100%;background:#161616;border:1px solid rgba(255,255,255,0.08);color:#fff;font-family:'Roboto',sans-serif;font-size:14px;padding:12px 16px;outline:none;transition:border-color 0.2s;display:block;margin-bottom:16px;}
+    .form-input:focus{border-color:#FFC40C;}
+    .form-input::placeholder{color:rgba(255,255,255,0.25);}
+    .stat-card{border:1px solid rgba(255,255,255,0.06);padding:40px 24px;text-align:center;transition:border-color 0.2s;}
+    .stat-card:hover{border-color:rgba(255,196,12,0.25);}
+    .help-card{background:#0d0d0d;border:1px solid rgba(255,255,255,0.06);padding:40px 32px;transition:border-color 0.2s,transform 0.2s;}
+    .help-card:hover{border-color:rgba(255,196,12,0.25);transform:translateY(-4px);}
+  </style>
+</head>
+<body>
+
+<nav style="position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,13,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);">
+  <div style="max-width:1300px;margin:0 auto;padding:0 6vw;height:64px;display:flex;align-items:center;justify-content:space-between;">
+    <a href="../index.html" style="text-decoration:none;"><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:0.06em;color:#fff;line-height:1;">SOBAN <span style="color:#FFC40C;">ATTARI</span></div></a>
+    <div style="display:flex;align-items:center;gap:24px;">
+      <a href="../index.html#about" style="font-size:12px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:#ccc;text-decoration:none;">About</a>
+      <a href="../blogs.html" style="font-size:12px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:#ccc;text-decoration:none;">Blogs</a>
+      <a href="../events.html" style="font-size:12px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:#ccc;text-decoration:none;">Events</a>
+      <a href="../index.html#booking" style="font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:8px 20px;background:#FFC40C;color:#0d0d0d;text-decoration:none;">Book Session</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="min-height:60vh;background:#0d0d0d;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:80px 6vw;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 60%,rgba(30,60,120,0.16) 0%,rgba(13,13,13,0) 70%);pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 35% 40% at 20% 25%,rgba(255,196,12,0.04) 0%,transparent 60%);pointer-events:none;"></div>
+  <div style="position:relative;z-index:1;" class="reveal from-bottom">
+    <div class="section-tag">Community Activities</div>
+    <h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,8vw,104px);line-height:0.88;letter-spacing:0.03em;color:#fff;margin-bottom:24px;">FLOOD<br/><span style="color:#FFC40C;">RELIEF</span></h1>
+    <p style="font-size:16px;font-weight:300;color:rgba(255,255,255,0.5);max-width:520px;margin:0 auto;line-height:1.8;">Standing with those who have lost everything — because Islam commands us to.</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section style="background:#161616;padding:100px 6vw;">
+  <div style="max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
+    <div class="reveal from-left">
+      <div class="section-tag">The Cause</div>
+      <h2 class="section-heading">NO ONE LEFT<br/><span>BEHIND</span></h2>
+      <p style="font-size:15px;line-height:1.85;color:rgba(255,255,255,0.5);margin-bottom:20px;">Pakistan has been repeatedly devastated by floods — entire communities washed away, lives destroyed overnight. In response to these crises, Soban Attari has mobilized his community for emergency flood relief operations, reaching the most vulnerable families with urgent aid.</p>
+      <p style="font-size:15px;line-height:1.85;color:rgba(255,255,255,0.5);">Islam does not allow a believer to stand idle while others suffer. The Prophet ﷺ described the Muslim community as a single body — when one part suffers, the whole body responds. Flood relief is not charity; it is an obligation of brotherhood.</p>
+    </div>
+    <div class="reveal from-right">
+      <div style="background:#0d0d0d;border:1px solid rgba(255,255,255,0.06);padding:40px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,196,12,0.6);margin-bottom:16px;">Prophetic Motivation</div>
+        <blockquote style="font-family:'Roboto Slab',serif;font-size:16px;line-height:1.85;color:rgba(255,255,255,0.65);margin-bottom:20px;">"The Muslims are like one body. If the eye is in pain, the whole body is in pain. If the head is in pain, the whole body is in pain."</blockquote>
+        <div style="font-size:12px;color:rgba(255,255,255,0.3);letter-spacing:0.05em;">— Prophet Muhammad ﷺ (Muslim)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT STATS -->
+<section style="background:#0d0d0d;padding:80px 6vw;">
+  <div style="max-width:1300px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:56px;" class="reveal from-bottom">
+      <div class="section-tag">Relief Impact</div>
+      <h2 class="section-heading">WHAT WE'VE<br/><span>ACHIEVED</span></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.04);" class="reveal-stagger">
+      <div class="stat-card" style="background:#0d0d0d;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,4vw,56px);color:#FFC40C;line-height:1;margin-bottom:12px;">8,500+</div>
+        <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:6px;">Families Helped</div>
+        <p style="font-size:12px;color:rgba(255,255,255,0.3);">Families reached with food, water, and shelter</p>
+      </div>
+      <div class="stat-card" style="background:#0d0d0d;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,4vw,56px);color:#FFC40C;line-height:1;margin-bottom:12px;">4</div>
+        <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:6px;">Relief Operations</div>
+        <p style="font-size:12px;color:rgba(255,255,255,0.3);">Major coordinated relief operations conducted</p>
+      </div>
+      <div class="stat-card" style="background:#0d0d0d;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,4vw,56px);color:#FFC40C;line-height:1;margin-bottom:12px;">28</div>
+        <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:6px;">Affected Areas</div>
+        <p style="font-size:12px;color:rgba(255,255,255,0.3);">Districts and areas reached with relief support</p>
+      </div>
+      <div class="stat-card" style="background:#0d0d0d;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,4vw,56px);color:#FFC40C;line-height:1;margin-bottom:12px;">500+</div>
+        <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:6px;">Volunteers</div>
+        <p style="font-size:12px;color:rgba(255,255,255,0.3);">Dedicated volunteers on the ground each operation</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE HELP -->
+<section style="background:#161616;padding:100px 6vw;">
+  <div style="max-width:1300px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:64px;" class="reveal from-bottom">
+      <div class="section-tag">Operations</div>
+      <h2 class="section-heading">HOW WE<br/><span>HELP</span></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;" class="reveal-stagger">
+      <div class="help-card">
+        <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,196,12,0.08);border:1px solid rgba(255,196,12,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFC40C" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.04em;color:#fff;margin-bottom:12px;">Emergency Food Packs</div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.75;">Coordinated distribution of emergency ration packs to flood-affected families — enough to sustain a family of 6 for 2 weeks. Sourced, packed, and delivered by our volunteer teams.</p>
+      </div>
+      <div class="help-card">
+        <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,196,12,0.08);border:1px solid rgba(255,196,12,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFC40C" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.04em;color:#fff;margin-bottom:12px;">Clean Water Supply</div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.75;">Deployment of water purification units and bottled water distribution in areas where flood contamination has made local water unsafe — a critical first-response measure.</p>
+      </div>
+      <div class="help-card">
+        <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,196,12,0.08);border:1px solid rgba(255,196,12,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFC40C" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.04em;color:#fff;margin-bottom:12px;">Shelter & Reconstruction</div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.75;">Emergency tents and temporary shelters in the acute phase, followed by community reconstruction support to help families rebuild their homes and lives over the long term.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DONATE / VOLUNTEER CTA -->
+<section style="background:#FFC40C;padding:80px 6vw;text-align:center;">
+  <div style="max-width:680px;margin:0 auto;" class="reveal from-bottom">
+    <div style="font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(13,13,13,0.5);margin-bottom:12px;">Take Action</div>
+    <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,56px);line-height:0.95;letter-spacing:0.02em;color:#0d0d0d;margin-bottom:16px;">BE THE HELP<br/>SOMEONE NEEDS</h2>
+    <p style="font-size:15px;color:rgba(13,13,13,0.6);margin-bottom:36px;line-height:1.7;">Your time and resources can change lives. Volunteer on the ground, or register below to be notified of the next relief operation.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="#volunteer-form" style="display:inline-block;background:#0d0d0d;color:#FFC40C;font-family:'Roboto',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:14px 28px;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#1a1a1a'" onmouseout="this.style.background='#0d0d0d'">Volunteer Now</a>
+      <a href="#volunteer-form" style="display:inline-block;border:2px solid rgba(13,13,13,0.3);color:#0d0d0d;font-family:'Roboto',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:12px 28px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#0d0d0d'" onmouseout="this.style.borderColor='rgba(13,13,13,0.3)'">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- VOLUNTEER FORM -->
+<section id="volunteer-form" style="background:#161616;padding:80px 6vw;">
+  <div style="max-width:600px;margin:0 auto;" class="reveal from-bottom">
+    <div class="section-tag">Join Our Team</div>
+    <h2 class="section-heading">VOLUNTEER<br/><span>REGISTRATION</span></h2>
+    <p class="section-sub" style="margin-bottom:40px;">Register as a flood relief volunteer. We'll contact you when the next operation is launched.</p>
+    <form id="relief-form" onsubmit="handleReliefSubmit(event)">
+      <label class="form-label">Full Name *</label>
+      <input type="text" class="form-input" placeholder="Your full name" required />
+      <label class="form-label">Phone / WhatsApp *</label>
+      <input type="tel" class="form-input" placeholder="+92 300 0000000" required />
+      <label class="form-label">Skills / Availability</label>
+      <textarea class="form-input" rows="4" placeholder="e.g. Medical training, logistics, driving, fundraising, weekends available..." style="resize:vertical;"></textarea>
+      <button type="submit" class="btn-primary" style="width:100%;text-align:center;cursor:pointer;border:none;padding:16px;">Register as Volunteer</button>
+    </form>
+    <div id="relief-success" style="display:none;padding:32px;background:rgba(255,196,12,0.05);border:1px solid rgba(255,196,12,0.2);margin-top:24px;text-align:center;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#FFC40C;margin-bottom:10px;">JazakAllah Khair!</div>
+      <p style="font-size:14px;color:rgba(255,255,255,0.5);">You're registered as a flood relief volunteer. We'll notify you when the next operation is launched. May Allah reward your intention.</p>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#111;border-top:1px solid rgba(255,196,12,0.1);padding:60px 6vw 32px;">
+  <div style="max-width:1300px;margin:0 auto;">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,0.06);">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#fff;">SOBAN <span style="color:#FFC40C;">ATTARI</span></div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <a href="../index.html" style="font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;letter-spacing:0.05em;">Home</a>
+        <a href="../biography.html" style="font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;letter-spacing:0.05em;">Biography</a>
+        <a href="../events.html" style="font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;letter-spacing:0.05em;">Events</a>
+        <a href="../index.html#contact" style="font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;letter-spacing:0.05em;">Contact</a>
+      </div>
+    </div>
+    <div style="padding-top:24px;font-size:12px;color:rgba(255,255,255,0.2);">© 2025 Soban Attari. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+function handleReliefSubmit(e){
+  e.preventDefault();
+  e.target.style.display='none';
+  document.getElementById('relief-success').style.display='block';
+}
+const ro=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting){t.target.classList.add('visible');ro.unobserve(t.target);}});},{threshold:0.1});
+document.querySelectorAll('.reveal,.reveal-stagger').forEach(el=>ro.observe(el));
+</script>
+</body>
+</html>

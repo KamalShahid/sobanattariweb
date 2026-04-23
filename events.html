@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events — Soban Attari</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:#0d0d0d;color:#fff;font-family:'Roboto',sans-serif;font-weight:400;line-height:1.7;-webkit-font-smoothing:antialiased;padding-top:64px;}
+    .section-tag{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#FFC40C;display:inline-block;margin-bottom:12px;}
+    .section-heading{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,5vw,68px);line-height:0.95;letter-spacing:0.02em;color:#fff;margin-bottom:20px;}
+    .section-heading span{color:#FFC40C;}
+    .section-sub{font-size:15px;line-height:1.75;color:rgba(255,255,255,0.5);max-width:600px;}
+    .btn-primary{display:inline-block;background:#FFC40C;color:#0d0d0d;font-family:'Roboto',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:14px 32px;text-decoration:none;transition:background 0.2s,transform 0.15s;}
+    .btn-primary:hover{background:#E8C96A;transform:translateY(-2px);}
+    .btn-outline{display:inline-block;border:1px solid rgba(255,255,255,0.25);color:#fff;font-family:'Roboto',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:13px 28px;text-decoration:none;transition:border-color 0.2s,color 0.2s;}
+    .btn-outline:hover{border-color:#FFC40C;color:#FFC40C;}
+    .reveal{opacity:0;transition:opacity 0.75s cubic-bezier(0.22,1,0.36,1),transform 0.75s cubic-bezier(0.22,1,0.36,1);}
+    .reveal.from-bottom{transform:translateY(50px);}
+    .reveal.from-left{transform:translateX(-60px);}
+    .reveal.from-right{transform:translateX(60px);}
+    .reveal.from-scale{transform:scale(0.92);}
+    .reveal.visible{opacity:1;transform:translate(0,0) scale(1);}
+    .reveal-stagger>*{opacity:0;transform:translateY(36px);transition:opacity 0.65s cubic-bezier(0.22,1,0.36,1),transform 0.65s cubic-bezier(0.22,1,0.36,1);}
+    .reveal-stagger.visible>*{opacity:1;transform:translateY(0);}
+    .reveal-stagger.visible>*:nth-child(1){transition-delay:0s;}
+    .reveal-stagger.visible>*:nth-child(2){transition-delay:0.08s;}
+    .reveal-stagger.visible>*:nth-child(3){transition-delay:0.16s;}
+    .reveal-stagger.visible>*:nth-child(4){transition-delay:0.24s;}
+    .reveal-stagger.visible>*:nth-child(5){transition-delay:0.32s;}
+    .reveal-stagger.visible>*:nth-child(6){transition-delay:0.40s;}
+    nav a:hover{color:#FFC40C !important;}
+    .form-label{display:block;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:8px;}
+    .form-input{width:100%;background:#161616;border:1px solid rgba(255,255,255,0.08);color:#fff;font-family:'Roboto',sans-serif;font-size:14px;padding:12px 16px;outline:none;transition:border-color 0.2s;display:block;margin-bottom:16px;}
+    .form-input:focus{border-color:#FFC40C;}
+    .form-input::placeholder{color:rgba(255,255,255,0.25);}
+    .event-card{background:#161616;border:1px solid rgba(255,255,255,0.05);display:grid;grid-template-columns:auto 1fr auto;gap:0 32px;align-items:center;padding:32px 36px;transition:border-color 0.2s,transform 0.2s;}
+    .event-card:hover{border-color:rgba(255,196,12,0.2);transform:translateX(4px);}
+    .event-type-badge{font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;padding:4px 10px;background:rgba(255,196,12,0.12);color:#FFC40C;white-space:nowrap;}
+    .reg-btn{display:inline-block;background:transparent;border:1px solid rgba(255,196,12,0.4);color:#FFC40C;font-family:'Roboto',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:10px 22px;text-decoration:none;white-space:nowrap;transition:background 0.2s,color 0.2s;}
+    .reg-btn:hover{background:#FFC40C;color:#0d0d0d;}
+    .meta-item{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,0.35);margin-right:20px;}
+  </style>
+</head>
+<body>
+
+<nav style="position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,13,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);">
+  <div style="max-width:1300px;margin:0 auto;padding:0 6vw;height:64px;display:flex;align-items:center;justify-content:space-between;">
+    <a href="index.html" style="text-decoration:none;"><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:0.06em;color:#fff;line-height:1;">SOBAN <span style="color:#FFC40C;">ATTARI</span></div></a>
+    <div style="display:flex;align-items:center;gap:24px;">
+      <a href="index.html#about" style="font-size:12px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:#ccc;text-decoration:none;">About</a>
+      <a href="blogs.html" style="font-size:12px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:#ccc;text-decoration:none;">Blogs</a>
+      <a href="events.html" style="font-size:12px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:#FFC40C;text-decoration:none;">Events</a>
+      <a href="index.html#booking" style="font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:8px 20px;background:#FFC40C;color:#0d0d0d;text-decoration:none;">Book Session</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="min-height:40vh;background:#0d0d0d;display:flex;align-items:center;position:relative;overflow:hidden;padding:60px 6vw;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 50% 80% at 80% 50%,rgba(255,196,12,0.07) 0%,transparent 65%);pointer-events:none;"></div>
+  <div style="max-width:1300px;margin:0 auto;width:100%;position:relative;z-index:1;" class="reveal from-bottom">
+    <div class="section-tag">Calendar</div>
+    <h1 class="section-heading">UPCOMING<br/><span>EVENTS</span></h1>
+    <p class="section-sub">Join Soban Attari live — for youth talks, seminars, workshops, and public lectures across Pakistan and beyond.</p>
+  </div>
+</section>
+
+<!-- UPCOMING EVENTS -->
+<section style="background:#161616;padding:80px 6vw;">
+  <div style="max-width:1300px;margin:0 auto;">
+    <div style="margin-bottom:48px;" class="reveal from-bottom">
+      <div class="section-tag">2026 Schedule</div>
+      <h2 class="section-heading">UPCOMING<br/><span>EVENTS</span></h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px;" class="reveal-stagger">
+
+      <div class="event-card">
+        <div>
+          <div class="event-type-badge">Youth Talk</div>
+        </div>
+        <div>
+          <h3 style="font-family:'Roboto Slab',serif;font-size:18px;font-weight:600;color:#fff;margin-bottom:10px;">Islam in the Age of AI</h3>
+          <div>
+            <span class="meta-item">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              June 15, 2026
+            </span>
+            <span class="meta-item">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Karachi Arts Council
+            </span>
+          </div>
+          <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.7;margin-top:8px;max-width:640px;">A special youth-focused talk exploring artificial intelligence, digital life, and the Islamic perspective on technology and human purpose.</p>
+        </div>
+        <a href="booking-form.html?type=lecture" class="reg-btn">Register</a>
+      </div>
+
+      <div class="event-card">
+        <div>
+          <div class="event-type-badge">Workshop</div>
+        </div>
+        <div>
+          <h3 style="font-family:'Roboto Slab',serif;font-size:18px;font-weight:600;color:#fff;margin-bottom:10px;">Conscious Parenting Masterclass</h3>
+          <div>
+            <span class="meta-item">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              July 3, 2026
+            </span>
+            <span class="meta-item">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Pearl Continental, Lahore
+            </span>
+          </div>
+          <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.7;margin-top:8px;max-width:640px;">An intensive full-day workshop for parents on raising spiritually grounded, emotionally intelligent children using Islamic and psychological insights.</p>
+        </div>
+        <a href="booking-form.html?type=workshop" class="reg-btn">Register</a>
+      </div>
+
+      <div class="event-card">
+        <div>
+          <div class="event-type-badge">Seminar</div>
+        </div>
+        <div>
+          <h3 style="font-family:'Roboto Slab',serif;font-size:18px;font-weight:600;color:#fff;margin-bottom:10px;">Science & Signs of Allah</h3>
+          <div>
+            <span class="meta-item">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              July 20, 2026
+            </span>
+            <span class="meta-item">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              PMAS ARID University, Islamabad
+            </span>
+          </div>
+          <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.7;margin-top:8px;max-width:640px;">Exploring the miraculous alignment between modern scientific discoveries and the signs described in the Quran and Hadith.</p>
+        </div>
+        <a href="booking-form.html?type=seminar" class="reg-btn">Register</a>
+      </div>
+
+      <div class="event-card">
+        <div>
+          <div class="event-type-badge">Youth Seminar</div>
+        </div>
+        <div>
+          <h3 style="font-family:'Roboto Slab',serif;font-size:18px;font-weight:600;color:#fff;margin-bottom:10px;">Finding Purpose as a Muslim Youth</h3>
+          <div>
+            <span class="meta-item">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              August 5, 2026
+            </span>
+            <span class="meta-item">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              University of Peshawar
+            </span>
+          </div>
+          <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.7;margin-top:8px;max-width:640px;">A powerful one-day seminar addressing identity, purpose, career, and spiritual direction for the youth of today.</p>
+        </div>
+        <a href="booking-form.html?type=seminar" class="reg-btn">Register</a>
+      </div>
+
+      <div class="event-card">
+        <div>
+          <div class="event-type-badge">Public Lecture</div>
+        </div>
+        <div>
+          <h3 style="font-family:'Roboto Slab',serif;font-size:18px;font-weight:600;color:#fff;margin-bottom:10px;">The Modern Muslim Mind</h3>
+          <div>
+            <span class="meta-item">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              August 22, 2026
+            </span>
+            <span class="meta-item">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Dubai World Trade Centre
+            </span>
+          </div>
+          <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.7;margin-top:8px;max-width:640px;">A landmark public address exploring the psychology, challenges, and spiritual renewal needed by Muslims living in today's world.</p>
+        </div>
+        <a href="booking-form.html?type=lecture" class="reg-btn">Register</a>
+      </div>
+
+      <div class="event-card">
+        <div>
+          <div class="event-type-badge">Online Webinar</div>
+        </div>
+        <div>
+          <h3 style="font-family:'Roboto Slab',serif;font-size:18px;font-weight:600;color:#fff;margin-bottom:10px;">Spirituality & Mental Health in Islam</h3>
+          <div>
+            <span class="meta-item">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              September 10, 2026
+            </span>
+            <span class="meta-item">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Online (Zoom)
+            </span>
+          </div>
+          <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.7;margin-top:8px;max-width:640px;">A live interactive webinar on depression, anxiety, and spiritual healing through the Quran, Sunnah, and modern wellbeing science.</p>
+        </div>
+        <a href="booking-form.html?type=lecture" class="reg-btn">Register</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PAST EVENTS -->
+<section style="background:#0d0d0d;padding:80px 6vw;">
+  <div style="max-width:1300px;margin:0 auto;">
+    <div style="margin-bottom:48px;" class="reveal from-bottom">
+      <div class="section-tag">Archive</div>
+      <h2 class="section-heading">PAST<br/><span>EVENTS</span></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;" class="reveal-stagger">
+      <div style="border:1px solid rgba(255,255,255,0.05);padding:28px;opacity:0.7;transition:opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,196,12,0.5);margin-bottom:12px;">Workshop</div>
+        <div style="font-family:'Roboto Slab',serif;font-size:16px;font-weight:600;color:rgba(255,255,255,0.7);margin-bottom:8px;">Islamic Parenting in the Digital Age</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.25);">Feb 10, 2026 · Lahore</div>
+      </div>
+      <div style="border:1px solid rgba(255,255,255,0.05);padding:28px;opacity:0.7;transition:opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,196,12,0.5);margin-bottom:12px;">Public Lecture</div>
+        <div style="font-family:'Roboto Slab',serif;font-size:16px;font-weight:600;color:rgba(255,255,255,0.7);margin-bottom:8px;">The Purpose of Life — An Islamic Perspective</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.25);">Jan 28, 2026 · Karachi</div>
+      </div>
+      <div style="border:1px solid rgba(255,255,255,0.05);padding:28px;opacity:0.7;transition:opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,196,12,0.5);margin-bottom:12px;">Youth Seminar</div>
+        <div style="font-family:'Roboto Slab',serif;font-size:16px;font-weight:600;color:rgba(255,255,255,0.7);margin-bottom:8px;">Identity, Faith & the Future</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.25);">Dec 20, 2025 · Islamabad</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTER INTEREST FORM -->
+<section id="register" style="background:#161616;padding:80px 6vw;">
+  <div style="max-width:700px;margin:0 auto;" class="reveal from-bottom">
+    <div class="section-tag">Get Notified</div>
+    <h2 class="section-heading">REGISTER<br/><span>INTEREST</span></h2>
+    <p class="section-sub" style="margin-bottom:40px;">Tell us which events you're interested in and we'll keep you informed with all details and updates.</p>
+    <form onsubmit="handleInterest(event)">
+      <label class="form-label">Full Name *</label>
+      <input type="text" class="form-input" placeholder="Your full name" required />
+      <label class="form-label">Email Address *</label>
+      <input type="email" class="form-input" placeholder="your@email.com" required />
+      <label class="form-label">Event Interest</label>
+      <select class="form-input" style="appearance:none;cursor:pointer;">
+        <option value="" style="background:#161616;">Select an event...</option>
+        <option value="youth-ai" style="background:#161616;">Islam in the Age of AI — June 15</option>
+        <option value="parenting" style="background:#161616;">Conscious Parenting Masterclass — July 3</option>
+        <option value="science" style="background:#161616;">Science & Signs of Allah — July 20</option>
+        <option value="purpose" style="background:#161616;">Finding Purpose as a Muslim Youth — August 5</option>
+        <option value="modern-mind" style="background:#161616;">The Modern Muslim Mind — August 22</option>
+        <option value="mental-health" style="background:#161616;">Spirituality & Mental Health — September 10</option>
+        <option value="all" style="background:#161616;">All Events</option>
+      </select>
+      <label class="form-label">Message (optional)</label>
+      <textarea class="form-input" rows="4" placeholder="Any specific questions or requirements?" style="resize:vertical;"></textarea>
+      <button type="submit" class="btn-primary" style="width:100%;text-align:center;cursor:pointer;border:none;">Submit Interest</button>
+    </form>
+    <div id="interest-success" style="display:none;padding:32px;background:rgba(255,196,12,0.05);border:1px solid rgba(255,196,12,0.2);margin-top:24px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:#FFC40C;margin-bottom:8px;">Thank You!</div>
+      <p style="font-size:14px;color:rgba(255,255,255,0.5);">We've received your interest. We'll reach out with full details and registration information soon.</p>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#111;border-top:1px solid rgba(255,196,12,0.1);padding:60px 6vw 32px;">
+  <div style="max-width:1300px;margin:0 auto;">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,0.06);">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#fff;">SOBAN <span style="color:#FFC40C;">ATTARI</span></div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <a href="index.html" style="font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;letter-spacing:0.05em;">Home</a>
+        <a href="biography.html" style="font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;letter-spacing:0.05em;">Biography</a>
+        <a href="blogs.html" style="font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;letter-spacing:0.05em;">Blogs</a>
+        <a href="events.html" style="font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;letter-spacing:0.05em;">Events</a>
+        <a href="index.html#contact" style="font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;letter-spacing:0.05em;">Contact</a>
+      </div>
+    </div>
+    <div style="padding-top:24px;font-size:12px;color:rgba(255,255,255,0.2);">© 2025 Soban Attari. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+function handleInterest(e){
+  e.preventDefault();
+  e.target.style.display='none';
+  document.getElementById('interest-success').style.display='block';
+}
+const ro=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting){t.target.classList.add('visible');ro.unobserve(t.target);}});},{threshold:0.1});
+document.querySelectorAll('.reveal,.reveal-stagger').forEach(el=>ro.observe(el));
+</script>
+</body>
+</html>
