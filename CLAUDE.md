@@ -6,42 +6,42 @@
 ## Reference Images
 - If a reference image is provided: match layout, spacing, typography, and color exactly. Swap in placeholder content (images via `https://placehold.co/`, generic copy). Do not improve or add to the design.
 - If no reference image: design from scratch with high craft (see guardrails below).
-- Screenshot your output, compare against reference, fix mismatches, re-screenshot. Do at least 2 comparison rounds. Stop only when no visible differences remain or user says so.
 
-## Local Server
-- **Always serve on localhost** — never screenshot a `file:///` URL.
-- Start the dev server: `node serve.mjs` (serves the project root at `http://localhost:3000`)
-- `serve.mjs` lives in the project root. Start it in the background before taking any screenshots.
-- If the server is already running, do not start a second instance.
+## Architecture — Multi-Page & Dynamic
+- Build as a **multi-page app** using one of:
+  - **Vanilla JS + HTML:** separate `.html` files per page, shared `nav.js` component injected via JS, `router.js` for client-side hash/history routing.
+  - **React (Vite):** React Router v6 for routing, component-based structure, one component per page under `src/pages/`.
+- Default to **React + Vite** unless the user specifies otherwise.
+- File structure for React projects:
 
-## Screenshot Workflow
-- Puppeteer is installed at `/Users/mac/Library/Caches/puppeteer-test/`
-- Chrome cache is at `/Users/mac/.cache/puppeteer/`
-- **Always screenshot from localhost:**  
-  `node screenshot.mjs http://localhost:3000`
-- Screenshots are saved automatically to `./temporary screenshots/screenshot-N.png` (auto-incremented, never overwritten).
-- Optional label suffix:  
-  `node screenshot.mjs http://localhost:3000 label` → saves as `screenshot-N-label.png`
-- `screenshot.mjs` lives in the project root. Use it as-is.
-- After screenshotting, read the PNG from `temporary screenshots/` with the Read tool — Claude can see and analyze the image directly.
-- When comparing, be specific:  
-  "heading is 32px but reference shows ~24px",  
-  "card gap is 16px but should be 24px"
-- Check:
-  - spacing/padding  
-  - font size/weight/line-height  
-  - colors (exact hex)  
-  - alignment  
-  - border-radius  
-  - shadows  
-  - image sizing  
+src/
+components/   # Shared UI components (Navbar, Footer, etc.)
+pages/        # One file per route (Home.jsx, About.jsx, etc.)
+hooks/        # Custom React hooks
+data/         # Static data, mock APIs, or fetch utilities
+App.jsx       # Route definitions
+main.jsx      # Entry point
+
+## Dynamic Behavior
+- Data should never be hardcoded inline in JSX/HTML. Extract it to:
+  - `src/data/*.js` files (for static/mock data), or
+  - Custom hooks (`useFetch`, `useData`) for real API calls.
+- Use `useState` + `useEffect` for async data loading.
+- Show loading and error states for every async operation — no silent failures.
+- Animations: use Framer Motion for React, or CSS `@keyframes` + `transition` for vanilla. Animate `transform` and `opacity` only.
+
+## Responsive Design
+- Mobile-first: base styles target mobile, use `md:` / `lg:` breakpoints to scale up.
+- Test mentally at 375px, 768px, and 1280px widths.
+- Navigation: hamburger menu on mobile, full nav on desktop.
+- Images: always use `object-cover` with explicit aspect ratios.
+- No fixed pixel widths on layout containers — use `max-w-*` + `w-full`.
 
 ## Output Defaults
-- Single `index.html` file, all styles inline, unless user says otherwise
-- Tailwind CSS via CDN:  
-  `<script src="https://cdn.tailwindcss.com"></script>`
+- Tailwind CSS via CDN for vanilla projects; as a Vite plugin for React.
 - Placeholder images: `https://placehold.co/WIDTHxHEIGHT`
-- Mobile-first responsive
+- Fonts via Google Fonts (`<link>` tag or `@import`).
+- All shared styles in a single `styles.css` or Tailwind config — no scattered inline styles.
 
 ## Brand Assets
 - Always check the `brand_assets/` folder before designing. It may contain logos, color guides, style guides, or images.
@@ -62,6 +62,7 @@
 ## Hard Rules
 - Do not add sections, features, or content not in the reference
 - Do not "improve" a reference design — match it
-- Do not stop after one screenshot pass
 - Do not use `transition-all`
 - Do not use default Tailwind blue/indigo as primary color
+- Do not hardcode data inline — always extract to a data layer
+- Do not build single-page static HTML unless explicitly asked
