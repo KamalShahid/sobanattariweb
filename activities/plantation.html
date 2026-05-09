@@ -35,12 +35,18 @@
     .reveal-stagger.visible>*:nth-child(5){transition-delay:0.32s;}
     .reveal-stagger.visible>*:nth-child(6){transition-delay:0.40s;}
     nav a:hover{color:#FFC40C !important;}
-    .form-label{display:block;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:8px;}
-    .form-input{width:100%;background:#161616;border:1px solid rgba(255,255,255,0.08);color:#fff;font-family:'Roboto',sans-serif;font-size:14px;padding:12px 16px;outline:none;transition:border-color 0.2s;display:block;margin-bottom:16px;}
-    .form-input:focus{border-color:#FFC40C;}
-    .form-input::placeholder{color:rgba(255,255,255,0.25);}
     .stat-card{border:1px solid rgba(255,255,255,0.06);padding:40px 28px;text-align:center;transition:border-color 0.2s;}
     .stat-card:hover{border-color:rgba(255,196,12,0.25);}
+    .gallery-tile{cursor:pointer;}
+    .gallery-tile::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(13,13,13,0.55) 0%,rgba(13,13,13,0) 50%);opacity:0;transition:opacity 0.3s ease;pointer-events:none;}
+    .gallery-tile:hover::after{opacity:1;}
+    .gallery-tile:hover img{transform:scale(1.05);}
+    @media(max-width:900px){
+      [class~="gallery-tile"]{grid-column:span 3 !important;}
+    }
+    @media(max-width:600px){
+      [class~="gallery-tile"]{grid-column:span 6 !important;grid-row:span 1 !important;}
+    }
     .nav-dropdown{position:relative;}
     .nav-dropdown-toggle{display:flex;align-items:center;gap:4px;cursor:pointer;font-size:12px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:#ccc;white-space:nowrap;transition:color 0.2s;}
     .nav-dropdown:hover .nav-dropdown-toggle,.nav-dropdown:focus-within .nav-dropdown-toggle{color:#FFC40C;}
@@ -158,79 +164,51 @@
   </div>
 </section>
 
-<!-- HOW TO JOIN -->
+<!-- ACTIVITY GALLERY -->
 <section style="background:#161616;padding:100px 6vw;">
   <div style="max-width:1300px;margin:0 auto;">
-    <div style="text-align:center;margin-bottom:64px;" class="reveal from-bottom">
-      <div class="section-tag">Get Involved</div>
-      <h2 class="section-heading">HOW TO<br/><span>JOIN</span></h2>
+    <div style="text-align:center;margin-bottom:56px;max-width:680px;margin-left:auto;margin-right:auto;" class="reveal from-bottom">
+      <div class="section-tag">From the Ground</div>
+      <h2 class="section-heading">PLANTATION<br/><span>IN ACTION</span></h2>
+      <p class="section-sub" style="margin:16px auto 0;text-align:center;">Moments from past plantation drives across Pakistan, with students, faculty, volunteers, and community partners.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;" class="reveal-stagger">
-      <div style="padding:0 48px 0 0;position:relative;">
-        <div style="width:56px;height:56px;border-radius:50%;background:#FFC40C;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:24px;color:#0d0d0d;margin-bottom:24px;">1</div>
-        <div style="position:absolute;top:28px;left:56px;right:0;height:1px;background:rgba(255,196,12,0.15);"></div>
-        <div style="font-family:'Roboto Slab',serif;font-size:17px;font-weight:600;color:#fff;margin-bottom:10px;">Sign Up</div>
-        <p style="font-size:14px;color:rgba(255,255,255,0.4);line-height:1.75;">Register as a volunteer using the form below. Tell us your city and availability.</p>
-      </div>
-      <div style="padding:0 48px;position:relative;">
-        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,196,12,0.12);border:1px solid rgba(255,196,12,0.3);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:24px;color:#FFC40C;margin-bottom:24px;">2</div>
-        <div style="position:absolute;top:28px;left:56px;right:0;height:1px;background:rgba(255,196,12,0.15);"></div>
-        <div style="font-family:'Roboto Slab',serif;font-size:17px;font-weight:600;color:#fff;margin-bottom:10px;">Get Confirmed</div>
-        <p style="font-size:14px;color:rgba(255,255,255,0.4);line-height:1.75;">You'll receive a WhatsApp confirmation with the drive date, meeting point, and what to bring.</p>
-      </div>
-      <div style="padding:0 0 0 48px;">
-        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,196,12,0.12);border:1px solid rgba(255,196,12,0.3);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:24px;color:#FFC40C;margin-bottom:24px;">3</div>
-        <div style="font-family:'Roboto Slab',serif;font-size:17px;font-weight:600;color:#fff;margin-bottom:10px;">Plant & Earn Sadaqah Jariyah</div>
-        <p style="font-size:14px;color:rgba(255,255,255,0.4);line-height:1.75;">Join the team, plant your trees, and earn an act of continuous charity that outlives you.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- UPCOMING DRIVE -->
-<section style="background:#0d0d0d;padding:60px 6vw;">
-  <div style="max-width:1300px;margin:0 auto;" class="reveal from-bottom">
-    <div style="background:#FFC40C;padding:40px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
-      <div>
-        <div style="font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(13,13,13,0.5);margin-bottom:8px;">Next Drive</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:0.04em;color:#0d0d0d;margin-bottom:4px;">May 22, 2026 · Margalla Hills, Islamabad</div>
-        <div style="font-size:13px;color:rgba(13,13,13,0.6);">Assembly at 7:00 AM. Bring gloves and water. Trees and tools provided.</div>
-      </div>
-      <a href="#volunteer" style="display:inline-block;background:#0d0d0d;color:#FFC40C;font-family:'Roboto',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:14px 28px;text-decoration:none;white-space:nowrap;transition:background 0.2s;" onmouseover="this.style.background='#1a1a1a'" onmouseout="this.style.background='#0d0d0d'">Sign Up as Volunteer</a>
+    <!-- Replace the placeholder src values below with real plantation photos when supplied. -->
+    <div class="reveal-stagger" style="display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:200px;gap:8px;">
+      <a href="#" class="gallery-tile" style="grid-column:span 3;grid-row:span 2;position:relative;overflow:hidden;display:block;">
+        <img src="https://placehold.co/1200x800/1a3a1a/8fb98f?text=Plantation+Drive" alt="Plantation drive" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;" />
+      </a>
+      <a href="#" class="gallery-tile" style="grid-column:span 3;grid-row:span 1;position:relative;overflow:hidden;display:block;">
+        <img src="https://placehold.co/900x300/24472a/9ec79e?text=Tree+Planting" alt="Tree planting" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;" />
+      </a>
+      <a href="#" class="gallery-tile" style="grid-column:span 1;grid-row:span 1;position:relative;overflow:hidden;display:block;">
+        <img src="https://placehold.co/400x400/2d5a2d/b3d3b3?text=Volunteers" alt="Volunteers" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;" />
+      </a>
+      <a href="#" class="gallery-tile" style="grid-column:span 2;grid-row:span 1;position:relative;overflow:hidden;display:block;">
+        <img src="https://placehold.co/800x400/1d3d1d/9bc99b?text=Saplings" alt="Saplings" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;" />
+      </a>
+      <a href="#" class="gallery-tile" style="grid-column:span 2;grid-row:span 1;position:relative;overflow:hidden;display:block;">
+        <img src="https://placehold.co/800x400/2a4d2a/a4caa4?text=On+Campus" alt="On campus drive" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;" />
+      </a>
+      <a href="#" class="gallery-tile" style="grid-column:span 2;grid-row:span 2;position:relative;overflow:hidden;display:block;">
+        <img src="https://placehold.co/800x800/183818/8db98d?text=Community" alt="Community plantation" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;" />
+      </a>
+      <a href="#" class="gallery-tile" style="grid-column:span 2;grid-row:span 1;position:relative;overflow:hidden;display:block;">
+        <img src="https://placehold.co/800x400/204020/9bc99b?text=Awareness+Lecture" alt="Awareness lecture" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;" />
+      </a>
+      <a href="#" class="gallery-tile" style="grid-column:span 2;grid-row:span 1;position:relative;overflow:hidden;display:block;">
+        <img src="https://placehold.co/800x400/2c4f2c/aacca8?text=With+VCs+%26+HODs" alt="With VCs and HODs" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;" />
+      </a>
     </div>
   </div>
 </section>
 
-<!-- VOLUNTEER FORM -->
-<section id="volunteer" style="background:#161616;padding:80px 6vw;">
-  <div style="max-width:600px;margin:0 auto;" class="reveal from-bottom">
-    <div class="section-tag">Volunteer Signup</div>
-    <h2 class="section-heading">JOIN THE<br/><span>DRIVE</span></h2>
-    <p class="section-sub" style="margin-bottom:40px;">Sign up as a volunteer and be part of our next Plantation Drive.</p>
-    <form id="plant-form" onsubmit="handlePlantSubmit(event)">
-      <label class="form-label">Full Name *</label>
-      <input type="text" class="form-input" placeholder="Your full name" required />
-      <label class="form-label">Phone / WhatsApp *</label>
-      <input type="tel" class="form-input" placeholder="+92 324 4008906" required />
-      <label class="form-label">City *</label>
-      <input type="text" class="form-input" placeholder="Your city" required />
-      <label class="form-label">Preferred Drive Location</label>
-      <select class="form-input" style="appearance:none;cursor:pointer;">
-        <option value="" style="background:#161616;">Select a location...</option>
-        <option style="background:#161616;">Margalla Hills, Islamabad</option>
-        <option style="background:#161616;">Karachi (City Forest)</option>
-        <option style="background:#161616;">Lahore (Changa Manga)</option>
-        <option style="background:#161616;">Peshawar (University Campus)</option>
-        <option style="background:#161616;">Any location near me</option>
-      </select>
-      <label class="form-label">Availability</label>
-      <input type="text" class="form-input" placeholder="e.g. Weekends only, May to June 2026" />
-      <button type="submit" class="btn-primary" style="width:100%;text-align:center;cursor:pointer;border:none;padding:16px;">Sign Up as Volunteer</button>
-    </form>
-    <div id="plant-success" style="display:none;padding:32px;background:rgba(255,196,12,0.05);border:1px solid rgba(255,196,12,0.2);margin-top:24px;text-align:center;">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#FFC40C;margin-bottom:10px;">JazakAllah Khair!</div>
-      <p style="font-size:14px;color:rgba(255,255,255,0.5);">You're registered as a volunteer. May Allah accept your effort as Sadaqah Jariyah. We'll contact you with details soon.</p>
-    </div>
+<!-- CTA (single Book a Session button) -->
+<section style="background:#0d0d0d;padding:100px 6vw;text-align:center;">
+  <div style="max-width:760px;margin:0 auto;" class="reveal from-bottom">
+    <div class="section-tag">Book a Session</div>
+    <h2 class="section-heading">INVITE SOBAN<br/><span>TO YOUR INSTITUTION</span></h2>
+    <p style="font-size:15px;color:rgba(255,255,255,0.5);line-height:1.75;margin:16px auto 36px;text-align:center;max-width:560px;">Tell us what kind of session you need and our team will get back within 24 to 48 hours.</p>
+    <a href="../booking-form.html" class="btn-primary" style="font-size:13px;padding:16px 40px;">Book a Session</a>
   </div>
 </section>
 
@@ -273,11 +251,6 @@
 </footer>
 
 <script>
-function handlePlantSubmit(e){
-  e.preventDefault();
-  e.target.style.display='none';
-  document.getElementById('plant-success').style.display='block';
-}
 const ro=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting){t.target.classList.add('visible');ro.unobserve(t.target);}});},{threshold:0.1});
 document.querySelectorAll('.reveal,.reveal-stagger').forEach(el=>ro.observe(el));
 </script>

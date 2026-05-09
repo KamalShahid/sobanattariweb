@@ -52,20 +52,9 @@
     .nav-dropdown-item{display:block;padding:9px 0;font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.7);text-decoration:none;transition:color 0.15s,padding-left 0.15s;}
     .nav-dropdown-item:hover{color:#FFC40C;padding-left:6px;}
     @media(max-width:900px){.nav-dropdown-mega{min-width:0;grid-template-columns:1fr;gap:14px;padding:4px 18px;}}
-    /* Timeline */
-    .timeline-item{display:grid;grid-template-columns:96px 1fr;gap:0 44px;position:relative;padding-bottom:52px;}
-    .timeline-item:not(:last-child)::after{content:'';position:absolute;left:115px;top:14px;bottom:0;width:1px;background:rgba(255,196,12,0.15);}
-    .timeline-year{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:0.04em;color:#FFC40C;line-height:1;padding-top:2px;text-align:right;}
-    .timeline-dot{width:10px;height:10px;border-radius:50%;background:#FFC40C;position:absolute;left:111px;top:9px;box-shadow:0 0 12px rgba(255,196,12,0.5);}
-    /* Credential cards */
-    .cred-card{background:#0d0d0d;border:1px solid rgba(255,255,255,0.06);padding:32px 28px;transition:border-color 0.25s,transform 0.25s;}
-    .cred-card:hover{border-color:rgba(255,196,12,0.4);transform:translateY(-4px);}
-    /* University tags */
-    .uni-tag{display:inline-block;background:#161616;border:1px solid rgba(255,196,12,0.2);padding:8px 16px;font-size:12px;color:rgba(255,255,255,0.65);letter-spacing:0.04em;transition:border-color 0.2s,color 0.2s;margin:4px;}
-    .uni-tag:hover{border-color:#FFC40C;color:#FFC40C;}
     /* Welfare stat cards */
-    .welfare-stat{background:#161616;border-top:2px solid #FFC40C;padding:36px 28px;text-align:center;}
-    .welfare-stat-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,4vw,60px);line-height:1;color:#FFC40C;letter-spacing:0.02em;}
+    .welfare-stat{background:#0d0d0d;border-top:2px solid #FFC40C;padding:36px 28px;text-align:center;}
+    .welfare-stat-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,4vw,56px);line-height:1;color:#FFC40C;letter-spacing:0.02em;}
     .welfare-stat-label{font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:8px;}
     @media(max-width:900px){
       .two-col{grid-template-columns:1fr !important;}
@@ -73,8 +62,6 @@
     }
     @media(max-width:600px){
       .three-col{grid-template-columns:1fr !important;}
-      .timeline-item{grid-template-columns:64px 1fr;gap:0 20px;}
-      .timeline-year{font-size:20px;}
     }
   </style>
 </head>
@@ -148,114 +135,100 @@
 </section>
 
 <!-- INTRODUCTION -->
-<section style="background:#161616;padding:80px 6vw;">
-  <div style="max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;" class="two-col">
-    <div class="reveal from-left">
-      <div class="section-tag">Who He Is</div>
-      <h2 class="section-heading">A VOICE FOR<br/><span>MODERN FAITH</span></h2>
-      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);margin-bottom:20px;">Soban Attari is an Islamic scholar and motivational speaker from Lahore. He spends most of the year travelling to universities, mosques, and corporate halls to sit down with students and professionals and talk through faith, family, and modern life in plain language.</p>
-      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);margin-bottom:20px;">Online, his lectures and short clips reach millions every week. Offline, he is the same person on stage as he is in a one-to-one room: direct, curious, and unafraid of the harder questions.</p>
-      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);">He was born in 1979 in Lahore, Pakistan, and still calls the city home.</p>
+<section style="background:#161616;padding:100px 6vw;">
+  <div style="max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:center;" class="two-col">
+    <div class="reveal from-left" style="position:relative;">
+      <div style="position:relative;overflow:hidden;border:1px solid rgba(255,196,12,0.15);">
+        <img src="brand_assets/IMG_9756.JPG" alt="Soban Attari, Islamic Scholar and Motivational Speaker" loading="lazy" style="width:100%;height:560px;object-fit:cover;object-position:center 20%;display:block;filter:saturate(0.9);" />
+      </div>
+      <div style="position:absolute;bottom:-24px;left:-20px;background:#FFC40C;padding:18px 26px;box-shadow:0 12px 32px rgba(0,0,0,0.4);">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;line-height:1;color:#0d0d0d;">Since 1999</div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(0,0,0,0.55);margin-top:4px;">Speaking, Teaching, Serving</div>
+      </div>
     </div>
     <div class="reveal from-right">
-      <div style="background:#0d0d0d;padding:40px;border-left:3px solid #FFC40C;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,196,12,0.6);margin-bottom:24px;">Contact Information</div>
-        <div style="display:flex;flex-direction:column;gap:16px;">
-          <div style="display:flex;align-items:flex-start;gap:14px;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFC40C" stroke-width="1.5" style="flex-shrink:0;margin-top:3px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span style="font-size:14px;color:rgba(255,255,255,0.55);">Lahore, Punjab, Pakistan</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:14px;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFC40C" stroke-width="1.5" style="flex-shrink:0;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <a href="mailto:team@sobanattari.com" style="font-size:14px;color:rgba(255,255,255,0.55);text-decoration:none;">team@sobanattari.com</a>
-          </div>
-          <div style="display:flex;align-items:center;gap:14px;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFC40C" stroke-width="1.5" style="flex-shrink:0;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.38 2 2 0 0 1 3.58 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.1 6.1l1.09-1.09a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <a href="https://wa.me/923244008906" target="_blank" rel="noopener" style="font-size:14px;color:rgba(255,255,255,0.55);text-decoration:none;">+92 324 4008906</a>
-          </div>
-          <div style="display:flex;align-items:flex-start;gap:14px;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFC40C" stroke-width="1.5" style="flex-shrink:0;margin-top:3px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/></svg>
-            <span style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.5;">Weekly speech at Jamia Masjid Sakeena Siddique, Qaddafi Stadium, Lahore.</span>
-          </div>
-        </div>
-      </div>
+      <div class="section-tag">Soban Attari Biography</div>
+      <h2 class="section-heading">A VOICE FOR<br/><span>MODERN FAITH</span></h2>
+      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.6);margin-bottom:18px;">Soban Attari is a renowned Islamic and motivational speaker recognized for his impactful speeches and engagements in various settings, including live events, conferences, and educational institutions.</p>
+      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);margin-bottom:18px;">With a strong social media presence and a dedicated following across various platforms, Soban Attari has effectively reached and inspired a wide audience. Soban Attari has actively worked with prestigious institutes and organizations at all levels, making a significant impact in the field of Islamic and motivational speaking. Born on 22nd September 1979, in Lahore, Punjab, Pakistan, Soban Attari, at the age of 20 continued to be a dynamic force in transforming lives through his powerful speeches and dedicated efforts.</p>
+      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);margin-bottom:18px;">He hosted and participated in many TV programs. Among these, "Islam and Science" got much popularity. All of its episodes are available on his official YouTube channel.</p>
+      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);">His podcast, web series and short clips on a wide variety of topics are a source of inspiration for many (all are easily available on his official social media platforms).</p>
     </div>
   </div>
 </section>
 
-<!-- JOURNEY TIMELINE -->
+<!-- QUALIFICATION -->
 <section style="background:#0d0d0d;padding:100px 6vw;">
-  <div style="max-width:1300px;margin:0 auto;">
-    <div style="max-width:680px;margin-bottom:72px;" class="reveal from-bottom">
-      <div class="section-tag">His Journey</div>
-      <h2 class="section-heading">FROM STUDENT<br/><span>TO SHEPHERD</span></h2>
-      <p class="section-sub">A life shaped by faith, study, and a habit of showing up for the work, from a final commerce degree at Punjab University to stages in thousands of institutions across Pakistan.</p>
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="margin-bottom:32px;" class="reveal from-bottom">
+      <div class="section-tag">Qualification</div>
+      <h2 class="section-heading">EDUCATION<br/><span>JOURNEY</span></h2>
     </div>
+    <div class="reveal from-bottom">
+      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);">Soban Attari has done his intermediate from Government College University (GCU), Lahore and B.Com from University of the Punjab, Lahore. Soban Attari's education journey also includes CA Inter and MBA Executive. Along with his regular studies, Soban Attari actively participated in co-curricular activities and sports in school. Don Bosco High School, an old and spacious educational institute located in the heart of the city, is famous for its basketball team and regular academic activities.</p>
+    </div>
+  </div>
+</section>
 
-    <div style="max-width:820px;">
-      <div class="timeline-item reveal from-left">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">1979</div>
-        <div>
-          <div style="font-family:'Roboto Slab',serif;font-size:18px;font-weight:600;color:#fff;margin-bottom:10px;">Born in Lahore</div>
-          <p style="font-size:14px;line-height:1.85;color:rgba(255,255,255,0.5);">Soban Attari was born in Lahore, Punjab, in September 1979, into a household where faith and discipline shaped daily life.</p>
-        </div>
+<!-- LIFE ACHIEVEMENTS -->
+<section style="background:#161616;padding:100px 6vw;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="margin-bottom:32px;" class="reveal from-bottom">
+      <div class="section-tag">Life Achievements</div>
+      <h2 class="section-heading">ACADEMIC<br/><span>EXCELLENCE</span></h2>
+    </div>
+    <div class="reveal from-bottom">
+      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);margin-bottom:18px;">Soban Attari achieved remarkable success during his academic journey, winning numerous declamations and speech contests in school and consistently excelling in exams. Following his school years, Soban Attari pursued higher education at Government College University Lahore, a prestigious and renowned institution in Pakistan known for its contributions to self-knowledge, employment, quality training, research, and development. The esteemed alumni of this institute hold prominent positions across various fields. Soban Attari's time at Government College University played a pivotal role in shaping his talents and skills.</p>
+      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);">During his college life, Soban Attari showcased his dominance in academics, sports, and other activities. He fondly recalls his favorite spots on the campus, the oval ground, and the library. It was in the library that he cultivated a habit of book reading, which continues to this day, with Soban Attari considering books as his best friends. After completing his education at Government College University, Soban Attari pursued commerce studies from Hailey College of Commerce at University of the Punjab. The institute boasted qualified teachers and provided an enriching university ambience, further unlocking Soban Attari's inner potential and contributing to the development of his strong personality, built on the foundation laid by Government College University.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAMILY BACKGROUND -->
+<section style="background:#0d0d0d;padding:100px 6vw;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="margin-bottom:32px;" class="reveal from-bottom">
+      <div class="section-tag">Family Background</div>
+      <h2 class="section-heading">ROOTS THAT<br/><span>SHAPED HIM</span></h2>
+    </div>
+    <div class="reveal from-bottom">
+      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);">Shahan Murshad, Soban Attari's father, was a businessman and took a keen interest in the upbringing of their children, including Soban Attari. His family has a rich history, with his grandfather, Mr. Younis, being an emigrant who worked in Bata Shoes Company. Soban Attari's family played an important role in his life and upbringing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THE U-TURN: DAWATEISLAMI -->
+<section style="background:#161616;padding:100px 6vw;">
+  <div style="max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:72px;align-items:start;" class="two-col">
+    <div class="reveal from-left">
+      <div class="section-tag">A Life-Changing Turn</div>
+      <h2 class="section-heading">CA, DAWATEISLAMI<br/><span>&amp; A NEW JOURNEY</span></h2>
+      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);margin-bottom:18px;">Next phase of life was Charted Accountancy (CA), a rare discipline of education at that time when every student was yearning to become doctor and engineer. In the 2nd year of CA, Soban's life took a U-turn. An event that brought immense changes in his life. Introduction and joining Dawateislami, an international non-political, non-profit Islamic organization, which is propagating Islamic knowledge and enlightening the message of Islam across the globe. Soban Attari became disciple of Hazrat Maulana Ilyas Qadri Sahib, the founder of Dawateislami and an internationally acclaimed scholar of Islam, writer and Sufi (saint). Dominant feature of his personality which impressed Soban Attari was his actions, not only words, but practical approach towards Islam.</p>
+      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);margin-bottom:18px;">Hazrat Maulana Ilyas Qadri Sahib's message is peace and his style is so unique and appealing that Dawateislami is progressing rapidly. Like millions, lifestyle and mindset of Soban Attari was also changed. Soban was later assigned the education department of Dawateislami, as provincial head. His duty was to influence youth, especially students and teachers and propagate the invitation of goodness among them.</p>
+      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);">So a new journey started. Soban Attari worked day and night to establish this new wing of Dawateislami. The primary focus was Universities. To gather all the scattered resources and establish a new system, resource mobilization was a daunting challenge at that time. Soban's talent of public speaking and leadership were the key ingredients in clearing the obstacles and way towards progress. Affectionate patronage and supervision of his spiritual mentor, Ilyas Qadri sahib, worked wonders. Goals were met. People were shocked to see the results.</p>
+    </div>
+    <div class="reveal from-right" style="position:sticky;top:96px;">
+      <div style="position:relative;overflow:hidden;border:1px solid rgba(255,196,12,0.15);">
+        <img src="brand_assets/DSC_0451.JPG" alt="Soban Attari at a public lecture" loading="lazy" style="width:100%;height:520px;object-fit:cover;display:block;filter:saturate(0.9);" />
       </div>
-
-      <div class="timeline-item reveal from-left">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">Uni</div>
-        <div>
-          <div style="font-family:'Roboto Slab',serif;font-size:18px;font-weight:600;color:#fff;margin-bottom:10px;">Punjab University, Hailey College of Commerce</div>
-          <p style="font-size:14px;line-height:1.85;color:rgba(255,255,255,0.5);">He read for his B.Com at Hailey College of Commerce, Punjab University in Lahore, and went on to complete CA Inter and an MBA Executive. The final degree gave him the analytical training that still shapes how he reasons through Islamic and modern questions in public.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item reveal from-left">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">CA</div>
-        <div>
-          <div style="font-family:'Roboto Slab',serif;font-size:18px;font-weight:600;color:#fff;margin-bottom:10px;">A U-Turn That Changed Everything</div>
-          <p style="font-size:14px;line-height:1.85;color:rgba(255,255,255,0.5);">In the second year of his CA studies, Soban encountered Dawateislami, an international non-political Islamic organisation. He became a disciple of Maulana Ilyas Qadri, scholar, writer and founder of Dawateislami. What stayed with him most was Maulana Qadri's practical approach: not just words, but action.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item reveal from-left">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">DI</div>
-        <div>
-          <div style="font-family:'Roboto Slab',serif;font-size:18px;font-weight:600;color:#fff;margin-bottom:10px;">Provincial Head, Education Department</div>
-          <p style="font-size:14px;line-height:1.85;color:rgba(255,255,255,0.5);">As Provincial Head of the Dawateislami Education Department, Soban was asked to focus on students and teachers and to build the wing's reach inside universities. The work moved fast, and the results turned heads.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item reveal from-left">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">TV</div>
-        <div>
-          <div style="font-family:'Roboto Slab',serif;font-size:18px;font-weight:600;color:#fff;margin-bottom:10px;">Islam &amp; Science on Madani Channel</div>
-          <p style="font-size:14px;line-height:1.85;color:rgba(255,255,255,0.5);">When Madani Channel went on air, Soban joined the core management and managed the Punjab region. He designed and hosted "Islam and Science", which became one of the channel's top-rated programmes. He also hosted several others, all of which now sit on his YouTube channel.</p>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
 <!-- WORK APPROACH / BRAND -->
 <section style="background:#0d0d0d;padding:100px 6vw;">
-  <div style="max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;" class="two-col">
+  <div style="max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;" class="two-col">
     <div class="reveal from-left">
-      <div class="section-tag">His Approach</div>
-      <h2 class="section-heading">ISLAM &<br/><span>SCIENCE</span></h2>
-      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);margin-bottom:20px;">His signature topic, a scientific approach towards Islam, became his brand. His speeches stretch from basic Islamic teachings to motivation, social problems and their solutions, ethics, and moral values.</p>
-      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);margin-bottom:20px;">His podcasts, web series "Design Your Life," and short clips on goal setting, leadership, problem solving and personality development are widely liked and a source of inspiration for people belonging to all walks of life.</p>
-      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);">He also extended his work to medical professionals, building a team of doctors who began celebrating Meelad of the Holy Prophet ﷺ, travelling in Madani Qafla, and stepping away from malpractices.</p>
+      <div class="section-tag">Work Approach</div>
+      <h2 class="section-heading">ISLAM &amp;<br/><span>SCIENCE</span></h2>
+      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);margin-bottom:18px;">His topic, especially scientific approach towards Islam, Islam and Science became his brand. His speech encompasses wide ranging topics from basic Islamic teachings to general motivation, social ills and their solution, ethics and moral values.</p>
+      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);margin-bottom:18px;">Furthermore, his Podcasts, programs and short clips on goal setting, leadership, problem solving and other related topics of personality development are widely liked and source of inspiration for people belonging to all walks of life. After these accomplishments, next target was medical doctors and hospitals. One of the busiest and most important professional of our society.</p>
+      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);">With his old connections, charismatic personality and laser sharp logics, Soban got their attention, built a team and started visiting the institutes for the noble cause. Many joined and this caravan started progressing day-by-day. That initial working with devotion and loyalty bore fruit. Doctors started celebrating the Meelad of Holy Prophet (peace be upon him), travelling in Madani Qafla, left malpractices, doing short courses and became practicing Muslims.</p>
     </div>
-    <div class="reveal from-right">
+    <div class="reveal from-right" style="position:sticky;top:96px;">
       <div style="background:#FFC40C;padding:48px 40px;position:relative;overflow:hidden;">
         <div style="position:absolute;top:-8px;left:32px;font-family:'Bebas Neue',sans-serif;font-size:120px;color:rgba(0,0,0,0.08);line-height:1;">"</div>
-        <blockquote style="font-family:'Roboto Slab',serif;font-size:18px;font-weight:400;line-height:1.85;color:#0d0d0d;position:relative;z-index:1;margin-bottom:28px;">Entire credit of my success goes to my parents. Their day and night sacrifices.</blockquote>
+        <blockquote style="font-family:'Roboto Slab',serif;font-size:18px;font-weight:400;line-height:1.85;color:#0d0d0d;position:relative;z-index:1;margin-bottom:28px;">Entire credit of my success goes to my parents. Their day and night sacrifices and hard work enabled me to learn how things work in life. Stay humble, stay focused and never let hope die.</blockquote>
         <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(13,13,13,0.55);">Soban Attari</div>
       </div>
     </div>
@@ -265,14 +238,13 @@
 <!-- WELFARE ACTIVITIES -->
 <section style="background:#161616;padding:100px 6vw;">
   <div style="max-width:1300px;margin:0 auto;">
-    <div style="margin-bottom:64px;" class="reveal from-bottom">
-      <div class="section-tag">Welfare & Philanthropy</div>
+    <div style="margin-bottom:56px;max-width:760px;" class="reveal from-bottom">
+      <div class="section-tag">Welfare Activities</div>
       <h2 class="section-heading">SERVING<br/><span>HUMANITY</span></h2>
-      <p class="section-sub">Inspired by the Islamic principle that saving one life is like saving all of humanity, Soban Attari has led major welfare initiatives across Pakistan under the FGRF (Faizan Global Relief Foundation) banner.</p>
     </div>
 
     <!-- Welfare stats -->
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-bottom:64px;" class="reveal-stagger">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-bottom:56px;" class="reveal-stagger">
       <div class="welfare-stat">
         <div class="welfare-stat-num">10,000+</div>
         <div class="welfare-stat-label">Blood Bags Collected</div>
@@ -282,8 +254,8 @@
         <div class="welfare-stat-label">Total DI Blood Drive</div>
       </div>
       <div class="welfare-stat">
-        <div class="welfare-stat-num">8,500+</div>
-        <div class="welfare-stat-label">Flood Families Helped</div>
+        <div class="welfare-stat-num">2022</div>
+        <div class="welfare-stat-label">Flood Relief Campaign</div>
       </div>
       <div class="welfare-stat">
         <div class="welfare-stat-num">Pakistan-wide</div>
@@ -291,40 +263,66 @@
       </div>
     </div>
 
-    <!-- 3 welfare activity cards -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;" class="three-col reveal-stagger">
-      <div style="background:#0d0d0d;padding:48px 36px;">
-        <div style="width:44px;height:44px;background:rgba(220,40,40,0.15);border:1px solid rgba(220,40,40,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:24px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(220,40,40,0.8)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-        </div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:0.04em;color:#fff;margin-bottom:16px;">Blood Donation Drive</div>
-        <p style="font-size:14px;line-height:1.85;color:rgba(255,255,255,0.5);">During COVID-19, Soban was asked to oversee the blood collection drive across Punjab for thalassemia patients. Partnering with Shaukat Khanum Memorial Hospital, Sundas Foundation, and other credible organisations, he travelled across the province, ran a media campaign, interviewed medical experts, and visited camps to check on performance. Dawateislami collected more than 55,000 bags of blood, with Soban's personal share over 10,000.</p>
-      </div>
-      <div style="background:#0d0d0d;padding:48px 36px;">
-        <div style="width:44px;height:44px;background:rgba(34,120,34,0.15);border:1px solid rgba(34,120,34,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:24px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(34,150,34,0.8)"><path d="M17 8C8 10 5.9 16.17 3.82 19.41L5.71 21l1-1.29C8.17 18.12 10.67 17 12 17c3.87 0 7-3.13 7-7V4l-2 4z"/></svg>
-        </div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:0.04em;color:#fff;margin-bottom:16px;">Plantation Drive</div>
-        <p style="font-size:14px;line-height:1.85;color:rgba(255,255,255,0.5);">Soban was given the core responsibility of FGRF's plantation initiative. He recorded programmes and short clips on the importance of planting trees, broadcast on Madani Channel and mainstream social media. He visited educational institutes, government and private offices, planting alongside VCs, HODs, principals, and senior officers, while raising awareness among students about climate change and Islam's call to care for the Earth.</p>
-      </div>
-      <div style="background:#0d0d0d;padding:48px 36px;">
-        <div style="width:44px;height:44px;background:rgba(30,80,200,0.15);border:1px solid rgba(30,80,200,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:24px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(60,120,220,0.8)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-        </div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:0.04em;color:#fff;margin-bottom:16px;">Flood Relief, 2022</div>
-        <p style="font-size:14px;line-height:1.85;color:rgba(255,255,255,0.5);">In 2022, when heavy rain and floods submerged almost one-third of Pakistan, Soban Attari joined FGRF's relief and recovery campaign. His focus was donations and medical camps, since health and hygiene were the urgent concerns. He visited Fazilpur and other parts of south Punjab with doctors, distributing medicines and essential items to affected families. He also managed free eye testing and blood screening camps for madrasah and Jamia students and teachers across Pakistan.</p>
-      </div>
+    <div style="max-width:980px;" class="reveal from-bottom">
+      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);margin-bottom:18px;">Soban Attari, known for his noble cause, has extensively traveled across Pakistan, making a significant impact. One noteworthy aspect of Soban's personality is his dedication to welfare and philanthropy. During the challenging days of the first wave of the COVID-19 pandemic, when the world was grappling with severe health and financial crises, Ilyas Qadri Sahib initiated a nationwide blood collection drive. Soban Attari was entrusted with the responsibility of overseeing the drive in the Punjab region. In addition to various projects aimed at uplifting the general population, Ilyas Qadri Sahib's focus extended to one of the most vulnerable segments of society, the thalassemia patients, for whom fresh blood transfusions are essential for survival. A massive blood collection drive was initiated under this initiative, spearheaded by Soban Attari as part of his impactful biography.</p>
+      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);margin-bottom:18px;">Soban Attari started the project in Punjab with devoted workers, observing all the recommended protective measures. Credible organizations like Shoukat Khanum Memorial Hospital, Sundas Foundation etc. became partners. Initial assessment was done, areas were selected, and Soban Attari travelled across Punjab, started a proper media campaign and gave talks to channels. He Interviewed prominent medical experts and started the project with full zeal and zest. He used to visit the camps before and after the blood collection procedure for performance evaluation and feedback. At that time, Dawateislami collected more than 55,000+ bags of blood. Soban Attari's share was 10,000+ blood bags. During the campaign, Soban Attari visited several thalassemia centers, interviewed patients and parents and recorded programs for public awareness.</p>
+      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);margin-bottom:18px;">Another notable activity is plantation. Climate change is the fact of life and it's happening right now. Global warming is eroding the entire fabric of Earth and one of the most important steps to tackle the situation is plantation. Green is the game changer. FGRF welfare division of Dawateislami started plantation drive and Soban Attari was, once more, given a core responsibility. He recorded many programs and short clips on the importance of plantation, all these were broadcasted on Madani Channel and other mainstream social media. He visited many educational institutes, government and private offices and done plantation with VC's, HOD's, Principals, high grade officers and delivered lectures among students for proper awareness about one of the most important activities.</p>
+      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);margin-bottom:18px;">When the team of professional doctors was well built, Soban Attari managed free eye testing, blood screening camps for the students and teachers of madrasah and Jamia. Thousands were given free medical counseling, medicines and glasses. This philanthropy activity spread across Pakistan. Beneficiaries were mostly those who belong to lower middle-class category of society.</p>
+      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);margin-bottom:18px;">In 2022, heavy rainfall and floods have submerged almost one-third of Pakistan. In that crisis of unimaginable proportion, Soban Attari joined relief and recovery campaign for flood affected people with FGRF. His special focus was donations and medical camps as health and hygiene were major concerns in those areas. Soban visited Fazilpur and other south Punjab regions which were affected along with doctors. Medicines and other essential items were distributed among the affected people.</p>
+      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);">Soban Attari supervised many welfare projects of FGRF (Faizan Global Relief Foundation), especially blood collection for thalassemia patients, plantation and flood relief activities. He managed several blood donation camps across Pakistan and collected 10,000+ bags of blood. He has done plantations in many educational institutions, private and public offices along with notable dignitaries. He also delivers lectures among students and runs a social media campaign to create awareness among the masses. He organized relief and recovery activities especially medical camps in flood affected areas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MADANI CHANNEL -->
+<section style="background:#0d0d0d;padding:100px 6vw;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="margin-bottom:32px;" class="reveal from-bottom">
+      <div class="section-tag">Program Co-Host in Madani Channel</div>
+      <h2 class="section-heading">ON AIR WITH<br/><span>ISLAM &amp; SCIENCE</span></h2>
+    </div>
+    <div class="reveal from-bottom">
+      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);margin-bottom:18px;">At that time, Madani Channel started its transmission. Soban Attari was in the core management of this new department and was the manager of Punjab region. Along with management he has been given the task to design and host the program "Islam and Science". First few episodes were with a team of doctors and other professionals but afterwards it was conducted by Soban Attari alone. It was unique and one of the top ranking programs of Madani channel.</p>
+      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);">All episodes of this TV show are available on official YouTube channel of Soban Attari. Some other programs are "Insaan aik herat angez takhleeq" (Human is a marvelous and wonderful creation), "Dilchasp Baatien" (interesting talks), "Malumaat hei kuch khaas" (Some interesting information, a four-segment program containing interesting information about Prophets, health tips and soft skills). Favorite morning show of Madani Channel "Khule Ankh Sale ALLAH kehte kehte", Soban appeared Live many times with variety of different topics.</p>
     </div>
   </div>
 </section>
 
 <!-- UNIVERSITIES / PARTNERS -->
-<section style="background:#0d0d0d;padding:100px 6vw;">
+<section style="background:#161616;padding:100px 6vw;">
   <div style="max-width:1300px;margin:0 auto;">
-    <div style="margin-bottom:56px;text-align:center;max-width:680px;margin-left:auto;margin-right:auto;" class="reveal from-bottom">
-      <div class="section-tag">Universities &amp; Partners</div>
+    <div style="margin-bottom:48px;text-align:center;max-width:760px;margin-left:auto;margin-right:auto;" class="reveal from-bottom">
+      <div class="section-tag">Conducted Sessions on Bigger Universities of Pakistan</div>
       <h2 class="section-heading">SESSIONS DELIVERED<br/><span>AT THESE INSTITUTIONS</span></h2>
-      <p class="section-sub" style="margin:16px auto 0;">Click any institution to read the full session recap, photos, and student reflections.</p>
+      <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);margin:20px auto 0;">Soban Attari delivered lectures on a wide variety of topics in almost all prominent and well-known educational institutions and corporate offices. Some of them are:</p>
+    </div>
+    <div class="reveal from-bottom" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px 28px;max-width:1100px;margin:0 auto 64px;font-size:14px;line-height:1.85;color:rgba(255,255,255,0.55);">
+      <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
+        <li style="display:flex;gap:10px;"><span style="color:#FFC40C;flex-shrink:0;">›</span> Quaid-e-Azam University, Islamabad</li>
+        <li style="display:flex;gap:10px;"><span style="color:#FFC40C;flex-shrink:0;">›</span> University of the Punjab (PU)</li>
+        <li style="display:flex;gap:10px;"><span style="color:#FFC40C;flex-shrink:0;">›</span> University of Engineering and Technology (UET), Lahore</li>
+        <li style="display:flex;gap:10px;"><span style="color:#FFC40C;flex-shrink:0;">›</span> Lahore University of Management Sciences (LUMS)</li>
+        <li style="display:flex;gap:10px;"><span style="color:#FFC40C;flex-shrink:0;">›</span> Quaid-e-Azam Medical College Bahawalpur (QMC)</li>
+        <li style="display:flex;gap:10px;"><span style="color:#FFC40C;flex-shrink:0;">›</span> King Edward Medical University (KE)</li>
+        <li style="display:flex;gap:10px;"><span style="color:#FFC40C;flex-shrink:0;">›</span> Allama Iqbal Medical College (AIMC)</li>
+        <li style="display:flex;gap:10px;"><span style="color:#FFC40C;flex-shrink:0;">›</span> University Of Central Punjab (UCP)</li>
+        <li style="display:flex;gap:10px;"><span style="color:#FFC40C;flex-shrink:0;">›</span> COMSATS University</li>
+        <li style="display:flex;gap:10px;"><span style="color:#FFC40C;flex-shrink:0;">›</span> IQRA University Karachi</li>
+        <li style="display:flex;gap:10px;"><span style="color:#FFC40C;flex-shrink:0;">›</span> IBA Sukkur</li>
+      </ul>
+      <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
+        <li style="display:flex;gap:10px;"><span style="color:#FFC40C;flex-shrink:0;">›</span> Islamia University Bahawalpur (IUB)</li>
+        <li style="display:flex;gap:10px;"><span style="color:#FFC40C;flex-shrink:0;">›</span> National University of Computer and Emerging Sciences, Lahore Campus (NUCES-FAST)</li>
+        <li style="display:flex;gap:10px;"><span style="color:#FFC40C;flex-shrink:0;">›</span> Bahauddin Zakariya University Multan</li>
+        <li style="display:flex;gap:10px;"><span style="color:#FFC40C;flex-shrink:0;">›</span> University of Education, Lahore</li>
+        <li style="display:flex;gap:10px;"><span style="color:#FFC40C;flex-shrink:0;">›</span> University of Haripur</li>
+        <li style="display:flex;gap:10px;"><span style="color:#FFC40C;flex-shrink:0;">›</span> University of Sindh</li>
+        <li style="display:flex;gap:10px;"><span style="color:#FFC40C;flex-shrink:0;">›</span> Quaid-e-Awam University Nawabshah (QUEST)</li>
+        <li style="display:flex;gap:10px;"><span style="color:#FFC40C;flex-shrink:0;">›</span> Mehran University Sindh</li>
+        <li style="display:flex;gap:10px;"><span style="color:#FFC40C;flex-shrink:0;">›</span> University of Peshawar</li>
+        <li style="display:flex;gap:10px;"><span style="color:#FFC40C;flex-shrink:0;">›</span> Assorted software houses</li>
+        <li style="display:flex;gap:10px;"><span style="color:#FFC40C;flex-shrink:0;">›</span> Government and private offices like SNGPL, WAPDA etc.</li>
+      </ul>
     </div>
     <div class="reveal-stagger" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
       <a href="blogs.html#lums" style="background:#fff;padding:32px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-decoration:none;transition:transform 0.25s,box-shadow 0.25s;min-height:180px;border:1px solid rgba(255,196,12,0.15);" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(255,196,12,0.18)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
@@ -362,6 +360,47 @@
     </div>
     <div style="text-align:center;margin-top:40px;">
       <a href="blogs.html" class="btn-outline">View All University Sessions</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO APPROACH / SOCIAL MEDIA / FAMILY -->
+<section style="background:#0d0d0d;padding:100px 6vw;">
+  <div style="max-width:1300px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;" class="two-col">
+
+      <div class="reveal from-left">
+        <div class="section-tag">How to approach Soban Attari?</div>
+        <h2 class="section-heading">MEET HIM<br/><span>IN PERSON</span></h2>
+        <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);margin-bottom:18px;">Soban Attari delivers Jumma sermon in Jamia Masjid Sakeena Siddique Qaddafi Stadium Lahore where thousands of people from many cities come to listen and meet Soban Attari. You are also invited; speech starts at 1:05pm.</p>
+        <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);">You can also book a 1-to-1 session with Soban Attari.</p>
+
+        <div style="margin-top:36px;background:#161616;padding:32px;border-left:3px solid #FFC40C;">
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,196,12,0.6);margin-bottom:18px;">Contact Information</div>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <div style="display:flex;align-items:flex-start;gap:14px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFC40C" stroke-width="1.5" style="flex-shrink:0;margin-top:3px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span style="font-size:14px;color:rgba(255,255,255,0.6);">Lahore, Punjab, Pakistan</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFC40C" stroke-width="1.5" style="flex-shrink:0;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:team@sobanattari.com" style="font-size:14px;color:rgba(255,255,255,0.6);text-decoration:none;">team@sobanattari.com</a>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFC40C" stroke-width="1.5" style="flex-shrink:0;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.38 2 2 0 0 1 3.58 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.1 6.1l1.09-1.09a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <a href="https://wa.me/923244008906" target="_blank" rel="noopener" style="font-size:14px;color:rgba(255,255,255,0.6);text-decoration:none;">+92 324 4008906</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal from-right">
+        <div class="section-tag">Presence on Social Media</div>
+        <h2 class="section-heading">A FAMILY MAN<br/><span>ONLINE &amp; OFF</span></h2>
+        <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);margin-bottom:18px;">During this whole journey Soban Attari's social media keeps on growing. His short clips are famous among all age groups and liked by people from all walks of life. He has an active presence on all social media platforms. His podcasts and web series, design your life, is famous especially in educational communities.</p>
+        <p style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.55);">Soban Attari has four children and living a happy marital life. Among all hustle and bustle, always engaged in challenging projects he spends quality time with his family members and grade this activity as his favorite hobby. Soban Attari says, <em style="color:rgba(255,255,255,0.75);">"Entire credit of my success goes to my parents. Their day and night sacrifices and hard work enabled me to learn how things work in life. Stay humble, stay focused and never let hope die."</em></p>
+      </div>
+
     </div>
   </div>
 </section>

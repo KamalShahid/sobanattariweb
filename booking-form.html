@@ -52,6 +52,47 @@
     .form-input:focus{border-color:#FFC40C;}
     .form-input::placeholder{color:rgba(255,255,255,0.25);}
     select.form-input option{background:#161616;}
+
+    /* Payment-method tab switcher */
+    .pay-tabs{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:32px;border:1px solid rgba(255,196,12,0.2);}
+    .pay-tab{background:transparent;border:none;color:rgba(255,255,255,0.55);font-family:'Roboto',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:16px 18px;cursor:pointer;transition:background 0.2s,color 0.2s;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px;}
+    .pay-tab:hover{color:#FFC40C;}
+    .pay-tab.active{background:#FFC40C;color:#0d0d0d;}
+    .pay-tab .pay-tab-sub{font-size:9px;font-weight:500;letter-spacing:0.08em;opacity:0.7;text-transform:none;display:block;}
+
+    /* Calendly embed */
+    .calendly-embed-wrap{background:#161616;border:1px solid rgba(255,196,12,0.15);min-height:740px;position:relative;}
+    .calendly-inline-widget{min-width:320px;height:740px;}
+    .calendly-placeholder{padding:40px 32px;text-align:center;color:rgba(255,255,255,0.55);font-size:14px;line-height:1.7;}
+    .calendly-placeholder strong{color:#FFC40C;display:block;font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:0.04em;margin-bottom:14px;}
+    .calendly-placeholder code{background:#0d0d0d;color:#FFC40C;padding:2px 8px;font-size:12px;border:1px solid rgba(255,196,12,0.2);}
+
+    /* Payment-method radio cards */
+    .pay-method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px;}
+    .pay-method-card{background:#161616;border:1px solid rgba(255,255,255,0.08);padding:20px 16px;cursor:pointer;transition:border-color 0.2s,background 0.2s;text-align:center;}
+    .pay-method-card:hover{border-color:rgba(255,196,12,0.4);}
+    .pay-method-card input{display:none;}
+    .pay-method-card.checked{border-color:#FFC40C;background:rgba(255,196,12,0.06);}
+    .pay-method-card-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.04em;color:#fff;margin-bottom:4px;}
+    .pay-method-card-sub{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);}
+
+    /* Payment instructions panel */
+    .pay-instr{background:#161616;border-left:3px solid #FFC40C;padding:24px 28px;margin-bottom:24px;}
+    .pay-instr-title{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#FFC40C;margin-bottom:12px;}
+    .pay-instr-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:14px;color:rgba(255,255,255,0.7);}
+    .pay-instr-row:last-child{border-bottom:none;}
+    .pay-instr-row .lbl{color:rgba(255,255,255,0.4);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;}
+    .pay-instr-row .val{font-family:'Roboto Slab',serif;font-weight:600;}
+
+    /* File upload */
+    .file-upload{display:block;background:#161616;border:1px dashed rgba(255,196,12,0.4);padding:20px;text-align:center;color:rgba(255,255,255,0.55);font-size:13px;cursor:pointer;transition:border-color 0.2s,background 0.2s;margin-bottom:16px;}
+    .file-upload:hover{border-color:#FFC40C;background:rgba(255,196,12,0.04);}
+    .file-upload input{display:none;}
+    .file-upload .file-name{display:block;margin-top:6px;color:#FFC40C;font-size:12px;}
+
+    @media(max-width:600px){
+      .pay-method-grid{grid-template-columns:1fr;}
+    }
   </style>
 </head>
 <body>
@@ -101,7 +142,7 @@
   <div style="position:relative;z-index:1;" class="reveal from-bottom">
     <div class="section-tag">Session Booking</div>
     <h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,5vw,64px);line-height:0.95;letter-spacing:0.02em;color:#fff;margin-bottom:12px;">BOOK A <span style="color:#FFC40C;" id="booking-type-name">SESSION</span></h1>
-    <p style="font-size:15px;color:rgba(255,255,255,0.4);max-width:520px;margin:0 auto;">Complete the form below and our team will confirm your booking within 24 to 48 hours.</p>
+    <p id="booking-hero-sub" style="font-size:15px;color:rgba(255,255,255,0.4);max-width:560px;margin:0 auto;">Complete the form below and our team will confirm your booking within 24 to 48 hours.</p>
   </div>
 </section>
 
@@ -115,7 +156,7 @@
 
 <!-- FORM SECTION -->
 <section style="background:#0d0d0d;padding:80px 6vw;">
-  <div style="max-width:700px;margin:0 auto;" class="reveal from-bottom">
+  <div style="max-width:880px;margin:0 auto;" class="reveal from-bottom">
 
     <!-- Session type display -->
     <div style="background:#161616;border:1px solid rgba(255,196,12,0.2);padding:16px 20px;margin-bottom:32px;display:flex;align-items:center;gap:12px;">
@@ -126,68 +167,234 @@
       </div>
     </div>
 
-    <form id="booking-form" onsubmit="handleBookingSubmit(event)">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 20px;">
-        <div>
-          <label class="form-label">Full Name *</label>
-          <input type="text" class="form-input" placeholder="Your full name" required />
-        </div>
-        <div>
-          <label class="form-label">Email Address *</label>
-          <input type="email" class="form-input" placeholder="your@email.com" required />
-        </div>
+    <!-- ============================================================ -->
+    <!-- 1-TO-1 BOOKING PANEL (online & physical 1-to-1 sessions only) -->
+    <!-- ============================================================ -->
+    <div id="onetoone-panel" style="display:none;">
+
+      <!-- How it works strip -->
+      <div style="background:#161616;border-left:3px solid #FFC40C;padding:20px 24px;margin-bottom:28px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#FFC40C;margin-bottom:10px;">How it works</div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7;margin:0;">Pick your preferred payment method below. Card payments are processed automatically (live calendar, instant booking, Google Meet link sent to both inboxes). Pakistan-rail payments are confirmed manually within 24 hours.</p>
       </div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 20px;">
-        <div>
-          <label class="form-label">Phone / WhatsApp *</label>
-          <input type="tel" class="form-input" placeholder="+92 324 4008906" required />
-        </div>
-        <div>
-          <label class="form-label">Organization / Institution</label>
-          <input type="text" class="form-input" placeholder="Optional" />
-        </div>
+      <!-- Payment-method tabs -->
+      <div class="pay-tabs">
+        <button type="button" class="pay-tab active" data-tab="card" onclick="switchPayTab('card')">
+          <span>Card / International<span class="pay-tab-sub">Live calendar &middot; instant</span></span>
+        </button>
+        <button type="button" class="pay-tab" data-tab="pk" onclick="switchPayTab('pk')">
+          <span>Pakistan Payment<span class="pay-tab-sub">JazzCash &middot; EasyPaisa &middot; Bank</span></span>
+        </button>
       </div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 20px;">
-        <div>
-          <label class="form-label">City / Country *</label>
-          <input type="text" class="form-input" placeholder="e.g. Lahore, Pakistan" required />
+      <!-- ============================================ -->
+      <!-- TAB 1: Card payment via Calendly + Stripe    -->
+      <!-- ============================================ -->
+      <div id="pay-tab-card" class="pay-tab-content">
+        <!--
+          SETUP NOTES (one-time, by site owner):
+          1. Create a Calendly Pro account (https://calendly.com) using Soban's Gmail.
+          2. Connect Soban's Google Calendar in Calendly settings (two-way sync).
+          3. Create an event type called e.g. "1-to-1 Online Session" or "1-to-1 Physical Session".
+          4. In the event-type settings, enable Stripe payment and set the price.
+          5. Copy the public booking URL and replace the placeholder in data-url below.
+             The URL params keep the embed on-brand:
+               primary_color=ffc40c   background_color=0d0d0d   text_color=ffffff
+        -->
+        <div class="calendly-embed-wrap">
+          <!-- Replace the data-url with the real Calendly link once the account is set up. -->
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/sobanattari/one-to-one-session?primary_color=ffc40c&amp;background_color=0d0d0d&amp;text_color=ffffff"
+               id="calendly-embed"></div>
+
+          <!-- Fallback shown until the real Calendly URL is wired -->
+          <div class="calendly-placeholder" id="calendly-placeholder">
+            <strong>Live Calendar Will Appear Here</strong>
+            Once Soban's Calendly + Stripe account is connected, this area will show his real available slots from Google Calendar. The visitor picks a time, pays by card, and a confirmation with the meeting link is emailed to both Soban and the visitor automatically.
+            <div style="margin-top:24px;font-size:12px;color:rgba(255,255,255,0.4);">Replace <code>data-url</code> in <code>booking-form.html</code> with the real Calendly event link to go live.</div>
+          </div>
         </div>
-        <div>
-          <label class="form-label">Preferred Date(s)</label>
-          <input type="text" class="form-input" placeholder="e.g. June 10 to 15, 2026" />
-        </div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
       </div>
 
-      <div id="audience-field" style="display:none;">
-        <label class="form-label">Expected Audience Size</label>
-        <select class="form-input">
-          <option value="" style="background:#161616;">Select audience size...</option>
-          <option value="50-100" style="background:#161616;">50 to 100 people</option>
-          <option value="100-300" style="background:#161616;">100 to 300 people</option>
-          <option value="300-500" style="background:#161616;">300 to 500 people</option>
-          <option value="500-1000" style="background:#161616;">500 to 1,000 people</option>
-          <option value="1000+" style="background:#161616;">1,000+ people</option>
-        </select>
+      <!-- ============================================ -->
+      <!-- TAB 2: Pakistan rails (manual confirmation)  -->
+      <!-- ============================================ -->
+      <div id="pay-tab-pk" class="pay-tab-content" style="display:none;">
+        <!--
+          SETUP NOTES (one-time, by site owner):
+          1. Create a free Formspree account (https://formspree.io) using Soban's Gmail.
+          2. Create a new form, set the destination email to Soban's Gmail.
+          3. Copy the form endpoint and replace YOUR_FORM_ID in the action attribute below.
+          4. Replace the JazzCash, EasyPaisa, and bank-transfer placeholders with real numbers.
+          On submission Soban receives the booking details + receipt screenshot.
+          He then manually creates a Google Calendar event with the visitor as attendee
+          (which auto-emails the visitor an invite + Meet link).
+        -->
+        <form id="pk-booking-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data" onsubmit="return handlePkSubmit(event);">
+          <input type="hidden" name="_subject" value="New 1-to-1 Booking Request (Pakistan Payment)" />
+          <input type="hidden" name="session_type" id="pk-session-type" value="" />
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 20px;">
+            <div>
+              <label class="form-label">Full Name *</label>
+              <input type="text" name="full_name" class="form-input" placeholder="Your full name" required />
+            </div>
+            <div>
+              <label class="form-label">Email Address *</label>
+              <input type="email" name="email" class="form-input" placeholder="your@email.com" required />
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 20px;">
+            <div>
+              <label class="form-label">Phone / WhatsApp *</label>
+              <input type="tel" name="phone" class="form-input" placeholder="+92 324 4008906" required />
+            </div>
+            <div>
+              <label class="form-label">City *</label>
+              <input type="text" name="city" class="form-input" placeholder="e.g. Lahore" required />
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 20px;">
+            <div>
+              <label class="form-label">Preferred Date *</label>
+              <input type="date" name="preferred_date" class="form-input" required />
+            </div>
+            <div>
+              <label class="form-label">Preferred Time *</label>
+              <input type="time" name="preferred_time" class="form-input" required />
+            </div>
+          </div>
+
+          <label class="form-label">What you'd like to discuss</label>
+          <textarea name="topic" class="form-input" rows="3" placeholder="A short summary of what you'd like guidance on..." style="resize:vertical;"></textarea>
+
+          <label class="form-label" style="margin-top:8px;">Payment Method *</label>
+          <div class="pay-method-grid">
+            <label class="pay-method-card" data-method="jazzcash">
+              <input type="radio" name="payment_method" value="JazzCash" required />
+              <div class="pay-method-card-title">JazzCash</div>
+              <div class="pay-method-card-sub">Mobile Wallet</div>
+            </label>
+            <label class="pay-method-card" data-method="easypaisa">
+              <input type="radio" name="payment_method" value="EasyPaisa" required />
+              <div class="pay-method-card-title">EasyPaisa</div>
+              <div class="pay-method-card-sub">Mobile Wallet</div>
+            </label>
+            <label class="pay-method-card" data-method="bank">
+              <input type="radio" name="payment_method" value="Bank Transfer" required />
+              <div class="pay-method-card-title">Bank Transfer</div>
+              <div class="pay-method-card-sub">IBFT / Online</div>
+            </label>
+          </div>
+
+          <!-- Per-method instructions (toggled by JS) -->
+          <div id="pay-instr-jazzcash" class="pay-instr" style="display:none;">
+            <div class="pay-instr-title">JazzCash Payment</div>
+            <div class="pay-instr-row"><span class="lbl">Account Title</span><span class="val">Soban Attari</span></div>
+            <div class="pay-instr-row"><span class="lbl">JazzCash No.</span><span class="val">+92 3XX XXXXXXX</span></div>
+            <div class="pay-instr-row"><span class="lbl">Amount</span><span class="val">PKR XX,XXX</span></div>
+          </div>
+          <div id="pay-instr-easypaisa" class="pay-instr" style="display:none;">
+            <div class="pay-instr-title">EasyPaisa Payment</div>
+            <div class="pay-instr-row"><span class="lbl">Account Title</span><span class="val">Soban Attari</span></div>
+            <div class="pay-instr-row"><span class="lbl">EasyPaisa No.</span><span class="val">+92 3XX XXXXXXX</span></div>
+            <div class="pay-instr-row"><span class="lbl">Amount</span><span class="val">PKR XX,XXX</span></div>
+          </div>
+          <div id="pay-instr-bank" class="pay-instr" style="display:none;">
+            <div class="pay-instr-title">Bank Transfer (IBFT)</div>
+            <div class="pay-instr-row"><span class="lbl">Account Title</span><span class="val">Soban Attari</span></div>
+            <div class="pay-instr-row"><span class="lbl">Bank</span><span class="val">[Bank Name]</span></div>
+            <div class="pay-instr-row"><span class="lbl">Account No.</span><span class="val">XXXX-XXXX-XXXX</span></div>
+            <div class="pay-instr-row"><span class="lbl">IBAN</span><span class="val">PKXX XXXX XXXX XXXX XXXX XXXX</span></div>
+            <div class="pay-instr-row"><span class="lbl">Amount</span><span class="val">PKR XX,XXX</span></div>
+          </div>
+
+          <label class="form-label">Upload Payment Receipt *</label>
+          <label class="file-upload" id="file-upload-label">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFC40C" stroke-width="1.5" style="display:block;margin:0 auto 8px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <span id="file-upload-text">Click to upload screenshot or transaction PDF</span>
+            <span class="file-name" id="file-upload-name"></span>
+            <input type="file" name="receipt" accept="image/*,application/pdf" required onchange="handleFilePick(event)" />
+          </label>
+
+          <button type="submit" class="btn-primary" style="width:100%;text-align:center;cursor:pointer;border:none;font-size:13px;padding:18px;margin-top:8px;">Submit &amp; Confirm Booking</button>
+          <p style="font-size:12px;color:rgba(255,255,255,0.4);line-height:1.7;margin-top:14px;text-align:center;">Soban's team will verify the payment and email a confirmation with the meeting link within 24 hours.</p>
+        </form>
       </div>
 
-      <label class="form-label">Topic / Purpose *</label>
-      <input type="text" class="form-input" placeholder="e.g. Youth empowerment, Islamic parenting, Science and faith..." required />
+    </div>
 
-      <label class="form-label">Special Requirements</label>
-      <textarea class="form-input" rows="5" placeholder="Any specific topics, format preferences, accessibility needs, or other details..." style="resize:vertical;"></textarea>
+    <!-- ============================================================ -->
+    <!-- INQUIRY PANEL (group, seminar, lecture, workshop, etc.)      -->
+    <!-- ============================================================ -->
+    <div id="inquiry-panel">
+      <form id="booking-form" onsubmit="handleBookingSubmit(event)">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 20px;">
+          <div>
+            <label class="form-label">Full Name *</label>
+            <input type="text" class="form-input" placeholder="Your full name" required />
+          </div>
+          <div>
+            <label class="form-label">Email Address *</label>
+            <input type="email" class="form-input" placeholder="your@email.com" required />
+          </div>
+        </div>
 
-      <button type="submit" class="btn-primary" style="width:100%;text-align:center;cursor:pointer;border:none;font-size:13px;padding:18px;">Submit Booking Request</button>
-    </form>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 20px;">
+          <div>
+            <label class="form-label">Phone / WhatsApp *</label>
+            <input type="tel" class="form-input" placeholder="+92 324 4008906" required />
+          </div>
+          <div>
+            <label class="form-label">Organization / Institution</label>
+            <input type="text" class="form-input" placeholder="Optional" />
+          </div>
+        </div>
 
-    <!-- Success State -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 20px;">
+          <div>
+            <label class="form-label">City / Country *</label>
+            <input type="text" class="form-input" placeholder="e.g. Lahore, Pakistan" required />
+          </div>
+          <div>
+            <label class="form-label">Preferred Date(s)</label>
+            <input type="text" class="form-input" placeholder="e.g. June 10 to 15, 2026" />
+          </div>
+        </div>
+
+        <div id="audience-field" style="display:none;">
+          <label class="form-label">Expected Audience Size</label>
+          <select class="form-input">
+            <option value="" style="background:#161616;">Select audience size...</option>
+            <option value="50-100" style="background:#161616;">50 to 100 people</option>
+            <option value="100-300" style="background:#161616;">100 to 300 people</option>
+            <option value="300-500" style="background:#161616;">300 to 500 people</option>
+            <option value="500-1000" style="background:#161616;">500 to 1,000 people</option>
+            <option value="1000+" style="background:#161616;">1,000+ people</option>
+          </select>
+        </div>
+
+        <label class="form-label">Topic / Purpose *</label>
+        <input type="text" class="form-input" placeholder="e.g. Youth empowerment, Islamic parenting, Science and faith..." required />
+
+        <label class="form-label">Special Requirements</label>
+        <textarea class="form-input" rows="5" placeholder="Any specific topics, format preferences, accessibility needs, or other details..." style="resize:vertical;"></textarea>
+
+        <button type="submit" class="btn-primary" style="width:100%;text-align:center;cursor:pointer;border:none;font-size:13px;padding:18px;">Submit Booking Request</button>
+      </form>
+    </div>
+
+    <!-- Success state (shared by both panels) -->
     <div id="success-msg" style="display:none;text-align:center;padding:60px 32px;">
       <div style="width:64px;height:64px;border-radius:50%;background:rgba(255,196,12,0.1);border:2px solid rgba(255,196,12,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 28px;">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFC40C" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:#FFC40C;letter-spacing:0.04em;margin-bottom:16px;">REQUEST RECEIVED</div>
-      <p style="font-size:15px;color:rgba(255,255,255,0.5);line-height:1.8;max-width:480px;margin:0 auto;">Your booking request has been received. Our team will contact you within 24 to 48 hours to confirm availability and next steps. All details remain strictly confidential.</p>
+      <p style="font-size:15px;color:rgba(255,255,255,0.5);line-height:1.8;max-width:520px;margin:0 auto;" id="success-msg-text">Your booking request has been received. Our team will contact you within 24 to 48 hours to confirm availability and next steps. All details remain strictly confidential.</p>
       <div style="margin-top:40px;">
         <a href="index.html" class="btn-outline">Back to Home</a>
       </div>
@@ -248,14 +455,77 @@ const typeKey = params.get('type') || 'online-1to1';
 const typeName = typeMap[typeKey] || 'Session Booking';
 document.getElementById('booking-type-name').textContent = typeName;
 document.getElementById('booking-type-display').textContent = typeName;
-if(['group-online','seminar','lecture'].includes(typeKey)){
-  document.getElementById('audience-field').style.display = 'block';
+
+const isOneToOne = ['online-1to1','physical-1to1'].includes(typeKey);
+if(isOneToOne){
+  document.getElementById('onetoone-panel').style.display = 'block';
+  document.getElementById('inquiry-panel').style.display = 'none';
+  document.getElementById('pk-session-type').value = typeName;
+  document.getElementById('booking-hero-sub').textContent = 'Pick a slot from the live calendar and pay by card, or use a Pakistan-rail payment confirmed within 24 hours.';
+} else {
+  document.getElementById('onetoone-panel').style.display = 'none';
+  document.getElementById('inquiry-panel').style.display = 'block';
+  if(['group-online','seminar','lecture'].includes(typeKey)){
+    document.getElementById('audience-field').style.display = 'block';
+  }
 }
+
+// Tab switching for 1-to-1 panel
+function switchPayTab(tab){
+  document.querySelectorAll('.pay-tab').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  document.getElementById('pay-tab-card').style.display = (tab === 'card') ? 'block' : 'none';
+  document.getElementById('pay-tab-pk').style.display = (tab === 'pk') ? 'block' : 'none';
+}
+
+// Payment-method radio highlighting + per-method instructions
+document.querySelectorAll('.pay-method-card').forEach(card => {
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.pay-method-card').forEach(c => c.classList.remove('checked'));
+    card.classList.add('checked');
+    const radio = card.querySelector('input[type=radio]');
+    if(radio) radio.checked = true;
+    ['jazzcash','easypaisa','bank'].forEach(m => {
+      const el = document.getElementById('pay-instr-' + m);
+      if(el) el.style.display = (m === card.dataset.method) ? 'block' : 'none';
+    });
+  });
+});
+
+// File upload preview
+function handleFilePick(e){
+  const f = e.target.files[0];
+  if(!f) return;
+  document.getElementById('file-upload-text').textContent = 'Receipt selected';
+  document.getElementById('file-upload-name').textContent = f.name;
+}
+
+// Inquiry-form (group/seminar/etc.) submit
 function handleBookingSubmit(e){
   e.preventDefault();
-  document.getElementById('booking-form').style.display='none';
+  document.getElementById('inquiry-panel').style.display='none';
   document.getElementById('success-msg').style.display='block';
 }
+
+// Pakistan-rail booking submit. Lets Formspree do the actual POST so the
+// receipt file + booking details land in Soban's Gmail.
+function handlePkSubmit(e){
+  const form = e.target;
+  const action = form.getAttribute('action') || '';
+  // If the Formspree endpoint hasn't been wired yet, swallow the submit and just show the
+  // success state. Once YOUR_FORM_ID is replaced this branch is skipped.
+  if(action.indexOf('YOUR_FORM_ID') !== -1){
+    e.preventDefault();
+    document.getElementById('onetoone-panel').style.display='none';
+    document.getElementById('success-msg-text').textContent = 'Your booking details and payment receipt have been received. Soban’s team will verify and email a meeting confirmation to you within 24 hours.';
+    document.getElementById('success-msg').style.display='block';
+    return false;
+  }
+  // When Formspree is wired, allow the native multipart POST. Formspree returns its own
+  // thank-you page; if you want to stay on-site, set form.target = '_blank' and prevent
+  // default, then show the success-msg manually.
+  return true;
+}
+
 const ro=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting){t.target.classList.add('visible');ro.unobserve(t.target);}});},{threshold:0.1});
 document.querySelectorAll('.reveal,.reveal-stagger').forEach(el=>ro.observe(el));
 </script>
