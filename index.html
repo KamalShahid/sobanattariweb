@@ -67,7 +67,7 @@
     }
     .nav-link:hover { color: #FFC40C; }
 
-    /* Dropdown nav */
+    /* Dropdown nav — click-toggled (no hover triggers) */
     .nav-dropdown { position: relative; }
     .nav-dropdown-toggle {
       display: flex; align-items: center; gap: 4px; cursor: pointer;
@@ -75,15 +75,16 @@
       font-size: 12px; font-weight: 500;
       letter-spacing: 0.07em; text-transform: uppercase;
       color: #cccccc; transition: color 0.2s ease; white-space: nowrap;
+      user-select: none;
     }
-    .nav-dropdown:hover .nav-dropdown-toggle,
-    .nav-dropdown:focus-within .nav-dropdown-toggle { color: #FFC40C; }
+    .nav-dropdown-toggle[aria-expanded="true"] { color: #FFC40C; }
     .nav-dropdown-arrow {
       width: 10px; height: 10px; opacity: 0.55;
       transition: transform 0.2s ease;
     }
-    .nav-dropdown:hover .nav-dropdown-arrow,
-    .nav-dropdown:focus-within .nav-dropdown-arrow { transform: rotate(180deg); opacity: 1; }
+    .nav-dropdown-toggle[aria-expanded="true"] .nav-dropdown-arrow {
+      transform: rotate(180deg); opacity: 1;
+    }
     .nav-dropdown-menu {
       position: absolute; top: calc(100% + 16px); left: 50%;
       transform: translateX(-50%) translateY(6px);
@@ -95,8 +96,7 @@
       transition: opacity 0.2s ease, transform 0.2s ease;
       z-index: 200;
     }
-    .nav-dropdown:hover .nav-dropdown-menu,
-    .nav-dropdown:focus-within .nav-dropdown-menu {
+    .nav-dropdown-menu.dropdown-open {
       opacity: 1; pointer-events: auto;
       transform: translateX(-50%) translateY(0);
     }
@@ -150,109 +150,44 @@
       position: relative;
       min-height: 100vh;
       display: flex;
-      align-items: stretch;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute; inset: 0;
       background: #0d0d0d;
     }
-    /* Grain texture for depth */
-    .hero-bg::after {
-      content: '';
-      position: absolute; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      opacity: 0.4;
-      pointer-events: none;
-    }
-    .hero-photo-right {
+    .hero-video {
       position: absolute;
-      right: 0; top: 0; bottom: 0;
-      width: 55%;
-      overflow: hidden;
-    }
-    .hero-photo-right img {
+      top: 0; left: 0;
       width: 100%; height: 100%;
       object-fit: cover;
-      object-position: center 15%;
-      filter: brightness(0.95) saturate(0.85);
-    }
-    .hero-photo-right::before {
-      content: '';
-      position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(to right, #0d0d0d 0%, rgba(13,13,13,0.5) 35%, rgba(13,13,13,0.05) 65%, transparent 100%);
-    }
-    .hero-photo-right::after {
-      content: '';
-      position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(to bottom, rgba(13,13,13,0.3) 0%, transparent 25%, rgba(13,13,13,0.85) 100%);
+      z-index: 0;
+      pointer-events: none;
     }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(13,13,13,0.2) 0%,
-        transparent 40%,
-        rgba(13,13,13,0.7) 85%,
-        rgba(13,13,13,0.98) 100%
-      );
-      z-index: 2;
+      z-index: 1;
+      background:
+        radial-gradient(ellipse at 50% 38%, rgba(13,13,13,0.30) 0%, rgba(13,13,13,0.72) 100%),
+        linear-gradient(to bottom, rgba(13,13,13,0.55) 0%, rgba(13,13,13,0.40) 35%, rgba(13,13,13,0.88) 92%, rgba(13,13,13,0.98) 100%);
+      pointer-events: none;
+    }
+    .hero-overlay::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.35;
+      pointer-events: none;
     }
     .hero-content {
-      position: relative; z-index: 3;
-      padding: 120px 6vw 80px;
-      max-width: 720px;
+      position: relative; z-index: 2;
+      padding: 140px 24px 110px;
+      max-width: 1000px;
+      width: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-    }
-    .hero-video-wrap {
-      position: relative; z-index: 3;
-      align-self: flex-end;
-      margin: 24px 6vw 80px auto;
-      width: clamp(280px, 28vw, 420px);
-      aspect-ratio: 16 / 10;
-      background: #0a0a0a;
-      border: 1px solid rgba(255,196,12,0.25);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.55), 0 4px 16px rgba(255,196,12,0.08);
-      overflow: hidden;
-    }
-    .hero-video-wrap video,
-    .hero-video-wrap iframe {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-      border: 0;
-    }
-    .hero-video-placeholder {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      background: linear-gradient(135deg, #161616 0%, #0a0a0a 100%);
-      color: rgba(255,255,255,0.55);
-      font-size: 11px; font-weight: 700;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      gap: 12px;
-    }
-    .hero-video-play {
-      width: 56px; height: 56px;
-      border-radius: 50%;
-      background: #FFC40C;
-      color: #0d0d0d;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 6px 24px rgba(255,196,12,0.25);
-    }
-    .hero-layout {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: end;
-      gap: 32px;
-      width: 100%;
-    }
-    @media (max-width: 900px) {
-      .hero-photo-right { width: 100%; opacity: 0.35; }
-      .hero-photo-right::before { background: #0d0d0d; opacity: 0.6; }
-      .hero-layout { grid-template-columns: 1fr; }
-      .hero-video-wrap { margin: 0 0 32px 0; width: 100%; max-width: 480px; }
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
     .hero-tag {
       display: inline-block;
@@ -264,27 +199,54 @@
       color: #0d0d0d;
       background: #FFC40C;
       padding: 5px 14px;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
     }
-    .hero-heading {
+    .hero-cycle {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(48px, 6vw, 88px);
-      line-height: 0.95;
+      font-size: clamp(48px, 7vw, 100px);
+      line-height: 1.02;
       letter-spacing: 0.02em;
       color: #ffffff;
-      margin-bottom: 24px;
-      max-width: 640px;
+      margin: 0 0 28px;
+      min-height: 1.1em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 100%;
+      padding: 0 8px;
     }
-    .hero-heading span { color: #FFC40C; }
+    .hero-cycle-text {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+      text-shadow: 0 2px 30px rgba(0,0,0,0.45);
+    }
+    .hero-cycle-text.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
     .hero-sub {
       font-size: 16px;
       font-weight: 300;
       line-height: 1.7;
-      color: rgba(255,255,255,0.75);
-      max-width: 520px;
-      margin-bottom: 40px;
+      color: rgba(255,255,255,0.82);
+      max-width: 620px;
+      margin: 0 0 36px;
+      text-shadow: 0 1px 14px rgba(0,0,0,0.4);
     }
-    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+    /* Mobile: video backgrounds are battery-intensive — swap for poster image */
+    @media (max-width: 768px) {
+      .hero-video { display: none; }
+      .hero-section {
+        background-image: url('brand_assets/hero-poster.jpg');
+        background-size: cover;
+        background-position: center;
+      }
+      .hero-content { padding: 130px 20px 90px; }
+    }
     .btn-primary {
       font-family: 'Roboto', sans-serif;
       font-size: 12px;
@@ -846,61 +808,146 @@
     }
     .course-enroll:hover { border-color: #FFC40C; }
 
-    /* BOOKING */
+    /* ── Booking Section ── */
     .booking-section {
-      position: relative;
-      background: #161616;
-      padding: 100px 6vw;
-      overflow: hidden;
+      background: #111111;
+      padding: 100px 40px;
+      text-align: center;
     }
-    .booking-section::before {
-      content: '';
-      position: absolute;
-      top: -100px; right: -100px;
-      width: 500px; height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
-    }
-    .booking-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      max-width: 1300px;
-      margin: 0 auto;
-      align-items: center;
-    }
-    @media (max-width: 900px) {
-      .booking-grid { grid-template-columns: 1fr; gap: 48px; }
-    }
-    .booking-options {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 36px;
-    }
-    .booking-option {
-      background: #0d0d0d;
-      padding: 20px;
-      border-left: 3px solid rgba(201,168,76,0.3);
-      transition: border-color 0.2s ease;
-      cursor: pointer;
-    }
-    .booking-option:hover { border-left-color: #FFC40C; }
-    .booking-option-title {
-      font-family: 'Roboto', sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 4px;
-    }
-    .booking-option-sub {
+
+    .booking-label {
+      display: inline-block;
+      background: #F5C518;
+      color: #111111;
       font-size: 11px;
-      color: rgba(255,255,255,0.4);
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 2px;
+      margin-bottom: 20px;
     }
-    .booking-form {
-      background: #0d0d0d;
-      padding: 48px 40px;
+
+    .booking-header h2 {
+      font-size: clamp(32px, 5vw, 56px);
+      color: #FFFFFF;
+      margin-bottom: 16px;
+      font-weight: 400;
     }
+
+    .booking-header h2 strong {
+      font-weight: 800;
+      color: #F5C518;
+    }
+
+    .booking-header p {
+      color: #aaaaaa;
+      font-size: 16px;
+      max-width: 560px;
+      margin: 0 auto 60px;
+      line-height: 1.7;
+    }
+
+    /* Session Cards */
+    .session-cards {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+
+    .session-card {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 32px 28px;
+      width: 280px;
+      text-align: left;
+      transition: border-color 0.3s ease;
+    }
+
+    .session-card:hover {
+      border-color: #F5C518;
+    }
+
+    .session-card.featured {
+      border-color: #F5C518;
+      background: #1c1a0f;
+    }
+
+    .session-card h3 {
+      color: #FFFFFF;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .session-card p {
+      color: #888888;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .session-duration {
+      display: inline-block;
+      font-size: 12px;
+      color: #F5C518;
+      border: 1px solid #F5C518;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .card-cta {
+      display: block;
+      background: #F5C518;
+      color: #111111;
+      text-align: center;
+      padding: 10px 0;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: opacity 0.2s ease;
+    }
+
+    .card-cta:hover {
+      opacity: 0.85;
+    }
+
+    /* Cal.com embed wrapper */
+    .cal-embed-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #2a2a2a;
+    }
+
+    #my-cal-inline {
+      width: 100%;
+      min-height: 700px;
+      overflow: scroll;
+    }
+
+    @media (max-width: 768px) {
+      .booking-section {
+        padding: 60px 20px;
+      }
+      .session-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+      .session-card {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+
+    /* Shared form styles (kept for contact form below) */
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1330,54 +1377,6 @@
     }
     .btn-green:hover { background: #3a9a3a; transform: translateY(-2px); }
 
-    /* UPDATED BOOKING (no form, options as full-width cards) */
-    .booking-options-full {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      margin-top: 48px;
-    }
-    @media (max-width: 900px) { .booking-options-full { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 600px) { .booking-options-full { grid-template-columns: 1fr; } }
-    .booking-option-card {
-      background: #0d0d0d;
-      padding: 32px 28px;
-      border-top: 2px solid rgba(201,168,76,0.25);
-      text-decoration: none;
-      display: block;
-      transition: border-top-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
-      cursor: pointer;
-    }
-    .booking-option-card:hover {
-      border-top-color: #FFC40C;
-      background: #111111;
-      transform: translateY(-3px);
-    }
-    .booking-option-card:focus-visible { outline: 2px solid #FFC40C; outline-offset: 2px; }
-    .booking-option-icon {
-      width: 40px; height: 40px;
-      background: rgba(255,196,12,0.1);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 16px;
-    }
-    .booking-option-card-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 20px; letter-spacing: 0.03em;
-      color: #ffffff; margin-bottom: 6px;
-    }
-    .booking-option-card-sub {
-      font-size: 12px; color: rgba(255,255,255,0.4);
-      line-height: 1.5;
-    }
-    .booking-option-card-arrow {
-      margin-top: 20px;
-      font-size: 10px; font-weight: 700;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: rgba(255,196,12,0.5);
-      transition: color 0.2s ease;
-    }
-    .booking-option-card:hover .booking-option-card-arrow { color: #FFC40C; }
-
     /* MERGED REACH SECTION */
     .reach-section {
       background: #0d0d0d;
@@ -1470,6 +1469,157 @@
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: #0d0d0d; }
     ::-webkit-scrollbar-thumb { background: #FFC40C; border-radius: 0; }
+
+    /* ── Terms Modal ── */
+    .terms-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .terms-modal-box {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      max-width: 680px;
+      width: 100%;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .terms-modal-header {
+      padding: 32px 32px 20px;
+      border-bottom: 1px solid #2a2a2a;
+    }
+    .terms-badge {
+      display: inline-block;
+      background: #F5C518;
+      color: #111111;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+    }
+    .terms-modal-header h2 {
+      color: #FFFFFF;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .terms-intro {
+      color: #888888;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .terms-modal-body {
+      padding: 24px 32px;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .terms-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px;
+    }
+    .terms-list li {
+      color: #cccccc;
+      font-size: 14px;
+      line-height: 1.7;
+      padding: 10px 0 10px 24px;
+      border-bottom: 1px solid #222222;
+      position: relative;
+    }
+    .terms-list li::before {
+      content: '✦';
+      color: #F5C518;
+      position: absolute;
+      left: 0;
+      top: 10px;
+      font-size: 10px;
+    }
+    .terms-thankyou {
+      color: #F5C518;
+      font-size: 14px;
+      font-style: italic;
+      text-align: center;
+      margin-top: 16px;
+    }
+    .terms-modal-footer {
+      padding: 24px 32px;
+      border-top: 1px solid #2a2a2a;
+      background: #111111;
+    }
+    .terms-checkbox-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    .terms-checkbox-label input[type="checkbox"] {
+      margin-top: 3px;
+      accent-color: #F5C518;
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+    .terms-checkbox-label span {
+      color: #cccccc;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .terms-accept-btn {
+      width: 100%;
+      background: #F5C518;
+      color: #111111;
+      border: none;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 10px;
+      transition: opacity 0.2s;
+    }
+    .terms-accept-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+    .terms-accept-btn:not(:disabled):hover {
+      opacity: 0.85;
+    }
+    .terms-decline-btn {
+      width: 100%;
+      background: transparent;
+      color: #666666;
+      border: 1px solid #2a2a2a;
+      padding: 12px;
+      font-size: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .terms-decline-btn:hover {
+      color: #FFFFFF;
+      border-color: #444444;
+    }
+    @media (max-width: 768px) {
+      .terms-modal-header,
+      .terms-modal-body,
+      .terms-modal-footer {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1483,12 +1633,17 @@
     <div style="display:flex; align-items:center; gap:28px;" class="hidden md:flex" id="nav-links">
       <a href="index.html" class="nav-link">Home</a>
       <a href="biography.html" class="nav-link">About</a>
-      <div class="nav-dropdown" tabindex="0">
-        <span class="nav-dropdown-toggle">
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-toggle"
+              data-dropdown="what-we-offer"
+              role="button"
+              tabindex="0"
+              aria-haspopup="true"
+              aria-expanded="false">
           What We Offer
           <svg class="nav-dropdown-arrow" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,3 5,7 8,3"/></svg>
         </span>
-        <div class="nav-dropdown-menu">
+        <div class="nav-dropdown-menu" data-dropdown-menu="what-we-offer">
           <div class="nav-dropdown-mega">
             <div>
               <div class="nav-dropdown-group-title">Talks &amp; Events</div>
@@ -1516,7 +1671,7 @@
       <a href="index.html#contact" class="nav-link">Contact</a>
     </div>
     <div style="display:flex; align-items:center; gap:16px;">
-      <a href="booking-form.html" class="nav-cta">Book a Session</a>
+      <a href="#book-session" class="nav-cta">Book a Session</a>
       <button id="menu-btn" onclick="toggleMenu()" style="display:none; background:none; border:none; color:#fff; cursor:pointer; padding:4px;" aria-label="Menu">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
@@ -1545,40 +1700,29 @@
   <a href="index.html#courses" onclick="closeMenu()" style="padding-left:40px; font-size:12px;">Islamic Psychology</a>
   <a href="index.html#books" onclick="closeMenu()">Books</a>
   <a href="index.html#contact" onclick="closeMenu()">Contact</a>
-  <a href="booking-form.html" onclick="closeMenu()">Book a Session</a>
+  <a href="#book-session" onclick="closeMenu()">Book a Session</a>
 </div>
 
 <!-- HERO -->
 <section class="hero-section" id="home">
-  <div class="hero-bg"></div>
-  <div class="hero-photo-right">
-    <img src="brand_assets/WhatsAppImage.jpeg" alt="Soban Attari" />
-  </div>
+  <video class="hero-video"
+         autoplay muted loop playsinline
+         preload="metadata"
+         poster="brand_assets/hero-poster.jpg"
+         aria-hidden="true">
+    <source src="brand_assets/VideoHero.mp4" type="video/mp4">
+  </video>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-layout">
-      <div>
-        <div class="hero-tag fade-up">Islamic Scholar · Speaker · Educator</div>
-        <h1 class="hero-heading fade-up delay-1">
-          NUMBERS THAT SPEAK.<br/><span>PLATFORMS THAT CONNECT.</span>
-        </h1>
-        <p class="hero-sub fade-up delay-2">
-          Soban Attari is a Pakistani speaker and educator. He sits down with millions every week, walks through real questions about faith, family and modern life, and tries to leave people a little clearer than he found them.
-        </p>
-        <div class="hero-btns fade-up delay-3">
-          <a href="booking-form.html" class="btn-primary">Book a Session</a>
-        </div>
-      </div>
-      <div class="hero-video-wrap fade-up delay-3">
-        <!-- Replace the placeholder below with: <video src="brand_assets/hero.mp4" autoplay muted loop playsinline></video>
-             OR an <iframe> embed once the file is supplied. -->
-        <div class="hero-video-placeholder" id="hero-video-placeholder">
-          <div class="hero-video-play">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-          <span>Intro Video</span>
-        </div>
-      </div>
+    <div class="hero-tag fade-up">Islamic Scholar · Speaker · Educator</div>
+    <h1 class="hero-cycle fade-up delay-1" aria-live="polite">
+      <span class="hero-cycle-text" id="hero-cycle-text">Numbers That Speak.</span>
+    </h1>
+    <p class="hero-sub fade-up delay-2">
+      Soban Attari is a Pakistani speaker and educator. He sits down with millions every week, walks through real questions about faith, family and modern life, and tries to leave people a little clearer than he found them.
+    </p>
+    <div class="hero-btns fade-up delay-3">
+      <a href="#book-session" class="btn-primary">Book a Session</a>
     </div>
   </div>
 </section>
@@ -1903,7 +2047,7 @@
     </div>
   </div>
   <div style="text-align:center; margin-top:16px;">
-    <a href="booking-form.html" class="btn-primary">Invite for an Event</a>
+    <a href="#book-session" class="btn-primary">Invite for an Event</a>
   </div>
 </section>
 
@@ -2087,7 +2231,7 @@
         <div class="course-title">PARENTING MASTERY IN ISLAM</div>
         <p class="course-desc">A comprehensive guide to raising confident, spiritually grounded children through proven Islamic principles and modern child psychology.</p>
         <div class="course-meta"><span>8 Weeks</span><span>·</span><span>Video + Live</span><span>·</span><span>All Levels</span></div>
-        <a href="#booking" class="course-enroll">Enroll Now →</a>
+        <a href="#book-session" class="course-enroll">Enroll Now →</a>
       </div>
       <div class="course-card">
         <div class="course-card-accent"></div>
@@ -2096,7 +2240,7 @@
         <div class="course-title">LIFE SKILLS FOR MODERN MUSLIMS</div>
         <p class="course-desc">Practical tools for productivity, emotional intelligence, relationships, and purpose, all grounded in an Islamic worldview.</p>
         <div class="course-meta"><span>6 Weeks</span><span>·</span><span>Video</span><span>·</span><span>Beginner</span></div>
-        <a href="#booking" class="course-enroll">Enroll Now →</a>
+        <a href="#book-session" class="course-enroll">Enroll Now →</a>
       </div>
       <div class="course-card">
         <div class="course-card-accent"></div>
@@ -2105,7 +2249,7 @@
         <div class="course-title">ISLAMIC PSYCHOLOGY &amp; HUMAN BEHAVIOR</div>
         <p class="course-desc">Understanding the human psyche through both Islamic classical wisdom and contemporary behavioral science.</p>
         <div class="course-meta"><span>10 Weeks</span><span>·</span><span>Hybrid</span><span>·</span><span>Intermediate</span></div>
-        <a href="#booking" class="course-enroll">Enroll Now →</a>
+        <a href="#book-session" class="course-enroll">Enroll Now →</a>
       </div>
       <div class="course-card">
         <div class="course-card-accent"></div>
@@ -2114,7 +2258,7 @@
         <div class="course-title">SPIRITUAL GROWTH &amp; INNER STRENGTH</div>
         <p class="course-desc">A transformative journey of self-purification, Dhikr, and building a deep, personal connection with Allah.</p>
         <div class="course-meta"><span>12 Weeks</span><span>·</span><span>Video + Live</span><span>·</span><span>All Levels</span></div>
-        <a href="#booking" class="course-enroll">Enroll Now →</a>
+        <a href="#book-session" class="course-enroll">Enroll Now →</a>
       </div>
       <div class="course-card">
         <div class="course-card-accent"></div>
@@ -2123,7 +2267,7 @@
         <div class="course-title">UNDERSTANDING FAITH IN THE AGE OF SCIENCE</div>
         <p class="course-desc">Bridging modern scientific discoveries with Quranic wisdom to build unshakeable faith through knowledge.</p>
         <div class="course-meta"><span>8 Weeks</span><span>·</span><span>Video</span><span>·</span><span>All Levels</span></div>
-        <a href="#booking" class="course-enroll">Enroll Now →</a>
+        <a href="#book-session" class="course-enroll">Enroll Now →</a>
       </div>
       <div class="course-card">
         <div class="course-card-accent"></div>
@@ -2132,7 +2276,7 @@
         <div class="course-title">YOUTH CHARACTER &amp; IDENTITY BUILDING</div>
         <p class="course-desc">Equipping the next generation with Islamic identity, moral clarity, and the resilience to thrive in a complex world.</p>
         <div class="course-meta"><span>6 Weeks</span><span>·</span><span>Live Sessions</span><span>·</span><span>Youth</span></div>
-        <a href="#booking" class="course-enroll">Enroll Now →</a>
+        <a href="#book-session" class="course-enroll">Enroll Now →</a>
       </div>
       <!-- Set 2 (duplicate for seamless loop) -->
       <div class="course-card">
@@ -2142,7 +2286,7 @@
         <div class="course-title">PARENTING MASTERY IN ISLAM</div>
         <p class="course-desc">A comprehensive guide to raising confident, spiritually grounded children through proven Islamic principles and modern child psychology.</p>
         <div class="course-meta"><span>8 Weeks</span><span>·</span><span>Video + Live</span><span>·</span><span>All Levels</span></div>
-        <a href="#booking" class="course-enroll">Enroll Now →</a>
+        <a href="#book-session" class="course-enroll">Enroll Now →</a>
       </div>
       <div class="course-card">
         <div class="course-card-accent"></div>
@@ -2151,7 +2295,7 @@
         <div class="course-title">LIFE SKILLS FOR MODERN MUSLIMS</div>
         <p class="course-desc">Practical tools for productivity, emotional intelligence, relationships, and purpose, all grounded in an Islamic worldview.</p>
         <div class="course-meta"><span>6 Weeks</span><span>·</span><span>Video</span><span>·</span><span>Beginner</span></div>
-        <a href="#booking" class="course-enroll">Enroll Now →</a>
+        <a href="#book-session" class="course-enroll">Enroll Now →</a>
       </div>
       <div class="course-card">
         <div class="course-card-accent"></div>
@@ -2160,7 +2304,7 @@
         <div class="course-title">ISLAMIC PSYCHOLOGY &amp; HUMAN BEHAVIOR</div>
         <p class="course-desc">Understanding the human psyche through both Islamic classical wisdom and contemporary behavioral science.</p>
         <div class="course-meta"><span>10 Weeks</span><span>·</span><span>Hybrid</span><span>·</span><span>Intermediate</span></div>
-        <a href="#booking" class="course-enroll">Enroll Now →</a>
+        <a href="#book-session" class="course-enroll">Enroll Now →</a>
       </div>
       <div class="course-card">
         <div class="course-card-accent"></div>
@@ -2169,7 +2313,7 @@
         <div class="course-title">SPIRITUAL GROWTH &amp; INNER STRENGTH</div>
         <p class="course-desc">A transformative journey of self-purification, Dhikr, and building a deep, personal connection with Allah.</p>
         <div class="course-meta"><span>12 Weeks</span><span>·</span><span>Video + Live</span><span>·</span><span>All Levels</span></div>
-        <a href="#booking" class="course-enroll">Enroll Now →</a>
+        <a href="#book-session" class="course-enroll">Enroll Now →</a>
       </div>
       <div class="course-card">
         <div class="course-card-accent"></div>
@@ -2178,7 +2322,7 @@
         <div class="course-title">UNDERSTANDING FAITH IN THE AGE OF SCIENCE</div>
         <p class="course-desc">Bridging modern scientific discoveries with Quranic wisdom to build unshakeable faith through knowledge.</p>
         <div class="course-meta"><span>8 Weeks</span><span>·</span><span>Video</span><span>·</span><span>All Levels</span></div>
-        <a href="#booking" class="course-enroll">Enroll Now →</a>
+        <a href="#book-session" class="course-enroll">Enroll Now →</a>
       </div>
       <div class="course-card">
         <div class="course-card-accent"></div>
@@ -2187,12 +2331,12 @@
         <div class="course-title">YOUTH CHARACTER &amp; IDENTITY BUILDING</div>
         <p class="course-desc">Equipping the next generation with Islamic identity, moral clarity, and the resilience to thrive in a complex world.</p>
         <div class="course-meta"><span>6 Weeks</span><span>·</span><span>Live Sessions</span><span>·</span><span>Youth</span></div>
-        <a href="#booking" class="course-enroll">Enroll Now →</a>
+        <a href="#book-session" class="course-enroll">Enroll Now →</a>
       </div>
     </div>
   </div>
   <div class="courses-section-footer">
-    <a href="#booking" class="btn-primary">View All Courses</a>
+    <a href="#book-session" class="btn-primary">View All Courses</a>
   </div>
 </section>
 
@@ -2260,24 +2404,59 @@
   </div>
 </section>
 
-<!-- BOOKING CTA (standardized, single button) -->
-<section class="booking-section" id="booking">
-  <div style="max-width:760px; margin:0 auto; text-align:center;">
-    <div class="reveal from-bottom">
-      <span class="section-tag" style="display:block; text-align:center;">Book a Session</span>
-      <h2 class="section-heading" style="text-align:center;">READY TO<br/><span>SIT DOWN AND TALK?</span></h2>
-      <p class="section-sub" style="text-align:center; margin:16px auto 36px; max-width:560px;">One simple form. Tell us what kind of session you need (one-to-one, group, institutional, lecture, or workshop) and our team will get back within 24 to 48 hours.</p>
-      <a href="booking-form.html" class="btn-primary" style="font-size:13px; padding:16px 40px;">Book a Session</a>
-    </div>
-    <div class="reveal from-bottom" style="margin-top:48px; padding:24px 32px; background:#161616; border-left:3px solid rgba(255,196,12,0.3);">
-      <div style="display:flex; align-items:flex-start; gap:12px; text-align:left;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFC40C" stroke-width="1.5" style="flex-shrink:0; margin-top:2px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <p style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.7; margin:0;">
-          <strong style="color:rgba(255,255,255,0.7);">Your privacy is fully protected.</strong> All booking information, personal details, and session content are kept strictly confidential. Nothing is shared, published, or disclosed to any third party. Ever.
-        </p>
-      </div>
-    </div>
+<!-- BOOKING -->
+<section id="book-session" class="booking-section">
+
+  <!-- Section Header -->
+  <div class="booking-header">
+    <span class="booking-label">E-Meeting</span>
+    <h2>Book Your <strong>Session</strong></h2>
+    <p>
+      Choose a time that works for you. Payment is collected securely
+      at booking via Stripe. Sessions available online and in-person.
+    </p>
   </div>
+
+  <!-- Session Type Cards (visual only — clicking scrolls to embed) -->
+  <div class="session-cards">
+
+    <div class="session-card">
+      <h3>1:1 Private Session</h3>
+      <p>Personal guidance on faith, family, life decisions, or modern challenges.</p>
+      <span class="session-duration">30 min / 60 min</span>
+      <a href="#my-cal-inline" class="card-cta">Book Now</a>
+    </div>
+
+    <div class="session-card">
+      <h3>Group Session</h3>
+      <p>For teams, families, institutes, or communities seeking collective clarity.</p>
+      <span class="session-duration">Custom duration</span>
+      <a href="#my-cal-inline" class="card-cta">Book Now</a>
+    </div>
+
+    <div class="session-card featured">
+      <h3>Online Seminar</h3>
+      <p>Topic-based online session open to a wider audience. Faith, science & modern life.</p>
+      <span class="session-duration">60–90 min</span>
+      <a href="#my-cal-inline" class="card-cta">Book Now</a>
+    </div>
+
+  </div>
+
+  <!--
+    STRIPE PAYMENT SETUP (done in Cal.com dashboard, not here):
+    1. Go to app.cal.com → Settings → Apps → Stripe → Connect
+    2. Connect Soban's Stripe account (create at stripe.com if not done)
+    3. On each Event Type → Edit → Payments tab → Enable payment → Set price in PKR or USD
+    4. Stripe will collect payment before the booking is confirmed
+    5. Payouts go directly to Soban's connected bank account via Stripe
+  -->
+
+  <!-- Cal.com Inline Embed -->
+  <div class="cal-embed-wrapper">
+    <div id="my-cal-inline"></div>
+  </div>
+
 </section>
 
 
@@ -2424,7 +2603,7 @@
         <li><a href="index.html#books">Books</a></li>
         <li><a href="blogs.html">University Sessions</a></li>
         <li><a href="index.html#contact">Contact</a></li>
-        <li><a href="booking-form.html">Book a Session</a></li>
+        <li><a href="#book-session">Book a Session</a></li>
       </ul>
     </div>
     <div>
@@ -2516,6 +2695,83 @@
     cardObs.observe(el);
   });
 
+  // Dropdown toggle — What We Offer (click-based; no hover)
+  (function () {
+    const toggle = document.querySelector('[data-dropdown="what-we-offer"]');
+    const menu = document.querySelector('[data-dropdown-menu="what-we-offer"]');
+    if (!toggle || !menu) return;
+
+    function closeAllDropdowns() {
+      document.querySelectorAll('[data-dropdown-menu]').forEach(function (m) {
+        m.classList.remove('dropdown-open');
+      });
+      document.querySelectorAll('[data-dropdown]').forEach(function (t) {
+        t.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    toggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const isOpen = menu.classList.contains('dropdown-open');
+      closeAllDropdowns();
+      if (!isOpen) {
+        menu.classList.add('dropdown-open');
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    // Keyboard support for the span-as-button toggle
+    toggle.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggle.click();
+      }
+    });
+
+    document.addEventListener('click', function () {
+      closeAllDropdowns();
+    });
+
+    // Clicks inside the menu shouldn't close via the document handler,
+    // but clicking an actual link inside should still close before nav.
+    menu.addEventListener('click', function (e) {
+      e.stopPropagation();
+    });
+    menu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        closeAllDropdowns();
+      });
+    });
+  })();
+
+  // Hero cycling headline — fades through a list of one-liners
+  (function() {
+    const lines = [
+      'Numbers That Speak.',
+      'Platforms That Connect.',
+      'Faith That Guides.',
+      'Science That Inspires.',
+      '5,000+ Lectures Delivered.',
+      '3.55 Million Lives Touched.',
+      'Clarity in Every Question.'
+    ];
+    const el = document.getElementById('hero-cycle-text');
+    if (!el) return;
+    let i = 0;
+    const FADE_MS = 560;
+    const HOLD_MS = 2600;
+    // Reveal the first line once the hero's fade-up has played
+    setTimeout(() => el.classList.add('visible'), 850);
+    setInterval(() => {
+      el.classList.remove('visible');
+      setTimeout(() => {
+        i = (i + 1) % lines.length;
+        el.textContent = lines[i];
+        el.classList.add('visible');
+      }, FADE_MS);
+    }, HOLD_MS + FADE_MS);
+  })();
+
   // Counter animation for stats
   function animateCounter(el, target, suffix = '') {
     let start = 0;
@@ -2529,6 +2785,185 @@
     };
     requestAnimationFrame(step);
   }
+</script>
+
+<!-- Cal.com inline embed (scheduling + Stripe payment) -->
+<script type="text/javascript">
+  (function (C, A, L) {
+    let p = function (a, ar) { a.q.push(ar); };
+    let d = C.document;
+    C.Cal = C.Cal || function () {
+      let cal = C.Cal;
+      let ar = arguments;
+      if (!cal.loaded) {
+        cal.ns = {};
+        cal.q = cal.q || [];
+        d.head.appendChild(d.createElement("script")).src = A;
+        cal.loaded = true;
+      }
+      if (ar[0] === L) {
+        const api = function () { p(api, arguments); };
+        const namespace = ar[1];
+        api.q = api.q || [];
+        if (typeof namespace === "string") {
+          cal.ns[namespace] = cal.ns[namespace] || api;
+          p(cal.ns[namespace], ar);
+          p(cal, ["-", api]);
+        } else {
+          p(cal, ar);
+        }
+        return;
+      }
+      p(cal, ar);
+    };
+  })(window, "https://app.cal.com/embed/embed.js", "init");
+
+  Cal("init", { origin: "https://app.cal.com" });
+
+  Cal("inline", {
+    elementOrSelector: "#my-cal-inline",
+    calLink: "sobanattari",
+    layout: "month_view"
+  });
+
+  Cal("ui", {
+    theme: "dark",
+    styles: {
+      branding: {
+        brandColor: "#F5C518"
+      }
+    },
+    hideEventTypeDetails: false,
+    layout: "month_view"
+  });
+</script>
+
+<!-- ── Terms & Conditions Modal ── -->
+<div id="terms-modal" class="terms-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="terms-modal-title" style="display:none;">
+  <div class="terms-modal-box">
+
+    <div class="terms-modal-header">
+      <span class="terms-badge">Before You Book</span>
+      <h2 id="terms-modal-title">Terms &amp; Conditions</h2>
+      <p class="terms-intro">Please read and accept the following terms before booking your session with Soban Attari.</p>
+    </div>
+
+    <div class="terms-modal-body">
+      <ul class="terms-list">
+        <li>Your topic and personal information will remain 100% secure and completely confidential, and you will be provided with full privacy.</li>
+        <li>The participant must fill out the session form completely and clearly before booking the session.</li>
+        <li>We are punctual about time; the session will start and end strictly according to the scheduled time.</li>
+        <li>We will try our best to complete your topic within the session duration. However, if more time is required, you will need to book another paid session.</li>
+        <li>You have already mentioned the topic/question you want to discuss in the form. If any additional or different topic is discussed during the session, you may be referred to book another separate session for that topic.</li>
+        <li>Extra time will not be provided beyond the scheduled session duration.</li>
+        <li>This session is strictly for one person only. No additional person is allowed to join the session without prior approval.</li>
+        <li>In case of any special situation where another person needs to join, you must inform the support/contact team before the session starts.</li>
+        <li>Full payment must be completed before confirmation of the booking.</li>
+        <li>It is mandatory to attach the payment receipt, screenshot, or fee voucher while submitting the booking form.</li>
+        <li>After payment verification, our team will contact you for session confirmation and further details.</li>
+        <li>Session date and time will only be finalized after payment confirmation.</li>
+        <li>Participants are requested to join the session on time. Late joining may reduce the available session time.</li>
+        <li>Misbehavior, inappropriate language, or disrespectful conduct during the session will not be tolerated. The session may be ended immediately without refund in such cases.</li>
+        <li>Recording, screen recording, or sharing the session without permission is strictly prohibited.</li>
+        <li>The organization reserves the right to reschedule the session due to unavoidable circumstances. In such cases, participants will be informed in advance.</li>
+        <li>Session fees are non-refundable once the booking is confirmed, except in special cases approved by management.</li>
+        <li>The guidance provided during the session is based on personal experience, mentorship, and motivational support. Results may vary from person to person.</li>
+        <li>By booking the session, the participant agrees to all the above terms and conditions.</li>
+      </ul>
+      <p class="terms-thankyou">Thank you for your cooperation.</p>
+    </div>
+
+    <div class="terms-modal-footer">
+      <label class="terms-checkbox-label">
+        <input type="checkbox" id="terms-agree-checkbox" />
+        <span>I have read and agree to all the Terms &amp; Conditions above.</span>
+      </label>
+      <button id="terms-accept-btn" class="terms-accept-btn" disabled>
+        Accept &amp; Proceed to Booking
+      </button>
+      <button id="terms-decline-btn" class="terms-decline-btn">
+        Decline
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Terms & Conditions Modal — gates first click on any booking CTA
+  (function () {
+    const modal = document.getElementById('terms-modal');
+    const acceptBtn = document.getElementById('terms-accept-btn');
+    const declineBtn = document.getElementById('terms-decline-btn');
+    const checkbox = document.getElementById('terms-agree-checkbox');
+    const ACCEPTED_KEY = 'soban_terms_accepted';
+
+    // Narrowed from the original `a[href*="book"], a[href*="session"]` — those
+    // matched the unrelated #books nav link. `book-session` is the actual anchor.
+    const bookingTriggers = document.querySelectorAll(
+      'a[href*="book-session"], .card-cta, [data-book-trigger]'
+    );
+
+    function openModal() {
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      checkbox.checked = false;
+      acceptBtn.disabled = true;
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    function scrollToBookingForm() {
+      const bookingSection = document.getElementById('book-session') ||
+                             document.getElementById('booking') ||
+                             document.querySelector('.booking-section');
+      if (bookingSection) {
+        bookingSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    if (checkbox) {
+      checkbox.addEventListener('change', function () {
+        acceptBtn.disabled = !this.checked;
+      });
+    }
+
+    if (acceptBtn) {
+      acceptBtn.addEventListener('click', function () {
+        sessionStorage.setItem(ACCEPTED_KEY, 'true');
+        closeModal();
+        scrollToBookingForm();
+      });
+    }
+
+    if (declineBtn) {
+      declineBtn.addEventListener('click', function () {
+        closeModal();
+      });
+    }
+
+    if (modal) {
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) closeModal();
+      });
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    bookingTriggers.forEach(function (trigger) {
+      if (trigger.type === 'submit') return;
+      trigger.addEventListener('click', function (e) {
+        if (sessionStorage.getItem(ACCEPTED_KEY) === 'true') return;
+        e.preventDefault();
+        openModal();
+      });
+    });
+  })();
 </script>
 </body>
 </html>
