@@ -7,1642 +7,28 @@
   <meta name="description" content="Soban Attari is a Pakistani motivational speaker who inspires the youth with clear, honest talks rooted in Islamic wisdom." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@400;600&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            gold: '#FFC40C',
-            'gold-light': '#E8C96A',
-            'gold-dark': '#A07830',
-            dark: '#0d0d0d',
-            'dark-2': '#161616',
-            'dark-3': '#1e1e1e',
-            'dark-4': '#252525',
-            emerald: '#1B6B3A',
-            'emerald-light': '#2A9D5C',
-          },
-          fontFamily: {
-            bebas: ['"Bebas Neue"', 'sans-serif'],
-            roboto: ['Roboto', 'sans-serif'],
-            slab: ['"Roboto Slab"', 'serif'],
-          },
-          letterSpacing: {
-            bebas: '0.03em',
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: #0d0d0d;
-      color: #ffffff;
-      font-family: 'Roboto', sans-serif;
-      font-weight: 400;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* NAV */
-    .nav-sticky {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(13,13,13,0.96);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(201,168,76,0.15);
-    }
-    .nav-link {
-      font-family: 'Roboto', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: #cccccc;
-      transition: color 0.2s ease;
-      white-space: nowrap;
-    }
-    .nav-link:hover { color: #FFC40C; }
-
-    /* Dropdown nav — click-toggled (no hover triggers) */
-    .nav-dropdown { position: relative; }
-    .nav-dropdown-toggle {
-      display: flex; align-items: center; gap: 4px; cursor: pointer;
-      font-family: 'Roboto', sans-serif;
-      font-size: 12px; font-weight: 500;
-      letter-spacing: 0.07em; text-transform: uppercase;
-      color: #cccccc; transition: color 0.2s ease; white-space: nowrap;
-      user-select: none;
-    }
-    .nav-dropdown-toggle[aria-expanded="true"] { color: #FFC40C; }
-    .nav-dropdown-arrow {
-      width: 10px; height: 10px; opacity: 0.55;
-      transition: transform 0.2s ease;
-    }
-    .nav-dropdown-toggle[aria-expanded="true"] .nav-dropdown-arrow {
-      transform: rotate(180deg); opacity: 1;
-    }
-    .nav-dropdown-menu {
-      position: absolute; top: calc(100% + 16px); left: 50%;
-      transform: translateX(-50%) translateY(6px);
-      background: rgba(20,20,20,0.98);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255,196,12,0.2);
-      padding: 18px 0;
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-      z-index: 200;
-    }
-    .nav-dropdown-menu.dropdown-open {
-      opacity: 1; pointer-events: auto;
-      transform: translateX(-50%) translateY(0);
-    }
-    .nav-dropdown-mega {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(190px, 1fr));
-      gap: 10px 28px;
-      padding: 4px 28px;
-      min-width: 660px;
-    }
-    .nav-dropdown-group-title {
-      font-size: 10px; font-weight: 700;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: #FFC40C;
-      padding: 6px 0 10px;
-      border-bottom: 1px solid rgba(255,196,12,0.18);
-      margin-bottom: 6px;
-    }
-    .nav-dropdown-item {
-      display: block; padding: 9px 0;
-      font-size: 11px; font-weight: 500;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: rgba(255,255,255,0.7); text-decoration: none;
-      transition: color 0.15s ease, padding-left 0.15s ease;
-      border-left: 2px solid transparent;
-    }
-    .nav-dropdown-item:hover {
-      color: #FFC40C;
-      padding-left: 6px;
-    }
-    @media (max-width: 900px) {
-      .nav-dropdown-mega { min-width: 0; grid-template-columns: 1fr; gap: 14px; padding: 4px 18px; }
-    }
-    .nav-cta {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 8px 20px;
-      background: #FFC40C;
-      color: #0d0d0d;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s ease, transform 0.15s ease;
-    }
-    .nav-cta:hover { background: #E8C96A; transform: translateY(-1px); }
-    .nav-cta:active { transform: translateY(0); }
-
-    /* HERO */
-    .hero-section {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      background: #0d0d0d;
-    }
-    .hero-video {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      z-index: 0;
-      pointer-events: none;
-    }
-    .hero-overlay {
-      position: absolute; inset: 0;
-      z-index: 1;
-      background:
-        radial-gradient(ellipse at 50% 38%, rgba(13,13,13,0.30) 0%, rgba(13,13,13,0.72) 100%),
-        linear-gradient(to bottom, rgba(13,13,13,0.55) 0%, rgba(13,13,13,0.40) 35%, rgba(13,13,13,0.88) 92%, rgba(13,13,13,0.98) 100%);
-      pointer-events: none;
-    }
-    .hero-overlay::after {
-      content: '';
-      position: absolute; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      opacity: 0.35;
-      pointer-events: none;
-    }
-    .hero-content {
-      position: relative; z-index: 2;
-      padding: 140px 24px 110px;
-      max-width: 1000px;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-    .hero-tag {
-      display: inline-block;
-      font-family: 'Roboto', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #0d0d0d;
-      background: #FFC40C;
-      padding: 5px 14px;
-      margin-bottom: 32px;
-    }
-    .hero-cycle {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(48px, 7vw, 100px);
-      line-height: 1.02;
-      letter-spacing: 0.02em;
-      color: #ffffff;
-      margin: 0 0 28px;
-      min-height: 1.1em;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      max-width: 100%;
-      padding: 0 8px;
-    }
-    .hero-cycle-text {
-      display: inline-block;
-      opacity: 0;
-      transform: translateY(14px);
-      transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-                  transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-      text-shadow: 0 2px 30px rgba(0,0,0,0.45);
-    }
-    .hero-cycle-text.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .hero-sub {
-      font-size: 16px;
-      font-weight: 300;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.82);
-      max-width: 620px;
-      margin: 0 0 36px;
-      text-shadow: 0 1px 14px rgba(0,0,0,0.4);
-    }
-    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
-    /* Mobile: video backgrounds are battery-intensive — swap for poster image */
-    @media (max-width: 768px) {
-      .hero-video { display: none; }
-      .hero-section {
-        background-image: url('brand_assets/hero-poster.jpg');
-        background-size: cover;
-        background-position: center;
-      }
-      .hero-content { padding: 130px 20px 90px; }
-    }
-    .btn-primary {
-      font-family: 'Roboto', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 14px 32px;
-      background: #FFC40C;
-      color: #0d0d0d;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: background 0.2s ease, transform 0.15s ease;
-    }
-    .btn-primary:hover { background: #E8C96A; transform: translateY(-2px); }
-    .btn-primary:active { transform: translateY(0); }
-    .btn-outline {
-      font-family: 'Roboto', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 13px 32px;
-      background: transparent;
-      color: #ffffff;
-      border: 1.5px solid rgba(255,255,255,0.4);
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
-    }
-    .btn-outline:hover { border-color: #FFC40C; color: #FFC40C; transform: translateY(-2px); }
-    .btn-outline:active { transform: translateY(0); }
-
-    /* PURPOSE BAR */
-    .purpose-bar {
-      background: #FFC40C;
-      padding: 14px 6vw;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      overflow: hidden;
-    }
-    .purpose-label {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 14px;
-      letter-spacing: 0.15em;
-      color: #0d0d0d;
-      white-space: nowrap;
-      opacity: 0.7;
-    }
-    .purpose-text {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 22px;
-      letter-spacing: 0.08em;
-      color: #0d0d0d;
-      white-space: nowrap;
-    }
-    .purpose-divider { width: 1px; height: 20px; background: rgba(0,0,0,0.3); }
-
-    /* SECTION HEADERS */
-    .section-tag {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #FFC40C;
-      margin-bottom: 12px;
-      display: block;
-    }
-    .section-heading {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(36px, 5vw, 60px);
-      line-height: 1;
-      letter-spacing: 0.02em;
-      color: #ffffff;
-    }
-    .section-heading span { color: #FFC40C; }
-    .section-sub {
-      font-size: 15px;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.7;
-      max-width: 560px;
-      margin-top: 12px;
-    }
-
-    /* MEET section */
-    .meet-section {
-      background: #0d0d0d;
-      padding: 100px 6vw;
-    }
-    .meet-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-      max-width: 1300px;
-      margin: 0 auto;
-    }
-    @media (max-width: 900px) {
-      .meet-grid { grid-template-columns: 1fr; gap: 48px; }
-    }
-    .meet-img-wrap {
-      position: relative;
-    }
-    .meet-img-wrap img {
-      width: 100%;
-      height: 560px;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-    }
-    .meet-img-accent {
-      position: absolute;
-      bottom: -16px; right: -16px;
-      width: 120px; height: 120px;
-      background: #FFC40C;
-      z-index: -1;
-    }
-    .meet-img-border {
-      position: absolute;
-      top: -16px; left: -16px;
-      width: 80px; height: 80px;
-      border: 3px solid rgba(201,168,76,0.4);
-      z-index: -1;
-    }
-    .meet-body p {
-      font-size: 15px;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.65);
-      margin-bottom: 20px;
-    }
-    .meet-roles {
-      display: flex; flex-wrap: wrap; gap: 8px;
-      margin: 24px 0 32px;
-    }
-    .meet-role {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 6px 14px;
-      border: 1px solid rgba(201,168,76,0.4);
-      color: #FFC40C;
-    }
-
-    /* IMPACT STATS */
-    .stats-section {
-      background: #FFC40C;
-      padding: 80px 6vw;
-    }
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      max-width: 1300px;
-      margin: 0 auto;
-    }
-    @media (max-width: 768px) {
-      .stats-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 480px) {
-      .stats-grid { grid-template-columns: 1fr; }
-    }
-    .stat-card {
-      background: #111111;
-      padding: 52px 40px;
-      text-align: center;
-      border-bottom: 3px solid #FFC40C;
-    }
-    .stat-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(60px, 6.5vw, 88px);
-      line-height: 1;
-      color: #FFC40C;
-      letter-spacing: 0.02em;
-    }
-    .stat-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.55);
-      margin-top: 10px;
-    }
-
-    /* TOPICS/EXPERTISE */
-    .topics-section {
-      background: #161616;
-      padding: 100px 6vw;
-    }
-    .topics-header {
-      max-width: 1300px;
-      margin: 0 auto 56px;
-    }
-    .topics-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2px;
-      max-width: 1300px;
-      margin: 0 auto;
-    }
-    @media (max-width: 1100px) { .topics-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 600px) { .topics-grid { grid-template-columns: 1fr; } }
-    .topic-card {
-      position: relative;
-      background: #0d0d0d;
-      padding: 40px 32px 36px;
-      overflow: hidden;
-      cursor: pointer;
-      min-height: 280px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      transition: transform 0.3s ease;
-    }
-    .topic-card-bg {
-      position: absolute; inset: 0;
-      background-size: cover;
-      background-position: center;
-      filter: brightness(0.32) saturate(0.6);
-      transition: filter 0.4s ease, transform 0.5s ease;
-    }
-    .topic-card:hover .topic-card-bg {
-      filter: brightness(0.45) saturate(0.7);
-      transform: scale(1.06);
-    }
-    .topic-card:hover .topic-title { color: #FFC40C; }
-    .topic-tag-bar {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-    .topic-tag-line {
-      width: 32px; height: 2px;
-      background: #FFC40C;
-    }
-    .topic-tag-text {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #FFC40C;
-    }
-    .topic-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(40px, 4vw, 58px);
-      line-height: 0.93;
-      letter-spacing: 0.02em;
-      color: #ffffff;
-      margin-bottom: 16px;
-      transition: color 0.2s ease;
-    }
-    .topic-desc {
-      font-size: 12px;
-      line-height: 1.65;
-      color: rgba(255,255,255,0.45);
-    }
-    .topic-num-bg {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 140px;
-      line-height: 1;
-      color: rgba(201,168,76,0.04);
-      position: absolute;
-      top: -10px; right: -8px;
-      letter-spacing: 0.02em;
-      pointer-events: none;
-    }
-
-    /* LECTURES */
-    .lectures-section {
-      background: #0d0d0d;
-      padding: 100px 6vw;
-    }
-    .lectures-header {
-      max-width: 1300px;
-      margin: 0 auto 56px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-    }
-    .lectures-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      max-width: 1300px;
-      margin: 0 auto 40px;
-    }
-    @media (max-width: 900px) {
-      .lectures-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 600px) {
-      .lectures-grid { grid-template-columns: 1fr; }
-    }
-    .lecture-card {
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      background: #161616;
-    }
-    .lecture-card img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
-      filter: brightness(0.88) saturate(0.85);
-    }
-    .lecture-card:hover img {
-      transform: scale(1.06);
-      filter: brightness(0.65) saturate(0.8);
-    }
-    .lecture-card-overlay {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      background: linear-gradient(to top, rgba(13,13,13,0.95) 0%, transparent 100%);
-      padding: 32px 24px 24px;
-    }
-    .lecture-tag {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #FFC40C;
-      margin-bottom: 8px;
-      display: block;
-    }
-    .lecture-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 28px;
-      line-height: 1;
-      letter-spacing: 0.02em;
-      color: #ffffff;
-    }
-
-    /* BOOKS */
-    .books-section {
-      background: #161616;
-      padding: 100px 0 100px;
-    }
-    .books-section-header {
-      max-width: 1300px;
-      margin: 0 auto 56px;
-      padding: 0 6vw;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-    }
-    /* Carousel */
-    .carousel-outer {
-      overflow: hidden;
-      width: 100%;
-      position: relative;
-    }
-    .carousel-outer::before,
-    .carousel-outer::after {
-      content: '';
-      position: absolute;
-      top: 0; bottom: 0;
-      width: 120px;
-      z-index: 2;
-      pointer-events: none;
-    }
-    .carousel-outer::before {
-      left: 0;
-      background: linear-gradient(to right, #161616 0%, transparent 100%);
-    }
-    .carousel-outer::after {
-      right: 0;
-      background: linear-gradient(to left, #161616 0%, transparent 100%);
-    }
-    .carousel-track {
-      display: flex;
-      gap: 20px;
-      width: max-content;
-      animation: carouselScroll 42s linear infinite;
-      padding: 8px 0 16px;
-    }
-    .carousel-track:hover { animation-play-state: paused; }
-    @keyframes carouselScroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    .carousel-track-courses {
-      animation-duration: 52s;
-    }
-    .book-card {
-      background: #0d0d0d;
-      overflow: hidden;
-      cursor: pointer;
-      flex-shrink: 0;
-      width: 220px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .book-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 48px rgba(0,0,0,0.6);
-    }
-    .book-cover {
-      width: 100%;
-      aspect-ratio: 3/4;
-      background: linear-gradient(135deg, #1B6B3A 0%, #0d3d20 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 32px 24px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .book-cover::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 30% 30%, rgba(201,168,76,0.15) 0%, transparent 60%);
-    }
-    .book-cover-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 28px;
-      line-height: 1.1;
-      color: #ffffff;
-      letter-spacing: 0.03em;
-      position: relative; z-index: 1;
-    }
-    .book-cover-author {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.6);
-      position: absolute;
-      bottom: 20px;
-      left: 0; right: 0;
-      text-align: center;
-      z-index: 1;
-    }
-    .book-info {
-      padding: 20px;
-    }
-    .book-category {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #FFC40C;
-      margin-bottom: 6px;
-    }
-    .book-title {
-      font-family: 'Roboto Slab', serif;
-      font-size: 16px;
-      font-weight: 600;
-      color: #ffffff;
-      line-height: 1.3;
-    }
-
-    /* COURSES */
-    .courses-section {
-      background: #0d0d0d;
-      padding: 100px 0 100px;
-    }
-    .courses-section-header {
-      max-width: 1300px;
-      margin: 0 auto 56px;
-      padding: 0 6vw;
-    }
-    .courses-section-footer {
-      text-align: center;
-      padding: 40px 6vw 0;
-    }
-    .course-carousel-outer {
-      overflow: hidden;
-      width: 100%;
-      position: relative;
-    }
-    .course-carousel-outer::before,
-    .course-carousel-outer::after {
-      content: '';
-      position: absolute;
-      top: 0; bottom: 0;
-      width: 120px;
-      z-index: 2;
-      pointer-events: none;
-    }
-    .course-carousel-outer::before {
-      left: 0;
-      background: linear-gradient(to right, #0d0d0d 0%, transparent 100%);
-    }
-    .course-carousel-outer::after {
-      right: 0;
-      background: linear-gradient(to left, #0d0d0d 0%, transparent 100%);
-    }
-    .course-card {
-      background: #161616;
-      padding: 40px 32px;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      flex-shrink: 0;
-      width: 360px;
-      transition: background 0.3s ease, transform 0.3s ease;
-    }
-    .course-card:hover { transform: translateY(-6px); }
-    .course-card:hover { background: #1a1a1a; }
-    .course-card-accent {
-      position: absolute;
-      top: 0; left: 0;
-      width: 4px; height: 100%;
-      background: #FFC40C;
-    }
-    .course-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 72px;
-      color: rgba(201,168,76,0.06);
-      line-height: 1;
-      position: absolute;
-      top: 16px; right: 20px;
-    }
-    .course-tag {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #FFC40C;
-      margin-bottom: 16px;
-    }
-    .course-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 32px;
-      line-height: 1;
-      color: #ffffff;
-      letter-spacing: 0.02em;
-      margin-bottom: 16px;
-    }
-    .course-desc {
-      font-size: 13px;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 24px;
-    }
-    .course-meta {
-      display: flex; gap: 16px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
-      margin-bottom: 28px;
-    }
-    .course-enroll {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #FFC40C;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(201,168,76,0.4);
-      padding-bottom: 2px;
-      transition: border-color 0.2s ease;
-    }
-    .course-enroll:hover { border-color: #FFC40C; }
-
-    /* ── Booking Section ── */
-    .booking-section {
-      background: #111111;
-      padding: 100px 40px;
-      text-align: center;
-    }
-
-    .booking-label {
-      display: inline-block;
-      background: #F5C518;
-      color: #111111;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      padding: 6px 16px;
-      border-radius: 2px;
-      margin-bottom: 20px;
-    }
-
-    .booking-header h2 {
-      font-size: clamp(32px, 5vw, 56px);
-      color: #FFFFFF;
-      margin-bottom: 16px;
-      font-weight: 400;
-    }
-
-    .booking-header h2 strong {
-      font-weight: 800;
-      color: #F5C518;
-    }
-
-    .booking-header p {
-      color: #aaaaaa;
-      font-size: 16px;
-      max-width: 560px;
-      margin: 0 auto 60px;
-      line-height: 1.7;
-    }
-
-    /* Session Cards */
-    .session-cards {
-      display: flex;
-      gap: 24px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 60px;
-    }
-
-    .session-card {
-      background: #1a1a1a;
-      border: 1px solid #2a2a2a;
-      border-radius: 12px;
-      padding: 32px 28px;
-      width: 280px;
-      text-align: left;
-      transition: border-color 0.3s ease;
-    }
-
-    .session-card:hover {
-      border-color: #F5C518;
-    }
-
-    .session-card.featured {
-      border-color: #F5C518;
-      background: #1c1a0f;
-    }
-
-    .session-card h3 {
-      color: #FFFFFF;
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-
-    .session-card p {
-      color: #888888;
-      font-size: 14px;
-      line-height: 1.6;
-      margin-bottom: 16px;
-    }
-
-    .session-duration {
-      display: inline-block;
-      font-size: 12px;
-      color: #F5C518;
-      border: 1px solid #F5C518;
-      padding: 3px 10px;
-      border-radius: 20px;
-      margin-bottom: 20px;
-    }
-
-    .card-cta {
-      display: block;
-      background: #F5C518;
-      color: #111111;
-      text-align: center;
-      padding: 10px 0;
-      font-weight: 700;
-      font-size: 13px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 4px;
-      transition: opacity 0.2s ease;
-    }
-
-    .card-cta:hover {
-      opacity: 0.85;
-    }
-
-    /* Cal.com embed wrapper */
-    .cal-embed-wrapper {
-      max-width: 1000px;
-      margin: 0 auto;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid #2a2a2a;
-    }
-
-    #my-cal-inline {
-      width: 100%;
-      min-height: 700px;
-      overflow: scroll;
-    }
-
-    @media (max-width: 768px) {
-      .booking-section {
-        padding: 60px 20px;
-      }
-      .session-cards {
-        flex-direction: column;
-        align-items: center;
-      }
-      .session-card {
-        width: 100%;
-        max-width: 400px;
-      }
-    }
-
-    /* Shared form styles (kept for contact form below) */
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-    @media (max-width: 600px) {
-      .form-row { grid-template-columns: 1fr; }
-    }
-    .form-group { margin-bottom: 16px; }
-    .form-label {
-      display: block;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
-      margin-bottom: 8px;
-    }
-    .form-input {
-      width: 100%;
-      background: #161616;
-      border: 1px solid rgba(255,255,255,0.08);
-      color: #ffffff;
-      font-family: 'Roboto', sans-serif;
-      font-size: 14px;
-      padding: 12px 16px;
-      outline: none;
-      transition: border-color 0.2s ease;
-    }
-    .form-input:focus { border-color: #FFC40C; }
-    .form-input::placeholder { color: rgba(255,255,255,0.25); }
-    .form-select {
-      width: 100%;
-      background: #161616;
-      border: 1px solid rgba(255,255,255,0.08);
-      color: #ffffff;
-      font-family: 'Roboto', sans-serif;
-      font-size: 14px;
-      padding: 12px 16px;
-      outline: none;
-      cursor: pointer;
-      appearance: none;
-    }
-    .form-select option { background: #161616; }
-
-    /* SOCIAL */
-    .social-section {
-      background: #0d0d0d;
-      padding: 100px 6vw;
-    }
-    .social-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2px;
-      max-width: 1300px;
-      margin: 56px auto 0;
-    }
-    @media (max-width: 900px) {
-      .social-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 480px) {
-      .social-grid { grid-template-columns: 1fr 1fr; }
-    }
-    .social-card {
-      background: #161616;
-      padding: 40px 32px;
-      text-align: center;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      text-decoration: none;
-      display: block;
-    }
-    .social-card:hover { background: #1a1a1a; }
-    .social-icon { margin-bottom: 16px; }
-    .social-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 40px;
-      line-height: 1;
-      color: #FFC40C;
-      letter-spacing: 0.02em;
-    }
-    .social-platform {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.45);
-      margin-top: 6px;
-    }
-
-    /* GALLERY */
-    .gallery-section {
-      background: #161616;
-      padding: 100px 6vw;
-    }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: auto auto;
-      gap: 2px;
-      max-width: 1300px;
-      margin: 56px auto 0;
-    }
-    @media (max-width: 900px) {
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    .gallery-item {
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    .gallery-item:first-child {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      min-height: 220px;
-      display: block;
-      transition: transform 0.5s ease, filter 0.3s ease;
-      filter: brightness(0.92) saturate(0.88);
-    }
-    .gallery-item:hover img {
-      transform: scale(1.08);
-      filter: brightness(0.7) saturate(0.75);
-    }
-    .gallery-item-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(13,13,13,0.7) 0%, transparent 50%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .gallery-item:hover .gallery-item-overlay { opacity: 1; }
-
-    /* FOOTER */
-    footer {
-      background: #0a0a0a;
-      border-top: 1px solid rgba(201,168,76,0.15);
-      padding: 80px 6vw 40px;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 60px;
-      max-width: 1300px;
-      margin: 0 auto 60px;
-    }
-    @media (max-width: 900px) {
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
-    }
-    @media (max-width: 600px) {
-      .footer-grid { grid-template-columns: 1fr; }
-    }
-    .footer-brand-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 32px;
-      letter-spacing: 0.05em;
-      color: #ffffff;
-      margin-bottom: 16px;
-    }
-    .footer-brand-name span { color: #FFC40C; }
-    .footer-brand-desc {
-      font-size: 13px;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.4);
-      max-width: 280px;
-      margin-bottom: 28px;
-    }
-    .footer-social-links { display: flex; gap: 12px; flex-wrap: wrap; }
-    .footer-social-link {
-      width: 36px; height: 36px;
-      background: #161616;
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,0.5);
-      text-decoration: none;
-      font-size: 14px;
-      transition: background 0.2s ease, color 0.2s ease;
-    }
-    .footer-social-link:hover { background: #FFC40C; color: #0d0d0d; }
-    .footer-col-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 20px;
-      letter-spacing: 0.05em;
-      color: #ffffff;
-      margin-bottom: 20px;
-    }
-    .footer-links { list-style: none; }
-    .footer-links li { margin-bottom: 10px; }
-    .footer-links a {
-      font-size: 13px;
-      color: rgba(255,255,255,0.45);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-    .footer-links a:hover { color: #FFC40C; }
-    .footer-bottom {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding-top: 32px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .footer-copy {
-      font-size: 12px;
-      color: rgba(255,255,255,0.25);
-      letter-spacing: 0.05em;
-    }
-    .footer-copy span { color: #FFC40C; }
-
-    /* SCROLLING TICKER */
-    .ticker-wrap {
-      background: #0a0a0a;
-      padding: 14px 0;
-      overflow: hidden;
-      border-top: 1px solid rgba(201,168,76,0.1);
-      border-bottom: 1px solid rgba(201,168,76,0.1);
-    }
-    .ticker-inner {
-      display: flex;
-      gap: 0;
-      animation: ticker 28s linear infinite;
-      white-space: nowrap;
-    }
-    .ticker-item {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 16px;
-      letter-spacing: 0.12em;
-      color: rgba(255,255,255,0.25);
-      padding: 0 40px;
-    }
-    .ticker-item span { color: #FFC40C; }
-    @keyframes ticker {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* MOBILE NAV */
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 64px; left: 0; right: 0; bottom: 0;
-      background: rgba(13,13,13,0.98);
-      z-index: 99;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 32px;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 36px;
-      letter-spacing: 0.05em;
-      color: #ffffff;
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-    .mobile-menu a:hover { color: #FFC40C; }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .hero-content { padding: 0 24px 60px; }
-      .lectures-header { flex-direction: column; align-items: flex-start; gap: 16px; }
-      .books-header { flex-direction: column; align-items: flex-start; gap: 16px; }
-      .footer-bottom { flex-direction: column; text-align: center; }
-    }
-
-    /* Hero CSS animations (play immediately, not scroll-triggered) */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(32px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .fade-up {
-      animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
-    }
-    .delay-1 { animation-delay: 0.1s; }
-    .delay-2 { animation-delay: 0.22s; }
-    .delay-3 { animation-delay: 0.34s; }
-    .delay-4 { animation-delay: 0.46s; }
-
-    /* Scroll-triggered reveal animations */
-    .reveal {
-      opacity: 0;
-      transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
-                  transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .reveal.from-bottom { transform: translateY(50px); }
-    .reveal.from-top    { transform: translateY(-40px); }
-    .reveal.from-left   { transform: translateX(-60px); }
-    .reveal.from-right  { transform: translateX(60px); }
-    .reveal.from-scale  { transform: scale(0.92); }
-    .reveal.visible {
-      opacity: 1;
-      transform: translate(0, 0) scale(1);
-    }
-    /* Stagger delays for children */
-    .reveal-stagger > * { opacity: 0; transform: translateY(36px);
-      transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1),
-                  transform 0.65s cubic-bezier(0.22,1,0.36,1); }
-    .reveal-stagger.visible > * { opacity: 1; transform: translateY(0); }
-    .reveal-stagger.visible > *:nth-child(1) { transition-delay: 0s; }
-    .reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.08s; }
-    .reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.16s; }
-    .reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.24s; }
-    .reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.32s; }
-    .reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.40s; }
-    .reveal-stagger.visible > *:nth-child(7) { transition-delay: 0.48s; }
-    .reveal-stagger.visible > *:nth-child(8) { transition-delay: 0.56s; }
-
-    /* TESTIMONIALS */
-    .testimonials-section {
-      background: #0d0d0d;
-      padding: 100px 6vw;
-    }
-    .testimonials-header {
-      max-width: 1300px;
-      margin: 0 auto 56px;
-      text-align: center;
-    }
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      max-width: 1300px;
-      margin: 0 auto;
-    }
-    @media (max-width: 900px) { .testimonials-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 1100px) { .testimonials-grid { grid-template-columns: 1fr 1fr; } }
-    .testimonial-card {
-      background: #161616;
-      padding: 48px 36px 36px;
-      position: relative;
-      border-top: 2px solid rgba(255,196,12,0.25);
-      transition: border-top-color 0.3s ease, transform 0.3s ease;
-    }
-    .testimonial-card:hover { border-top-color: #FFC40C; transform: translateY(-4px); }
-    .testimonial-quote-mark {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 100px; line-height: 0.8;
-      color: rgba(255,196,12,0.1);
-      position: absolute; top: 24px; right: 28px;
-    }
-    .testimonial-stars {
-      display: flex; gap: 4px; margin-bottom: 20px;
-    }
-    .testimonial-text {
-      font-size: 14px; line-height: 1.8;
-      color: rgba(255,255,255,0.65);
-      margin-bottom: 28px; font-style: italic;
-    }
-    .testimonial-divider {
-      width: 32px; height: 1px;
-      background: rgba(255,196,12,0.4);
-      margin-bottom: 20px;
-    }
-    .testimonial-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 20px; letter-spacing: 0.05em; color: #fff;
-    }
-    .testimonial-role {
-      font-size: 10px; font-weight: 700;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: rgba(255,196,12,0.65); margin-top: 4px;
-    }
-
-    /* NATUREON */
-    .natureon-section {
-      background: #0d0d0d;
-      padding: 80px 6vw;
-      position: relative;
-      overflow: hidden;
-      border-top: 1px solid rgba(255,255,255,0.04);
-    }
-    .natureon-section::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 20% 50%, rgba(34,85,34,0.12) 0%, transparent 60%),
-                  radial-gradient(ellipse at 80% 50%, rgba(255,196,12,0.04) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .natureon-inner {
-      max-width: 1300px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; align-items: center;
-    }
-    @media (max-width: 768px) { .natureon-inner { grid-template-columns: 1fr; gap: 48px; } }
-    .natureon-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(34,85,34,0.2);
-      border: 1px solid rgba(34,120,34,0.35);
-      padding: 6px 16px; margin-bottom: 24px;
-      font-size: 10px; font-weight: 700;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: #5EBF5E;
-    }
-    .natureon-logo-text {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(48px, 5vw, 72px);
-      line-height: 0.9; letter-spacing: 0.04em;
-      color: #fff; margin-bottom: 8px;
-    }
-    .natureon-logo-text span { color: #5EBF5E; }
-    .natureon-tagline {
-      font-size: 11px; font-weight: 700;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(94,191,94,0.7); margin-bottom: 24px;
-    }
-    .natureon-desc {
-      font-size: 14px; line-height: 1.8;
-      color: rgba(255,255,255,0.55); margin-bottom: 32px; max-width: 480px;
-    }
-    .btn-green {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: #2D7A2D; color: #fff;
-      font-family: 'Roboto', sans-serif;
-      font-size: 12px; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      padding: 14px 28px; text-decoration: none;
-      transition: background 0.2s ease, transform 0.15s ease;
-    }
-    .btn-green:hover { background: #3a9a3a; transform: translateY(-2px); }
-
-    /* MERGED REACH SECTION */
-    .reach-section {
-      background: #0d0d0d;
-      padding: 100px 6vw;
-    }
-    .reach-header {
-      max-width: 1300px; margin: 0 auto 60px;
-    }
-    .reach-stats-row {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 2px;
-      max-width: 1300px; margin: 0 auto 2px;
-    }
-    @media (max-width: 1000px) { .reach-stats-row { grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 600px) { .reach-stats-row { grid-template-columns: repeat(2, 1fr); } }
-    .reach-stat {
-      background: #FFC40C;
-      padding: 32px 24px;
-      text-align: center;
-    }
-    .reach-stat-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(32px, 3.5vw, 48px);
-      line-height: 1; color: #0d0d0d; letter-spacing: 0.02em;
-    }
-    .reach-stat-label {
-      font-size: 9px; font-weight: 700;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: rgba(0,0,0,0.55); margin-top: 6px;
-    }
-    .reach-social-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2px;
-      max-width: 1300px; margin: 0 auto;
-    }
-    @media (max-width: 900px) { .reach-social-row { grid-template-columns: repeat(2, 1fr); } }
-    .reach-social-card {
-      background: #161616;
-      padding: 36px 28px;
-      display: flex; align-items: center; gap: 20px;
-      text-decoration: none;
-      transition: background 0.25s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .reach-social-card::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0; right: 0;
-      height: 2px; background: #FFC40C;
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.3s ease;
-    }
-    .reach-social-card:hover { background: #1a1a1a; }
-    .reach-social-card:hover::after { transform: scaleX(1); }
-    .reach-social-icon {
-      width: 48px; height: 48px; flex-shrink: 0;
-      background: rgba(255,196,12,0.1);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .reach-social-info {}
-    .reach-social-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 28px; line-height: 1;
-      color: #FFC40C; letter-spacing: 0.02em;
-    }
-    .reach-social-platform {
-      font-size: 10px; font-weight: 700;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: rgba(255,255,255,0.4); margin-top: 3px;
-    }
-    .reach-total-card {
-      background: #FFC40C;
-      padding: 36px 28px;
-      display: flex; align-items: center; gap: 20px;
-    }
-    .reach-total-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 40px; line-height: 1;
-      color: #0d0d0d; letter-spacing: 0.02em;
-    }
-    .reach-total-label {
-      font-size: 10px; font-weight: 700;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: rgba(0,0,0,0.55); margin-top: 3px;
-    }
-
-    /* Scrollbar */
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: #0d0d0d; }
-    ::-webkit-scrollbar-thumb { background: #FFC40C; border-radius: 0; }
-
-    /* ── Terms Modal ── */
-    .terms-modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-    .terms-modal-box {
-      background: #1a1a1a;
-      border: 1px solid #2a2a2a;
-      border-radius: 16px;
-      max-width: 680px;
-      width: 100%;
-      max-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-    .terms-modal-header {
-      padding: 32px 32px 20px;
-      border-bottom: 1px solid #2a2a2a;
-    }
-    .terms-badge {
-      display: inline-block;
-      background: #F5C518;
-      color: #111111;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 2px;
-      margin-bottom: 12px;
-    }
-    .terms-modal-header h2 {
-      color: #FFFFFF;
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .terms-intro {
-      color: #888888;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-    .terms-modal-body {
-      padding: 24px 32px;
-      overflow-y: auto;
-      flex: 1;
-    }
-    .terms-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 20px;
-    }
-    .terms-list li {
-      color: #cccccc;
-      font-size: 14px;
-      line-height: 1.7;
-      padding: 10px 0 10px 24px;
-      border-bottom: 1px solid #222222;
-      position: relative;
-    }
-    .terms-list li::before {
-      content: '✦';
-      color: #F5C518;
-      position: absolute;
-      left: 0;
-      top: 10px;
-      font-size: 10px;
-    }
-    .terms-thankyou {
-      color: #F5C518;
-      font-size: 14px;
-      font-style: italic;
-      text-align: center;
-      margin-top: 16px;
-    }
-    .terms-modal-footer {
-      padding: 24px 32px;
-      border-top: 1px solid #2a2a2a;
-      background: #111111;
-    }
-    .terms-checkbox-label {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      cursor: pointer;
-      margin-bottom: 20px;
-    }
-    .terms-checkbox-label input[type="checkbox"] {
-      margin-top: 3px;
-      accent-color: #F5C518;
-      width: 16px;
-      height: 16px;
-      flex-shrink: 0;
-    }
-    .terms-checkbox-label span {
-      color: #cccccc;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-    .terms-accept-btn {
-      width: 100%;
-      background: #F5C518;
-      color: #111111;
-      border: none;
-      padding: 14px;
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-bottom: 10px;
-      transition: opacity 0.2s;
-    }
-    .terms-accept-btn:disabled {
-      opacity: 0.35;
-      cursor: not-allowed;
-    }
-    .terms-accept-btn:not(:disabled):hover {
-      opacity: 0.85;
-    }
-    .terms-decline-btn {
-      width: 100%;
-      background: transparent;
-      color: #666666;
-      border: 1px solid #2a2a2a;
-      padding: 12px;
-      font-size: 14px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .terms-decline-btn:hover {
-      color: #FFFFFF;
-      border-color: #444444;
-    }
-    @media (max-width: 768px) {
-      .terms-modal-header,
-      .terms-modal-body,
-      .terms-modal-footer {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
 <!-- NAV -->
-<nav class="nav-sticky">
-  <div style="max-width:1300px; margin:0 auto; padding:0 6vw; height:64px; display:flex; align-items:center; justify-content:space-between;">
-    <a href="index.html" style="text-decoration:none;">
-      <img src="brand_assets/Logo_white.png" alt="Soban Attari" style="height:52px; width:auto; display:block;" />
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="site-logo" aria-label="Soban Attari Home">
+      <span class="logo-mark">
+        <span class="logo-line-1">SOBAN</span>
+        <span class="logo-line-2">ATTARI</span>
+      </span>
     </a>
-    <div style="display:flex; align-items:center; gap:28px;" class="hidden md:flex" id="nav-links">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="biography.html" class="nav-link">About</a>
-      <div class="nav-dropdown">
-        <span class="nav-dropdown-toggle"
-              data-dropdown="what-we-offer"
-              role="button"
-              tabindex="0"
-              aria-haspopup="true"
-              aria-expanded="false">
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="biography.html">About</a>
+      <div class="nav-dropdown-wrapper">
+        <button class="nav-dropdown-toggle" data-dropdown="what-we-offer" aria-haspopup="true" aria-expanded="false">
           What We Offer
           <svg class="nav-dropdown-arrow" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,3 5,7 8,3"/></svg>
-        </span>
+        </button>
         <div class="nav-dropdown-menu" data-dropdown-menu="what-we-offer">
           <div class="nav-dropdown-mega">
             <div>
@@ -1667,803 +53,414 @@
           </div>
         </div>
       </div>
-      <a href="index.html#books" class="nav-link">Books</a>
-      <a href="index.html#contact" class="nav-link">Contact</a>
-    </div>
-    <div style="display:flex; align-items:center; gap:16px;">
+      <a href="index.html#books">Books</a>
+      <a href="index.html#contact">Contact</a>
       <a href="#book-session" class="nav-cta">Book a Session</a>
-      <button id="menu-btn" onclick="toggleMenu()" style="display:none; background:none; border:none; color:#fff; cursor:pointer; padding:4px;" aria-label="Menu">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-        </svg>
-      </button>
     </div>
+    <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
 <!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobile-menu">
+<div class="nav-mobile-menu" id="mobile-menu">
   <a href="index.html" onclick="closeMenu()">Home</a>
   <a href="biography.html" onclick="closeMenu()">About</a>
-  <div style="padding:10px 28px 4px; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,196,12,0.5);">Talks &amp; Events</div>
-  <a href="programs/youth-talks.html" onclick="closeMenu()" style="padding-left:40px; font-size:12px;">Youth Talks</a>
-  <a href="programs/growth-room.html" onclick="closeMenu()" style="padding-left:40px; font-size:12px;">Growth Room</a>
-  <a href="programs/youth-seminar.html" onclick="closeMenu()" style="padding-left:40px; font-size:12px;">Youth Seminar</a>
-  <a href="events.html" onclick="closeMenu()" style="padding-left:40px; font-size:12px;">Community Events</a>
-  <div style="padding:10px 28px 4px; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,196,12,0.5);">Impact Programs</div>
-  <a href="activities/blood-camp.html" onclick="closeMenu()" style="padding-left:40px; font-size:12px;">Blood Donation</a>
-  <a href="activities/flood-relief.html" onclick="closeMenu()" style="padding-left:40px; font-size:12px;">Flood Relief</a>
-  <a href="activities/plantation.html" onclick="closeMenu()" style="padding-left:40px; font-size:12px;">Plantation Drive</a>
-  <div style="padding:10px 28px 4px; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,196,12,0.5);">Online Courses</div>
-  <a href="index.html#courses" onclick="closeMenu()" style="padding-left:40px; font-size:12px;">Parenting Mastery</a>
-  <a href="index.html#courses" onclick="closeMenu()" style="padding-left:40px; font-size:12px;">Life Skills for Modern Muslims</a>
-  <a href="index.html#courses" onclick="closeMenu()" style="padding-left:40px; font-size:12px;">Islamic Psychology</a>
+  <div class="mobile-group-title">Talks &amp; Events</div>
+  <a href="programs/youth-talks.html" class="mobile-sub" onclick="closeMenu()">Youth Talks</a>
+  <a href="programs/growth-room.html" class="mobile-sub" onclick="closeMenu()">Growth Room</a>
+  <a href="programs/youth-seminar.html" class="mobile-sub" onclick="closeMenu()">Youth Seminar</a>
+  <a href="events.html" class="mobile-sub" onclick="closeMenu()">Community Events</a>
+  <div class="mobile-group-title">Impact Programs</div>
+  <a href="activities/blood-camp.html" class="mobile-sub" onclick="closeMenu()">Blood Donation</a>
+  <a href="activities/flood-relief.html" class="mobile-sub" onclick="closeMenu()">Flood Relief</a>
+  <a href="activities/plantation.html" class="mobile-sub" onclick="closeMenu()">Plantation Drive</a>
+  <div class="mobile-group-title">Online Courses</div>
+  <a href="index.html#courses" class="mobile-sub" onclick="closeMenu()">Parenting Mastery</a>
+  <a href="index.html#courses" class="mobile-sub" onclick="closeMenu()">Life Skills for Modern Muslims</a>
+  <a href="index.html#courses" class="mobile-sub" onclick="closeMenu()">Islamic Psychology</a>
   <a href="index.html#books" onclick="closeMenu()">Books</a>
   <a href="index.html#contact" onclick="closeMenu()">Contact</a>
   <a href="#book-session" onclick="closeMenu()">Book a Session</a>
 </div>
 
 <!-- HERO -->
-<section class="hero-section" id="home">
-  <video class="hero-video"
-         autoplay muted loop playsinline
-         preload="metadata"
-         poster="brand_assets/hero-poster.jpg"
-         aria-hidden="true">
+<section id="hero" class="section-dark">
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="brand_assets/hero-poster.jpg" aria-hidden="true">
     <source src="brand_assets/VideoHero.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-tag fade-up">Islamic Scholar · Speaker · Educator</div>
-    <h1 class="hero-cycle fade-up delay-1" aria-live="polite">
-      <span class="hero-cycle-text" id="hero-cycle-text">Numbers That Speak.</span>
-    </h1>
-    <p class="hero-sub fade-up delay-2">
-      Soban Attari is a Pakistani speaker and educator. He sits down with millions every week, walks through real questions about faith, family and modern life, and tries to leave people a little clearer than he found them.
-    </p>
-    <div class="hero-btns fade-up delay-3">
-      <a href="#book-session" class="btn-primary">Book a Session</a>
+    <span class="hero-label">Islamic Scholar · Speaker · Educator</span>
+    <h1 class="hero-headline" aria-live="polite"><span class="hero-cycle-text" id="hero-cycle-text">Numbers That Speak.</span></h1>
+    <p class="hero-subtext">Soban Attari is a Pakistani speaker and educator. He sits down with millions every week, walks through real questions about faith, family and modern life, and tries to leave people a little clearer than he found them.</p>
+    <div class="btn-group" style="justify-content:center;">
+      <a href="#book-session" class="btn btn-primary">Book a Session</a>
+      <a href="#about" class="btn btn-outline">Discover More</a>
     </div>
   </div>
+  <a href="#about" class="hero-scroll-indicator" aria-label="Scroll to content">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="6 9 12 15 18 9"/></svg>
+  </a>
 </section>
 
 <!-- PURPOSE BAR -->
 <div class="purpose-bar">
-  <span class="purpose-label">THE PURPOSE</span>
-  <div class="purpose-divider"></div>
-  <span class="purpose-text">BRIDGING ISLAMIC WISDOM WITH SCIENCE, SPIRITUALITY &amp; MODERN LIFE</span>
-  <div class="purpose-divider" style="margin-left:auto;"></div>
-  <span class="purpose-label" style="margin-left:0;">SOBAN ATTARI</span>
-</div>
-
-<!-- PLATFORM BADGES ROW -->
-<div style="background:#0d0d0d; border-bottom:1px solid rgba(201,168,76,0.1); padding:18px 6vw;">
-  <div style="max-width:1300px; margin:0 auto; display:flex; align-items:center; gap:32px; flex-wrap:wrap; justify-content:center;">
-    <span style="font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.3);">TRUSTED ACROSS</span>
-    <div style="display:flex; align-items:center; gap:8px;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="rgba(255,255,255,0.4)"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-      <span style="font-size:12px; font-weight:600; color:rgba(255,255,255,0.5);">1.6M Facebook</span>
-    </div>
-    <div style="width:1px; height:16px; background:rgba(255,255,255,0.1);"></div>
-    <div style="display:flex; align-items:center; gap:8px;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="rgba(255,255,255,0.4)"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
-      <span style="font-size:12px; font-weight:600; color:rgba(255,255,255,0.5);">1.15M YouTube</span>
-    </div>
-    <div style="width:1px; height:16px; background:rgba(255,255,255,0.1);"></div>
-    <div style="display:flex; align-items:center; gap:8px;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="rgba(255,255,255,0.4)"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-      <span style="font-size:12px; font-weight:600; color:rgba(255,255,255,0.5);">504K Instagram</span>
-    </div>
-    <div style="width:1px; height:16px; background:rgba(255,255,255,0.1);"></div>
-    <div style="display:flex; align-items:center; gap:8px;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="rgba(255,255,255,0.4)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      <span style="font-size:12px; font-weight:600; color:rgba(255,255,255,0.5);">250K WhatsApp</span>
-    </div>
-    <div style="width:1px; height:16px; background:rgba(255,255,255,0.1);"></div>
-    <div style="margin-left:auto;">
-      <span style="font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:0.05em; color:#FFC40C;">3.55M+ TOTAL AUDIENCE</span>
-    </div>
+  <div class="container">
+    <span class="purpose-label">THE PURPOSE</span>
+    <span class="purpose-divider"></span>
+    <span class="purpose-text">BRIDGING ISLAMIC WISDOM WITH SCIENCE, SPIRITUALITY &amp; MODERN LIFE</span>
+    <span class="purpose-divider"></span>
+    <span class="purpose-label">SOBAN ATTARI</span>
   </div>
 </div>
 
 <!-- TICKER -->
-<div class="ticker-wrap">
-  <div class="ticker-inner">
-    <span class="ticker-item">ISLAMIC SCHOLARSHIP <span>✦</span></span>
-    <span class="ticker-item">SCIENCE &amp; FAITH <span>✦</span></span>
-    <span class="ticker-item">PARENTING GUIDANCE <span>✦</span></span>
-    <span class="ticker-item">SPIRITUALITY <span>✦</span></span>
-    <span class="ticker-item">PSYCHOLOGY <span>✦</span></span>
-    <span class="ticker-item">LIFE SKILLS <span>✦</span></span>
-    <span class="ticker-item">5000+ LECTURES <span>✦</span></span>
-    <span class="ticker-item">3.55M+ AUDIENCE <span>✦</span></span>
-    <span class="ticker-item">PUBLIC SPEAKER <span>✦</span></span>
-    <span class="ticker-item">AUTHOR &amp; EDUCATOR <span>✦</span></span>
-    <!-- duplicate for seamless loop -->
-    <span class="ticker-item">ISLAMIC SCHOLARSHIP <span>✦</span></span>
-    <span class="ticker-item">SCIENCE &amp; FAITH <span>✦</span></span>
-    <span class="ticker-item">PARENTING GUIDANCE <span>✦</span></span>
-    <span class="ticker-item">SPIRITUALITY <span>✦</span></span>
-    <span class="ticker-item">PSYCHOLOGY <span>✦</span></span>
-    <span class="ticker-item">LIFE SKILLS <span>✦</span></span>
-    <span class="ticker-item">5000+ LECTURES <span>✦</span></span>
-    <span class="ticker-item">3.55M+ AUDIENCE <span>✦</span></span>
-    <span class="ticker-item">PUBLIC SPEAKER <span>✦</span></span>
-    <span class="ticker-item">AUTHOR &amp; EDUCATOR <span>✦</span></span>
+<div id="ticker">
+  <div class="ticker-track">
+    <span>Islamic Scholarship ✦</span><span>Science &amp; Faith ✦</span><span>Parenting Guidance ✦</span><span>Spirituality ✦</span><span>Psychology ✦</span><span>Life Skills ✦</span><span>5000+ Lectures ✦</span><span>3.55M+ Audience ✦</span><span>Public Speaker ✦</span><span>Author &amp; Educator ✦</span>
+    <span>Islamic Scholarship ✦</span><span>Science &amp; Faith ✦</span><span>Parenting Guidance ✦</span><span>Spirituality ✦</span><span>Psychology ✦</span><span>Life Skills ✦</span><span>5000+ Lectures ✦</span><span>3.55M+ Audience ✦</span><span>Public Speaker ✦</span><span>Author &amp; Educator ✦</span>
   </div>
 </div>
 
-<!-- MEET SECTION -->
-<section class="meet-section" id="about">
-  <div class="meet-grid">
-    <div class="meet-img-wrap reveal from-left" style="position:relative; z-index:1;">
-      <div class="meet-img-border"></div>
+<!-- PLATFORM BADGES -->
+<div id="platform-badges">
+  <div class="container badge-row">
+    <span class="badge-trust-label">Trusted Across</span>
+    <span class="badge-item"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>1.6M Facebook</span>
+    <span class="badge-divider"></span>
+    <span class="badge-item"><svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>1.15M YouTube</span>
+    <span class="badge-divider"></span>
+    <span class="badge-item"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>504K Instagram</span>
+    <span class="badge-divider"></span>
+    <span class="badge-item"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>250K WhatsApp</span>
+    <span class="badge-total">3.55M+ Total Audience</span>
+  </div>
+</div>
+
+<!-- QUOTE STRIP -->
+<section id="quote-strip">
+  <div class="container animate-on-scroll">
+    <p class="quote-text">Knowledge without action is like a tree without fruit. Islam calls us to not merely understand, but to <em>embody, to live, and to transform</em> the world around us.</p>
+    <div class="quote-author">— Soban Attari</div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="container">
+    <div class="stats-grid stagger animate-on-scroll">
+      <div class="stat-item"><span class="stat-number">5,000+</span><span class="stat-label">Lectures Delivered</span></div>
+      <div class="stat-item"><span class="stat-number">1M+</span><span class="stat-label">People Impacted</span></div>
+      <div class="stat-item"><span class="stat-number">3.55M+</span><span class="stat-label">Total Audience</span></div>
+      <div class="stat-item"><span class="stat-number">1.6M</span><span class="stat-label">Facebook Followers</span></div>
+      <div class="stat-item"><span class="stat-number">1.15M</span><span class="stat-label">YouTube Subscribers</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container about-grid">
+    <div class="about-image-wrap animate-on-scroll">
       <img src="brand_assets/IMG_9756.JPG" alt="Soban Attari, Islamic Scholar" loading="lazy" />
-      <div class="meet-img-accent"></div>
-      <div style="position:absolute; bottom:32px; left:-20px; background:#FFC40C; padding:18px 24px; z-index:2; box-shadow:0 8px 32px rgba(0,0,0,0.4);">
-        <div style="font-family:'Bebas Neue',sans-serif; font-size:44px; line-height:1; color:#0d0d0d;">3.55M+</div>
-        <div style="font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:rgba(0,0,0,0.55); margin-top:4px;">Global Audience</div>
+      <div class="about-badge">
+        <div class="num">3.55M+</div>
+        <div class="lbl">Global Audience</div>
       </div>
     </div>
-    <div class="meet-body reveal from-right">
-      <span class="section-tag">Meet the Scholar</span>
-      <h2 class="section-heading">MEET<br/><span>SOBAN ATTARI</span></h2>
-      <div class="meet-roles">
-        <span class="meet-role">Islamic Scholar</span>
-        <span class="meet-role">Public Speaker</span>
-        <span class="meet-role">Educator</span>
-        <span class="meet-role">Author</span>
-        <span class="meet-role">Mentor</span>
-        <span class="meet-role">Life Coach</span>
+    <div class="about-text animate-on-scroll">
+      <span class="section-label">Meet the Scholar</span>
+      <h2>Meet Soban Attari</h2>
+      <div class="about-roles">
+        <span class="about-role">Islamic Scholar</span>
+        <span class="about-role">Public Speaker</span>
+        <span class="about-role">Educator</span>
+        <span class="about-role">Author</span>
+        <span class="about-role">Mentor</span>
+        <span class="about-role">Life Coach</span>
       </div>
       <p>Soban Attari is a Pakistani motivational speaker, Islamic scholars, and social media influencer. He holds CA inter and MBA degrees and has become one of the best-known and most positive motivational speakers in Pakistan.</p>
-      <p>Soban Attari regularly conducts workshops and delivers lectures on a variety of topics, including Islamic teachings, personal development, and leadership, in almost all recognized and well-known institutes across the country. His TV program “Islam and Science” is also highly informative and available on his YouTube channel, where he has a large and dedicated fan following. </p>
-      <p>With his laser-sharp logic, crystal-clear explanation, and easy-to-understand talks, Soban Attari has become a source of inspiration and motivation among the youth and is considered one of the top positive motivational speakers in Pakistan.</p>
-      <a href="biography.html" class="btn-primary" style="margin-top:8px;">Explore More</a>
+      <p>Soban Attari regularly conducts workshops and delivers lectures on a variety of topics, including Islamic teachings, personal development, and leadership, in almost all recognized and well-known institutes across the country. His TV program “Islam and Science” is also highly informative and available on his YouTube channel, where he has a large and dedicated fan following.</p>
+      <div class="about-pullquote">
+        <p>With his laser-sharp logic, crystal-clear explanation, and easy-to-understand talks, Soban Attari has become a source of inspiration and motivation among the youth.</p>
+      </div>
+      <a href="biography.html" class="btn btn-primary">Explore Full Biography</a>
     </div>
   </div>
 </section>
 
-<!-- IMPACT & REACH (merged stats + social) -->
-<section class="reach-section" id="social">
-  <div class="reach-header reveal from-bottom">
-    <span class="section-tag">Numbers That Speak</span>
-    <h2 class="section-heading">PLATFORMS<br/><span>That Connect</span></h2>
-    <p class="section-sub" style="max-width:600px;">Pick the platform you live on. We post daily wisdom, full lectures and short reflections you can actually use.</p>
-  </div>
-  <!-- Stat numbers row -->
-  <div class="reach-stats-row reveal-stagger">
-    <div class="reach-stat">
-      <div class="reach-stat-num">5000+</div>
-      <div class="reach-stat-label">Lectures Delivered</div>
+<!-- WHAT WE OFFER -->
+<section id="what-we-offer">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <span class="section-label">What We Offer</span>
+      <h2>Areas of Expertise</h2>
     </div>
-    <div class="reach-stat">
-      <div class="reach-stat-num">1M+</div>
-      <div class="reach-stat-label">People Impacted</div>
-    </div>
-    <div class="reach-stat">
-      <div class="reach-stat-num">3.55M+</div>
-      <div class="reach-stat-label">Global Audience</div>
-    </div>
-    <div class="reach-stat">
-      <div class="reach-stat-num">1.6M</div>
-      <div class="reach-stat-label">Facebook</div>
-    </div>
-    <div class="reach-stat">
-      <div class="reach-stat-num">1.15M</div>
-      <div class="reach-stat-label">YouTube</div>
-    </div>
-    <div class="reach-stat">
-      <div class="reach-stat-num">504K</div>
-      <div class="reach-stat-label">Instagram</div>
-    </div>
-  </div>
-  <!-- Social platform cards row -->
-  <div class="reach-social-row reveal-stagger">
-    <a href="https://www.facebook.com/sobanattari" target="_blank" rel="noopener" class="reach-social-card">
-      <div class="reach-social-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFC40C"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-      </div>
-      <div class="reach-social-info">
-        <div class="reach-social-num">1.6M</div>
-        <div class="reach-social-platform">Facebook</div>
-      </div>
-    </a>
-    <a href="https://www.youtube.com/@sobanattari" target="_blank" rel="noopener" class="reach-social-card">
-      <div class="reach-social-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFC40C"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
-      </div>
-      <div class="reach-social-info">
-        <div class="reach-social-num">1.15M</div>
-        <div class="reach-social-platform">YouTube</div>
-      </div>
-    </a>
-    <a href="https://www.instagram.com/sobanattari" target="_blank" rel="noopener" class="reach-social-card">
-      <div class="reach-social-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFC40C"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-      </div>
-      <div class="reach-social-info">
-        <div class="reach-social-num">504K</div>
-        <div class="reach-social-platform">Instagram</div>
-      </div>
-    </a>
-    <a href="https://twitter.com/sobanattari" target="_blank" rel="noopener" class="reach-social-card">
-      <div class="reach-social-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFC40C"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-      </div>
-      <div class="reach-social-info">
-        <div class="reach-social-num">24.5K</div>
-        <div class="reach-social-platform">X (Twitter)</div>
-      </div>
-    </a>
-    <a href="https://www.tiktok.com/@sobanattari" target="_blank" rel="noopener" class="reach-social-card">
-      <div class="reach-social-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFC40C"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.3 6.3 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.24 8.24 0 004.84 1.56V6.78a4.85 4.85 0 01-1.07-.09z"/></svg>
-      </div>
-      <div class="reach-social-info">
-        <div class="reach-social-num">18K</div>
-        <div class="reach-social-platform">TikTok</div>
-      </div>
-    </a>
-    <a href="https://wa.me/923244008906" target="_blank" rel="noopener" class="reach-social-card">
-      <div class="reach-social-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFC40C"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      </div>
-      <div class="reach-social-info">
-        <div class="reach-social-num">250K</div>
-        <div class="reach-social-platform">WhatsApp</div>
-      </div>
-    </a>
-    <a href="https://www.linkedin.com/in/sobanattari" target="_blank" rel="noopener" class="reach-social-card">
-      <div class="reach-social-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFC40C"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-      </div>
-      <div class="reach-social-info">
-        <div class="reach-social-num">3.9K</div>
-        <div class="reach-social-platform">LinkedIn</div>
-      </div>
-    </a>
-    <div class="reach-total-card">
-      <div>
-        <div class="reach-total-num">3.55M+</div>
-        <div class="reach-total-label">Combined Audience</div>
-      </div>
+    <div class="offer-grid stagger animate-on-scroll">
+      <div class="offer-card"><span class="offer-card-number">01</span><span class="offer-card-tag">Islamic Life</span><h3>Islam &amp; Contemporary Life</h3><p>Practical Islamic guidance for navigating modern existence with faith, clarity, and purpose.</p></div>
+      <div class="offer-card"><span class="offer-card-number">02</span><span class="offer-card-tag">Family</span><h3>Parenting &amp; Family Guidance</h3><p>Islamic-rooted guidance on raising spiritually grounded children in the modern world.</p></div>
+      <div class="offer-card"><span class="offer-card-number">03</span><span class="offer-card-tag">Science</span><h3>Science &amp; Islam</h3><p>Discovering the harmony between modern scientific discoveries and the timeless wisdom of the Quran.</p></div>
+      <div class="offer-card"><span class="offer-card-number">04</span><span class="offer-card-tag">Spirituality</span><h3>Spirituality &amp; Self-Purification</h3><p>Deep inner work that purifies the heart, strengthens the soul, and draws you closer to Allah.</p></div>
+      <div class="offer-card"><span class="offer-card-number">05</span><span class="offer-card-tag">Psychology</span><h3>Psychology &amp; Human Behavior</h3><p>Islamic perspectives on mental health, emotional intelligence, and human behavioral science.</p></div>
+      <div class="offer-card"><span class="offer-card-number">06</span><span class="offer-card-tag">Creation</span><h3>Science of Creation</h3><p>Cosmology, biology, and the miraculous signs of Allah embedded throughout creation.</p></div>
+      <div class="offer-card"><span class="offer-card-number">07</span><span class="offer-card-tag">Development</span><h3>Life Skills &amp; Personal Growth</h3><p>Tools for productivity, purpose, and resilience, grounded in Islamic principles.</p></div>
+      <div class="offer-card"><span class="offer-card-number">08</span><span class="offer-card-tag">Youth</span><h3>Youth Mentorship</h3><p>Guiding the next generation with Islamic identity, purpose, and the resilience to thrive.</p></div>
     </div>
   </div>
 </section>
 
-<!-- TOPICS / EXPERTISE (REMOVED) -->
-<div style="display:none"><div class="topics-grid reveal-stagger">
-    <div class="topic-card">
-      <div class="topic-card-bg" style="background-image:url('brand_assets/DSC_0618.JPG');"></div>
-      <div class="topic-num-bg">01</div>
-      <div class="topic-tag-bar"><div class="topic-tag-line"></div><span class="topic-tag-text">Islamic Life</span></div>
-      <h3 class="topic-title">ISLAM &amp; CONTEMPORARY LIFE</h3>
-      <p class="topic-desc">Practical Islamic guidance for navigating modern existence with faith, clarity, and purpose.</p>
+<!-- SOCIAL PLATFORMS -->
+<section id="social-platforms" class="section-dark">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <span class="section-label">Numbers That Speak</span>
+      <h2>Platforms That Connect</h2>
+      <p class="section-intro">Pick the platform you live on. We post daily wisdom, full lectures and short reflections you can actually use.</p>
     </div>
-    <div class="topic-card">
-      <div class="topic-card-bg" style="background-image:url('brand_assets/IMG_9858.JPG'); background-position:center top;"></div>
-      <div class="topic-num-bg">02</div>
-      <div class="topic-tag-bar"><div class="topic-tag-line"></div><span class="topic-tag-text">Family</span></div>
-      <h3 class="topic-title">PARENTING &amp; FAMILY GUIDANCE</h3>
-      <p class="topic-desc">Islamic-rooted guidance on raising spiritually grounded children in the modern world.</p>
-    </div>
-    <div class="topic-card">
-      <div class="topic-card-bg" style="background-image:url('brand_assets/DSC_0569.JPG');"></div>
-      <div class="topic-num-bg">03</div>
-      <div class="topic-tag-bar"><div class="topic-tag-line"></div><span class="topic-tag-text">Science</span></div>
-      <h3 class="topic-title">SCIENCE &amp; ISLAM</h3>
-      <p class="topic-desc">Discovering the harmony between modern scientific discoveries and the timeless wisdom of the Quran.</p>
-    </div>
-    <div class="topic-card">
-      <div class="topic-card-bg" style="background-image:url('brand_assets/DSC_0742.JPG'); background-position:center top;"></div>
-      <div class="topic-num-bg">04</div>
-      <div class="topic-tag-bar"><div class="topic-tag-line"></div><span class="topic-tag-text">Spirituality</span></div>
-      <h3 class="topic-title">SPIRITUALITY &amp; SELF-PURIFICATION</h3>
-      <p class="topic-desc">Deep inner work that purifies the heart, strengthens the soul, and draws you closer to Allah.</p>
-    </div>
-    <div class="topic-card">
-      <div class="topic-card-bg" style="background-image:url('brand_assets/IMG_0373.JPG'); background-position:center top;"></div>
-      <div class="topic-num-bg">05</div>
-      <div class="topic-tag-bar"><div class="topic-tag-line"></div><span class="topic-tag-text">Psychology</span></div>
-      <h3 class="topic-title">PSYCHOLOGY &amp; HUMAN BEHAVIOR</h3>
-      <p class="topic-desc">Islamic perspectives on mental health, emotional intelligence, and human behavioral science.</p>
-    </div>
-    <div class="topic-card">
-      <div class="topic-card-bg" style="background-image:url('brand_assets/IMG_0489.JPG'); background-position:center top;"></div>
-      <div class="topic-num-bg">06</div>
-      <div class="topic-tag-bar"><div class="topic-tag-line"></div><span class="topic-tag-text">Creation</span></div>
-      <h3 class="topic-title">SCIENCE OF CREATION</h3>
-      <p class="topic-desc">Cosmology, biology, and the miraculous signs of Allah embedded throughout creation.</p>
-    </div>
-    <div class="topic-card">
-      <div class="topic-card-bg" style="background-image:url('brand_assets/IMG_0203.JPG'); background-position:center top;"></div>
-      <div class="topic-num-bg">07</div>
-      <div class="topic-tag-bar"><div class="topic-tag-line"></div><span class="topic-tag-text">Development</span></div>
-      <h3 class="topic-title">LIFE SKILLS &amp; PERSONAL GROWTH</h3>
-      <p class="topic-desc">Tools for productivity, purpose, and resilience, grounded in Islamic principles.</p>
-    </div>
-    <div class="topic-card">
-      <div class="topic-card-bg" style="background-image:url('brand_assets/IMG_0014.JPG');"></div>
-      <div class="topic-num-bg">08</div>
-      <div class="topic-tag-bar"><div class="topic-tag-line"></div><span class="topic-tag-text">Youth</span></div>
-      <h3 class="topic-title">YOUTH MENTORSHIP</h3>
-      <p class="topic-desc">Guiding the next generation with Islamic identity, purpose, and the resilience to thrive.</p>
+    <div class="social-grid stagger animate-on-scroll">
+      <a href="https://www.facebook.com/sobanattari" target="_blank" rel="noopener" class="social-card">
+        <div class="social-card-icon"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
+        <div class="social-card-count">1.6M</div><div class="social-card-name">Facebook</div>
+      </a>
+      <a href="https://www.youtube.com/@sobanattari" target="_blank" rel="noopener" class="social-card">
+        <div class="social-card-icon"><svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg></div>
+        <div class="social-card-count">1.15M</div><div class="social-card-name">YouTube</div>
+      </a>
+      <a href="https://www.instagram.com/sobanattari" target="_blank" rel="noopener" class="social-card">
+        <div class="social-card-icon"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></div>
+        <div class="social-card-count">504K</div><div class="social-card-name">Instagram</div>
+      </a>
+      <a href="https://twitter.com/sobanattari" target="_blank" rel="noopener" class="social-card">
+        <div class="social-card-icon"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div>
+        <div class="social-card-count">24.5K</div><div class="social-card-name">X (Twitter)</div>
+      </a>
+      <a href="https://www.tiktok.com/@sobanattari" target="_blank" rel="noopener" class="social-card">
+        <div class="social-card-icon"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.3 6.3 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.24 8.24 0 004.84 1.56V6.78a4.85 4.85 0 01-1.07-.09z"/></svg></div>
+        <div class="social-card-count">18K</div><div class="social-card-name">TikTok</div>
+      </a>
+      <a href="https://wa.me/923244008906" target="_blank" rel="noopener" class="social-card">
+        <div class="social-card-icon"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+        <div class="social-card-count">250K</div><div class="social-card-name">WhatsApp</div>
+      </a>
+      <a href="https://www.linkedin.com/in/sobanattari" target="_blank" rel="noopener" class="social-card">
+        <div class="social-card-icon"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
+        <div class="social-card-count">3.9K</div><div class="social-card-name">LinkedIn</div>
+      </a>
+      <div class="social-card total">
+        <div class="social-card-count">3.55M+</div><div class="social-card-name">Combined Audience</div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- LECTURES / EVENTS -->
-<section class="lectures-section" id="lectures">
-  <div class="lectures-header reveal from-bottom">
-    <div>
-      <span class="section-tag">Lectures &amp; Events</span>
-      <h2 class="section-heading">INSPIRING<br/><span>THOUSANDS</span></h2>
-    </div>
-    <a href="#" class="btn-outline" style="white-space:nowrap;">View All Events</a>
-  </div>
-  <div class="lectures-grid reveal-stagger">
-    <div class="lecture-card">
-      <img src="brand_assets/IMG_0489.JPG" alt="Public Lecture" loading="lazy" />
-      <div class="lecture-card-overlay">
-        <span class="lecture-tag">Public Lecture</span>
-        <div class="lecture-title">ISLAM &amp; THE MODERN MIND</div>
-      </div>
-    </div>
-    <div class="lecture-card">
-      <img src="brand_assets/IMG_0373.JPG" alt="Parenting Workshop" loading="lazy" />
-      <div class="lecture-card-overlay">
-        <span class="lecture-tag">Workshop</span>
-        <div class="lecture-title">CONSCIOUS PARENTING IN ISLAM</div>
-      </div>
-    </div>
-    <div class="lecture-card">
-      <img src="brand_assets/IMG_0203.JPG" alt="Seminar" loading="lazy" />
-      <div class="lecture-card-overlay">
-        <span class="lecture-tag">Institutional Seminar</span>
-        <div class="lecture-title">SCIENCE &amp; SIGNS OF ALLAH</div>
-      </div>
-    </div>
-    <div class="lecture-card">
-      <img src="brand_assets/DSC_0569.JPG" alt="Youth Session" loading="lazy" />
-      <div class="lecture-card-overlay">
-        <span class="lecture-tag">Youth Session</span>
-        <div class="lecture-title">FAITH IN THE AGE OF DOUBT</div>
-      </div>
-    </div>
-    <div class="lecture-card">
-      <img src="brand_assets/DSC_0654.JPG" alt="Family Talk" loading="lazy" />
-      <div class="lecture-card-overlay">
-        <span class="lecture-tag">Family Talk</span>
-        <div class="lecture-title">BUILDING STRONGER FAMILIES</div>
-      </div>
-    </div>
-    <div class="lecture-card">
-      <img src="brand_assets/DSC_0722.JPG" alt="Community Event" loading="lazy" />
-      <div class="lecture-card-overlay">
-        <span class="lecture-tag">Community Event</span>
-        <div class="lecture-title">THE PURPOSE OF LIFE</div>
-      </div>
+<section id="lectures">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <span class="section-label">Lectures &amp; Events</span>
+      <h2>Inspiring Thousands</h2>
     </div>
   </div>
-  <div style="text-align:center; margin-top:16px;">
-    <a href="#book-session" class="btn-primary">Invite for an Event</a>
+  <div class="container">
+    <div class="gallery-track animate-on-scroll">
+      <div class="gallery-item"><img src="brand_assets/IMG_0489.JPG" alt="Public Lecture" loading="lazy" /><div class="gallery-item-overlay"></div><span class="gallery-item-tag">Public Lecture</span><div class="gallery-item-label">Islam &amp; The Modern Mind</div></div>
+      <div class="gallery-item"><img src="brand_assets/IMG_0373.JPG" alt="Parenting Workshop" loading="lazy" /><div class="gallery-item-overlay"></div><span class="gallery-item-tag">Workshop</span><div class="gallery-item-label">Conscious Parenting in Islam</div></div>
+      <div class="gallery-item"><img src="brand_assets/IMG_0203.JPG" alt="Seminar" loading="lazy" /><div class="gallery-item-overlay"></div><span class="gallery-item-tag">Institutional Seminar</span><div class="gallery-item-label">Science &amp; Signs of Allah</div></div>
+      <div class="gallery-item"><img src="brand_assets/DSC_0569.JPG" alt="Youth Session" loading="lazy" /><div class="gallery-item-overlay"></div><span class="gallery-item-tag">Youth Session</span><div class="gallery-item-label">Faith in the Age of Doubt</div></div>
+      <div class="gallery-item"><img src="brand_assets/DSC_0654.JPG" alt="Family Talk" loading="lazy" /><div class="gallery-item-overlay"></div><span class="gallery-item-tag">Family Talk</span><div class="gallery-item-label">Building Stronger Families</div></div>
+      <div class="gallery-item"><img src="brand_assets/DSC_0722.JPG" alt="Community Event" loading="lazy" /><div class="gallery-item-overlay"></div><span class="gallery-item-tag">Community Event</span><div class="gallery-item-label">The Purpose of Life</div></div>
+    </div>
+    <div class="btn-group animate-on-scroll" style="margin-top:24px;">
+      <a href="#book-session" class="btn btn-primary">Invite for an Event</a>
+    </div>
   </div>
 </section>
 
-<!-- UNIVERSITIES / PARTNERS -->
-<section style="background:#0d0d0d; padding:100px 6vw; border-top:1px solid rgba(255,196,12,0.08);" id="universities">
-  <div style="max-width:1300px; margin:0 auto;">
-    <div class="reveal from-bottom" style="text-align:center; max-width:680px; margin:0 auto 56px;">
-      <span class="section-tag" style="display:block;">Universities &amp; Partners</span>
-      <h2 class="section-heading" style="text-align:center;">SESSIONS DELIVERED<br/><span>AT THESE INSTITUTIONS</span></h2>
-      <p class="section-sub" style="margin:16px auto 0; text-align:center;">Click any institution to read the full session recap, photos, and student reflections.</p>
+<!-- INSTITUTIONS -->
+<section id="institutions">
+  <div class="container section-header centered animate-on-scroll">
+    <span class="section-label">Universities &amp; Partners</span>
+    <h2>Sessions Delivered at These Institutions</h2>
+    <p class="section-intro" style="text-align:center;">Click any institution to read the full session recap, photos, and student reflections.</p>
+  </div>
+  <div class="marquee-row">
+    <div class="marquee-track">
+      <a href="blogs.html#lums" class="marquee-item">LUMS</a>
+      <a href="blogs.html#ucp" class="marquee-item">University of Central Punjab</a>
+      <a href="blogs.html#usa" class="marquee-item">University of South Asia</a>
+      <a href="blogs.html#garrison" class="marquee-item">Lahore Garrison University</a>
+      <a href="blogs.html#uet" class="marquee-item">UET Lahore</a>
+      <a href="blogs.html#pu" class="marquee-item">University of the Punjab</a>
+      <a href="blogs.html#comsats" class="marquee-item">COMSATS Islamabad</a>
+      <a href="blogs.html#fast" class="marquee-item">FAST-NUCES</a>
+      <a href="blogs.html#lums" class="marquee-item">LUMS</a>
+      <a href="blogs.html#ucp" class="marquee-item">University of Central Punjab</a>
+      <a href="blogs.html#usa" class="marquee-item">University of South Asia</a>
+      <a href="blogs.html#garrison" class="marquee-item">Lahore Garrison University</a>
+      <a href="blogs.html#uet" class="marquee-item">UET Lahore</a>
+      <a href="blogs.html#pu" class="marquee-item">University of the Punjab</a>
+      <a href="blogs.html#comsats" class="marquee-item">COMSATS Islamabad</a>
+      <a href="blogs.html#fast" class="marquee-item">FAST-NUCES</a>
     </div>
-    <div class="reveal-stagger" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:16px;">
-      <a href="blogs.html#lums" class="uni-logo-card" style="background:#fff; padding:32px 24px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; text-decoration:none; transition:transform 0.25s, box-shadow 0.25s; min-height:180px; border:1px solid rgba(255,196,12,0.15);" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(255,196,12,0.18)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-        <img src="brand_assets/LUMS_logo.png" alt="LUMS" loading="lazy" style="max-width:100%; height:84px; object-fit:contain;" />
-        <div style="font-size:11px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#0d0d0d;">LUMS</div>
-      </a>
-      <a href="blogs.html#ucp" class="uni-logo-card" style="background:#fff; padding:32px 24px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; text-decoration:none; transition:transform 0.25s, box-shadow 0.25s; min-height:180px; border:1px solid rgba(255,196,12,0.15);" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(255,196,12,0.18)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-        <img src="brand_assets/UCP_logo.png" alt="University of Central Punjab" loading="lazy" style="max-width:100%; height:84px; object-fit:contain;" />
-        <div style="font-size:11px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#0d0d0d;">UCP</div>
-      </a>
-      <a href="blogs.html#usa" class="uni-logo-card" style="background:#fff; padding:32px 24px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; text-decoration:none; transition:transform 0.25s, box-shadow 0.25s; min-height:180px; border:1px solid rgba(255,196,12,0.15);" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(255,196,12,0.18)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-        <img src="brand_assets/USA_logo.png" alt="University of South Asia" loading="lazy" style="max-width:100%; height:84px; object-fit:contain;" />
-        <div style="font-size:11px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#0d0d0d;">University of South Asia</div>
-      </a>
-      <a href="blogs.html#garrison" class="uni-logo-card" style="background:#fff; padding:32px 24px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; text-decoration:none; transition:transform 0.25s, box-shadow 0.25s; min-height:180px; border:1px solid rgba(255,196,12,0.15);" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(255,196,12,0.18)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-        <img src="brand_assets/LGU_logo.jpeg" alt="Lahore Garrison University" loading="lazy" style="max-width:100%; height:84px; object-fit:contain;" />
-        <div style="font-size:11px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#0d0d0d;">Lahore Garrison University</div>
-      </a>
-      <a href="blogs.html#uet" class="uni-logo-card" style="background:#fff; padding:32px 24px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; text-decoration:none; transition:transform 0.25s, box-shadow 0.25s; min-height:180px; border:1px solid rgba(255,196,12,0.15);" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(255,196,12,0.18)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-        <img src="brand_assets/UET_logo.png" alt="UET Lahore" loading="lazy" style="max-width:100%; height:84px; object-fit:contain;" />
-        <div style="font-size:11px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#0d0d0d;">UET Lahore</div>
-      </a>
-      <a href="blogs.html#pu" class="uni-logo-card" style="background:#fff; padding:32px 24px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; text-decoration:none; transition:transform 0.25s, box-shadow 0.25s; min-height:180px; border:1px solid rgba(255,196,12,0.15);" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(255,196,12,0.18)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-        <img src="brand_assets/PU_logo.png" alt="University of the Punjab" loading="lazy" style="max-width:100%; height:84px; object-fit:contain;" />
-        <div style="font-size:11px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#0d0d0d;">University of the Punjab</div>
-      </a>
-      <a href="blogs.html#comsats" class="uni-logo-card" style="background:#fff; padding:32px 24px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; text-decoration:none; transition:transform 0.25s, box-shadow 0.25s; min-height:180px; border:1px solid rgba(255,196,12,0.15);" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(255,196,12,0.18)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-        <img src="brand_assets/COMSATS_logo.jpg" alt="COMSATS University Islamabad" loading="lazy" style="max-width:100%; height:84px; object-fit:contain;" />
-        <div style="font-size:11px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#0d0d0d;">COMSATS</div>
-      </a>
-      <a href="blogs.html#fast" class="uni-logo-card" style="background:#fff; padding:32px 24px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; text-decoration:none; transition:transform 0.25s, box-shadow 0.25s; min-height:180px; border:1px solid rgba(255,196,12,0.15);" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(255,196,12,0.18)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-        <img src="brand_assets/FAST_logo.png" alt="FAST National University" loading="lazy" style="max-width:100%; height:84px; object-fit:contain;" />
-        <div style="font-size:11px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#0d0d0d;">FAST-NUCES</div>
-      </a>
+  </div>
+  <div class="marquee-row">
+    <div class="marquee-track-reverse">
+      <a href="blogs.html#fast" class="marquee-item">FAST-NUCES</a>
+      <a href="blogs.html#comsats" class="marquee-item">COMSATS Islamabad</a>
+      <a href="blogs.html#pu" class="marquee-item">University of the Punjab</a>
+      <a href="blogs.html#uet" class="marquee-item">UET Lahore</a>
+      <a href="blogs.html#garrison" class="marquee-item">Lahore Garrison University</a>
+      <a href="blogs.html#usa" class="marquee-item">University of South Asia</a>
+      <a href="blogs.html#ucp" class="marquee-item">University of Central Punjab</a>
+      <a href="blogs.html#lums" class="marquee-item">LUMS</a>
+      <a href="blogs.html#fast" class="marquee-item">FAST-NUCES</a>
+      <a href="blogs.html#comsats" class="marquee-item">COMSATS Islamabad</a>
+      <a href="blogs.html#pu" class="marquee-item">University of the Punjab</a>
+      <a href="blogs.html#uet" class="marquee-item">UET Lahore</a>
+      <a href="blogs.html#garrison" class="marquee-item">Lahore Garrison University</a>
+      <a href="blogs.html#usa" class="marquee-item">University of South Asia</a>
+      <a href="blogs.html#ucp" class="marquee-item">University of Central Punjab</a>
+      <a href="blogs.html#lums" class="marquee-item">LUMS</a>
     </div>
-    <div style="text-align:center; margin-top:40px;">
-      <a href="blogs.html" class="btn-outline">View All University Sessions</a>
-    </div>
+  </div>
+  <div class="container" style="text-align:center; margin-top:40px;">
+    <a href="blogs.html" class="btn btn-outline-gold">View All University Sessions</a>
   </div>
 </section>
 
 <!-- BOOKS -->
-<section class="books-section" id="books">
-  <div class="books-section-header reveal from-bottom">
-    <div>
-      <span class="section-tag">Published Works</span>
-      <h2 class="section-heading">BOOKS &amp;<br/><span>PUBLICATIONS</span></h2>
-    </div>
-    <a href="#" class="btn-outline">Explore All Books</a>
+<section id="books">
+  <div class="container section-header animate-on-scroll">
+    <span class="section-label">Published Works</span>
+    <h2>Books &amp; Publications</h2>
   </div>
-  <!-- Infinite scrolling carousel -->
   <div class="carousel-outer">
-    <div class="carousel-track" id="books-track">
-      <!-- Set 1 -->
-      <div class="book-card">
-        <div class="book-cover" style="background:linear-gradient(135deg,#1B4332 0%,#0a2318 100%);">
-          <div class="book-cover-title">THE SCIENCE OF CREATION</div><div class="book-cover-author">SOBAN ATTARI</div>
-        </div>
-        <div class="book-info"><div class="book-category">Science &amp; Islam</div><div class="book-title">The Science of Creation</div></div>
-      </div>
-      <div class="book-card">
-        <div class="book-cover" style="background:linear-gradient(135deg,#5C3A00 0%,#2d1a00 100%);">
-          <div class="book-cover-title">CONSCIOUS PARENTING</div><div class="book-cover-author">SOBAN ATTARI</div>
-        </div>
-        <div class="book-info"><div class="book-category">Parenting</div><div class="book-title">Conscious Parenting in Islam</div></div>
-      </div>
-      <div class="book-card">
-        <div class="book-cover" style="background:linear-gradient(135deg,#1a2040 0%,#0a0f20 100%);">
-          <div class="book-cover-title">THE SPIRITUAL PATH</div><div class="book-cover-author">SOBAN ATTARI</div>
-        </div>
-        <div class="book-info"><div class="book-category">Spirituality</div><div class="book-title">The Spiritual Path</div></div>
-      </div>
-      <div class="book-card">
-        <div class="book-cover" style="background:linear-gradient(135deg,#3D1A00 0%,#1a0a00 100%);">
-          <div class="book-cover-title">LIFE: A DEEPER LOOK</div><div class="book-cover-author">SOBAN ATTARI</div>
-        </div>
-        <div class="book-info"><div class="book-category">Life</div><div class="book-title">Life: A Deeper Look</div></div>
-      </div>
-      <div class="book-card">
-        <div class="book-cover" style="background:linear-gradient(135deg,#2A1A3D 0%,#110a1a 100%);">
-          <div class="book-cover-title">PSYCHOLOGY OF THE SOUL</div><div class="book-cover-author">SOBAN ATTARI</div>
-        </div>
-        <div class="book-info"><div class="book-category">Psychology</div><div class="book-title">Psychology of the Soul</div></div>
-      </div>
-      <div class="book-card">
-        <div class="book-cover" style="background:linear-gradient(135deg,#002B2B 0%,#001515 100%);">
-          <div class="book-cover-title">RAISING BELIEVERS</div><div class="book-cover-author">SOBAN ATTARI</div>
-        </div>
-        <div class="book-info"><div class="book-category">Family</div><div class="book-title">Raising Believers</div></div>
-      </div>
-      <div class="book-card">
-        <div class="book-cover" style="background:linear-gradient(135deg,#1f1a00 0%,#0f0d00 100%);">
-          <div class="book-cover-title">FAITH &amp; REASON</div><div class="book-cover-author">SOBAN ATTARI</div>
-        </div>
-        <div class="book-info"><div class="book-category">Islamic Thought</div><div class="book-title">Faith &amp; Reason</div></div>
-      </div>
-      <div class="book-card">
-        <div class="book-cover" style="background:linear-gradient(135deg,#1a0a1a 0%,#0d0008 100%);">
-          <div class="book-cover-title">THE MODERN MUSLIM</div><div class="book-cover-author">SOBAN ATTARI</div>
-        </div>
-        <div class="book-info"><div class="book-category">Life Skills</div><div class="book-title">The Modern Muslim</div></div>
-      </div>
-      <!-- Set 2 (duplicate for seamless loop) -->
-      <div class="book-card">
-        <div class="book-cover" style="background:linear-gradient(135deg,#1B4332 0%,#0a2318 100%);">
-          <div class="book-cover-title">THE SCIENCE OF CREATION</div><div class="book-cover-author">SOBAN ATTARI</div>
-        </div>
-        <div class="book-info"><div class="book-category">Science &amp; Islam</div><div class="book-title">The Science of Creation</div></div>
-      </div>
-      <div class="book-card">
-        <div class="book-cover" style="background:linear-gradient(135deg,#5C3A00 0%,#2d1a00 100%);">
-          <div class="book-cover-title">CONSCIOUS PARENTING</div><div class="book-cover-author">SOBAN ATTARI</div>
-        </div>
-        <div class="book-info"><div class="book-category">Parenting</div><div class="book-title">Conscious Parenting in Islam</div></div>
-      </div>
-      <div class="book-card">
-        <div class="book-cover" style="background:linear-gradient(135deg,#1a2040 0%,#0a0f20 100%);">
-          <div class="book-cover-title">THE SPIRITUAL PATH</div><div class="book-cover-author">SOBAN ATTARI</div>
-        </div>
-        <div class="book-info"><div class="book-category">Spirituality</div><div class="book-title">The Spiritual Path</div></div>
-      </div>
-      <div class="book-card">
-        <div class="book-cover" style="background:linear-gradient(135deg,#3D1A00 0%,#1a0a00 100%);">
-          <div class="book-cover-title">LIFE: A DEEPER LOOK</div><div class="book-cover-author">SOBAN ATTARI</div>
-        </div>
-        <div class="book-info"><div class="book-category">Life</div><div class="book-title">Life: A Deeper Look</div></div>
-      </div>
-      <div class="book-card">
-        <div class="book-cover" style="background:linear-gradient(135deg,#2A1A3D 0%,#110a1a 100%);">
-          <div class="book-cover-title">PSYCHOLOGY OF THE SOUL</div><div class="book-cover-author">SOBAN ATTARI</div>
-        </div>
-        <div class="book-info"><div class="book-category">Psychology</div><div class="book-title">Psychology of the Soul</div></div>
-      </div>
-      <div class="book-card">
-        <div class="book-cover" style="background:linear-gradient(135deg,#002B2B 0%,#001515 100%);">
-          <div class="book-cover-title">RAISING BELIEVERS</div><div class="book-cover-author">SOBAN ATTARI</div>
-        </div>
-        <div class="book-info"><div class="book-category">Family</div><div class="book-title">Raising Believers</div></div>
-      </div>
-      <div class="book-card">
-        <div class="book-cover" style="background:linear-gradient(135deg,#1f1a00 0%,#0f0d00 100%);">
-          <div class="book-cover-title">FAITH &amp; REASON</div><div class="book-cover-author">SOBAN ATTARI</div>
-        </div>
-        <div class="book-info"><div class="book-category">Islamic Thought</div><div class="book-title">Faith &amp; Reason</div></div>
-      </div>
-      <div class="book-card">
-        <div class="book-cover" style="background:linear-gradient(135deg,#1a0a1a 0%,#0d0008 100%);">
-          <div class="book-cover-title">THE MODERN MUSLIM</div><div class="book-cover-author">SOBAN ATTARI</div>
-        </div>
-        <div class="book-info"><div class="book-category">Life Skills</div><div class="book-title">The Modern Muslim</div></div>
-      </div>
+    <div class="carousel-track">
+      <div class="book-card"><div class="book-cover" style="background:linear-gradient(135deg,#1B4332,#0a2318);"><div class="book-cover-title">THE SCIENCE OF CREATION</div><div class="book-cover-author">SOBAN ATTARI</div></div><div class="book-card-body"><span class="book-card-tag">Science &amp; Islam</span><h4>The Science of Creation</h4></div></div>
+      <div class="book-card"><div class="book-cover" style="background:linear-gradient(135deg,#5C3A00,#2d1a00);"><div class="book-cover-title">CONSCIOUS PARENTING</div><div class="book-cover-author">SOBAN ATTARI</div></div><div class="book-card-body"><span class="book-card-tag">Parenting</span><h4>Conscious Parenting in Islam</h4></div></div>
+      <div class="book-card"><div class="book-cover" style="background:linear-gradient(135deg,#1a2040,#0a0f20);"><div class="book-cover-title">THE SPIRITUAL PATH</div><div class="book-cover-author">SOBAN ATTARI</div></div><div class="book-card-body"><span class="book-card-tag">Spirituality</span><h4>The Spiritual Path</h4></div></div>
+      <div class="book-card"><div class="book-cover" style="background:linear-gradient(135deg,#3D1A00,#1a0a00);"><div class="book-cover-title">LIFE: A DEEPER LOOK</div><div class="book-cover-author">SOBAN ATTARI</div></div><div class="book-card-body"><span class="book-card-tag">Life</span><h4>Life: A Deeper Look</h4></div></div>
+      <div class="book-card"><div class="book-cover" style="background:linear-gradient(135deg,#2A1A3D,#110a1a);"><div class="book-cover-title">PSYCHOLOGY OF THE SOUL</div><div class="book-cover-author">SOBAN ATTARI</div></div><div class="book-card-body"><span class="book-card-tag">Psychology</span><h4>Psychology of the Soul</h4></div></div>
+      <div class="book-card"><div class="book-cover" style="background:linear-gradient(135deg,#002B2B,#001515);"><div class="book-cover-title">RAISING BELIEVERS</div><div class="book-cover-author">SOBAN ATTARI</div></div><div class="book-card-body"><span class="book-card-tag">Family</span><h4>Raising Believers</h4></div></div>
+      <div class="book-card"><div class="book-cover" style="background:linear-gradient(135deg,#1f1a00,#0f0d00);"><div class="book-cover-title">FAITH &amp; REASON</div><div class="book-cover-author">SOBAN ATTARI</div></div><div class="book-card-body"><span class="book-card-tag">Islamic Thought</span><h4>Faith &amp; Reason</h4></div></div>
+      <div class="book-card"><div class="book-cover" style="background:linear-gradient(135deg,#1a0a1a,#0d0008);"><div class="book-cover-title">THE MODERN MUSLIM</div><div class="book-cover-author">SOBAN ATTARI</div></div><div class="book-card-body"><span class="book-card-tag">Life Skills</span><h4>The Modern Muslim</h4></div></div>
+      <div class="book-card"><div class="book-cover" style="background:linear-gradient(135deg,#1B4332,#0a2318);"><div class="book-cover-title">THE SCIENCE OF CREATION</div><div class="book-cover-author">SOBAN ATTARI</div></div><div class="book-card-body"><span class="book-card-tag">Science &amp; Islam</span><h4>The Science of Creation</h4></div></div>
+      <div class="book-card"><div class="book-cover" style="background:linear-gradient(135deg,#5C3A00,#2d1a00);"><div class="book-cover-title">CONSCIOUS PARENTING</div><div class="book-cover-author">SOBAN ATTARI</div></div><div class="book-card-body"><span class="book-card-tag">Parenting</span><h4>Conscious Parenting in Islam</h4></div></div>
+      <div class="book-card"><div class="book-cover" style="background:linear-gradient(135deg,#1a2040,#0a0f20);"><div class="book-cover-title">THE SPIRITUAL PATH</div><div class="book-cover-author">SOBAN ATTARI</div></div><div class="book-card-body"><span class="book-card-tag">Spirituality</span><h4>The Spiritual Path</h4></div></div>
+      <div class="book-card"><div class="book-cover" style="background:linear-gradient(135deg,#3D1A00,#1a0a00);"><div class="book-cover-title">LIFE: A DEEPER LOOK</div><div class="book-cover-author">SOBAN ATTARI</div></div><div class="book-card-body"><span class="book-card-tag">Life</span><h4>Life: A Deeper Look</h4></div></div>
+      <div class="book-card"><div class="book-cover" style="background:linear-gradient(135deg,#2A1A3D,#110a1a);"><div class="book-cover-title">PSYCHOLOGY OF THE SOUL</div><div class="book-cover-author">SOBAN ATTARI</div></div><div class="book-card-body"><span class="book-card-tag">Psychology</span><h4>Psychology of the Soul</h4></div></div>
+      <div class="book-card"><div class="book-cover" style="background:linear-gradient(135deg,#002B2B,#001515);"><div class="book-cover-title">RAISING BELIEVERS</div><div class="book-cover-author">SOBAN ATTARI</div></div><div class="book-card-body"><span class="book-card-tag">Family</span><h4>Raising Believers</h4></div></div>
+      <div class="book-card"><div class="book-cover" style="background:linear-gradient(135deg,#1f1a00,#0f0d00);"><div class="book-cover-title">FAITH &amp; REASON</div><div class="book-cover-author">SOBAN ATTARI</div></div><div class="book-card-body"><span class="book-card-tag">Islamic Thought</span><h4>Faith &amp; Reason</h4></div></div>
+      <div class="book-card"><div class="book-cover" style="background:linear-gradient(135deg,#1a0a1a,#0d0008);"><div class="book-cover-title">THE MODERN MUSLIM</div><div class="book-cover-author">SOBAN ATTARI</div></div><div class="book-card-body"><span class="book-card-tag">Life Skills</span><h4>The Modern Muslim</h4></div></div>
     </div>
   </div>
 </section>
 
 <!-- COURSES -->
-<section class="courses-section" id="courses">
-  <div class="courses-section-header reveal from-bottom">
-    <span class="section-tag">Online Learning</span>
-    <h2 class="section-heading">TRANSFORM WITH<br/><span>KNOWLEDGE</span></h2>
-    <p class="section-sub">Structured online courses that bring together Islamic wisdom and modern insights, built for individuals, families, and institutions.</p>
+<section id="courses">
+  <div class="container section-header animate-on-scroll">
+    <span class="section-label">Online Learning</span>
+    <h2>Transform With Knowledge</h2>
+    <p class="section-intro">Structured online courses that bring together Islamic wisdom and modern insights, built for individuals, families, and institutions.</p>
   </div>
-  <!-- Infinite scrolling carousel -->
-  <div class="course-carousel-outer">
-    <div class="carousel-track carousel-track-courses">
-      <!-- Set 1 -->
-      <div class="course-card">
-        <div class="course-card-accent"></div>
-        <div class="course-num">01</div>
-        <div class="course-tag">Parenting</div>
-        <div class="course-title">PARENTING MASTERY IN ISLAM</div>
-        <p class="course-desc">A comprehensive guide to raising confident, spiritually grounded children through proven Islamic principles and modern child psychology.</p>
-        <div class="course-meta"><span>8 Weeks</span><span>·</span><span>Video + Live</span><span>·</span><span>All Levels</span></div>
-        <a href="#book-session" class="course-enroll">Enroll Now →</a>
-      </div>
-      <div class="course-card">
-        <div class="course-card-accent"></div>
-        <div class="course-num">02</div>
-        <div class="course-tag">Life Skills</div>
-        <div class="course-title">LIFE SKILLS FOR MODERN MUSLIMS</div>
-        <p class="course-desc">Practical tools for productivity, emotional intelligence, relationships, and purpose, all grounded in an Islamic worldview.</p>
-        <div class="course-meta"><span>6 Weeks</span><span>·</span><span>Video</span><span>·</span><span>Beginner</span></div>
-        <a href="#book-session" class="course-enroll">Enroll Now →</a>
-      </div>
-      <div class="course-card">
-        <div class="course-card-accent"></div>
-        <div class="course-num">03</div>
-        <div class="course-tag">Psychology</div>
-        <div class="course-title">ISLAMIC PSYCHOLOGY &amp; HUMAN BEHAVIOR</div>
-        <p class="course-desc">Understanding the human psyche through both Islamic classical wisdom and contemporary behavioral science.</p>
-        <div class="course-meta"><span>10 Weeks</span><span>·</span><span>Hybrid</span><span>·</span><span>Intermediate</span></div>
-        <a href="#book-session" class="course-enroll">Enroll Now →</a>
-      </div>
-      <div class="course-card">
-        <div class="course-card-accent"></div>
-        <div class="course-num">04</div>
-        <div class="course-tag">Spirituality</div>
-        <div class="course-title">SPIRITUAL GROWTH &amp; INNER STRENGTH</div>
-        <p class="course-desc">A transformative journey of self-purification, Dhikr, and building a deep, personal connection with Allah.</p>
-        <div class="course-meta"><span>12 Weeks</span><span>·</span><span>Video + Live</span><span>·</span><span>All Levels</span></div>
-        <a href="#book-session" class="course-enroll">Enroll Now →</a>
-      </div>
-      <div class="course-card">
-        <div class="course-card-accent"></div>
-        <div class="course-num">05</div>
-        <div class="course-tag">Science &amp; Faith</div>
-        <div class="course-title">UNDERSTANDING FAITH IN THE AGE OF SCIENCE</div>
-        <p class="course-desc">Bridging modern scientific discoveries with Quranic wisdom to build unshakeable faith through knowledge.</p>
-        <div class="course-meta"><span>8 Weeks</span><span>·</span><span>Video</span><span>·</span><span>All Levels</span></div>
-        <a href="#book-session" class="course-enroll">Enroll Now →</a>
-      </div>
-      <div class="course-card">
-        <div class="course-card-accent"></div>
-        <div class="course-num">06</div>
-        <div class="course-tag">Youth</div>
-        <div class="course-title">YOUTH CHARACTER &amp; IDENTITY BUILDING</div>
-        <p class="course-desc">Equipping the next generation with Islamic identity, moral clarity, and the resilience to thrive in a complex world.</p>
-        <div class="course-meta"><span>6 Weeks</span><span>·</span><span>Live Sessions</span><span>·</span><span>Youth</span></div>
-        <a href="#book-session" class="course-enroll">Enroll Now →</a>
-      </div>
-      <!-- Set 2 (duplicate for seamless loop) -->
-      <div class="course-card">
-        <div class="course-card-accent"></div>
-        <div class="course-num">01</div>
-        <div class="course-tag">Parenting</div>
-        <div class="course-title">PARENTING MASTERY IN ISLAM</div>
-        <p class="course-desc">A comprehensive guide to raising confident, spiritually grounded children through proven Islamic principles and modern child psychology.</p>
-        <div class="course-meta"><span>8 Weeks</span><span>·</span><span>Video + Live</span><span>·</span><span>All Levels</span></div>
-        <a href="#book-session" class="course-enroll">Enroll Now →</a>
-      </div>
-      <div class="course-card">
-        <div class="course-card-accent"></div>
-        <div class="course-num">02</div>
-        <div class="course-tag">Life Skills</div>
-        <div class="course-title">LIFE SKILLS FOR MODERN MUSLIMS</div>
-        <p class="course-desc">Practical tools for productivity, emotional intelligence, relationships, and purpose, all grounded in an Islamic worldview.</p>
-        <div class="course-meta"><span>6 Weeks</span><span>·</span><span>Video</span><span>·</span><span>Beginner</span></div>
-        <a href="#book-session" class="course-enroll">Enroll Now →</a>
-      </div>
-      <div class="course-card">
-        <div class="course-card-accent"></div>
-        <div class="course-num">03</div>
-        <div class="course-tag">Psychology</div>
-        <div class="course-title">ISLAMIC PSYCHOLOGY &amp; HUMAN BEHAVIOR</div>
-        <p class="course-desc">Understanding the human psyche through both Islamic classical wisdom and contemporary behavioral science.</p>
-        <div class="course-meta"><span>10 Weeks</span><span>·</span><span>Hybrid</span><span>·</span><span>Intermediate</span></div>
-        <a href="#book-session" class="course-enroll">Enroll Now →</a>
-      </div>
-      <div class="course-card">
-        <div class="course-card-accent"></div>
-        <div class="course-num">04</div>
-        <div class="course-tag">Spirituality</div>
-        <div class="course-title">SPIRITUAL GROWTH &amp; INNER STRENGTH</div>
-        <p class="course-desc">A transformative journey of self-purification, Dhikr, and building a deep, personal connection with Allah.</p>
-        <div class="course-meta"><span>12 Weeks</span><span>·</span><span>Video + Live</span><span>·</span><span>All Levels</span></div>
-        <a href="#book-session" class="course-enroll">Enroll Now →</a>
-      </div>
-      <div class="course-card">
-        <div class="course-card-accent"></div>
-        <div class="course-num">05</div>
-        <div class="course-tag">Science &amp; Faith</div>
-        <div class="course-title">UNDERSTANDING FAITH IN THE AGE OF SCIENCE</div>
-        <p class="course-desc">Bridging modern scientific discoveries with Quranic wisdom to build unshakeable faith through knowledge.</p>
-        <div class="course-meta"><span>8 Weeks</span><span>·</span><span>Video</span><span>·</span><span>All Levels</span></div>
-        <a href="#book-session" class="course-enroll">Enroll Now →</a>
-      </div>
-      <div class="course-card">
-        <div class="course-card-accent"></div>
-        <div class="course-num">06</div>
-        <div class="course-tag">Youth</div>
-        <div class="course-title">YOUTH CHARACTER &amp; IDENTITY BUILDING</div>
-        <p class="course-desc">Equipping the next generation with Islamic identity, moral clarity, and the resilience to thrive in a complex world.</p>
-        <div class="course-meta"><span>6 Weeks</span><span>·</span><span>Live Sessions</span><span>·</span><span>Youth</span></div>
-        <a href="#book-session" class="course-enroll">Enroll Now →</a>
-      </div>
+  <div class="carousel-outer">
+    <div class="carousel-track slow">
+      <div class="course-card"><div class="course-card-number">01</div><span class="course-card-tag">Parenting</span><h3>Parenting Mastery in Islam</h3><p>A comprehensive guide to raising confident, spiritually grounded children through proven Islamic principles and modern child psychology.</p><div class="course-tags"><span class="course-tag">8 Weeks</span><span class="course-tag">Video + Live</span><span class="course-tag">All Levels</span></div><a href="#book-session" class="course-enroll">Enroll Now →</a></div>
+      <div class="course-card"><div class="course-card-number">02</div><span class="course-card-tag">Life Skills</span><h3>Life Skills for Modern Muslims</h3><p>Practical tools for productivity, emotional intelligence, relationships, and purpose, all grounded in an Islamic worldview.</p><div class="course-tags"><span class="course-tag">6 Weeks</span><span class="course-tag">Video</span><span class="course-tag">Beginner</span></div><a href="#book-session" class="course-enroll">Enroll Now →</a></div>
+      <div class="course-card"><div class="course-card-number">03</div><span class="course-card-tag">Psychology</span><h3>Islamic Psychology &amp; Human Behavior</h3><p>Understanding the human psyche through both Islamic classical wisdom and contemporary behavioral science.</p><div class="course-tags"><span class="course-tag">10 Weeks</span><span class="course-tag">Hybrid</span><span class="course-tag">Intermediate</span></div><a href="#book-session" class="course-enroll">Enroll Now →</a></div>
+      <div class="course-card"><div class="course-card-number">04</div><span class="course-card-tag">Spirituality</span><h3>Spiritual Growth &amp; Inner Strength</h3><p>A transformative journey of self-purification, Dhikr, and building a deep, personal connection with Allah.</p><div class="course-tags"><span class="course-tag">12 Weeks</span><span class="course-tag">Video + Live</span><span class="course-tag">All Levels</span></div><a href="#book-session" class="course-enroll">Enroll Now →</a></div>
+      <div class="course-card"><div class="course-card-number">05</div><span class="course-card-tag">Science &amp; Faith</span><h3>Understanding Faith in the Age of Science</h3><p>Bridging modern scientific discoveries with Quranic wisdom to build unshakeable faith through knowledge.</p><div class="course-tags"><span class="course-tag">8 Weeks</span><span class="course-tag">Video</span><span class="course-tag">All Levels</span></div><a href="#book-session" class="course-enroll">Enroll Now →</a></div>
+      <div class="course-card"><div class="course-card-number">06</div><span class="course-card-tag">Youth</span><h3>Youth Character &amp; Identity Building</h3><p>Equipping the next generation with Islamic identity, moral clarity, and the resilience to thrive in a complex world.</p><div class="course-tags"><span class="course-tag">6 Weeks</span><span class="course-tag">Live Sessions</span><span class="course-tag">Youth</span></div><a href="#book-session" class="course-enroll">Enroll Now →</a></div>
+      <div class="course-card"><div class="course-card-number">01</div><span class="course-card-tag">Parenting</span><h3>Parenting Mastery in Islam</h3><p>A comprehensive guide to raising confident, spiritually grounded children through proven Islamic principles and modern child psychology.</p><div class="course-tags"><span class="course-tag">8 Weeks</span><span class="course-tag">Video + Live</span><span class="course-tag">All Levels</span></div><a href="#book-session" class="course-enroll">Enroll Now →</a></div>
+      <div class="course-card"><div class="course-card-number">02</div><span class="course-card-tag">Life Skills</span><h3>Life Skills for Modern Muslims</h3><p>Practical tools for productivity, emotional intelligence, relationships, and purpose, all grounded in an Islamic worldview.</p><div class="course-tags"><span class="course-tag">6 Weeks</span><span class="course-tag">Video</span><span class="course-tag">Beginner</span></div><a href="#book-session" class="course-enroll">Enroll Now →</a></div>
+      <div class="course-card"><div class="course-card-number">03</div><span class="course-card-tag">Psychology</span><h3>Islamic Psychology &amp; Human Behavior</h3><p>Understanding the human psyche through both Islamic classical wisdom and contemporary behavioral science.</p><div class="course-tags"><span class="course-tag">10 Weeks</span><span class="course-tag">Hybrid</span><span class="course-tag">Intermediate</span></div><a href="#book-session" class="course-enroll">Enroll Now →</a></div>
+      <div class="course-card"><div class="course-card-number">04</div><span class="course-card-tag">Spirituality</span><h3>Spiritual Growth &amp; Inner Strength</h3><p>A transformative journey of self-purification, Dhikr, and building a deep, personal connection with Allah.</p><div class="course-tags"><span class="course-tag">12 Weeks</span><span class="course-tag">Video + Live</span><span class="course-tag">All Levels</span></div><a href="#book-session" class="course-enroll">Enroll Now →</a></div>
+      <div class="course-card"><div class="course-card-number">05</div><span class="course-card-tag">Science &amp; Faith</span><h3>Understanding Faith in the Age of Science</h3><p>Bridging modern scientific discoveries with Quranic wisdom to build unshakeable faith through knowledge.</p><div class="course-tags"><span class="course-tag">8 Weeks</span><span class="course-tag">Video</span><span class="course-tag">All Levels</span></div><a href="#book-session" class="course-enroll">Enroll Now →</a></div>
+      <div class="course-card"><div class="course-card-number">06</div><span class="course-card-tag">Youth</span><h3>Youth Character &amp; Identity Building</h3><p>Equipping the next generation with Islamic identity, moral clarity, and the resilience to thrive in a complex world.</p><div class="course-tags"><span class="course-tag">6 Weeks</span><span class="course-tag">Live Sessions</span><span class="course-tag">Youth</span></div><a href="#book-session" class="course-enroll">Enroll Now →</a></div>
     </div>
   </div>
-  <div class="courses-section-footer">
-    <a href="#book-session" class="btn-primary">View All Courses</a>
+  <div class="container" style="text-align:center; margin-top:40px;">
+    <a href="#book-session" class="btn btn-outline-gold">View All Courses</a>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="testimonials-section">
-  <div class="testimonials-header reveal from-bottom">
-    <span class="section-tag" style="display:block; text-align:center;">What People Say</span>
-    <h2 class="section-heading" style="text-align:center;">WORDS OF THOSE<br/><span>HE HAS TOUCHED</span></h2>
-    <p class="section-sub" style="text-align:center; max-width:600px; margin:16px auto 0;">Thousands of lives transformed through lectures, books, courses, and personal guidance grounded in faith and wisdom.</p>
+<section id="testimonials">
+  <div class="container section-header centered animate-on-scroll">
+    <span class="section-label">What People Say</span>
+    <h2>Words of Those He Has Touched</h2>
+    <p class="section-intro" style="text-align:center;">Thousands of lives transformed through lectures, books, courses, and personal guidance grounded in faith and wisdom.</p>
   </div>
-  <div class="testimonials-grid reveal-stagger">
+  <div class="container grid-3 stagger animate-on-scroll">
     <div class="testimonial-card">
-      <div class="testimonial-quote-mark">"</div>
-      <div class="testimonial-stars">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFC40C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFC40C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFC40C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFC40C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFC40C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      </div>
-      <p class="testimonial-text">"Soban Attari's lecture on parenting completely changed how I approach raising my children. He doesn't just quote scripture, he connects it to real psychology and modern challenges. My family is more united than ever."</p>
-      <div class="testimonial-divider"></div>
-      <div class="testimonial-name">Dr. Zainab Mirza</div>
+      <div class="testimonial-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <p class="testimonial-quote">"Soban Attari's lecture on parenting completely changed how I approach raising my children. He doesn't just quote scripture, he connects it to real psychology and modern challenges. My family is more united than ever."</p>
+      <div class="testimonial-author">Dr. Zainab Mirza</div>
       <div class="testimonial-role">Child Psychologist · Karachi</div>
     </div>
     <div class="testimonial-card">
-      <div class="testimonial-quote-mark">"</div>
-      <div class="testimonial-stars">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFC40C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFC40C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFC40C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFC40C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFC40C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      </div>
-      <p class="testimonial-text">"As a university student struggling with identity, attending his Youth Talk was a turning point. He speaks our language. He understands science, technology, and doubt, and still brings you back to Allah with clarity and peace."</p>
-      <div class="testimonial-divider"></div>
-      <div class="testimonial-name">Ahmed Farooq</div>
+      <div class="testimonial-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <p class="testimonial-quote">"As a university student struggling with identity, attending his Youth Talk was a turning point. He speaks our language. He understands science, technology, and doubt, and still brings you back to Allah with clarity and peace."</p>
+      <div class="testimonial-author">Ahmed Farooq</div>
       <div class="testimonial-role">Engineering Student · Lahore</div>
     </div>
     <div class="testimonial-card">
-      <div class="testimonial-quote-mark">"</div>
-      <div class="testimonial-stars">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFC40C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFC40C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFC40C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFC40C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFC40C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      </div>
-      <p class="testimonial-text">"We invited him for an institutional seminar at our school. The impact was immediate and visible. Students were engaged, teachers were moved, and the conversations about faith and science continued for weeks after."</p>
-      <div class="testimonial-divider"></div>
-      <div class="testimonial-name">Principal Fatima Qureshi</div>
+      <div class="testimonial-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <p class="testimonial-quote">"We invited him for an institutional seminar at our school. The impact was immediate and visible. Students were engaged, teachers were moved, and the conversations about faith and science continued for weeks after."</p>
+      <div class="testimonial-author">Principal Fatima Qureshi</div>
       <div class="testimonial-role">School Principal · Islamabad</div>
     </div>
   </div>
 </section>
 
-<!-- FEATURED QUOTE -->
-<section style="background:#FFC40C; padding:80px 6vw; text-align:center;">
-  <div class="reveal from-scale" style="max-width:900px; margin:0 auto;">
-    <div style="font-family:'Bebas Neue',sans-serif; font-size:80px; line-height:1; color:rgba(0,0,0,0.15); margin-bottom:-20px;">"</div>
-    <blockquote style="font-family:'Roboto Slab',serif; font-size:clamp(20px,2.5vw,28px); font-weight:400; line-height:1.5; color:#0d0d0d; margin-bottom:32px;">
-      Knowledge without action is like a tree without fruit. Islam calls us to not merely understand, but to embody, to live, and to transform the world around us.
-    </blockquote>
-    <div style="font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:0.1em; color:#0d0d0d; opacity:0.7;">SOBAN ATTARI</div>
-  </div>
-</section>
-
 <!-- BOOKING -->
-<section id="book-session" class="booking-section">
-
-  <!-- Section Header -->
-  <div class="booking-header">
-    <span class="booking-label">E-Meeting</span>
-    <h2>Book Your <strong>Session</strong></h2>
-    <p>
-      Choose a time that works for you. Payment is collected securely
-      at booking via Stripe. Sessions available online and in-person.
-    </p>
-  </div>
-
-  <!-- Session Type Cards (visual only — clicking scrolls to embed) -->
-  <div class="session-cards">
-
-    <div class="session-card">
-      <h3>1:1 Private Session</h3>
-      <p>Personal guidance on faith, family, life decisions, or modern challenges.</p>
-      <span class="session-duration">30 min / 60 min</span>
-      <a href="#my-cal-inline" class="card-cta">Book Now</a>
+<section id="book-session" class="section-dark">
+  <div class="container">
+    <div class="booking-header animate-on-scroll">
+      <span class="section-label">E-Meeting</span>
+      <h2>Book Your <strong>Session</strong></h2>
+      <p>Choose a time that works for you. Payment is collected securely at booking via Stripe. Sessions available online and in-person.</p>
     </div>
-
-    <div class="session-card">
-      <h3>Group Session</h3>
-      <p>For teams, families, institutes, or communities seeking collective clarity.</p>
-      <span class="session-duration">Custom duration</span>
-      <a href="#my-cal-inline" class="card-cta">Book Now</a>
+    <div class="session-cards animate-on-scroll">
+      <div class="session-card">
+        <h3>1:1 Private Session</h3>
+        <p>Personal guidance on faith, family, life decisions, or modern challenges.</p>
+        <span class="session-duration">30 min / 60 min</span>
+        <a href="#my-cal-inline" class="card-cta">Book Now</a>
+      </div>
+      <div class="session-card">
+        <h3>Group Session</h3>
+        <p>For teams, families, institutes, or communities seeking collective clarity.</p>
+        <span class="session-duration">Custom duration</span>
+        <a href="#my-cal-inline" class="card-cta">Book Now</a>
+      </div>
+      <div class="session-card featured">
+        <h3>Online Seminar</h3>
+        <p>Topic-based online session open to a wider audience. Faith, science &amp; modern life.</p>
+        <span class="session-duration">60–90 min</span>
+        <a href="#my-cal-inline" class="card-cta">Book Now</a>
+      </div>
     </div>
-
-    <div class="session-card featured">
-      <h3>Online Seminar</h3>
-      <p>Topic-based online session open to a wider audience. Faith, science & modern life.</p>
-      <span class="session-duration">60–90 min</span>
-      <a href="#my-cal-inline" class="card-cta">Book Now</a>
+    <!--
+      STRIPE PAYMENT SETUP (done in Cal.com dashboard, not here):
+      1. Go to app.cal.com → Settings → Apps → Stripe → Connect
+      2. Connect Soban's Stripe account (create at stripe.com if not done)
+      3. On each Event Type → Edit → Payments tab → Enable payment → Set price in PKR or USD
+      4. Stripe will collect payment before the booking is confirmed
+      5. Payouts go directly to Soban's connected bank account via Stripe
+    -->
+    <div class="cal-embed-wrapper">
+      <div id="my-cal-inline"></div>
     </div>
-
   </div>
-
-  <!--
-    STRIPE PAYMENT SETUP (done in Cal.com dashboard, not here):
-    1. Go to app.cal.com → Settings → Apps → Stripe → Connect
-    2. Connect Soban's Stripe account (create at stripe.com if not done)
-    3. On each Event Type → Edit → Payments tab → Enable payment → Set price in PKR or USD
-    4. Stripe will collect payment before the booking is confirmed
-    5. Payouts go directly to Soban's connected bank account via Stripe
-  -->
-
-  <!-- Cal.com Inline Embed -->
-  <div class="cal-embed-wrapper">
-    <div id="my-cal-inline"></div>
-  </div>
-
 </section>
-
 
 <!-- NATUREON -->
-<section class="natureon-section">
-  <div class="natureon-inner">
-    <div class="reveal from-left">
+<section id="natureon" class="section-dark-2">
+  <div class="container natureon-inner">
+    <div class="animate-on-scroll">
       <div class="natureon-badge">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="#5EBF5E"><path d="M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8m-1 3h2v5h-2zm0 7h2v2h-2z"/></svg>
         Brand Partner
@@ -2471,383 +468,122 @@
       <div class="natureon-logo-text">NATURE<span>ON</span></div>
       <div class="natureon-tagline">Healthcare &amp; Supplements</div>
       <p class="natureon-desc">NatureOn is Soban Attari's trusted line of natural health supplements, crafted to support your mind, body, and spirit. Inspired by the wisdom of nature and the guidance of authentic Islamic wellbeing principles.</p>
-      <div style="display:flex; gap:12px; flex-wrap:wrap;">
-        <a href="https://www.natureonhealthcare.com/" target="_blank" rel="noopener" class="btn-green">
-          Visit NatureOn
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </a>
-      </div>
+      <a href="https://www.natureonhealthcare.com/" target="_blank" rel="noopener" class="btn-green">
+        Visit NatureOn
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
     </div>
-    <div class="reveal from-right">
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px;">
-        <div style="background:#161616; padding:40px 32px; border-top:2px solid rgba(94,191,94,0.25); text-align:center;">
-          <div style="font-family:'Bebas Neue',sans-serif; font-size:40px; line-height:1; color:#5EBF5E; letter-spacing:0.02em;">100%</div>
-          <div style="font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-top:8px;">Natural Ingredients</div>
-        </div>
-        <div style="background:#161616; padding:40px 32px; border-top:2px solid rgba(94,191,94,0.25); text-align:center;">
-          <div style="font-family:'Bebas Neue',sans-serif; font-size:40px; line-height:1; color:#5EBF5E; letter-spacing:0.02em;">Lab</div>
-          <div style="font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-top:8px;">Certified &amp; Tested</div>
-        </div>
-        <div style="background:#161616; padding:40px 32px; border-top:2px solid rgba(94,191,94,0.25); text-align:center;">
-          <div style="font-family:'Bebas Neue',sans-serif; font-size:40px; line-height:1; color:#5EBF5E; letter-spacing:0.02em;">Halal</div>
-          <div style="font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-top:8px;">Certified Products</div>
-        </div>
-        <div style="background:#5EBF5E; padding:40px 32px; text-align:center;">
-          <div style="font-family:'Bebas Neue',sans-serif; font-size:36px; line-height:1; color:#fff; letter-spacing:0.02em; margin-bottom:8px;">NATURE ON</div>
-          <div style="font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.7);">natureonhealthcare.com</div>
-        </div>
+    <div class="animate-on-scroll">
+      <div class="natureon-stats">
+        <div class="natureon-stat"><div class="num">100%</div><div class="lbl">Natural Ingredients</div></div>
+        <div class="natureon-stat"><div class="num">Lab</div><div class="lbl">Certified &amp; Tested</div></div>
+        <div class="natureon-stat"><div class="num">Halal</div><div class="lbl">Certified Products</div></div>
+        <div class="natureon-stat brand"><div class="num">NATURE ON</div><div class="lbl">natureonhealthcare.com</div></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section style="background:#161616; padding:100px 6vw;" id="contact">
-  <div style="max-width:1300px; margin:0 auto;">
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;">
-      <div class="reveal from-left">
-        <span class="section-tag">Get in Touch</span>
-        <h2 class="section-heading">LET'S<br/><span>CONNECT</span></h2>
-        <p class="section-sub">For bookings, inquiries, media requests, or institutional programs, reach out and our team will respond promptly.</p>
-        <div style="margin-top:40px; display:flex; flex-direction:column; gap:20px;">
-          <div style="display:flex; align-items:center; gap:16px;">
-            <div style="width:44px; height:44px; background:#FFC40C; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0d0d0d" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </div>
-            <div>
-              <div style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:4px;">Email</div>
-              <a href="mailto:team@sobanattari.com" style="font-size:15px; color:#fff; text-decoration:none;">team@sobanattari.com</a>
-            </div>
-          </div>
-          <div style="display:flex; align-items:center; gap:16px;">
-            <div style="width:44px; height:44px; background:#FFC40C; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="#0d0d0d"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            </div>
-            <div>
-              <div style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:4px;">Phone &amp; WhatsApp</div>
-              <a href="https://wa.me/923244008906" target="_blank" rel="noopener" style="font-size:15px; color:#fff; text-decoration:none;">+92 324 4008906</a>
-            </div>
-          </div>
-          <div style="display:flex; align-items:center; gap:16px;">
-            <div style="width:44px; height:44px; background:#FFC40C; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0d0d0d" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <div>
-              <div style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:4px;">Location</div>
-              <div style="font-size:15px; color:#fff;">Lahore, Punjab, Pakistan</div>
-            </div>
-          </div>
-        </div>
+<section id="contact">
+  <div class="container contact-grid">
+    <div class="contact-info animate-on-scroll">
+      <span class="section-label">Get in Touch</span>
+      <h2>Let's Connect</h2>
+      <p>For bookings, inquiries, media requests, or institutional programs, reach out and our team will respond promptly.</p>
+      <div class="contact-detail">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+        <span><span class="label">Email</span><a href="mailto:team@sobanattari.com">team@sobanattari.com</a></span>
       </div>
-      <div class="reveal from-right" style="background:#0d0d0d; padding:48px 40px;">
-        <h3 style="font-family:'Bebas Neue',sans-serif; font-size:26px; letter-spacing:0.03em; color:#fff; margin-bottom:28px;">Send a Message</h3>
-        <div class="form-group">
-          <label class="form-label">Your Name</label>
-          <input class="form-input" type="text" placeholder="Full name" />
-        </div>
-        <div class="form-group">
-          <label class="form-label">Email Address</label>
-          <input class="form-input" type="email" placeholder="your@email.com" />
-        </div>
-        <div class="form-group">
-          <label class="form-label">Subject</label>
-          <input class="form-input" type="text" placeholder="How can we help?" />
-        </div>
-        <div class="form-group">
-          <label class="form-label">Message</label>
-          <textarea class="form-input" rows="4" placeholder="Your message..." style="resize:vertical;"></textarea>
-        </div>
-        <button class="btn-primary" style="width:100%; font-size:13px; padding:16px;" type="submit">Send Message</button>
+      <div class="contact-detail">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="#111"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg></span>
+        <span><span class="label">Phone &amp; WhatsApp</span><a href="https://wa.me/923244008906" target="_blank" rel="noopener">+92 324 4008906</a></span>
       </div>
+      <div class="contact-detail">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <span><span class="label">Location</span><span class="val">Lahore, Punjab, Pakistan</span></span>
+      </div>
+    </div>
+    <div class="contact-form animate-on-scroll">
+      <label class="field-label">Your Name</label>
+      <input type="text" placeholder="Full name" />
+      <label class="field-label">Email Address</label>
+      <input type="email" placeholder="your@email.com" />
+      <label class="field-label">Subject</label>
+      <input type="text" placeholder="How can we help?" />
+      <label class="field-label">Message</label>
+      <textarea placeholder="Your message..."></textarea>
+      <button class="btn btn-primary" type="submit" style="width:100%; justify-content:center;">Send Message</button>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-grid reveal-stagger">
-    <div>
-      <img src="brand_assets/Logo_white.png" alt="Soban Attari" style="height:72px; width:auto; display:block; margin-bottom:16px;" />
-      <p class="footer-brand-desc">Soban Attari is a Pakistani speaker who works with the youth on faith, family, and modern life through honest, plain-spoken talks.</p>
-      <div style="display:flex;flex-direction:column;gap:10px;margin:20px 0 16px;font-size:13px;color:rgba(255,255,255,0.55);">
-        <a href="mailto:team@sobanattari.com" style="color:rgba(255,255,255,0.55);text-decoration:none;">team@sobanattari.com</a>
-        <a href="https://wa.me/923244008906" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.55);text-decoration:none;">+92 324 4008906</a>
-        <span>Lahore, Punjab, Pakistan</span>
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="brand_assets/Logo_white.png" alt="Soban Attari" />
+        <p>Soban Attari is a Pakistani speaker who works with the youth on faith, family, and modern life through honest, plain-spoken talks.</p>
+        <div class="footer-contact">
+          <a href="mailto:team@sobanattari.com">team@sobanattari.com</a>
+          <a href="https://wa.me/923244008906" target="_blank" rel="noopener">+92 324 4008906</a>
+          <span>Lahore, Punjab, Pakistan</span>
+        </div>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/sobanattari" target="_blank" rel="noopener" class="footer-social-link" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="https://www.youtube.com/@sobanattari" target="_blank" rel="noopener" class="footer-social-link" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg></a>
+          <a href="https://www.instagram.com/sobanattari" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+          <a href="https://twitter.com/sobanattari" target="_blank" rel="noopener" class="footer-social-link" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.tiktok.com/@sobanattari" target="_blank" rel="noopener" class="footer-social-link" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.3 6.3 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.24 8.24 0 004.84 1.56V6.78a4.85 4.85 0 01-1.07-.09z"/></svg></a>
+          <a href="https://www.linkedin.com/in/sobanattari" target="_blank" rel="noopener" class="footer-social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        </div>
       </div>
-      <div class="footer-social-links">
-        <a href="https://www.facebook.com/sobanattari" target="_blank" rel="noopener" class="footer-social-link" aria-label="Facebook">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        </a>
-        <a href="https://www.youtube.com/@sobanattari" target="_blank" rel="noopener" class="footer-social-link" aria-label="YouTube">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
-        </a>
-        <a href="https://www.instagram.com/sobanattari" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-        </a>
-        <a href="https://twitter.com/sobanattari" target="_blank" rel="noopener" class="footer-social-link" aria-label="X">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        </a>
-        <a href="https://www.tiktok.com/@sobanattari" target="_blank" rel="noopener" class="footer-social-link" aria-label="TikTok">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.3 6.3 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.24 8.24 0 004.84 1.56V6.78a4.85 4.85 0 01-1.07-.09z"/></svg>
-        </a>
-        <a href="https://www.linkedin.com/in/sobanattari" target="_blank" rel="noopener" class="footer-social-link" aria-label="LinkedIn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        </a>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="index.html">Home</a>
+        <a href="biography.html">About</a>
+        <a href="index.html#books">Books</a>
+        <a href="blogs.html">University Sessions</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="#book-session">Book a Session</a>
+      </div>
+      <div class="footer-col">
+        <h4>Talks &amp; Events</h4>
+        <a href="programs/youth-talks.html">Youth Talks</a>
+        <a href="programs/growth-room.html">Growth Room</a>
+        <a href="programs/youth-seminar.html">Youth Seminar</a>
+        <a href="events.html">Community Events</a>
+        <h4 style="margin-top:24px;">Impact Programs</h4>
+        <a href="activities/blood-camp.html">Blood Donation</a>
+        <a href="activities/flood-relief.html">Flood Relief</a>
+        <a href="activities/plantation.html">Plantation Drive</a>
+      </div>
+      <div class="footer-col">
+        <h4>Online Courses</h4>
+        <a href="index.html#courses">Parenting Mastery</a>
+        <a href="index.html#courses">Life Skills for Modern Muslims</a>
+        <a href="index.html#courses">Islamic Psychology</a>
       </div>
     </div>
-    <div>
-      <div class="footer-col-title">Navigation</div>
-      <ul class="footer-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="biography.html">About</a></li>
-        <li><a href="index.html#books">Books</a></li>
-        <li><a href="blogs.html">University Sessions</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-        <li><a href="#book-session">Book a Session</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title">Talks &amp; Events</div>
-      <ul class="footer-links">
-        <li><a href="programs/youth-talks.html">Youth Talks</a></li>
-        <li><a href="programs/growth-room.html">Growth Room</a></li>
-        <li><a href="programs/youth-seminar.html">Youth Seminar</a></li>
-        <li><a href="events.html">Community Events</a></li>
-      </ul>
-      <div class="footer-col-title" style="margin-top:24px;">Impact Programs</div>
-      <ul class="footer-links">
-        <li><a href="activities/blood-camp.html">Blood Donation</a></li>
-        <li><a href="activities/flood-relief.html">Flood Relief</a></li>
-        <li><a href="activities/plantation.html">Plantation Drive</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title">Online Courses</div>
-      <ul class="footer-links">
-        <li><a href="index.html#courses">Parenting Mastery</a></li>
-        <li><a href="index.html#courses">Life Skills for Modern Muslims</a></li>
-        <li><a href="index.html#courses">Islamic Psychology</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="footer-copy">© 2025 <span>Soban Attari</span>. All rights reserved.</div>
-    <div class="footer-copy" style="display:flex; gap:24px;">
-      <a href="#" style="color:rgba(255,255,255,0.25); text-decoration:none; font-size:12px; letter-spacing:0.05em; transition:color 0.2s;" onmouseover="this.style.color='#FFC40C'" onmouseout="this.style.color='rgba(255,255,255,0.25)'">Privacy Policy</a>
-      <a href="#" style="color:rgba(255,255,255,0.25); text-decoration:none; font-size:12px; letter-spacing:0.05em; transition:color 0.2s;" onmouseover="this.style.color='#FFC40C'" onmouseout="this.style.color='rgba(255,255,255,0.25)'">Terms of Service</a>
+    <div class="footer-bottom">
+      <p>© 2025 <span class="gold">Soban Attari</span>. All rights reserved.</p>
+      <div class="legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
     </div>
   </div>
 </footer>
 
-<script>
-  // Mobile menu toggle
-  function toggleMenu() {
-    document.getElementById('mobile-menu').classList.toggle('open');
-  }
-  function closeMenu() {
-    document.getElementById('mobile-menu').classList.remove('open');
-  }
-
-  // Show menu button on mobile
-  function checkMobile() {
-    const btn = document.getElementById('menu-btn');
-    const links = document.getElementById('nav-links');
-    if (window.innerWidth < 900) {
-      btn.style.display = 'block';
-      links.style.display = 'none';
-    } else {
-      btn.style.display = 'none';
-      links.style.display = 'flex';
-      document.getElementById('mobile-menu').classList.remove('open');
-    }
-  }
-  checkMobile();
-  window.addEventListener('resize', checkMobile);
-
-  // Scroll reveal system (.reveal / .reveal-stagger → add .visible when in viewport)
-  const revealObs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => revealObs.observe(el));
-
-  // Card-level fade-in (stat, topic, lecture, book, course, social, gallery)
-  const cardObs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-        cardObs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.stat-card, .topic-card, .lecture-card, .book-card, .course-card, .social-card, .gallery-item').forEach(el => {
-    if (el.closest('.reveal-stagger')) return; // handled by stagger parent
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(24px)';
-    el.style.transition = 'opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1)';
-    cardObs.observe(el);
-  });
-
-  // Dropdown toggle — What We Offer (click-based; no hover)
-  (function () {
-    const toggle = document.querySelector('[data-dropdown="what-we-offer"]');
-    const menu = document.querySelector('[data-dropdown-menu="what-we-offer"]');
-    if (!toggle || !menu) return;
-
-    function closeAllDropdowns() {
-      document.querySelectorAll('[data-dropdown-menu]').forEach(function (m) {
-        m.classList.remove('dropdown-open');
-      });
-      document.querySelectorAll('[data-dropdown]').forEach(function (t) {
-        t.setAttribute('aria-expanded', 'false');
-      });
-    }
-
-    toggle.addEventListener('click', function (e) {
-      e.stopPropagation();
-      const isOpen = menu.classList.contains('dropdown-open');
-      closeAllDropdowns();
-      if (!isOpen) {
-        menu.classList.add('dropdown-open');
-        toggle.setAttribute('aria-expanded', 'true');
-      }
-    });
-
-    // Keyboard support for the span-as-button toggle
-    toggle.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        toggle.click();
-      }
-    });
-
-    document.addEventListener('click', function () {
-      closeAllDropdowns();
-    });
-
-    // Clicks inside the menu shouldn't close via the document handler,
-    // but clicking an actual link inside should still close before nav.
-    menu.addEventListener('click', function (e) {
-      e.stopPropagation();
-    });
-    menu.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        closeAllDropdowns();
-      });
-    });
-  })();
-
-  // Hero cycling headline — fades through a list of one-liners
-  (function() {
-    const lines = [
-      'Numbers That Speak.',
-      'Platforms That Connect.',
-      'Faith That Guides.',
-      'Science That Inspires.',
-      '5,000+ Lectures Delivered.',
-      '3.55 Million Lives Touched.',
-      'Clarity in Every Question.'
-    ];
-    const el = document.getElementById('hero-cycle-text');
-    if (!el) return;
-    let i = 0;
-    const FADE_MS = 560;
-    const HOLD_MS = 2600;
-    // Reveal the first line once the hero's fade-up has played
-    setTimeout(() => el.classList.add('visible'), 850);
-    setInterval(() => {
-      el.classList.remove('visible');
-      setTimeout(() => {
-        i = (i + 1) % lines.length;
-        el.textContent = lines[i];
-        el.classList.add('visible');
-      }, FADE_MS);
-    }, HOLD_MS + FADE_MS);
-  })();
-
-  // Counter animation for stats
-  function animateCounter(el, target, suffix = '') {
-    let start = 0;
-    const duration = 2000;
-    const step = (timestamp) => {
-      if (!start) start = timestamp;
-      const progress = Math.min((timestamp - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.floor(eased * target).toLocaleString() + suffix;
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }
-</script>
-
-<!-- Cal.com inline embed (scheduling + Stripe payment) -->
-<script type="text/javascript">
-  (function (C, A, L) {
-    let p = function (a, ar) { a.q.push(ar); };
-    let d = C.document;
-    C.Cal = C.Cal || function () {
-      let cal = C.Cal;
-      let ar = arguments;
-      if (!cal.loaded) {
-        cal.ns = {};
-        cal.q = cal.q || [];
-        d.head.appendChild(d.createElement("script")).src = A;
-        cal.loaded = true;
-      }
-      if (ar[0] === L) {
-        const api = function () { p(api, arguments); };
-        const namespace = ar[1];
-        api.q = api.q || [];
-        if (typeof namespace === "string") {
-          cal.ns[namespace] = cal.ns[namespace] || api;
-          p(cal.ns[namespace], ar);
-          p(cal, ["-", api]);
-        } else {
-          p(cal, ar);
-        }
-        return;
-      }
-      p(cal, ar);
-    };
-  })(window, "https://app.cal.com/embed/embed.js", "init");
-
-  Cal("init", { origin: "https://app.cal.com" });
-
-  Cal("inline", {
-    elementOrSelector: "#my-cal-inline",
-    calLink: "sobanattari",
-    layout: "month_view"
-  });
-
-  Cal("ui", {
-    theme: "dark",
-    styles: {
-      branding: {
-        brandColor: "#F5C518"
-      }
-    },
-    hideEventTypeDetails: false,
-    layout: "month_view"
-  });
-</script>
-
 <!-- ── Terms & Conditions Modal ── -->
 <div id="terms-modal" class="terms-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="terms-modal-title" style="display:none;">
   <div class="terms-modal-box">
-
     <div class="terms-modal-header">
       <span class="terms-badge">Before You Book</span>
       <h2 id="terms-modal-title">Terms &amp; Conditions</h2>
       <p class="terms-intro">Please read and accept the following terms before booking your session with Soban Attari.</p>
     </div>
-
     <div class="terms-modal-body">
       <ul class="terms-list">
         <li>Your topic and personal information will remain 100% secure and completely confidential, and you will be provided with full privacy.</li>
@@ -2872,22 +608,103 @@
       </ul>
       <p class="terms-thankyou">Thank you for your cooperation.</p>
     </div>
-
     <div class="terms-modal-footer">
       <label class="terms-checkbox-label">
         <input type="checkbox" id="terms-agree-checkbox" />
         <span>I have read and agree to all the Terms &amp; Conditions above.</span>
       </label>
-      <button id="terms-accept-btn" class="terms-accept-btn" disabled>
-        Accept &amp; Proceed to Booking
-      </button>
-      <button id="terms-decline-btn" class="terms-decline-btn">
-        Decline
-      </button>
+      <button id="terms-accept-btn" class="terms-accept-btn" disabled>Accept &amp; Proceed to Booking</button>
+      <button id="terms-decline-btn" class="terms-decline-btn">Decline</button>
     </div>
-
   </div>
 </div>
+
+<script>
+  // Mobile menu toggle
+  function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('open'); }
+  function closeMenu() { document.getElementById('mobile-menu').classList.remove('open'); }
+
+  // Navbar: transparent on load → white + blur after 80px scroll
+  (function () {
+    const nav = document.getElementById('navbar');
+    if (!nav) return;
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 80);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+
+  // Scroll reveal — .animate-on-scroll / .stagger → add .in-view
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.animate-on-scroll').forEach(el => revealObs.observe(el));
+
+  // Dropdown — What We Offer (click-based; no hover)
+  (function () {
+    const toggle = document.querySelector('[data-dropdown="what-we-offer"]');
+    const menu = document.querySelector('[data-dropdown-menu="what-we-offer"]');
+    if (!toggle || !menu) return;
+    function closeAll() {
+      document.querySelectorAll('[data-dropdown-menu]').forEach(m => m.classList.remove('dropdown-open'));
+      document.querySelectorAll('[data-dropdown]').forEach(t => t.setAttribute('aria-expanded', 'false'));
+    }
+    toggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const isOpen = menu.classList.contains('dropdown-open');
+      closeAll();
+      if (!isOpen) { menu.classList.add('dropdown-open'); toggle.setAttribute('aria-expanded', 'true'); }
+    });
+    toggle.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle.click(); }
+    });
+    document.addEventListener('click', closeAll);
+    menu.addEventListener('click', e => e.stopPropagation());
+    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeAll));
+  })();
+
+  // Hero cycling headline
+  (function () {
+    const lines = ['Numbers That Speak.','Platforms That Connect.','Faith That Guides.','Science That Inspires.','5,000+ Lectures Delivered.','3.55 Million Lives Touched.','Clarity in Every Question.'];
+    const el = document.getElementById('hero-cycle-text');
+    if (!el) return;
+    let i = 0;
+    const FADE_MS = 550, HOLD_MS = 2600;
+    setTimeout(() => el.classList.add('visible'), 850);
+    setInterval(() => {
+      el.classList.remove('visible');
+      setTimeout(() => { i = (i + 1) % lines.length; el.textContent = lines[i]; el.classList.add('visible'); }, FADE_MS);
+    }, HOLD_MS + FADE_MS);
+  })();
+</script>
+
+<!-- Cal.com inline embed (scheduling + Stripe payment) -->
+<script type="text/javascript">
+  (function (C, A, L) {
+    let p = function (a, ar) { a.q.push(ar); };
+    let d = C.document;
+    C.Cal = C.Cal || function () {
+      let cal = C.Cal; let ar = arguments;
+      if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; }
+      if (ar[0] === L) {
+        const api = function () { p(api, arguments); };
+        const namespace = ar[1];
+        api.q = api.q || [];
+        if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["-", api]); }
+        else { p(cal, ar); }
+        return;
+      }
+      p(cal, ar);
+    };
+  })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", { origin: "https://app.cal.com" });
+  Cal("inline", { elementOrSelector: "#my-cal-inline", calLink: "sobanattari", layout: "month_view" });
+  Cal("ui", { theme: "dark", styles: { branding: { brandColor: "#F5C518" } }, hideEventTypeDetails: false, layout: "month_view" });
+</script>
 
 <script>
   // Terms & Conditions Modal — gates first click on any booking CTA
@@ -2897,70 +714,24 @@
     const declineBtn = document.getElementById('terms-decline-btn');
     const checkbox = document.getElementById('terms-agree-checkbox');
     const ACCEPTED_KEY = 'soban_terms_accepted';
+    const bookingTriggers = document.querySelectorAll('a[href*="book-session"], .card-cta, [data-book-trigger]');
 
-    // Narrowed from the original `a[href*="book"], a[href*="session"]` — those
-    // matched the unrelated #books nav link. `book-session` is the actual anchor.
-    const bookingTriggers = document.querySelectorAll(
-      'a[href*="book-session"], .card-cta, [data-book-trigger]'
-    );
-
-    function openModal() {
-      modal.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-      checkbox.checked = false;
-      acceptBtn.disabled = true;
-    }
-
-    function closeModal() {
-      modal.style.display = 'none';
-      document.body.style.overflow = '';
-    }
-
+    function openModal() { modal.style.display = 'flex'; document.body.style.overflow = 'hidden'; checkbox.checked = false; acceptBtn.disabled = true; }
+    function closeModal() { modal.style.display = 'none'; document.body.style.overflow = ''; }
     function scrollToBookingForm() {
-      const bookingSection = document.getElementById('book-session') ||
-                             document.getElementById('booking') ||
-                             document.querySelector('.booking-section');
-      if (bookingSection) {
-        bookingSection.scrollIntoView({ behavior: 'smooth' });
-      }
+      const s = document.getElementById('book-session') || document.querySelector('.booking-section');
+      if (s) s.scrollIntoView({ behavior: 'smooth' });
     }
-
-    if (checkbox) {
-      checkbox.addEventListener('change', function () {
-        acceptBtn.disabled = !this.checked;
-      });
-    }
-
-    if (acceptBtn) {
-      acceptBtn.addEventListener('click', function () {
-        sessionStorage.setItem(ACCEPTED_KEY, 'true');
-        closeModal();
-        scrollToBookingForm();
-      });
-    }
-
-    if (declineBtn) {
-      declineBtn.addEventListener('click', function () {
-        closeModal();
-      });
-    }
-
-    if (modal) {
-      modal.addEventListener('click', function (e) {
-        if (e.target === modal) closeModal();
-      });
-    }
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeModal();
-    });
-
+    if (checkbox) checkbox.addEventListener('change', function () { acceptBtn.disabled = !this.checked; });
+    if (acceptBtn) acceptBtn.addEventListener('click', function () { sessionStorage.setItem(ACCEPTED_KEY, 'true'); closeModal(); scrollToBookingForm(); });
+    if (declineBtn) declineBtn.addEventListener('click', closeModal);
+    if (modal) modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
     bookingTriggers.forEach(function (trigger) {
       if (trigger.type === 'submit') return;
       trigger.addEventListener('click', function (e) {
         if (sessionStorage.getItem(ACCEPTED_KEY) === 'true') return;
-        e.preventDefault();
-        openModal();
+        e.preventDefault(); openModal();
       });
     });
   })();

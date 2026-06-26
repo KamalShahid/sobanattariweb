@@ -36,10 +36,12 @@ await page.evaluate(() => {
   style.textContent = `
     .stat-card, .topic-card, .lecture-card, .book-card,
     .course-card, .social-card, .gallery-item,
-    .reveal, .reveal-stagger, .reveal-stagger > * {
+    .reveal, .reveal-stagger, .reveal-stagger > *,
+    .animate-on-scroll, .stagger > * {
       opacity: 1 !important;
       transform: none !important;
       transition: none !important;
+      animation: none !important;
     }
   `;
   document.head.appendChild(style);
