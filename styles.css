@@ -202,6 +202,292 @@ p { font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: va
 #navbar.scrolled .nav-links > a:hover,
 #navbar.scrolled .nav-dropdown-toggle:hover { color: var(--text-dark); }
 
+/* =========================================================
+   UPDATES — PREMIUM LIVE INDICATOR
+   No box • No border • No circles around the link
+   ========================================================= */
+
+#navbar .nav-links > a[href="updates.html"] {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    color: var(--accent);
+    font-weight: 700;
+
+    overflow: hidden;
+
+    /* Keep the text itself subtly illuminated */
+    text-shadow:
+        0 0 7px rgba(245, 197, 24, 0.30),
+        0 0 16px rgba(245, 197, 24, 0.12);
+
+    transition:
+        color 0.3s ease,
+        text-shadow 0.3s ease;
+}
+
+
+/* =========================================================
+   THE SHINING LIGHT
+   A prominent but elegant reflection moving across
+   the complete "Updates" text
+   ========================================================= */
+
+#navbar .nav-links > a[href="updates.html"] .updates-shine {
+    position: absolute;
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+
+/* Main light beam */
+
+#navbar .nav-links > a[href="updates.html"] .updates-shine::after {
+    content: "";
+
+    position: absolute;
+
+    top: -70%;
+    left: -65%;
+
+    width: 42%;
+    height: 240%;
+
+    transform: rotate(18deg);
+
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 239, 145, 0.05) 18%,
+        rgba(255, 245, 175, 0.45) 38%,
+        rgba(255, 250, 210, 0.98) 50%,
+        rgba(255, 245, 175, 0.45) 62%,
+        rgba(255, 239, 145, 0.05) 82%,
+        transparent 100%
+    );
+
+    filter: blur(1px);
+
+    opacity: 0;
+
+    animation: updatesShine 4s cubic-bezier(.45, 0, .25, 1) infinite;
+}
+
+
+/* Softer glow following the main reflection */
+
+#navbar .nav-links > a[href="updates.html"] .updates-shine::before {
+    content: "";
+
+    position: absolute;
+
+    top: -50%;
+    left: -70%;
+
+    width: 55%;
+    height: 200%;
+
+    transform: rotate(18deg);
+
+    background: rgba(245, 197, 24, 0.22);
+
+    filter: blur(18px);
+
+    opacity: 0;
+
+    animation: updatesShineGlow 4s cubic-bezier(.45, 0, .25, 1) infinite;
+}
+
+
+/* =========================================================
+   LIVE DOT
+   Real live-stream style breathing/pulsing indicator
+   ========================================================= */
+
+#navbar .nav-links > a[href="updates.html"] .updates-dot {
+    position: relative;
+
+    width: 5px;
+    height: 5px;
+
+    flex: 0 0 5px;
+
+    border-radius: 50%;
+
+    background: #f5c518;
+
+    box-shadow:
+        0 0 5px rgba(245, 197, 24, 0.95),
+        0 0 10px rgba(245, 197, 24, 0.55);
+
+    z-index: 3;
+}
+
+
+/* Expanding live pulse */
+
+#navbar .nav-links > a[href="updates.html"] .updates-dot::after {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: rgba(245, 197, 24, 0.35);
+
+    transform: translate(-50%, -50%) scale(1);
+
+    animation: livePulse 1.8s ease-out infinite;
+}
+
+
+/* =========================================================
+   SHINE ANIMATION
+   ========================================================= */
+
+@keyframes updatesShine {
+
+    0% {
+        left: -65%;
+        opacity: 0;
+    }
+
+    7% {
+        opacity: 0;
+    }
+
+    12% {
+        opacity: 1;
+    }
+
+    27% {
+        left: 130%;
+        opacity: 1;
+    }
+
+    34% {
+        left: 130%;
+        opacity: 0;
+    }
+
+    100% {
+        left: 130%;
+        opacity: 0;
+    }
+}
+
+
+@keyframes updatesShineGlow {
+
+    0% {
+        left: -70%;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.25;
+    }
+
+    27% {
+        left: 130%;
+        opacity: 0.35;
+    }
+
+    34% {
+        left: 130%;
+        opacity: 0;
+    }
+
+    100% {
+        left: 130%;
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   LIVE PULSE
+   ========================================================= */
+
+@keyframes livePulse {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+
+        opacity: 0.75;
+    }
+
+    65% {
+        transform:
+            translate(-50%, -50%)
+            scale(3.2);
+
+        opacity: 0;
+    }
+
+    100% {
+        transform:
+            translate(-50%, -50%)
+            scale(3.2);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   HOVER
+   Just slightly brighter — no weird movement
+   ========================================================= */
+
+#navbar .nav-links > a[href="updates.html"]:hover {
+
+    color: #ffe477;
+
+    text-shadow:
+        0 0 8px rgba(245, 197, 24, 0.55),
+        0 0 18px rgba(245, 197, 24, 0.28);
+}
+
+
+/* =========================================================
+   SCROLLED NAVBAR
+   ========================================================= */
+
+#navbar.scrolled .nav-links > a[href="updates.html"] {
+    color: var(--accent);
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    #navbar .nav-links > a[href="updates.html"] .updates-shine::after,
+    #navbar .nav-links > a[href="updates.html"] .updates-shine::before,
+    #navbar .nav-links > a[href="updates.html"] .updates-dot::after {
+        animation: none !important;
+    }
+}
+
+
+
+
 .nav-cta {
   background: var(--accent); color: #111111 !important; font-weight: 700; font-size: 12px;
   letter-spacing: 1.5px; text-transform: uppercase; padding: 10px 22px; border-radius: 2px;
@@ -752,6 +1038,66 @@ p { font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: va
 .terms-decline-btn:hover { color: var(--text-dark); border-color: var(--text-muted); }
 @media (max-width: 768px) { .terms-modal-header, .terms-modal-body, .terms-modal-footer { padding-left: 20px; padding-right: 20px; } }
 
+/* ── Updates page ── */
+.updates-hero { padding-bottom: 72px; }
+.updates-hero h1 { font-size: clamp(42px, 7vw, 76px); margin-bottom: 10px; }
+.updates-hero p { font-size: 16px; }
+.updates-section { padding: var(--space-xl) 0; }
+.updates-section-header { max-width: 680px; }
+.updates-featured { background: #f4f8f8; display: flex; flex-direction: column; height: 640px; min-height: 0; overflow: hidden; }
+.updates-featured-image { height: 220px; min-height: 0; position: relative; overflow: hidden; }
+.updates-featured-image img { width: 100%; height: 100%; object-fit: cover; }
+.updates-featured-overline { color: var(--accent-dark); font-size: 10px; font-weight: 800; letter-spacing: 2.5px; margin-bottom: var(--space-md); text-transform: uppercase; }
+.updates-featured-content { display: flex; flex: 1; flex-direction: column; padding: 32px 32px 28px; }
+.updates-featured-content h2 { font-size: 25px; line-height: 1.28; margin-bottom: 18px; min-height: 2.56em; }
+.updates-featured-content p { max-width: none; color: #697277; font-size: 16px; line-height: 1.65; margin-bottom: var(--space-md); min-height: 4.95em; }
+.updates-event-details { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-bottom: var(--space-lg); color: var(--text-dark); font-size: 13px; }
+.updates-event-details span { padding-left: 0; }
+.updates-event-details strong { display: block; color: var(--accent-dark); font-size: 18px; }
+.updates-event-details b { display: block; font-weight: 700; }
+.updates-countdown { align-items: center; color: var(--text-muted); display: flex; font-size: 11px; font-weight: 700; gap: 8px; letter-spacing: .3px; margin: 0 0 var(--space-md); min-height: 24px; }
+.updates-countdown::before { background: var(--accent); border-radius: 50%; content: ''; height: 5px; width: 5px; flex: 0 0 5px; }
+.updates-countdown.is-live { color: #2d7a2d; }
+.updates-countdown.is-live::before { background: #2d7a2d; }
+.updates-actions, .updates-card-footer { align-items: center; display: flex; flex-wrap: wrap; gap: var(--space-md); }
+.updates-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px; }
+.updates-card { background: #f4f8f8; border-radius: 16px; box-shadow: 0 12px 25px rgba(23, 35, 43, 0.08), 0 2px 5px rgba(23, 35, 43, 0.04); display: flex; flex-direction: column; height: 640px; min-height: 0; overflow: hidden; transition: transform .35s ease, box-shadow .35s ease; }
+.updates-card:hover { transform: translateY(-8px); box-shadow: 0 24px 45px rgba(23, 35, 43, 0.15), 0 5px 12px rgba(23, 35, 43, 0.07); }
+.updates-card-image { height: 220px; position: relative; overflow: hidden; background: var(--bg-dark); }
+.updates-card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition); }
+.updates-card:hover .updates-card-image img { transform: scale(1.06); }
+.updates-card-category { position: absolute; top: 18px; left: 20px; background: var(--accent); border-radius: 999px; box-shadow: 0 6px 14px rgba(111, 82, 0, .2); color: #111; font-size: 12px; font-weight: 800; letter-spacing: .2px; padding: 11px 20px; }
+.updates-card-body { display: flex; flex: 1; flex-direction: column; padding: 32px 32px 28px; }
+.updates-card-date { align-items: center; color: #6e777d; display: flex; font-size: 16px; font-weight: 500; gap: 10px; margin-bottom: 22px; }
+.updates-calendar-icon { border: 1.7px solid #7b8589; border-radius: 3px; display: inline-block; height: 16px; position: relative; width: 16px; }
+.updates-calendar-icon::before { border-top: 1.7px solid #7b8589; content: ''; left: 0; position: absolute; right: 0; top: 4px; }
+.updates-calendar-icon::after { background: #7b8589; box-shadow: 5px 0 #7b8589; content: ''; height: 3px; left: 3px; position: absolute; top: -3px; width: 2px; }
+.updates-card h3 { font-size: 25px; line-height: 1.28; margin-bottom: 18px; min-height: 2.56em; }
+.updates-card p { color: #697277; font-size: 16px; line-height: 1.65; margin-bottom: var(--space-md); min-height: 4.95em; }
+.updates-card-meta { display: flex; flex-direction: column; gap: 5px; color: var(--text-body); font-size: 12px; }
+.updates-card .updates-countdown { margin-top: auto; margin-bottom: 0; }
+.updates-card-footer { margin-top: auto; padding-top: var(--space-lg); justify-content: flex-start; }
+.updates-register { color: var(--accent-dark); font-size: 12px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; }
+.updates-read-more { color: var(--text-dark); font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.updates-register:hover, .updates-read-more:hover { color: var(--accent); }
+.updates-register span { color: var(--accent-dark); font-size: 16px; margin-left: 4px; }
+.updates-read-more span { color: var(--accent-dark); font-size: 16px; margin-left: 4px; }
+.updates-note { color: var(--text-muted); font-size: 12px; margin: var(--space-lg) auto 0; text-align: center; }
+.updates-cta { padding: var(--space-2xl) 0; text-align: center; }
+.updates-cta .container { max-width: 720px; }
+.updates-cta h2 { color: var(--text-light); margin-bottom: var(--space-sm); }
+.updates-cta p { color: var(--text-light-muted); margin: 0 auto var(--space-lg); }
+@media (max-width: 768px) {
+  .updates-featured, .updates-featured-image { min-height: 0; }
+  .updates-featured-image { height: 260px; }
+  .updates-featured-content { padding: 26px 22px 24px; }
+  .updates-grid { grid-template-columns: 1fr; }
+  .updates-card { height: 640px; min-height: 0; }
+  .updates-card-body { padding: 26px 22px 24px; }
+  .updates-card-image { height: 210px; }
+  .updates-card h3, .updates-card p { min-height: 0; }
+}
+
 /* ── Books grid + Coming Soon (Task 3) ── */
 .books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-md); align-items: start; max-width: 1200px; margin: 0 auto; }
 .books-grid .book-card { width: auto; }
@@ -851,4 +1197,3 @@ p { font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: va
 }
 @keyframes flyerPopupFadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes flyerPopupRise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-
