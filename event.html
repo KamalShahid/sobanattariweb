@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events · Soban Attari</title>
+  <meta name="description" content="Explore the different event formats hosted by Soban Attari, including youth talks, seminars, workshops, and community gatherings." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="site-logo" aria-label="Soban Attari Home">
+        <span class="logo-mark"><span class="logo-line-1">SOBAN</span><span class="logo-line-2">ATTARI</span></span>
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="biography.html">About</a>
+        <a href="updates.html">Updates</a>
+        <a href="event.html" class="active">Events</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="index.html#book-session" class="nav-cta">Book a Session</a>
+      </div>
+      <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="nav-mobile-menu" id="mobile-menu">
+    <a href="index.html" onclick="closeMenu()">Home</a>
+    <a href="biography.html" onclick="closeMenu()">About</a>
+    <a href="updates.html" onclick="closeMenu()">Updates</a>
+    <a href="event.html" onclick="closeMenu()">Events</a>
+    <a href="index.html#contact" onclick="closeMenu()">Contact</a>
+    <a href="index.html#book-session" onclick="closeMenu()">Book a Session</a>
+  </div>
+
+  <header class="page-header section-dark">
+    <div class="container">
+      <span class="section-label">Soban Attari · Events</span>
+      <h1>Our event formats</h1>
+      <p>Thoughtful conversations shaped for youth, families, scholars, and community life.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="section-light event-page-section">
+      <div class="container">
+        <div class="event-type-grid animate-on-scroll">
+          <a href="programs/youth-talks.html" class="event-type-card event-type-card-gold">
+            <div class="event-type-topline">01</div>
+            <div>
+              <h2>Youth Talks</h2>
+              <p>Open, direct, and relevant discussions created for the next generation.</p>
+            </div>
+          </a>
+
+          <a href="programs/female-session.html" class="event-type-card event-type-card-forest">
+            <div class="event-type-topline">02</div>
+            <div>
+              <h2>Females Session</h2>
+              <p>Safe, thoughtful, and empowering spaces for reflection, guidance, and growth.</p>
+            </div>
+          </a>
+
+          <a href="programs/youth-seminar.html" class="event-type-card event-type-card-sand">
+            <div class="event-type-topline">03</div>
+            <div>
+              <h2>Youth Seminar</h2>
+              <p>Structured conversations that connect faith, identity, purpose, and action.</p>
+            </div>
+          </a>
+
+          <a href="programs/fos.html" class="event-type-card event-type-card-ink">
+            <div class="event-type-topline">04</div>
+            <div>
+              <h2>FOS</h2>
+              <p>Friends of Soban Attari gatherings inspired by belonging, learning, and service.</p>
+            </div>
+          </a>
+
+          <a href="programs/masjid-night.html" class="event-type-card event-type-card-ivory">
+            <div class="event-type-topline">05</div>
+            <div>
+              <h2>Masjid Night</h2>
+              <p>Evening sessions centered on faith, awareness, and community connection.</p>
+            </div>
+          </a>
+
+          <a href="programs/workers-convention.html" class="event-type-card event-type-card-rose">
+            <div class="event-type-topline">06</div>
+            <div>
+              <h2>Workers Convention</h2>
+              <p>Practical, uplifting conversations for those building life and livelihoods.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2025 <span class="gold">Soban Attari</span>. All rights reserved.</p>
+        <div class="legal"><a href="index.html">Home</a><a href="index.html#contact">Contact</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('open'); }
+    function closeMenu() { document.getElementById('mobile-menu').classList.remove('open'); }
+    (function () {
+      const nav = document.getElementById('navbar');
+      if (!nav) return;
+      const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 80);
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.animate-on-scroll').forEach(el => revealObs.observe(el));
+  </script>
+</body>
+</html>
