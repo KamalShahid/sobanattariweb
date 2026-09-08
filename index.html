@@ -43,7 +43,7 @@
 <div class="nav-mobile-menu" id="mobile-menu">
   <a href="index.html" onclick="closeMenu()">Home</a>
   <a href="biography.html" onclick="closeMenu()">About</a>
-  <a href="updates.html" onclick="closeMenu()">Updates</a>
+  <a href="updates.html" onclick="closeMenu()"><span class="updates-shine"></span><span class="updates-dot"></span>Updates</a>
   <a href="event.html" onclick="closeMenu()">Events</a>
   <a href="index.html#contact" onclick="closeMenu()">Contact</a>
   <a href="#book-session" onclick="closeMenu()">Book a Session</a>
@@ -685,13 +685,24 @@
   })();
 
   // Stats — eased count-up on scroll into view
+  function formatCounterValue(value, target, suffix) {
+    if (target >= 1000000) {
+      const compact = (value / 1000000).toFixed(2).replace(/\.?0+$/, '');
+      return compact + 'M' + (value >= target ? suffix : '');
+    }
+    if (target >= 1000) {
+      return value.toLocaleString() + (value >= target ? suffix : '');
+    }
+    return String(value) + (value >= target ? suffix : '');
+  }
+
   function animateCounter(el, target, duration) {
     const start = performance.now();
     function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
     function step(now) {
       const progress = Math.min((now - start) / duration, 1);
       const current = Math.floor(easeOutExpo(progress) * target);
-      el.textContent = current.toLocaleString() + (progress === 1 ? (el.dataset.suffix || '') : '');
+      el.textContent = formatCounterValue(current, target, el.dataset.suffix || '');
       if (progress < 1) {
         requestAnimationFrame(step);
       } else {
