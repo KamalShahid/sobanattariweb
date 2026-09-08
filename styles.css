@@ -670,7 +670,7 @@ body.menu-open { overflow: hidden; }
   .stat-label { font-size: 10px; letter-spacing: 1.8px; }
   .stat-item:nth-child(odd) { border-right: 1px solid var(--border-light); }
   .stat-item:nth-child(5) { grid-column: auto; }
-  .stat-item:last-child { grid-column: 1 / -1; border-right: none; }
+  .stat-item:last-child { grid-column: 1 / -1; border-right: none; border-bottom: none; }
 }
 
 @media (max-width: 360px) {
@@ -695,6 +695,8 @@ body.menu-open { overflow: hidden; }
 .about-pullquote p { font-size: 18px; font-style: italic; color: var(--text-dark); font-weight: 500; }
 @media (max-width: 768px) {
   .about-grid { grid-template-columns: 1fr; }
+  .about-image-wrap { order: 1; }
+  .about-text { order: 2; }
   .about-image-wrap img { height: 420px; }
   .about-badge { left: 16px; bottom: 16px; }
 }
