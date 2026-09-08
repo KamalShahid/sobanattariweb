@@ -908,6 +908,58 @@ body.menu-open { overflow: hidden; }
 .fact-card .num { font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 3.5vw, 44px); color: var(--text-dark); line-height: 1; }
 .fact-card .lbl { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-top: 8px; }
 @media (max-width: 768px) { .facts-grid { grid-template-columns: 1fr 1fr; } }
+
+/* ── Biography page responsive layout ── */
+@media (max-width: 768px) {
+  .page-header { padding: 118px 0 64px; }
+  .page-header h1 { font-size: clamp(42px, 12vw, 64px); }
+  .page-header .ph-roles {
+    max-width: 34rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: clamp(10px, 2.5vw, 13px);
+    line-height: 1.7;
+    letter-spacing: 1.2px;
+  }
+  .page-header .ph-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px 10px;
+  }
+  .page-header .ph-stat { min-width: 0; }
+  .page-header .ph-stat .num {
+    font-size: clamp(25px, 7vw, 36px);
+    white-space: nowrap;
+  }
+  .page-header .ph-stat .lbl {
+    font-size: 9px;
+    letter-spacing: 1px;
+    line-height: 1.4;
+  }
+  .bio-figure img { height: min(118vw, 480px); }
+  .gold-quote { padding: 36px 24px; }
+  .gold-quote blockquote { font-size: 16px; line-height: 1.7; }
+  .facts-grid { gap: 1px; }
+  .fact-card { min-width: 0; padding: 24px 12px; }
+  .fact-card .num { font-size: clamp(24px, 7vw, 36px); overflow-wrap: anywhere; }
+  .fact-card .lbl { font-size: 9px; letter-spacing: 1px; line-height: 1.4; }
+  .list-check { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .list-check li { min-width: 0; overflow-wrap: anywhere; }
+  .uni-logo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .uni-logo-card { min-width: 0; padding: 22px 12px; min-height: 145px; }
+  .uni-logo-card .name { overflow-wrap: anywhere; }
+  .contact-box { padding: 24px 18px; }
+  .contact-box .ct-row { align-items: flex-start; }
+  .contact-box .ct-row a,
+  .contact-box .ct-row span { min-width: 0; overflow-wrap: anywhere; }
+}
+
+@media (max-width: 420px) {
+  .page-header .ph-stats { gap: 16px 4px; }
+  .page-header .ph-stat .num { font-size: 24px; }
+  .page-header .ph-stat .lbl { font-size: 8px; letter-spacing: .7px; }
+  .uni-logo-card { padding-left: 8px; padding-right: 8px; }
+}
 .eyebrow-center { text-align: center; }
 .text-card { background: var(--bg-light); border: 1px solid var(--border-light); padding: var(--space-lg) var(--space-md); transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition); }
 .text-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.06); }
