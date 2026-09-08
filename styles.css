@@ -522,7 +522,13 @@ body.menu-open { overflow: hidden; }
 .hero-scroll-indicator:hover { color: var(--accent); }
 @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
 @media (max-width: 768px) {
-  .hero-video { display: none; }
+  .hero-video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
   #hero {
     min-height: 100svh;
     padding: 96px 0 72px;
