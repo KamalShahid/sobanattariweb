@@ -28,7 +28,34 @@
     <span class="updates-shine"></span>
     Updates
 </a>
-      <a href="event.html">Events</a>
+      <div class="nav-dropdown-wrapper">
+        <button class="nav-dropdown-toggle" data-dropdown="events" aria-haspopup="true" aria-expanded="false">
+          Events
+          <svg class="nav-dropdown-arrow" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,3 5,7 8,3"/></svg>
+        </button>
+        <div class="nav-dropdown-menu events-dropdown-menu" data-dropdown-menu="events">
+          <div class="nav-dropdown-mega">
+            <div>
+              <div class="nav-dropdown-group-title">Talks &amp; Sessions</div>
+              <a href="programs/youth-talks.html" class="nav-dropdown-item">Youth Talks</a>
+              <a href="programs/female-session.html" class="nav-dropdown-item">Females Session</a>
+              <a href="programs/youth-seminar.html" class="nav-dropdown-item">Youth Seminar</a>
+            </div>
+            <div>
+              <div class="nav-dropdown-group-title">Community</div>
+              <a href="programs/fos.html" class="nav-dropdown-item">FOS</a>
+              <a href="programs/masjid-night.html" class="nav-dropdown-item">Masjid Night</a>
+              <a href="programs/workers-convention.html" class="nav-dropdown-item">Workers Convention</a>
+            </div>
+            <div>
+              <div class="nav-dropdown-group-title">Explore</div>
+              <a href="events.html" class="nav-dropdown-item">Deeni Tulba &amp; AI</a>
+              <a href="#books" class="nav-dropdown-item">Books</a>
+              <a href="#courses" class="nav-dropdown-item">Courses</a>
+            </div>
+          </div>
+        </div>
+      </div>
       <a href="index.html#contact">Contact</a>
       <a href="index.html#book-session" class="nav-cta">Book a Session</a>
     </div>
@@ -48,7 +75,16 @@
   <a href="index.html" onclick="closeMenu()">Home</a>
   <a href="biography.html" onclick="closeMenu()">About</a>
   <a href="updates.html" onclick="closeMenu()"><span class="updates-shine"></span>Updates</a>
-  <a href="event.html" onclick="closeMenu()">Events</a>
+  <div class="mobile-group-title mobile-events-title">Events</div>
+  <a href="programs/youth-talks.html" class="mobile-sub" onclick="closeMenu()">Youth Talks</a>
+  <a href="programs/female-session.html" class="mobile-sub" onclick="closeMenu()">Females Session</a>
+  <a href="programs/youth-seminar.html" class="mobile-sub" onclick="closeMenu()">Youth Seminar</a>
+  <a href="programs/fos.html" class="mobile-sub" onclick="closeMenu()">FOS</a>
+  <a href="programs/masjid-night.html" class="mobile-sub" onclick="closeMenu()">Masjid Night</a>
+  <a href="programs/workers-convention.html" class="mobile-sub" onclick="closeMenu()">Workers Convention</a>
+  <a href="events.html" class="mobile-sub" onclick="closeMenu()">Deeni Tulba &amp; AI</a>
+  <a href="#books" class="mobile-sub" onclick="closeMenu()">Books</a>
+  <a href="#courses" class="mobile-sub" onclick="closeMenu()">Courses</a>
   <a href="index.html#contact" onclick="closeMenu()">Contact</a>
   <a href="#book-session" onclick="closeMenu()">Book a Session</a>
 </div>
@@ -675,27 +711,28 @@
   }, { threshold: 0.12 });
   document.querySelectorAll('.animate-on-scroll').forEach(el => revealObs.observe(el));
 
-  // Dropdown — What We Offer (click-based; no hover)
+  // Navigation dropdowns — click-based, never hover-only
   (function () {
-    const toggle = document.querySelector('[data-dropdown="what-we-offer"]');
-    const menu = document.querySelector('[data-dropdown-menu="what-we-offer"]');
-    if (!toggle || !menu) return;
     function closeAll() {
       document.querySelectorAll('[data-dropdown-menu]').forEach(m => m.classList.remove('dropdown-open'));
       document.querySelectorAll('[data-dropdown]').forEach(t => t.setAttribute('aria-expanded', 'false'));
     }
-    toggle.addEventListener('click', function (e) {
-      e.stopPropagation();
-      const isOpen = menu.classList.contains('dropdown-open');
-      closeAll();
-      if (!isOpen) { menu.classList.add('dropdown-open'); toggle.setAttribute('aria-expanded', 'true'); }
-    });
-    toggle.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle.click(); }
+    document.querySelectorAll('[data-dropdown]').forEach(toggle => {
+      const menu = document.querySelector(`[data-dropdown-menu="${toggle.dataset.dropdown}"]`);
+      if (!menu) return;
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const isOpen = menu.classList.contains('dropdown-open');
+        closeAll();
+        if (!isOpen) { menu.classList.add('dropdown-open'); toggle.setAttribute('aria-expanded', 'true'); }
+      });
+      toggle.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle.click(); }
+      });
+      menu.addEventListener('click', e => e.stopPropagation());
+      menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeAll));
     });
     document.addEventListener('click', closeAll);
-    menu.addEventListener('click', e => e.stopPropagation());
-    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeAll));
   })();
 
   // Hero cycling headline
