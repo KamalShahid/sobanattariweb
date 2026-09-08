@@ -59,7 +59,9 @@
   </div>
 </nav>
 
-<div class="nav-mobile-menu" id="mobile-menu">
+<div class="nav-mobile-backdrop" id="mobile-menu-backdrop" onclick="closeMenu()" aria-hidden="true"></div>
+<div class="nav-mobile-menu" id="mobile-menu" aria-hidden="true">
+  <div class="nav-mobile-header"><span class="nav-mobile-title">Menu</span><button class="nav-mobile-close" type="button" onclick="closeMenu()" aria-label="Close menu">&times;</button></div>
   <a href="../index.html" onclick="closeMenu()">Home</a>
   <a href="../biography.html" onclick="closeMenu()">About</a>
   <div class="mobile-group-title">Talks &amp; Events</div>
@@ -224,8 +226,9 @@
 </footer>
 
 <script>
-  function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('open'); }
-  function closeMenu() { document.getElementById('mobile-menu').classList.remove('open'); }
+  function toggleMenu() { const menu = document.getElementById('mobile-menu'); const backdrop = document.getElementById('mobile-menu-backdrop'); const button = document.getElementById('nav-hamburger'); const open = menu.classList.toggle('open'); backdrop.classList.toggle('open', open); menu.setAttribute('aria-hidden', String(!open)); button.setAttribute('aria-expanded', String(open)); document.body.classList.toggle('menu-open', open); if (open) menu.querySelector('.nav-mobile-close').focus(); }
+  function closeMenu() { document.getElementById('mobile-menu').classList.remove('open'); document.getElementById('mobile-menu-backdrop').classList.remove('open'); document.getElementById('mobile-menu').setAttribute('aria-hidden', 'true'); document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'false'); document.body.classList.remove('menu-open'); }
+  document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
   function handleBloodSubmit(e){ e.preventDefault(); e.target.style.display='none'; document.getElementById('blood-success').style.display='block'; }
   (function () { const nav = document.getElementById('navbar'); const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 80); onScroll(); window.addEventListener('scroll', onScroll, { passive: true }); })();
   const revealObs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); revealObs.unobserve(e.target); } }); }, { threshold: 0.1 });

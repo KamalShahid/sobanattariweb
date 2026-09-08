@@ -33,14 +33,19 @@
       <a href="index.html#contact">Contact</a>
       <a href="index.html#book-session" class="nav-cta">Book a Session</a>
     </div>
-    <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMenu()" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
 <!-- MOBILE MENU -->
-<div class="nav-mobile-menu" id="mobile-menu">
+<div class="nav-mobile-backdrop" id="mobile-menu-backdrop" onclick="closeMenu()" aria-hidden="true"></div>
+<div class="nav-mobile-menu" id="mobile-menu" aria-hidden="true">
+  <div class="nav-mobile-header">
+    <span class="nav-mobile-title">Menu</span>
+    <button class="nav-mobile-close" type="button" onclick="closeMenu()" aria-label="Close menu">&times;</button>
+  </div>
   <a href="index.html" onclick="closeMenu()">Home</a>
   <a href="biography.html" onclick="closeMenu()">About</a>
   <a href="updates.html" onclick="closeMenu()"><span class="updates-shine"></span><span class="updates-dot"></span>Updates</a>
@@ -593,8 +598,32 @@
 
 <script>
   // Mobile menu toggle
-  function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('open'); }
-  function closeMenu() { document.getElementById('mobile-menu').classList.remove('open'); }
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    const button = document.getElementById('nav-hamburger');
+    const isOpen = menu.classList.toggle('open');
+    backdrop.classList.toggle('open', isOpen);
+    menu.setAttribute('aria-hidden', String(!isOpen));
+    button.setAttribute('aria-expanded', String(isOpen));
+    button.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    document.body.classList.toggle('menu-open', isOpen);
+    if (isOpen) menu.querySelector('.nav-mobile-close').focus();
+  }
+  function closeMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    const button = document.getElementById('nav-hamburger');
+    menu.classList.remove('open');
+    backdrop.classList.remove('open');
+    menu.setAttribute('aria-hidden', 'true');
+    button.setAttribute('aria-expanded', 'false');
+    button.setAttribute('aria-label', 'Open menu');
+    document.body.classList.remove('menu-open');
+  }
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') closeMenu();
+  });
 
   // Booking Coming Soon — notify form handler
   function handleBcsNotify() {
