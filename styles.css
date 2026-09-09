@@ -457,6 +457,9 @@ body.menu-open { overflow: hidden; }
 
 /* Dropdown — What We Offer */
 .nav-dropdown-wrapper { position: relative; }
+.nav-dropdown-wrapper { display: none; }
+.nav-mobile-menu .mobile-group-title,
+.nav-mobile-menu a.mobile-sub { display: none; }
 .nav-dropdown-menu {
   display: none; position: absolute; top: calc(100% + 16px); left: 50%; transform: translateX(-50%);
   background: var(--bg-light); border: 1px solid var(--border-light); border-radius: 8px;
@@ -1555,3 +1558,232 @@ body.menu-open { overflow: hidden; }
   .social-card-name { font-size: 9px; }
   .course-card { padding: 28px 18px; }
 }
+
+/* =========================================================
+   ACTIVE / CURRENT NAV LINK
+   ========================================================= */
+
+/* Keep the active desktop link gold once the navbar is .scrolled
+   (overrides #navbar.scrolled .nav-links > a, specificity 1,2,1). */
+#navbar.scrolled .nav-links > a.active { color: var(--accent); }
+
+/* Active "Updates": its underline is force-hidden AND the link has
+   overflow:hidden (which would clip the ::after bar), and it already glows,
+   so re-enable overflow, restore the gold underline, and bump the weight
+   so "current" reads distinctly from its idle state. */
+#navbar .nav-links > a[data-nav="updates"].active {
+  color: var(--accent);
+  font-weight: 800;
+  overflow: visible;
+}
+#navbar .nav-links > a[data-nav="updates"].active::after {
+  display: block;
+  width: 100%;
+}
+
+/* Active mobile drawer item: accent text + inset left bar.
+   box-shadow:inset (not border-left) => no layout reflow. */
+.nav-mobile-menu a.active {
+  color: var(--accent);
+  box-shadow: inset 3px 0 0 0 var(--accent);
+}
+
+/* =========================================================
+   DEENI TULBA & AI — page-specific (programs/deeni-tulba-and-ai.html)
+   ========================================================= */
+
+.dta-upcoming { max-width: 620px; margin: 0 auto; }
+
+.dta-session-card { display: flex; flex-direction: column; gap: 16px; }
+
+.dta-session-top {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  flex-wrap: wrap;
+}
+
+.dta-session-mode {
+  font-family: var(--font-display); font-weight: 700; font-size: 13px;
+  letter-spacing: 1px; text-transform: uppercase; color: var(--accent-dark);
+}
+
+.dta-badges { display: flex; align-items: center; gap: 8px; }
+
+.dta-tag {
+  background: var(--bg-light); border: 1px solid var(--border-light); border-radius: 100px;
+  padding: 4px 12px; font-size: 12px; font-weight: 600; color: var(--text-muted);
+}
+
+.dta-session-card .btn { align-self: flex-start; margin-top: 4px; }
+
+/* =========================================================
+   BOOKS & COURSES landing pages (books.html / courses.html)
+   ========================================================= */
+
+/* Book cover gradients (same palette as the home page book covers) */
+.bc-cover-science   { background: linear-gradient(135deg, #1B4332, #0a2318); }
+.bc-cover-parenting { background: linear-gradient(135deg, #5C3A00, #2d1a00); }
+.bc-cover-spirit    { background: linear-gradient(135deg, #1a2040, #0a0f20); }
+
+/* "Coming soon" pill under a book title */
+.bc-soon {
+  display: inline-block; margin-top: 10px;
+  background: var(--accent-dim); border: 1px solid var(--accent);
+  color: var(--accent-dark);
+  font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  padding: 5px 10px; border-radius: 100px;
+}
+
+/* Course action in its "coming soon" (non-interactive) state */
+.course-enroll-soon {
+  color: var(--text-muted);
+  border-bottom-color: var(--border-light);
+  cursor: default;
+}
+
+/* =========================================================
+   OVERSEAS SESSION — page-specific (programs/overseas-session.html)
+   Upcoming-session cards, mirroring the Youth Talks layout.
+   ========================================================= */
+
+.ovs-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+@media (max-width: 768px) { .ovs-grid { grid-template-columns: 1fr; } }
+
+.ovs-card { display: flex; flex-direction: column; gap: 16px; overflow: hidden; }
+.ovs-card-image {
+  position: relative; height: 200px;
+  margin: -32px -28px 0;
+  background: linear-gradient(135deg, #1c1c1c, #2c2c2c);
+  background-size: cover; background-position: center;
+}
+.ovs-card-image::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.5) 100%);
+}
+.ovs-card-num {
+  position: absolute; left: 16px; bottom: 16px; z-index: 1;
+  background: var(--accent); color: #111;
+  font-family: var(--font-display); font-weight: 700; font-size: 26px;
+  padding: 8px 16px; line-height: 1;
+}
+.ovs-tag {
+  background: var(--bg-light); border: 1px solid var(--border-light); border-radius: 100px;
+  padding: 4px 12px; font-size: 12px; font-weight: 600; color: var(--text-muted);
+}
+.ovs-card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.ovs-card-top .badges { display: flex; align-items: center; gap: 8px; }
+.ovs-region { font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: var(--accent-dark); }
+.ovs-card h3 { font-size: 21px; color: var(--text-dark); line-height: 1.25; }
+.ovs-mode { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-body); }
+.ovs-mode svg { flex-shrink: 0; stroke: var(--accent-dark); }
+
+/* =========================================================
+   PAGE HEADER — "back to Events" link (programs/*.html)
+   ========================================================= */
+
+.page-header .page-back {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-body); font-weight: 600; font-size: 11px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--space-md);
+  transition: color var(--transition), transform var(--transition);
+}
+.page-header .page-back:hover { color: var(--accent-dark); transform: translateX(-3px); }
+.page-header .page-back:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+/* =========================================================
+   BOOKINGS COMING SOON MODAL (reuses the .terms-modal-* shell)
+   ========================================================= */
+
+.booking-soon-box { max-width: 460px; }
+.booking-soon-box .terms-modal-header { border-bottom: none; padding-bottom: 8px; }
+.booking-soon-box .terms-modal-footer { display: flex; flex-direction: column; gap: 10px; }
+
+.booking-soon-cta {
+  display: block; width: 100%;
+  background: var(--accent); color: #111111;
+  text-align: center; text-decoration: none;
+  padding: 14px; font-size: 15px; font-weight: 700; border-radius: 6px;
+  transition: opacity var(--transition);
+}
+.booking-soon-cta:hover { opacity: 0.85; color: #111111; }
+.booking-soon-cta:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* =========================================================
+   HIDE THE 01 / 02 / 03 BADGE ON EVENT / UPDATE CARD IMAGES
+   (the gold number chip sitting on the photo — event "upcoming"
+   cards and the updates.html cards). Overview-grid numbers and
+   the event.html format-card labels are left untouched.
+   ========================================================= */
+
+.ut-card-num,
+.ovs-card-num,
+.fs-card-num,
+.upd-card-num { display: none; }
+
+/* =========================================================
+   YOUTH TALKS — page-specific (programs/youth-talks.html)
+   Moved out of an inline <style> block. Paths are relative to
+   this stylesheet (repo root), so no "../".
+   ========================================================= */
+
+/* Photo hero for the page header — single source (brand_assets/yt-large.png,
+   2400x1350). `cover` keeps it full-bleed at every width; the speaker sits
+   left-of-centre and high, so the focal point is pulled up and slightly left
+   and nudged back toward centre as the crop tightens on small screens. */
+.page-header.has-photo {
+  background-image:
+    linear-gradient(180deg, rgba(10,10,10,0.58) 0%, rgba(10,10,10,0.50) 45%, rgba(10,10,10,0.84) 100%),
+    url('brand_assets/yt-large.png');
+  background-size: cover;
+  background-position: 42% 28%;
+  background-repeat: no-repeat;
+}
+@media (max-width: 768px) {
+  .page-header.has-photo { background-position: 46% 26%; }
+}
+@media (max-width: 480px) {
+  .page-header.has-photo {
+    background-position: 50% 24%;
+    background-image:
+      linear-gradient(180deg, rgba(10,10,10,0.52) 0%, rgba(10,10,10,0.48) 45%, rgba(10,10,10,0.88) 100%),
+      url('brand_assets/yt-large.png');
+  }
+}
+
+.ut-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+@media (max-width: 768px) { .ut-grid { grid-template-columns: 1fr; } }
+
+.ut-card { display: flex; flex-direction: column; gap: 16px; overflow: hidden; }
+.ut-card-image {
+  position: relative; height: 200px;
+  margin: -32px -28px 0;
+  background: linear-gradient(135deg, #1c1c1c, #2c2c2c);
+  background-size: cover; background-position: center;
+}
+.ut-card-image::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.5) 100%);
+}
+.ut-card-num {
+  position: absolute; left: 16px; bottom: 16px; z-index: 1;
+  background: var(--accent); color: #111;
+  font-family: var(--font-display); font-weight: 700; font-size: 26px;
+  padding: 8px 16px; line-height: 1;
+}
+.ut-tag {
+  background: var(--bg-light); border: 1px solid var(--border-light); border-radius: 100px;
+  padding: 4px 12px; font-size: 12px; font-weight: 600; color: var(--text-muted);
+}
+.ut-card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.ut-card-top .badges { display: flex; align-items: center; gap: 8px; }
+.ut-city { font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: var(--accent-dark); }
+.ut-card h3 { font-size: 21px; color: var(--text-dark); line-height: 1.25; }
+.ut-location { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-body); }
+.ut-location svg { flex-shrink: 0; stroke: var(--accent-dark); }

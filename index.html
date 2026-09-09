@@ -28,34 +28,7 @@
     <span class="updates-shine"></span>
     Updates
 </a>
-      <div class="nav-dropdown-wrapper">
-        <button class="nav-dropdown-toggle" data-dropdown="events" aria-haspopup="true" aria-expanded="false">
-          Events
-          <svg class="nav-dropdown-arrow" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,3 5,7 8,3"/></svg>
-        </button>
-        <div class="nav-dropdown-menu events-dropdown-menu" data-dropdown-menu="events">
-          <div class="nav-dropdown-mega">
-            <div>
-              <div class="nav-dropdown-group-title">Talks &amp; Sessions</div>
-              <a href="programs/youth-talks.html" class="nav-dropdown-item">Youth Talks</a>
-              <a href="programs/female-session.html" class="nav-dropdown-item">Females Session</a>
-              <a href="programs/youth-seminar.html" class="nav-dropdown-item">Youth Seminar</a>
-            </div>
-            <div>
-              <div class="nav-dropdown-group-title">Community</div>
-              <a href="programs/fos.html" class="nav-dropdown-item">FOS</a>
-              <a href="programs/masjid-night.html" class="nav-dropdown-item">Masjid Night</a>
-              <a href="programs/workers-convention.html" class="nav-dropdown-item">Workers Convention</a>
-            </div>
-            <div>
-              <div class="nav-dropdown-group-title">Explore</div>
-              <a href="events.html" class="nav-dropdown-item">Deeni Tulba &amp; AI</a>
-              <a href="#books" class="nav-dropdown-item">Books</a>
-              <a href="#courses" class="nav-dropdown-item">Courses</a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <a href="event.html">Events</a>
       <a href="index.html#contact">Contact</a>
       <a href="index.html#book-session" class="nav-cta">Book a Session</a>
     </div>
@@ -588,7 +561,7 @@
   </div>
 </div>
 
-<!-- ── Terms & Conditions Modal ── -->
+<!-- ── Terms & Conditions Modal — disabled while bookings are not open (see "Bookings Coming Soon Modal" below) ──
 <div id="terms-modal" class="terms-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="terms-modal-title" style="display:none;">
   <div class="terms-modal-box">
     <div class="terms-modal-header">
@@ -630,6 +603,9 @@
     </div>
   </div>
 </div>
+──────────────────────────────────────────────────────────────────────── -->
+
+<!-- Bookings "Coming Soon" modal + booking-CTA interception are injected site-wide by main.js -->
 
 <script>
   // Mobile menu toggle
@@ -814,6 +790,7 @@
   Cal("ui", { theme: "dark", styles: { branding: { brandColor: "#F5C518" } }, hideEventTypeDetails: false, layout: "month_view" });
 </script>
 
+<!-- Terms & Conditions gating disabled while bookings are not open — replaced by the "Bookings coming soon" notice below.
 <script>
   // Terms & Conditions Modal — gates first click on any booking CTA
   (function () {
@@ -844,6 +821,8 @@
     });
   })();
 </script>
+──────────────────────────────────────────────────────────────────────── -->
+
 
 
 <script>
@@ -879,5 +858,6 @@
 </script>
 
 
+  <script src="main.js"></script>
 </body>
 </html>
