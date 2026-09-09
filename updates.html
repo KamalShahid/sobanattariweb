@@ -9,40 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    /* ---- Updates page-only additions (mirrors the Youth Talks upcoming-card design exactly) ---- */
-    .upd-card { display: flex; flex-direction: column; gap: 16px; overflow: hidden; }
-    .upd-card-image {
-      position: relative; height: 200px;
-      margin: -32px -28px 0;
-      background: linear-gradient(135deg, #1c1c1c, #2c2c2c);
-      background-size: cover; background-position: center;
-    }
-    .upd-card-image::after {
-      content: ""; position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.5) 100%);
-    }
-    .upd-card-num {
-      position: absolute; left: 16px; bottom: 16px; z-index: 1;
-      background: var(--accent); color: #111;
-      font-family: var(--font-display); font-weight: 700; font-size: 26px;
-      padding: 8px 16px; line-height: 1;
-    }
-    .upd-tag {
-      background: var(--bg-light); border: 1px solid var(--border-light); border-radius: 100px;
-      padding: 4px 12px; font-size: 12px; font-weight: 600; color: var(--text-muted);
-    }
-    .upd-card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-    .upd-card-top .badges { display: flex; align-items: center; gap: 8px; }
-    .upd-category { font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: var(--accent-dark); }
-    .upd-card h3 { font-size: 21px; color: var(--text-dark); line-height: 1.25; }
-
-    .upd-location { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-body); }
-    .upd-location svg { flex-shrink: 0; stroke: var(--accent-dark); }
-    .upd-location.is-link { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
-
-    .upd-register { margin-top: 2px; }
-  </style>
 </head>
 <body>
   <nav id="navbar">
@@ -82,7 +48,7 @@
       <h1>Be part of the next conversation.</h1>
       <p>Free talks, seminars, university sessions and online gatherings designed to leave you clearer, stronger and more inspired.</p>
       <div class="updates-hero-points" aria-label="Event benefits">
-        <span><b>12</b> upcoming events</span>
+        <span><b>4</b> upcoming sessions</span>
         <span><b>100%</b> free entry</span>
         <span><b>In-person + online</b></span>
       </div>
@@ -98,283 +64,95 @@
             <h2>What's coming up</h2>
           </div>
         </div>
-        <div class="updates-grid">
+        <div class="fs-cards animate-on-scroll">
+        <article class="dcard fs-card">
+          <div class="fs-card-image" style="background-image:url('brand_assets/upcoming-session-females1.png')">
+            <div class="fs-card-num">01</div>
+          </div>
+          <div class="fs-card-top">
+            <span class="fs-city">Online</span>
+            <div class="badges">
+              <span class="updates-card-free">Free</span>
+              <span class="fs-tag"><span class="fs-tag-icon" aria-hidden="true"></span>Females Only</span>
+            </div>
+          </div>
+          <div class="updates-card-date">
+            <div class="updates-date-day">11</div>
+            <div><b>September, Friday 2026</b><small>9:00 PM PKT</small></div>
+          </div>
+          <h3>Challenges Women Face in This Modern Era</h3>
+          <div class="fs-location">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 6 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-6-3.5-9s1-6.5 3.5-9z"/></svg>
+            The meeting link is shared only with registered participants.
+          </div>
+          <a href="https://forms.gle/DYNALWJ3yo8Tnk9N9" class="btn btn-primary" target="_blank" rel="noopener">Register Now</a>
+        </article>
 
-          <!-- 01 — Youth Talks · Karachi · Onsite · Males Only -->
-          <article class="dcard upd-card animate-on-scroll">
-            <div class="upd-card-image" style="background-image:url('brand_assets/IMG_0373.JPG')">
-              <div class="upd-card-num">01</div>
+        <article class="dcard fs-card">
+          <div class="fs-card-image" style="background-image:url('brand_assets/upcoming-yt1.png')">
+            <div class="fs-card-num">03</div>
+          </div>
+          <div class="fs-card-top">
+            <span class="fs-city">Lahore</span>
+            <div class="badges">
+              <span class="updates-card-free">Free</span>
             </div>
-            <div class="upd-card-top">
-              <span class="upd-category">Youth Talks</span>
-              <div class="badges">
-                <span class="updates-card-free">Free</span>
-                <span class="upd-tag">Males Only</span>
-              </div>
-            </div>
-            <div class="updates-card-date">
-              <div class="updates-date-day">04</div>
-              <div><b>Sunday, October 2026</b><small>5:30 PM</small></div>
-            </div>
-            <h3>Career Confusion &amp; Mental Well-Being</h3>
-            <div class="upd-location">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Main Auditorium, University of Karachi
-            </div>
-          </article>
+          </div>
+          <div class="updates-card-date">
+            <div class="updates-date-day">22</div>
+            <div><b>Tuesday, September 2026</b><small>8:00 PM</small></div>
+          </div>
+          <h3>Youth Talks</h3>
+          <div class="fs-location">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Onsite event — venue : Audotrium Jamia Masjid Sakeena Sadiq, Qazafi Stadium, Lahore
+          </div>
+        </article>
 
-          <!-- 02 — Online Session · Open · Register -->
-          <article class="dcard upd-card animate-on-scroll">
-            <div class="upd-card-image" style="background-image:url('brand_assets/IMG_0014.JPG')">
-              <div class="upd-card-num">02</div>
+        <article class="dcard fs-card">
+          <div class="fs-card-image" style="background-image:url('brand_assets/upcoming-deeni-tulba.png')">
+            <div class="fs-card-num">02</div>
+          </div>
+          <div class="fs-card-top">
+            <span class="fs-city">Online</span>
+            <div class="badges">
+              <span class="updates-card-free">Free</span>
             </div>
-            <div class="upd-card-top">
-              <span class="upd-category">Online Session</span>
-              <div class="badges">
-                <span class="updates-card-free">Free</span>
-              </div>
-            </div>
-            <div class="updates-card-date">
-              <div class="updates-date-day">11</div>
-              <div><b>Sunday, October 2026</b><small>8:00 PM PKT</small></div>
-            </div>
-            <h3>Faith, Doubt &amp; Finding Clarity</h3>
-            <a class="upd-location is-link" href="https://zoom.us/" target="_blank" rel="noopener">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 6 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-6-3.5-9s1-6.5 3.5-9z"/></svg>
-              Online — join via Zoom
-            </a>
-            <div class="upd-register"><a href="index.html#contact" class="reg-btn">Register for Free</a></div>
-          </article>
+          </div>
+          <div class="updates-card-date">
+            <div class="updates-date-day">21</div>
+            <div><b>Saturday, November 2026</b><small>8:30 PM PKT</small></div>
+          </div>
+          <h3>Deeni Tulba &amp; AI</h3>
+          <div class="fs-location">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 6 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-6-3.5-9s1-6.5 3.5-9z"/></svg>
+            The meeting link is shared only with registered participants.
+          </div>
+          <span class="fs-soon">Registrations opening soon</span>
+        </article>
 
-          <!-- 03 — Youth Seminar · Islamabad · Onsite · Open -->
-          <article class="dcard upd-card animate-on-scroll">
-            <div class="upd-card-image" style="background-image:url('brand_assets/IMG_0203.JPG')">
-              <div class="upd-card-num">03</div>
+        <article class="dcard fs-card">
+          <div class="fs-card-image" style="background-image:url('brand_assets/upcoming-yt2.png')">
+            <div class="fs-card-num">04</div>
+          </div>
+          <div class="fs-card-top">
+            <span class="fs-city">Karachi</span>
+            <div class="badges">
+              <span class="updates-card-free">Free</span>
             </div>
-            <div class="upd-card-top">
-              <span class="upd-category">Youth Seminar</span>
-              <div class="badges">
-                <span class="updates-card-free">Free</span>
-              </div>
-            </div>
-            <div class="updates-card-date">
-              <div class="updates-date-day">17</div>
-              <div><b>Saturday, October 2026</b><small>7:30 PM</small></div>
-            </div>
-            <h3>Science, Faith &amp; the Signs of Allah</h3>
-            <div class="upd-location">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Jinnah Convention Centre, Islamabad
-            </div>
-          </article>
-
-          <!-- 04 — Females Session (Online) · Females Only · Register -->
-          <article class="dcard upd-card animate-on-scroll">
-            <div class="upd-card-image" style="background-image:url('brand_assets/females-online-parenting-ai.JPG')">
-              <div class="upd-card-num">04</div>
-            </div>
-            <div class="upd-card-top">
-              <span class="upd-category">Females Session</span>
-              <div class="badges">
-                <span class="updates-card-free">Free</span>
-                <span class="upd-tag">Females Only</span>
-              </div>
-            </div>
-            <div class="updates-card-date">
-              <div class="updates-date-day">24</div>
-              <div><b>Saturday, October 2026</b><small>4:00 PM PKT</small></div>
-            </div>
-            <h3>Parenting, Career &amp; Life in the Age of AI</h3>
-            <a class="upd-location is-link" href="https://zoom.us/" target="_blank" rel="noopener">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 6 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-6-3.5-9s1-6.5 3.5-9z"/></svg>
-              Online — join via Zoom
-            </a>
-            <div class="upd-register"><a href="index.html#contact" class="reg-btn">Register for Free</a></div>
-          </article>
-
-          <!-- 05 — University Session · Lahore · Onsite · Open -->
-          <article class="dcard upd-card animate-on-scroll">
-            <div class="upd-card-image" style="background-image:url('brand_assets/DSC_0654.JPG')">
-              <div class="upd-card-num">05</div>
-            </div>
-            <div class="upd-card-top">
-              <span class="upd-category">University Session</span>
-              <div class="badges">
-                <span class="updates-card-free">Free</span>
-              </div>
-            </div>
-            <div class="updates-card-date">
-              <div class="updates-date-day">31</div>
-              <div><b>Saturday, October 2026</b><small>4:00 PM</small></div>
-            </div>
-            <h3>Purpose Beyond the Job Title</h3>
-            <div class="upd-location">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              University of Central Punjab, Lahore
-            </div>
-          </article>
-
-          <!-- 06 — Youth Talks · Lahore · Onsite · Males Only -->
-          <article class="dcard upd-card animate-on-scroll">
-            <div class="upd-card-image" style="background-image:url('brand_assets/IMG_0472.JPG')">
-              <div class="upd-card-num">06</div>
-            </div>
-            <div class="upd-card-top">
-              <span class="upd-category">Youth Talks</span>
-              <div class="badges">
-                <span class="updates-card-free">Free</span>
-                <span class="upd-tag">Males Only</span>
-              </div>
-            </div>
-            <div class="updates-card-date">
-              <div class="updates-date-day">07</div>
-              <div><b>Saturday, November 2026</b><small>6:00 PM</small></div>
-            </div>
-            <h3>Relationships &amp; Soft Skills</h3>
-            <div class="upd-location">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              LUMS, Main Auditorium, Lahore
-            </div>
-          </article>
-
-          <!-- 07 — Online Session · Open · Register -->
-          <article class="dcard upd-card animate-on-scroll">
-            <div class="upd-card-image" style="background-image:url('brand_assets/online-career-qa.JPG')">
-              <div class="upd-card-num">07</div>
-            </div>
-            <div class="upd-card-top">
-              <span class="upd-category">Online Session</span>
-              <div class="badges">
-                <span class="updates-card-free">Free</span>
-              </div>
-            </div>
-            <div class="updates-card-date">
-              <div class="updates-date-day">14</div>
-              <div><b>Saturday, November 2026</b><small>8:00 PM PKT</small></div>
-            </div>
-            <h3>Career Clarity for Young Professionals</h3>
-            <a class="upd-location is-link" href="https://zoom.us/" target="_blank" rel="noopener">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 6 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-6-3.5-9s1-6.5 3.5-9z"/></svg>
-              Online — join via Zoom
-            </a>
-            <div class="upd-register"><a href="index.html#contact" class="reg-btn">Register for Free</a></div>
-          </article>
-
-          <!-- 08 — Females Session · Lahore · Onsite · Females Only -->
-          <article class="dcard upd-card animate-on-scroll">
-            <div class="upd-card-image" style="background-image:url('brand_assets/IMG_0425.JPG')">
-              <div class="upd-card-num">08</div>
-            </div>
-            <div class="upd-card-top">
-              <span class="upd-category">Females Session</span>
-              <div class="badges">
-                <span class="updates-card-free">Free</span>
-                <span class="upd-tag">Females Only</span>
-              </div>
-            </div>
-            <div class="updates-card-date">
-              <div class="updates-date-day">21</div>
-              <div><b>Saturday, November 2026</b><small>6:30 PM</small></div>
-            </div>
-            <h3>Strength, Faith &amp; the Woman Within</h3>
-            <div class="upd-location">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Alhamra Arts Centre, Lahore
-            </div>
-          </article>
-
-          <!-- 09 — Youth Seminar · Multan · Onsite · Open -->
-          <article class="dcard upd-card animate-on-scroll">
-            <div class="upd-card-image" style="background-image:url('brand_assets/youth-seminar-multan.JPG')">
-              <div class="upd-card-num">09</div>
-            </div>
-            <div class="upd-card-top">
-              <span class="upd-category">Youth Seminar</span>
-              <div class="badges">
-                <span class="updates-card-free">Free</span>
-              </div>
-            </div>
-            <div class="updates-card-date">
-              <div class="updates-date-day">28</div>
-              <div><b>Saturday, November 2026</b><small>3:00 PM</small></div>
-            </div>
-            <h3>Identity, Purpose &amp; the Digital World</h3>
-            <div class="upd-location">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Bahauddin Zakariya University, Multan
-            </div>
-          </article>
-
-          <!-- 10 — Females Session (Online) · Females Only · Register -->
-          <article class="dcard upd-card animate-on-scroll">
-            <div class="upd-card-image" style="background-image:url('brand_assets/females-online-career-boundaries.JPG')">
-              <div class="upd-card-num">10</div>
-            </div>
-            <div class="upd-card-top">
-              <span class="upd-category">Females Session</span>
-              <div class="badges">
-                <span class="updates-card-free">Free</span>
-                <span class="upd-tag">Females Only</span>
-              </div>
-            </div>
-            <div class="updates-card-date">
-              <div class="updates-date-day">05</div>
-              <div><b>Saturday, December 2026</b><small>4:00 PM PKT</small></div>
-            </div>
-            <h3>Boundaries &amp; Career Confidence</h3>
-            <a class="upd-location is-link" href="https://zoom.us/" target="_blank" rel="noopener">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 6 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-6-3.5-9s1-6.5 3.5-9z"/></svg>
-              Online — join via Zoom
-            </a>
-            <div class="upd-register"><a href="index.html#contact" class="reg-btn">Register for Free</a></div>
-          </article>
-
-          <!-- 11 — University Session · Karachi · Onsite · Open -->
-          <article class="dcard upd-card animate-on-scroll">
-            <div class="upd-card-image" style="background-image:url('brand_assets/university-session-karachi.JPG')">
-              <div class="upd-card-num">11</div>
-            </div>
-            <div class="upd-card-top">
-              <span class="upd-category">University Session</span>
-              <div class="badges">
-                <span class="updates-card-free">Free</span>
-              </div>
-            </div>
-            <div class="updates-card-date">
-              <div class="updates-date-day">12</div>
-              <div><b>Saturday, December 2026</b><small>5:00 PM</small></div>
-            </div>
-            <h3>Ambition Without Losing Yourself</h3>
-            <div class="upd-location">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              IBA Karachi, Main Campus
-            </div>
-          </article>
-
-          <!-- 12 — Community Event · Faisalabad · Onsite · Open -->
-          <article class="dcard upd-card animate-on-scroll">
-            <div class="upd-card-image" style="background-image:url('brand_assets/community-event-faisalabad.JPG')">
-              <div class="upd-card-num">12</div>
-            </div>
-            <div class="upd-card-top">
-              <span class="upd-category">Community Event</span>
-              <div class="badges">
-                <span class="updates-card-free">Free</span>
-              </div>
-            </div>
-            <div class="updates-card-date">
-              <div class="updates-date-day">19</div>
-              <div><b>Saturday, December 2026</b><small>10:00 AM</small></div>
-            </div>
-            <h3>Blood Donation &amp; Community Awareness Drive</h3>
-            <div class="upd-location">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Iqbal Stadium Grounds, Faisalabad
-            </div>
-          </article>
-
+          </div>
+          <div class="updates-card-date">
+            <div class="updates-date-day">25</div>
+            <div><b>Friday, September 2026</b><small>10:00 PM</small></div>
+          </div>
+          <h3>Youth Talks</h3>
+          <div class="fs-location">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Onsite event — venue announced soon
+          </div>
+        </article>
         </div>
-        <p id="event-details" class="updates-note">Event details are subject to confirmation. Registration links and joining information for online sessions will be updated by the organizing team. Onsite sessions are open attendance — no registration required.</p>
+        <p id="event-details" class="updates-note">Event details are subject to confirmation. The meeting link is shared only with registered participants.</p>
       </div>
     </section>
 
