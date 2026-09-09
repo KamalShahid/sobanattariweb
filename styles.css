@@ -1773,15 +1773,19 @@ body.menu-open { overflow: hidden; }
   padding: 8px 16px; line-height: 1;
 }
 .fs-tag {
-  display: inline-flex; align-items: center; gap: 5px;
+  display: inline-flex; align-items: center; gap: 5px; white-space: nowrap;
   background: var(--accent); border: 1px solid var(--accent-dark); border-radius: 100px;
   padding: 5px 13px; font-size: 12px; font-weight: 800; letter-spacing: 0.6px;
   text-transform: uppercase; color: #111;
   box-shadow: 0 5px 14px rgba(245, 197, 24, 0.28);
 }
 .fs-tag-icon { font-size: 13px; line-height: 1; }
-.fs-card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-.fs-card-top .badges { display: flex; align-items: center; gap: 8px; }
+.fs-card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px 12px; flex-wrap: wrap; }
+.fs-card-top .badges { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+@media (max-width: 560px) {
+  .fs-card-top .badges { width: 100%; }
+  .fs-tag { padding: 4px 11px; font-size: 10.5px; letter-spacing: 0.3px; box-shadow: 0 3px 9px rgba(245, 197, 24, 0.20); }
+}
 .fs-city { font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: var(--accent-dark); }
 .fs-card h3 { font-size: 21px; color: var(--text-dark); line-height: 1.25; }
 .fs-location { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-body); }
