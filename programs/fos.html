@@ -21,7 +21,7 @@
       <a href="../index.html">Home</a>
       <a href="../biography.html">About</a>
       <a href="../updates.html"><span class="updates-shine"></span>Updates</a>
-      <a href="../event.html">Events</a>
+      <a href="../event.html">Projects</a>
       <a href="../index.html#contact">Contact</a>
       <a href="../index.html#book-session" class="nav-cta">Book a Session</a>
     </div>
@@ -35,14 +35,14 @@
   <a href="../index.html" onclick="closeMenu()">Home</a>
   <a href="../biography.html" onclick="closeMenu()">About</a>
   <a href="../updates.html" onclick="closeMenu()"><span class="updates-shine"></span>Updates</a>
-  <a href="../event.html" onclick="closeMenu()">Events</a>
+  <a href="../event.html" onclick="closeMenu()">Projects</a>
   <a href="../index.html#contact" onclick="closeMenu()">Contact</a>
   <a href="../index.html#book-session" onclick="closeMenu()">Book a Session</a>
 </div>
 
 <header class="page-header section-dark fos-hero">
   <div class="container">
-    <a href="../event.html" class="page-back">&larr; All Events</a>
+    <a href="../event.html" class="page-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>Back to Events</a>
     <span class="section-label">Programs</span>
     <h1>FOS</h1>
     <p>Friends of Soban Attari — students and professionals working together inside their own institutes and universities to learn, grow, and serve.</p>
@@ -76,12 +76,59 @@
         <p>If your institute or community wants to build an FOS chapter, fill in the form and our team will follow up.</p>
       </div>
     </div>
-    <div class="fos-form-embed animate-on-scroll">
-      <!-- Replace the src below with the real Google Form embed URL (…/viewform?embedded=true) -->
-      <iframe
-        src="https://docs.google.com/forms/d/e/1FAIpQLScDUMMYdummyDUMMYdummyDUMMYdummyDUMMY000/viewform?embedded=true"
-        title="FOS Chapter Registration"
-        loading="lazy">Loading form…</iframe>
+    <div class="fos-form-card animate-on-scroll">
+      <div class="fos-form-head">
+        <span class="section-label">FOS Chapter Registration</span>
+        <p>Fill in the details below — our team follows up within a few days.</p>
+      </div>
+      <form class="fos-form" id="fos-form"
+            action="https://docs.google.com/forms/d/e/1FAIpQLSfjGSWqk7OAE5QlgaxEwdH8t97kVZ-r6TQqhbsRsA3mMc57wQ/formResponse"
+            method="POST" target="fos-hidden-iframe" novalidate>
+        <div class="fos-field">
+          <input type="text" id="fos-name" name="entry.1552645320" placeholder=" " autocomplete="name" required />
+          <label for="fos-name">Full Name</label>
+          <div class="fos-field-msg">Please enter your full name.</div>
+        </div>
+        <div class="fos-field">
+          <input type="email" id="fos-email" name="entry.1361059605" placeholder=" " autocomplete="email" required />
+          <label for="fos-email">Email</label>
+          <div class="fos-field-msg">Enter a valid email address.</div>
+        </div>
+        <div class="fos-field">
+          <input type="tel" id="fos-whatsapp" name="entry.1194502821" placeholder=" " autocomplete="tel" inputmode="tel" required />
+          <label for="fos-whatsapp">WhatsApp Number</label>
+          <div class="fos-field-msg">Enter a valid number (7–15 digits).</div>
+        </div>
+        <div class="fos-field">
+          <input type="text" id="fos-institute" name="entry.137507659" placeholder=" " required />
+          <label for="fos-institute">Institute / University</label>
+          <div class="fos-field-msg">Please enter your institute.</div>
+        </div>
+        <div class="fos-field">
+          <input type="text" id="fos-city" name="entry.1852253854" placeholder=" " autocomplete="address-level2" required />
+          <label for="fos-city">City</label>
+          <div class="fos-field-msg">Please enter your city.</div>
+        </div>
+        <div class="fos-field fos-field--full">
+          <textarea id="fos-help" name="entry.551700255" placeholder=" " required></textarea>
+          <label for="fos-help">What You Can Do for Us?</label>
+          <div class="fos-field-msg">Tell us how you'd like to help.</div>
+        </div>
+        <div class="fos-submit-row">
+          <button type="submit" class="fos-submit">
+            <span class="label-send">Submit Registration</span>
+            <span class="spinner" aria-hidden="true"></span>
+          </button>
+          <p class="fos-privacy">Your details are shared only with the FOS team.</p>
+        </div>
+        <div class="fos-success" id="fos-success" role="status" aria-live="polite" hidden>
+          <div class="check"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg></div>
+          <h3>Registration received</h3>
+          <p>Thank you for your interest in FOS. Our team will reach out to you on WhatsApp soon.</p>
+        </div>
+        <p class="fos-hp" aria-hidden="true"><label>Do not fill this field <input type="text" name="fos_company" tabindex="-1" autocomplete="off" /></label></p>
+      </form>
+      <iframe class="fos-hidden-iframe" name="fos-hidden-iframe" title="Form response target" tabindex="-1" aria-hidden="true"></iframe>
     </div>
   </div>
 </section>
@@ -91,6 +138,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <img src="../brand_assets/Logo_white.png" alt="Soban Attari" />
+        <p>Soban Attari is a Pakistani speaker who works with the youth on faith, family, and modern life through honest, plain-spoken talks.</p>
         <div class="footer-contact">
           <a href="mailto:team@sobanattari.com">team@sobanattari.com</a>
           <a href="https://wa.me/923244008906" target="_blank" rel="noopener">+92 324 4008906</a>
@@ -106,33 +154,37 @@
         </div>
       </div>
       <div class="footer-col">
-        <h4>Navigation</h4>
+        <h4>Explore</h4>
         <a href="../index.html">Home</a>
         <a href="../biography.html">About</a>
-        <a href="../index.html#books">Books</a>
+        <a href="../event.html">Projects</a>
+        <a href="../updates.html">Updates</a>
         <a href="../blogs.html">University Sessions</a>
+        <a href="../books.html">Books</a>
+        <a href="../courses.html">Courses</a>
         <a href="../index.html#contact">Contact</a>
-        <a href="../index.html#book-session">Book a Session</a>
       </div>
       <div class="footer-col">
-        <h4>Talks &amp; Events</h4>
-        <a href="youth-talks.html">Youth Talks</a>
-        <a href="females-session.html">Females Session</a>
-        <a href="fos.html">FOS</a>
-        <a href="growth-room.html">Growth Room</a>
-        <a href="youth-seminar.html">Youth Seminar</a>
-        <a href="../event.html">Community Events</a>
+        <h4>Programs</h4>
+        <a href="../programs/youth-talks.html">Youth Talks</a>
+        <a href="../programs/youth-seminar.html">Youth Seminar</a>
+        <a href="../programs/growth-room.html">Growth Room</a>
+        <a href="../programs/female-session.html">Females Session</a>
+        <a href="../programs/masjid-night.html">Masjid Night</a>
+        <a href="../programs/fos.html">FOS</a>
+        <a href="../programs/deeni-tulba-and-ai.html">Deeni Tulba &amp; AI</a>
+        <a href="../programs/overseas-session.html">Overseas Session</a>
+        <a href="../programs/workers-convention.html">Workers Convention</a>
       </div>
       <div class="footer-col">
-        <h4>Online Courses</h4>
-        <a href="../index.html#courses">Parenting Mastery</a>
-        <a href="../index.html#courses">Life Skills for Modern Muslims</a>
-        <a href="../index.html#courses">Islamic Psychology</a>
+        <h4>Impact Programs</h4>
+        <a href="../activities/blood-camp.html">Blood Donation</a>
+        <a href="../activities/flood-relief.html">Flood Relief</a>
+        <a href="../activities/plantation.html">Plantation Drive</a>
       </div>
     </div>
     <div class="footer-bottom">
       <p>© 2026 <span class="gold">Soban Attari</span>. All rights reserved.</p>
-      <div class="legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
     </div>
   </div>
 </footer>
@@ -144,6 +196,72 @@
   (function () { const nav = document.getElementById('navbar'); const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 80); onScroll(); window.addEventListener('scroll', onScroll, { passive: true }); })();
   const revealObs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); revealObs.unobserve(e.target); } }); }, { threshold: 0.1 });
   document.querySelectorAll('.animate-on-scroll').forEach(el => revealObs.observe(el));
+
+  /* FOS registration form — native fields, posts to Google Forms via hidden iframe */
+  (function () {
+    const form = document.getElementById('fos-form');
+    if (!form) return;
+    const successPanel = document.getElementById('fos-success');
+    const frame = document.querySelector('.fos-hidden-iframe');
+    let submitting = false, done = false, fallbackTimer = null;
+
+    const rules = {
+      'fos-name':      v => v.trim().length >= 2,
+      'fos-email':     v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),
+      'fos-whatsapp':  v => { const d = v.replace(/\D/g, ''); return d.length >= 7 && d.length <= 15 && !/^(\d)\1+$/.test(d); },
+      'fos-institute': v => v.trim().length >= 2,
+      'fos-city':      v => v.trim().length >= 2,
+      'fos-help':      v => v.trim().length >= 3
+    };
+
+    function validateField(id) {
+      const input = document.getElementById(id);
+      const ok = rules[id](input.value);
+      input.closest('.fos-field').classList.toggle('has-error', !ok);
+      return ok;
+    }
+
+    Object.keys(rules).forEach(id => {
+      const input = document.getElementById(id);
+      input.addEventListener('blur', () => validateField(id));
+      input.addEventListener('input', () => {
+        if (input.closest('.fos-field').classList.contains('has-error')) validateField(id);
+      });
+    });
+
+    function showSuccess() {
+      if (done) return;
+      done = true;
+      clearTimeout(fallbackTimer);
+      form.classList.remove('is-submitting');
+      form.classList.add('is-done');
+      const head = form.closest('.fos-form-card').querySelector('.fos-form-head');
+      if (head) head.hidden = true;
+      successPanel.hidden = false;
+      void successPanel.offsetWidth;
+      successPanel.classList.add('show');
+      successPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    form.addEventListener('submit', function (e) {
+      const hp = form.elements['fos_company'];
+      if (hp && hp.value !== '') { e.preventDefault(); return; }
+
+      let firstInvalid = null;
+      Object.keys(rules).forEach(id => {
+        if (!validateField(id) && !firstInvalid) firstInvalid = document.getElementById(id);
+      });
+      if (firstInvalid) { e.preventDefault(); firstInvalid.focus(); return; }
+
+      submitting = true;
+      form.classList.add('is-submitting');
+      fallbackTimer = setTimeout(showSuccess, 2600);
+    });
+
+    if (frame) {
+      frame.addEventListener('load', function () { if (submitting) showSuccess(); });
+    }
+  })();
 </script>
   <script src="../main.js"></script>
 </body>
