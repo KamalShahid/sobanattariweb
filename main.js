@@ -58,6 +58,76 @@
         el.setAttribute('aria-current', 'page');
       });
     }
+
+    /* ---- Mobile drawer: single source of truth for open/close, with a focus
+            trap, focus restore, inert page behind it, and auto-close when the
+            viewport grows back to desktop. Overrides any per-page copies. ---- */
+    (function setupMobileMenu() {
+      const backdrop = document.getElementById('mobile-menu-backdrop');
+      const hamburger = document.getElementById('nav-hamburger');
+      const DESKTOP_BP = 880; // must match the CSS breakpoint
+      let lastFocused = null;
+
+      function setPageInert(on) {
+        Array.prototype.forEach.call(document.body.children, function (el) {
+          if (el === mobileMenu || el === backdrop) return;
+          if (on) el.setAttribute('inert', '');
+          else el.removeAttribute('inert');
+        });
+      }
+
+      function trapTab(e) {
+        if (e.key === 'Escape') { closeMenu(); return; }
+        if (e.key !== 'Tab') return;
+        const items = mobileMenu.querySelectorAll('a[href], button:not([disabled])');
+        if (!items.length) return;
+        const first = items[0], last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+
+      function openMenu() {
+        if (mobileMenu.classList.contains('open')) return;
+        lastFocused = document.activeElement;
+        mobileMenu.classList.add('open');
+        if (backdrop) backdrop.classList.add('open');
+        mobileMenu.setAttribute('aria-hidden', 'false');
+        if (hamburger) hamburger.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('menu-open');
+        setPageInert(true);
+        document.addEventListener('keydown', trapTab, true);
+        const close = mobileMenu.querySelector('.nav-mobile-close');
+        if (close) close.focus();
+      }
+
+      function closeMenu() {
+        if (!mobileMenu.classList.contains('open')) return;
+        mobileMenu.classList.remove('open');
+        if (backdrop) backdrop.classList.remove('open');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+        setPageInert(false);
+        document.removeEventListener('keydown', trapTab, true);
+        if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+        else if (hamburger) hamburger.focus();
+      }
+
+      function toggleMenu() {
+        (mobileMenu.classList.contains('open') ? closeMenu : openMenu)();
+      }
+
+      window.toggleMenu = toggleMenu;
+      window.closeMenu = closeMenu;
+
+      let resizeTimer;
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function () {
+          if (window.innerWidth > DESKTOP_BP && mobileMenu.classList.contains('open')) closeMenu();
+        }, 120);
+      });
+    })();
   }
 
   /* ---- Bookings not open yet: every booking CTA (navbar included) shows a

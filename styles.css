@@ -58,6 +58,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 92px; /* keep #anchors clear of the fixed navbar */
   font-size: 16px;
 }
 
@@ -164,6 +165,14 @@ p { font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: va
   display: flex; align-items: center; background: transparent;
   transition: background var(--transition), box-shadow var(--transition);
 }
+/* Legibility scrim for the transparent (top-of-page) state so nav links stay
+   readable even over a light hero. Fades out once the bar turns solid. */
+#navbar::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0));
+  transition: opacity var(--transition);
+}
+#navbar.scrolled::before { opacity: 0; }
 #navbar.scrolled {
   background: rgba(255, 255, 255, 0.96);
   box-shadow: 0 1px 0 var(--border-light);
@@ -191,8 +200,12 @@ p { font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: va
   content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
   background: var(--accent); transition: width var(--transition);
 }
-.nav-links > a:hover { color: #ffffff; }
-.nav-links > a:hover::after { width: 100%; }
+.nav-links > a:hover,
+.nav-links > a:focus-visible { color: #ffffff; }
+.nav-links > a:hover::after,
+.nav-links > a:focus-visible::after { width: 100%; }
+.nav-links > a:focus-visible,
+.nav-cta:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; border-radius: 2px; }
 .nav-links > a.active { color: var(--accent); font-weight: 700; }
 .nav-links > a.active::after { width: 100%; }
 .nav-dropdown-toggle:hover { color: #fff; }
@@ -203,6 +216,7 @@ p { font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: va
 #navbar.scrolled .nav-links > a,
 #navbar.scrolled .nav-dropdown-toggle { color: var(--text-body); }
 #navbar.scrolled .nav-links > a:hover,
+#navbar.scrolled .nav-links > a:focus-visible,
 #navbar.scrolled .nav-dropdown-toggle:hover { color: var(--text-dark); }
 
 /* =========================================================
@@ -403,12 +417,12 @@ p { font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: va
 .nav-hamburger:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
 
 .nav-mobile-menu {
-  visibility: hidden; opacity: 0; pointer-events: none; transform: translateX(-105%);
-  display: flex; position: fixed; top: 0; bottom: 0; left: 0; width: min(90vw, 390px);
+  visibility: hidden; opacity: 0; pointer-events: none; transform: translateX(105%);
+  display: flex; position: fixed; top: 0; bottom: 0; right: 0; width: min(90vw, 390px);
   background: linear-gradient(155deg, #171717 0%, #0d0d0d 100%); z-index: 1002;
   flex-direction: column; align-items: stretch; justify-content: flex-start;
   gap: 4px; padding: 24px 24px 40px; overflow-y: auto;
-  overscroll-behavior: contain; box-shadow: 18px 0 50px rgba(0, 0, 0, 0.28);
+  overscroll-behavior: contain; box-shadow: -18px 0 50px rgba(0, 0, 0, 0.28);
   transition: transform 0.45s cubic-bezier(.22, 1, .36, 1), opacity 0.3s ease, visibility 0.45s ease;
 }
 .nav-mobile-menu.open { visibility: visible; opacity: 1; pointer-events: auto; transform: translateX(0); }
@@ -474,9 +488,13 @@ body.menu-open { overflow: hidden; }
 .events-dropdown-menu .nav-dropdown-mega { grid-template-columns: repeat(3, minmax(150px, 1fr)); }
 .events-dropdown-menu .nav-dropdown-item { padding: 8px 0; }
 
-@media (max-width: 1024px) {
+@media (max-width: 880px) {
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
+}
+@media (max-width: 768px) {
+  /* solid instead of blur on small screens (cheaper, avoids scroll jank) */
+  #navbar.scrolled { background: rgba(255, 255, 255, 0.98); backdrop-filter: none; -webkit-backdrop-filter: none; }
 }
 
 @media (max-width: 480px) {
@@ -843,6 +861,14 @@ body.menu-open { overflow: hidden; }
 .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
 .contact-form textarea { height: 140px; resize: vertical; }
 @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+
+/* Embedded Google Form (FOS "Work With Soban Attari") */
+.fos-form-embed { width: 100%; }
+.fos-form-embed iframe {
+  width: 100%; min-height: 900px; border: 0; display: block;
+  background: var(--bg-light); border-radius: 4px;
+}
+@media (max-width: 768px) { .fos-form-embed iframe { min-height: 1150px; } }
 
 /* ── Footer — DARK ── */
 #footer { background: #080808; padding: var(--space-xl) 0 var(--space-md); border-top: 1px solid var(--border-dark); }
@@ -1620,9 +1646,10 @@ body.menu-open { overflow: hidden; }
    ========================================================= */
 
 /* Book cover gradients (same palette as the home page book covers) */
-.bc-cover-science   { background: linear-gradient(135deg, #1B4332, #0a2318); }
-.bc-cover-parenting { background: linear-gradient(135deg, #5C3A00, #2d1a00); }
-.bc-cover-spirit    { background: linear-gradient(135deg, #1a2040, #0a0f20); }
+.bc-cover-1 { background: linear-gradient(135deg, #1B4332, #0a2318); }
+.bc-cover-2 { background: linear-gradient(135deg, #1a2040, #0a0f20); }
+.bc-cover-3 { background: linear-gradient(135deg, #5C3A00, #2d1a00); }
+.bc-cover-4 { background: linear-gradient(135deg, #4A1220, #250810); }
 
 /* "Coming soon" pill under a book title */
 .bc-soon {
@@ -1829,5 +1856,19 @@ body.menu-open { overflow: hidden; }
     url('brand_assets/youth-seminar-bg.png');
   background-size: cover;
   background-position: center 64%;
+  background-repeat: no-repeat;
+}
+
+/* =========================================================
+   FOS — hero photo (programs/fos.html)
+   Group photo with people in the lower half, so the focal
+   point is pulled down to keep faces in frame.
+   ========================================================= */
+.page-header.fos-hero {
+  background-image:
+    linear-gradient(180deg, rgba(10,10,10,0.58) 0%, rgba(10,10,10,0.50) 45%, rgba(10,10,10,0.84) 100%),
+    url('brand_assets/fos-hero-bg.png');
+  background-size: cover;
+  background-position: center 40%;
   background-repeat: no-repeat;
 }
