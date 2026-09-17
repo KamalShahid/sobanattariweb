@@ -224,7 +224,7 @@ p { font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: va
    No box • No border • No circles around the link
    ========================================================= */
 
-#navbar .nav-links > a[href$="updates.html"] {
+#navbar .nav-links > a[data-nav="updates"] {
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -246,7 +246,7 @@ p { font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: va
     transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-#navbar .nav-links > a[href$="updates.html"]::after {
+#navbar .nav-links > a[data-nav="updates"]::after {
     display: none;
 }
 
@@ -257,7 +257,7 @@ p { font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: va
    the complete "Updates" text
    ========================================================= */
 
-#navbar .nav-links > a[href$="updates.html"] .updates-shine {
+#navbar .nav-links > a[data-nav="updates"] .updates-shine {
     position: absolute;
     inset: 0;
 
@@ -268,7 +268,7 @@ p { font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: va
 
 /* Main light beam */
 
-#navbar .nav-links > a[href$="updates.html"] .updates-shine::after {
+#navbar .nav-links > a[data-nav="updates"] .updates-shine::after {
     content: "";
 
     position: absolute;
@@ -306,7 +306,7 @@ p { font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: va
 
 .updates-dot { display: none !important; }
 
-#navbar .nav-links > a[href$="updates.html"] .updates-dot {
+#navbar .nav-links > a[data-nav="updates"] .updates-dot {
     display: none;
     position: relative;
 
@@ -364,7 +364,7 @@ p { font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: va
    Just slightly brighter
    ========================================================= */
 
-#navbar .nav-links > a[href$="updates.html"]:hover {
+#navbar .nav-links > a[data-nav="updates"]:hover {
 
     color: #ffffff;
     text-shadow:
@@ -376,7 +376,7 @@ p { font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: va
    SCROLLED NAVBAR
    ========================================================= */
 
-#navbar.scrolled .nav-links > a[href$="updates.html"] {
+#navbar.scrolled .nav-links > a[data-nav="updates"] {
     color: var(--accent);
 }
 
@@ -386,10 +386,10 @@ p { font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: va
 
 @media (prefers-reduced-motion: reduce) {
 
-    #navbar .nav-links > a[href="updates.html"] .updates-shine::after {
+    #navbar .nav-links > a[data-nav="updates"] .updates-shine::after {
         animation: none !important;
     }
-    .nav-mobile-menu a[href$="updates.html"]::before {
+    .nav-mobile-menu a[data-nav="updates"]::before {
         animation: none !important;
     }
 }
@@ -448,13 +448,13 @@ body.menu-open { overflow: hidden; }
 .nav-mobile-menu.open a:nth-of-type(6) { transition-delay: .20s; }
 .nav-mobile-menu a:hover { color: var(--accent); }
 .nav-mobile-menu a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-.nav-mobile-menu a[href$="updates.html"] {
+.nav-mobile-menu a[data-nav="updates"] {
   position: relative;
   color: #fff4b0;
   text-shadow: 0 0 10px rgba(245, 197, 24, 0.35);
   overflow: hidden;
 }
-.nav-mobile-menu a[href$="updates.html"]::before {
+.nav-mobile-menu a[data-nav="updates"]::before {
   content: '';
   position: absolute;
   top: -30%;
