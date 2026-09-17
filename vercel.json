@@ -1,33 +1,4 @@
 {
-  "rewrites": [
-    { "source": "/soban-attari-biography/", "destination": "/biography.html" },
-    { "source": "/updates/", "destination": "/updates.html" },
-    { "source": "/activities/", "destination": "/projects.html" },
-    { "source": "/blog/", "destination": "/blogs.html" },
-    { "source": "/books/", "destination": "/books.html" },
-    { "source": "/courses/", "destination": "/courses.html" },
-    { "source": "/booking/", "destination": "/booking-form.html" },
-    { "source": "/seerat-mustafa-modern-science/", "destination": "/seerat-mustafa-modern-science.html" },
-
-    { "source": "/programs/youth-talks/", "destination": "/programs/youth-talks.html" },
-    { "source": "/programs/youth-seminar/", "destination": "/programs/youth-seminar.html" },
-    { "source": "/programs/female-session/", "destination": "/programs/female-session.html" },
-    { "source": "/programs/growth-room/", "destination": "/programs/growth-room.html" },
-    { "source": "/programs/masjid-night/", "destination": "/programs/masjid-night.html" },
-    { "source": "/programs/fos/", "destination": "/programs/fos.html" },
-    { "source": "/programs/deeni-tulba-and-ai/", "destination": "/programs/deeni-tulba-and-ai.html" },
-    { "source": "/programs/overseas-session/", "destination": "/programs/overseas-session.html" },
-    { "source": "/programs/workers-convention/", "destination": "/programs/workers-convention.html" },
-
-    { "source": "/activities/blood-camp/", "destination": "/activities/blood-camp.html" },
-    { "source": "/activities/flood-relief/", "destination": "/activities/flood-relief.html" },
-    { "source": "/activities/plantation/", "destination": "/activities/plantation.html" },
-
-    { "source": "/events/females-session-sep-2026/", "destination": "/events/females-session-sep-2026.html" },
-    { "source": "/events/youth-talks-lahore-sep-2026/", "destination": "/events/youth-talks-lahore-sep-2026.html" },
-    { "source": "/events/youth-talks-karachi-sep-2026/", "destination": "/events/youth-talks-karachi-sep-2026.html" },
-    { "source": "/events/deeni-tulba-ai-nov-2026/", "destination": "/events/deeni-tulba-ai-nov-2026.html" }
-  ],
   "redirects": [
     { "source": "/contact", "destination": "/#contact", "permanent": true },
     { "source": "/contact/", "destination": "/#contact", "permanent": true },

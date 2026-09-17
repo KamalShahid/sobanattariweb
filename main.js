@@ -6,6 +6,7 @@
   const about = '/soban-attari-biography/';
   const updates = '/updates/';
   const projects = '/activities/';
+  const videos = '/videos/';
 
   const nav = document.getElementById('navbar');
   const mobileMenu = document.getElementById('mobile-menu');
@@ -20,6 +21,7 @@
         <a href="${about}" data-nav="about">About</a>
         <a href="${updates}" data-nav="updates"><span class="updates-shine"></span>Updates</a>
         <a href="${projects}" data-nav="projects">Projects</a>
+        <a href="${videos}" data-nav="videos">Videos</a>
         <a href="${home}#contact">Contact</a>
         <a href="${home}#book-session" class="nav-cta">Book a Session</a>
       </div>
@@ -33,6 +35,7 @@
       <a href="${about}" data-nav="about" onclick="closeMenu()">About</a>
       <a href="${updates}" data-nav="updates" onclick="closeMenu()"><span class="updates-shine"></span>Updates</a>
       <a href="${projects}" data-nav="projects" onclick="closeMenu()">Projects</a>
+      <a href="${videos}" data-nav="videos" onclick="closeMenu()">Videos</a>
       <a href="${home}#contact" onclick="closeMenu()">Contact</a>
       <a href="${home}#book-session" onclick="closeMenu()">Book a Session</a>`;
 
@@ -49,6 +52,7 @@
       'activities': 'projects',
       'programs': 'projects',
       'events': 'updates',
+      'videos': 'videos',
       // local .html fallback (pre-rewrite / file:// testing)
       'index': 'home',
       'biography': 'about',

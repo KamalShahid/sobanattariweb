@@ -115,6 +115,9 @@ p { font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: va
 
 .section-intro { font-size: 18px; color: var(--text-muted); max-width: 600px; line-height: 1.7; }
 .section-dark .section-intro, .section-dark-2 .section-intro { color: var(--text-light-muted); }
+.section-intro a { color: var(--accent-dark); border-bottom: 1px solid var(--accent); }
+.section-intro a:hover { color: var(--text-dark); }
+.section-dark .section-intro a:hover, .section-dark-2 .section-intro a:hover { color: #ffffff; }
 
 /* ── Layout ── */
 .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 var(--space-md); }
@@ -1410,6 +1413,23 @@ a.contact-card:focus-visible { outline: 2px solid var(--accent); outline-offset:
 .past-episode-label { color: var(--accent-dark); font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
 .past-episode-content h3 { font-size: 17px; line-height: 1.3; margin-bottom: 10px; }
 .past-episode-content p { margin-top: auto; }
+
+/* =========================================================
+   SHORTS GRID — videos/index.html
+   Vertical 9:16 embeds, more columns since each card is narrow.
+   ========================================================= */
+.shorts-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+.short-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+.short-video { position: relative; aspect-ratio: 9 / 16; background: var(--bg-dark); overflow: hidden; }
+.short-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+.short-content { padding: 12px 14px 16px; }
+.short-content h3 { font-size: 12.5px; font-weight: 700; line-height: 1.35; margin: 0; color: var(--text-dark); }
+@media (max-width: 1024px) {
+  .shorts-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .shorts-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+}
 .icon-circle { width: 48px; height: 48px; border-radius: 50%; background: var(--accent-dim); border: 1px solid rgba(245,197,24,0.35); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
 .dcard.center .icon-circle { margin-left: auto; margin-right: auto; }
 .icon-circle svg { stroke: var(--accent-dark); }
@@ -2285,7 +2305,7 @@ a.contact-card:focus-visible { outline: 2px solid var(--accent); outline-offset:
 .page-header.ys-hero {
   background-image:
     linear-gradient(180deg, rgba(10,10,10,0.60) 0%, rgba(10,10,10,0.52) 45%, rgba(10,10,10,0.85) 100%),
-    url('brand_assets/youth-seminar-bg.png');
+    url('brand_assets/youth_seminar_hero.png');
   background-size: cover;
   background-position: center 64%;
   background-repeat: no-repeat;
@@ -2315,6 +2335,82 @@ a.contact-card:focus-visible { outline: 2px solid var(--accent); outline-offset:
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+/* =========================================================
+   WORKERS CONVENTION — hero photo (programs/workers-convention.html)
+   ========================================================= */
+.page-header.wc-hero {
+  background-image:
+    linear-gradient(180deg, rgba(10,10,10,0.58) 0%, rgba(10,10,10,0.50) 45%, rgba(10,10,10,0.84) 100%),
+    url('brand_assets/workers_convention-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* =========================================================
+   OVERSEAS SESSION — hero photo (programs/overseas-session.html)
+   ========================================================= */
+.page-header.ovs-hero {
+  background-image:
+    linear-gradient(180deg, rgba(10,10,10,0.58) 0%, rgba(10,10,10,0.50) 45%, rgba(10,10,10,0.84) 100%),
+    url('brand_assets/oversees_session.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* =========================================================
+   DEENI TULBA & AI — hero photo (programs/deeni-tulba-and-ai.html)
+   ========================================================= */
+.page-header.dta-hero {
+  background-image:
+    linear-gradient(180deg, rgba(10,10,10,0.58) 0%, rgba(10,10,10,0.50) 45%, rgba(10,10,10,0.84) 100%),
+    url('brand_assets/deeni-tulba-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* =========================================================
+   PROGRAM HERO PHOTOS — responsive crop
+   `cover` already scales every one of these full-bleed at any
+   width, but a short, wide desktop box and a taller, narrow
+   mobile box crop very differently from the same fixed
+   position. Give each a floor height so mobile never squashes
+   the photo into an overly tight, over-zoomed sliver, and pull
+   the two "biased" crops (ys-hero, fos-hero) back toward center
+   as the box gets taller and needs less of an offset.
+   ========================================================= */
+@media (max-width: 768px) {
+  .page-header.fs-hero,
+  .page-header.ys-hero,
+  .page-header.fos-hero,
+  .page-header.mn-hero,
+  .page-header.wc-hero,
+  .page-header.ovs-hero,
+  .page-header.dta-hero {
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .page-header.ys-hero { background-position: center 58%; }
+  .page-header.fos-hero { background-position: center 36%; }
+}
+@media (max-width: 480px) {
+  .page-header.fs-hero,
+  .page-header.ys-hero,
+  .page-header.fos-hero,
+  .page-header.mn-hero,
+  .page-header.wc-hero,
+  .page-header.ovs-hero,
+  .page-header.dta-hero {
+    min-height: 380px;
+  }
+  .page-header.ys-hero { background-position: center 54%; }
+  .page-header.fos-hero { background-position: center 32%; }
 }
 
 /* =========================================================
