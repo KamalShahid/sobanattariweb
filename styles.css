@@ -1258,11 +1258,18 @@ a.contact-card:focus-visible { outline: 2px solid var(--accent); outline-offset:
 .reg-btn:hover { background: var(--accent); color: #111; }
 
 .event-page-section { padding: var(--space-xl) 0; }
-.event-type-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-.event-type-card { min-height: 350px; display: flex; flex-direction: column; justify-content: flex-start; border: 1px solid var(--border-light); border-radius: 18px; padding: 22px 22px 24px; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; box-shadow: 0 8px 24px rgba(10, 17, 20, 0.04); position: relative; overflow: hidden; }
-.event-type-card-image { height: 210px; margin: -22px -22px 14px; overflow: hidden; position: relative; }
+.event-type-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; align-items: stretch; }
+.event-type-card {
+  height: 100%; min-height: 460px;
+  display: flex; flex-direction: column; justify-content: flex-start;
+  border: 1px solid var(--border-light); border-radius: 20px;
+  padding: 26px 26px 28px;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  box-shadow: 0 8px 24px rgba(10, 17, 20, 0.04); position: relative; overflow: hidden;
+}
+.event-type-card-image { aspect-ratio: 2 / 1; margin: -26px -26px 18px; overflow: hidden; position: relative; }
 .event-type-topline { margin-bottom: 8px; }
-.event-type-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.event-type-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 16px; }
 .event-type-tag {
   font-family: var(--font-body); font-size: 10.5px; font-weight: 600; letter-spacing: 0.2px;
   padding: 4px 10px; border-radius: 100px;
@@ -1277,8 +1284,11 @@ a.contact-card:focus-visible { outline: 2px solid var(--accent); outline-offset:
 .event-type-card:hover::after { transform: translate(4px, -4px); }
 .event-type-card:hover { transform: translateY(-6px); border-color: rgba(245, 197, 24, 0.7); box-shadow: 0 20px 40px rgba(10, 17, 20, 0.08); }
 .event-type-topline { font-family: var(--font-body); font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
-.event-type-card h2 { font-size: clamp(25px, 1.8vw, 32px); line-height: 1.08; margin-bottom: 9px; position: relative; z-index: 1; }
-.event-type-card p { margin: 0; padding-right: 26px; font-size: 14px; line-height: 1.55; color: rgba(26, 26, 26, 0.76); }
+.event-type-card h2 { font-size: clamp(25px, 1.8vw, 32px); line-height: 1.08; margin-bottom: 10px; position: relative; z-index: 1; }
+.event-type-card p {
+  margin: 0; padding-right: 26px; font-size: 14.5px; line-height: 1.6; color: rgba(26, 26, 26, 0.76);
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden;
+}
 .event-type-card-gold { background: linear-gradient(135deg, rgba(245,197,24,0.14), rgba(255,255,255,0.96)); }
 .event-type-card-forest { background: linear-gradient(135deg, rgba(45,122,45,0.12), rgba(255,255,255,0.96)); }
 .event-type-card-sand { background: linear-gradient(135deg, rgba(214, 176, 124, 0.15), rgba(255,255,255,0.96)); }
@@ -1299,9 +1309,9 @@ a.contact-card:focus-visible { outline: 2px solid var(--accent); outline-offset:
 }
 @media (max-width: 640px) {
   .event-page-section { padding: 56px 0; }
-  .event-type-grid { grid-template-columns: 1fr; gap: 16px; }
-  .event-type-card { min-height: 0; padding: 18px 18px 20px; border-radius: 16px; }
-  .event-type-card-image { height: 180px; margin: -18px -18px 16px; }
+  .event-type-grid { grid-template-columns: 1fr; gap: 20px; }
+  .event-type-card { height: auto; min-height: 0; padding: 22px 22px 24px; border-radius: 16px; }
+  .event-type-card-image { margin: -22px -22px 16px; }
   .event-type-card h2 { font-size: 27px; }
   .event-type-card p { font-size: 14px; line-height: 1.55; }
 }
@@ -1987,16 +1997,19 @@ a.contact-card:focus-visible { outline: 2px solid var(--accent); outline-offset:
 .ovs-mode svg { flex-shrink: 0; stroke: var(--accent-dark); }
 
 /* =========================================================
-   PAGE HEADER — "back to Events" link (programs/*.html)
+   PAGE HEADER — "back to Projects" link (programs/*.html)
    ========================================================= */
 
-/* Pinned top-left so it reads as "back" navigation, not another eyebrow label. */
+/* Static, in-flow — sits at the very start of the header, above the
+   eyebrow/title, so it can never drift over or collide with them on
+   any screen size (it used to be absolutely positioned, which meant
+   its fixed offset could land on top of the heading text once the
+   title or subtitle wrapped differently). */
 .page-header .page-back {
-  position: absolute;
-  top: clamp(84px, 10vw, 108px);
-  left: clamp(18px, 4vw, 48px);
-  z-index: 3;
-  display: inline-flex; align-items: center; gap: 6px;
+  display: flex;
+  width: fit-content;
+  align-items: center; gap: 6px;
+  margin: 0 auto 24px 0;
   font-family: var(--font-body); font-weight: 600; font-size: 13px;
   letter-spacing: 0.2px; text-transform: none;
   color: rgba(255, 255, 255, 0.82);
@@ -2016,7 +2029,7 @@ a.contact-card:focus-visible { outline: 2px solid var(--accent); outline-offset:
 .page-header .page-back:hover svg { transform: translateX(-3px); }
 .page-header .page-back:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 @media (max-width: 600px) {
-  .page-header .page-back { top: 80px; font-size: 12px; padding: 7px 13px 7px 9px; }
+  .page-header .page-back { font-size: 12px; padding: 7px 13px 7px 9px; margin-bottom: 18px; }
 }
 
 /* =========================================================
@@ -2155,7 +2168,7 @@ a.contact-card:focus-visible { outline: 2px solid var(--accent); outline-offset:
    HIDE THE 01 / 02 / 03 BADGE ON EVENT / UPDATE CARD IMAGES
    (the gold number chip sitting on the photo — event "upcoming"
    cards and the updates.html cards). Overview-grid numbers and
-   the event.html format-card labels are left untouched.
+   the projects.html format-card labels are left untouched.
    ========================================================= */
 
 .ut-card-num,
@@ -2595,12 +2608,12 @@ a.contact-card:focus-visible { outline: 2px solid var(--accent); outline-offset:
   transition: background var(--transition), border-color var(--transition);
 }
 .bc-live::after {
-  content: "\2192";
+  content: "\2193";
   font-weight: 700;
   transition: transform var(--transition);
 }
 .book-card-link:hover .bc-live { background: var(--accent-dark); border-color: var(--accent-dark); }
-.book-card-link:hover .bc-live::after { transform: translateX(3px); }
+.book-card-link:hover .bc-live::after { transform: translateY(3px); }
 .bc-soon {
   background: transparent;
   border: 1px solid var(--border-light);
@@ -2753,3 +2766,190 @@ a.contact-card:focus-visible { outline: 2px solid var(--accent); outline-offset:
   .course-card { padding: 40px 22px 24px; }
   .course-card-number { font-size: 52px; }
 }
+
+/* =========================================================
+   EVENT TEASER CARDS — reused on updates.html "What's coming
+   up" AND on each event detail page's "More Upcoming Events"
+   strip, so the listing and detail pages share one visual
+   language. Minimal by design: image, mode tag, date badge,
+   name, one line of time — nothing else. Click through for
+   the rest.
+   ========================================================= */
+.event-teasers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 1180px;
+  margin: 0 auto;
+  align-items: stretch;
+  grid-auto-rows: 1fr;
+}
+.event-teasers.event-teasers-2up { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 980px; }
+.event-teasers.event-teasers-1up { grid-template-columns: minmax(0, 1fr); max-width: 600px; }
+.event-teaser-link { display: flex; color: inherit; }
+.event-teaser-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.event-teaser {
+  display: flex; flex-direction: column;
+  width: 100%; overflow: hidden;
+  background: var(--bg-light);
+  border: 1px solid var(--border-light);
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+.event-teaser-link:hover .event-teaser,
+.event-teaser-link:focus-visible .event-teaser {
+  border-color: var(--accent);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 45px rgba(17, 17, 17, 0.12);
+}
+.event-teaser-image {
+  position: relative;
+  aspect-ratio: 2 / 1;
+  background: linear-gradient(135deg, #1c1c1c, #2c2c2c);
+  background-size: cover;
+  background-position: center;
+}
+.event-teaser-image::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.10) 40%, rgba(0,0,0,0.62) 100%);
+}
+.event-teaser-tag {
+  position: absolute; top: 14px; left: 14px; z-index: 1;
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--accent); color: #111111;
+  font-family: var(--font-body); font-size: 9px; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase;
+  padding: 6px 11px; border-radius: 100px;
+}
+.event-teaser-tag::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #111111; }
+.event-teaser-tag.onsite {
+  background: rgba(10, 10, 10, 0.55); color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.35);
+  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+}
+.event-teaser-tag.onsite::before { background: var(--accent); }
+.event-teaser-date {
+  position: absolute; right: 14px; top: 14px; z-index: 1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.94); color: #111111;
+  width: 46px; height: 46px;
+  font-family: var(--font-display);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+}
+.event-teaser-date .etd-day { font-size: 17px; font-weight: 800; line-height: 1; }
+.event-teaser-date .etd-month { font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; line-height: 1; margin-top: 2px; }
+.event-teaser-body { display: flex; flex-direction: column; gap: 9px; padding: 20px 20px 22px; flex: 1; }
+.event-teaser-body h3 { font-size: 18px; line-height: 1.25; color: var(--text-dark); margin: 0; }
+.event-teaser-time { display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--text-muted); }
+.event-teaser-time svg { flex-shrink: 0; stroke: var(--accent-dark); }
+.event-teaser-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: auto; padding-top: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--accent-dark);
+}
+.event-teaser-cta::after { content: "\2192"; font-weight: 700; transition: transform var(--transition); }
+.event-teaser-link:hover .event-teaser-cta::after,
+.event-teaser-link:focus-visible .event-teaser-cta::after { transform: translateX(3px); }
+@media (max-width: 900px) {
+  .event-teasers { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 780px; }
+}
+@media (max-width: 620px) {
+  .event-teasers, .event-teasers.event-teasers-2up, .event-teasers.event-teasers-1up { grid-template-columns: 1fr; max-width: 440px; }
+}
+
+/* =========================================================
+   EVENT DETAIL PAGES — /events/*.html
+   No hero banner. Navbar → a rounded poster image of the
+   event → title/meta/description/tags → location/online card
+   → "more events" strip. Deliberately minimal.
+   ========================================================= */
+
+/* Poster + details share one tight section — image, then
+   name/date/time/tags/location flow right underneath it with
+   no large gap between them. */
+.event-poster-section { padding: 128px 0 40px; }
+.event-back-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-body); font-weight: 600; font-size: 13px;
+  color: var(--text-body);
+  margin-bottom: 18px;
+  transition: color var(--transition);
+}
+.event-back-link svg { width: 15px; height: 15px; flex-shrink: 0; stroke: var(--accent-dark); transition: transform var(--transition); }
+.event-back-link:hover { color: var(--text-dark); }
+.event-back-link:hover svg { transform: translateX(-3px); }
+.event-poster {
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 30px 70px -28px rgba(17,17,17,0.35), 0 8px 24px rgba(17,17,17,0.08);
+}
+.event-poster img {
+  display: block; width: 100%;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+}
+@media (max-width: 768px) {
+  .event-poster-section { padding: 104px 0 28px; }
+  .event-poster { border-radius: 16px; }
+}
+
+/* Header block right under the poster: label, title, meta pills, lede, tags */
+.event-header { max-width: 760px; margin: 0 auto; padding-top: 26px; }
+.event-header .section-label { display: block; margin-bottom: 8px; }
+.event-header h1 { font-size: clamp(28px, 5vw, 42px); margin-bottom: 4px; }
+.event-lede { font-size: 16px; line-height: 1.75; color: var(--text-body); margin: 14px 0 0; }
+.event-lede a { color: var(--accent-dark); border-bottom: 1px solid var(--accent); }
+.event-lede a:hover { color: var(--text-dark); }
+
+.event-meta-bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 0; }
+.event-meta-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--bg-off-white); border: 1px solid var(--border-light);
+  color: var(--text-dark); padding: 9px 16px; border-radius: 100px;
+  font-family: var(--font-body); font-size: 13px; font-weight: 600;
+}
+.event-meta-pill svg { flex-shrink: 0; stroke: var(--accent-dark); }
+.event-meta-pill.is-mode {
+  background: var(--accent); border-color: var(--accent); color: #111111;
+  font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; font-size: 11.5px;
+}
+.event-meta-pill.is-mode svg { stroke: #111111; }
+.event-meta-pill.is-mode.onsite { background: transparent; border-color: var(--border-light); color: var(--text-dark); }
+.event-meta-pill.is-mode.onsite svg { stroke: var(--accent-dark); }
+
+.event-header .event-detail-topics { margin-top: 14px; justify-content: flex-start; }
+
+/* Sections after the poster+details block are tightened —
+   this is a quick-facts page, not a long scroll. */
+.event-tight { padding: 40px 0; }
+@media (max-width: 768px) { .event-tight { padding: 28px 0; } }
+
+/* Single Location / Online info card */
+.event-info-card {
+  max-width: 980px; margin: 0 auto;
+  background: var(--bg-light); border: 1px solid var(--border-light);
+  overflow: hidden;
+}
+.event-info-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 320px; }
+.event-info-body { padding: var(--space-lg); display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+.event-info-body h3 { font-size: 22px; color: var(--text-dark); margin: 0; }
+.event-info-body p { color: var(--text-body); font-size: 15px; line-height: 1.75; margin: 0; }
+.event-info-addr { display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; color: var(--text-body); }
+.event-info-addr svg { flex-shrink: 0; stroke: var(--accent-dark); margin-top: 2px; }
+.event-info-body .btn { align-self: flex-start; margin-top: 6px; }
+.event-map { position: relative; min-height: 240px; background: var(--bg-off-white); }
+.event-map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; filter: grayscale(0.15) contrast(1.02); }
+.event-map.is-placeholder { display: flex; align-items: center; justify-content: center; text-align: center; padding: 32px; }
+.event-map-placeholder svg { stroke: var(--text-muted); }
+.event-map-placeholder p { margin-top: 12px; font-size: 13px; color: var(--text-muted); }
+.event-info-online { padding: var(--space-lg); text-align: center; }
+.event-info-online h3 { font-size: 24px; color: var(--text-dark); margin: 0 0 10px; }
+.event-info-online p { max-width: 480px; margin: 0 auto 20px; color: var(--text-body); font-size: 15px; line-height: 1.75; }
+@media (max-width: 820px) {
+  .event-info-grid { grid-template-columns: 1fr; }
+  .event-map { min-height: 220px; }
+  .event-info-body .btn { align-self: stretch; text-align: center; }
+}
+
+/* More Upcoming Events — bottom of every detail page */
+.event-more-heading { text-align: center; margin-bottom: 28px; }

@@ -3,34 +3,87 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Soban Attari · Islamic Scholar, Speaker & Educator</title>
+  <title>Soban Attari · Islamic Scholar, Speaker &amp; Educator</title>
   <meta name="description" content="Soban Attari is a Pakistani motivational speaker who inspires the youth with clear, honest talks rooted in Islamic wisdom." />
+  <link rel="canonical" href="https://sobanattari.com/" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Soban Attari" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Soban Attari · Islamic Scholar, Speaker &amp; Educator" />
+  <meta property="og:description" content="Soban Attari is a Pakistani motivational speaker who inspires the youth with clear, honest talks rooted in Islamic wisdom." />
+  <meta property="og:url" content="https://sobanattari.com/" />
+  <meta property="og:image" content="https://sobanattari.com/brand_assets/hero-poster.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Soban Attari · Islamic Scholar, Speaker &amp; Educator" />
+  <meta name="twitter:description" content="Soban Attari is a Pakistani motivational speaker who inspires the youth with clear, honest talks rooted in Islamic wisdom." />
+  <meta name="twitter:image" content="https://sobanattari.com/brand_assets/hero-poster.jpg" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://sobanattari.com/#person",
+        "name": "Soban Attari",
+        "url": "https://sobanattari.com/",
+        "image": "https://sobanattari.com/brand_assets/hero-poster.jpg",
+        "jobTitle": "Islamic Scholar, Motivational Speaker & Educator",
+        "sameAs": [
+          "https://www.facebook.com/sobanattari",
+          "https://www.youtube.com/@sobanattari",
+          "https://www.instagram.com/sobanattari",
+          "https://twitter.com/sobanattari",
+          "https://www.tiktok.com/@sobanattari",
+          "https://www.linkedin.com/in/sobanattari"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://sobanattari.com/#website",
+        "url": "https://sobanattari.com/",
+        "name": "Soban Attari",
+        "publisher": { "@id": "https://sobanattari.com/#person" },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://sobanattari.com/#webpage",
+        "url": "https://sobanattari.com/",
+        "name": "Soban Attari · Islamic Scholar, Speaker & Educator",
+        "isPartOf": { "@id": "https://sobanattari.com/#website" },
+        "about": { "@id": "https://sobanattari.com/#person" },
+        "inLanguage": "en"
+      }
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
 
 <!-- NAV -->
 <nav id="navbar">
   <div class="nav-inner">
-    <a href="index.html" class="site-logo" aria-label="Soban Attari Home">
+    <a href="/" class="site-logo" aria-label="Soban Attari Home">
       <span class="logo-mark">
         <span class="logo-line-1">SOBAN</span>
         <span class="logo-line-2">ATTARI</span>
       </span>
     </a>
     <div class="nav-links" id="nav-links">
-      <a href="index.html">Home</a>
-      <a href="biography.html">About</a>
-      <a href="updates.html">
+      <a href="/">Home</a>
+      <a href="/soban-attari-biography/">About</a>
+      <a href="/updates/">
     <span class="updates-shine"></span>
     Updates
 </a>
-      <a href="event.html">Projects</a>
-      <a href="index.html#contact">Contact</a>
-      <a href="index.html#book-session" class="nav-cta">Book a Session</a>
+      <a href="/activities/">Projects</a>
+      <a href="/#contact">Contact</a>
+      <a href="/#book-session" class="nav-cta">Book a Session</a>
     </div>
     <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMenu()" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -45,27 +98,27 @@
     <span class="nav-mobile-title">Menu</span>
     <button class="nav-mobile-close" type="button" onclick="closeMenu()" aria-label="Close menu">&times;</button>
   </div>
-  <a href="index.html" onclick="closeMenu()">Home</a>
-  <a href="biography.html" onclick="closeMenu()">About</a>
-  <a href="updates.html" onclick="closeMenu()"><span class="updates-shine"></span>Updates</a>
+  <a href="/" onclick="closeMenu()">Home</a>
+  <a href="/soban-attari-biography/" onclick="closeMenu()">About</a>
+  <a href="/updates/" onclick="closeMenu()"><span class="updates-shine"></span>Updates</a>
   <div class="mobile-group-title mobile-events-title">Projects</div>
-  <a href="programs/youth-talks.html" class="mobile-sub" onclick="closeMenu()">Youth Talks</a>
-  <a href="programs/female-session.html" class="mobile-sub" onclick="closeMenu()">Females Session</a>
-  <a href="programs/youth-seminar.html" class="mobile-sub" onclick="closeMenu()">Youth Seminar</a>
-  <a href="programs/fos.html" class="mobile-sub" onclick="closeMenu()">FOS</a>
-  <a href="programs/masjid-night.html" class="mobile-sub" onclick="closeMenu()">Masjid Night</a>
-  <a href="programs/workers-convention.html" class="mobile-sub" onclick="closeMenu()">Workers Convention</a>
-  <a href="events.html" class="mobile-sub" onclick="closeMenu()">Deeni Tulba &amp; AI</a>
+  <a href="/programs/youth-talks/" class="mobile-sub" onclick="closeMenu()">Youth Talks</a>
+  <a href="/programs/female-session/" class="mobile-sub" onclick="closeMenu()">Females Session</a>
+  <a href="/programs/youth-seminar/" class="mobile-sub" onclick="closeMenu()">Youth Seminar</a>
+  <a href="/programs/fos/" class="mobile-sub" onclick="closeMenu()">FOS</a>
+  <a href="/programs/masjid-night/" class="mobile-sub" onclick="closeMenu()">Masjid Night</a>
+  <a href="/programs/workers-convention/" class="mobile-sub" onclick="closeMenu()">Workers Convention</a>
+  <a href="/programs/deeni-tulba-and-ai/" class="mobile-sub" onclick="closeMenu()">Deeni Tulba &amp; AI</a>
   <a href="#books" class="mobile-sub" onclick="closeMenu()">Books</a>
   <a href="#courses" class="mobile-sub" onclick="closeMenu()">Courses</a>
-  <a href="index.html#contact" onclick="closeMenu()">Contact</a>
+  <a href="/#contact" onclick="closeMenu()">Contact</a>
   <a href="#book-session" onclick="closeMenu()">Book a Session</a>
 </div>
 
 <!-- HERO -->
 <section id="hero" class="section-dark">
-  <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="brand_assets/hero-poster.jpg" aria-hidden="true">
-    <source src="brand_assets/VideoHero.mp4" type="video/mp4">
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="/brand_assets/hero-poster.jpg" aria-hidden="true">
+    <source src="/brand_assets/VideoHero.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -141,7 +194,7 @@
 <section id="about">
   <div class="container about-grid">
     <div class="about-image-wrap animate-on-scroll">
-      <img src="brand_assets/IMG_9756.JPG" alt="Soban Attari, Islamic Scholar" loading="lazy" />
+      <img src="/brand_assets/IMG_9756.JPG" alt="Soban Attari, Islamic Scholar" loading="lazy" />
       <div class="about-badge">
         <div class="num">3.55M+</div>
         <div class="lbl">Global Audience</div>
@@ -163,7 +216,7 @@
       <div class="about-pullquote">
         <p>With his laser-sharp logic, crystal-clear explanation, and easy-to-understand talks, Soban Attari has become a source of inspiration and motivation among the youth.</p>
       </div>
-      <a href="biography.html" class="btn btn-primary">Explore Full Biography</a>
+      <a href="/soban-attari-biography/" class="btn btn-primary">Explore Full Biography</a>
     </div>
   </div>
 </section>
@@ -242,12 +295,12 @@
   </div>
   <div class="container">
     <div class="gallery-track animate-on-scroll">
-      <div class="gallery-item"><img src="brand_assets/IMG_0489.JPG" alt="Public Lecture" loading="lazy" /><div class="gallery-item-overlay"></div><span class="gallery-item-tag">Public Lecture</span><div class="gallery-item-label">Islam &amp; The Modern Mind</div></div>
-      <div class="gallery-item"><img src="brand_assets/IMG_0373.JPG" alt="Parenting Workshop" loading="lazy" /><div class="gallery-item-overlay"></div><span class="gallery-item-tag">Workshop</span><div class="gallery-item-label">Conscious Parenting in Islam</div></div>
-      <div class="gallery-item"><img src="brand_assets/IMG_0203.JPG" alt="Seminar" loading="lazy" /><div class="gallery-item-overlay"></div><span class="gallery-item-tag">Institutional Seminar</span><div class="gallery-item-label">Science &amp; Signs of Allah</div></div>
-      <div class="gallery-item"><img src="brand_assets/DSC_0569.JPG" alt="Youth Session" loading="lazy" /><div class="gallery-item-overlay"></div><span class="gallery-item-tag">Youth Session</span><div class="gallery-item-label">Faith in the Age of Doubt</div></div>
-      <div class="gallery-item"><img src="brand_assets/DSC_0654.JPG" alt="Family Talk" loading="lazy" /><div class="gallery-item-overlay"></div><span class="gallery-item-tag">Family Talk</span><div class="gallery-item-label">Building Stronger Families</div></div>
-      <div class="gallery-item"><img src="brand_assets/DSC_0722.JPG" alt="Community Event" loading="lazy" /><div class="gallery-item-overlay"></div><span class="gallery-item-tag">Community Event</span><div class="gallery-item-label">The Purpose of Life</div></div>
+      <div class="gallery-item"><img src="/brand_assets/IMG_0489.JPG" alt="Public Lecture" loading="lazy" /><div class="gallery-item-overlay"></div><span class="gallery-item-tag">Public Lecture</span><div class="gallery-item-label">Islam &amp; The Modern Mind</div></div>
+      <div class="gallery-item"><img src="/brand_assets/IMG_0373.JPG" alt="Parenting Workshop" loading="lazy" /><div class="gallery-item-overlay"></div><span class="gallery-item-tag">Workshop</span><div class="gallery-item-label">Conscious Parenting in Islam</div></div>
+      <div class="gallery-item"><img src="/brand_assets/IMG_0203.JPG" alt="Seminar" loading="lazy" /><div class="gallery-item-overlay"></div><span class="gallery-item-tag">Institutional Seminar</span><div class="gallery-item-label">Science &amp; Signs of Allah</div></div>
+      <div class="gallery-item"><img src="/brand_assets/DSC_0569.JPG" alt="Youth Session" loading="lazy" /><div class="gallery-item-overlay"></div><span class="gallery-item-tag">Youth Session</span><div class="gallery-item-label">Faith in the Age of Doubt</div></div>
+      <div class="gallery-item"><img src="/brand_assets/DSC_0654.JPG" alt="Family Talk" loading="lazy" /><div class="gallery-item-overlay"></div><span class="gallery-item-tag">Family Talk</span><div class="gallery-item-label">Building Stronger Families</div></div>
+      <div class="gallery-item"><img src="/brand_assets/DSC_0722.JPG" alt="Community Event" loading="lazy" /><div class="gallery-item-overlay"></div><span class="gallery-item-tag">Community Event</span><div class="gallery-item-label">The Purpose of Life</div></div>
     </div>
     <div class="btn-group animate-on-scroll" style="margin-top:24px;">
       <a href="#book-session" class="btn btn-primary">Invite for an Event</a>
@@ -264,46 +317,46 @@
   </div>
   <div class="marquee-row">
     <div class="marquee-track">
-      <a href="blogs.html#lums" class="marquee-item">LUMS</a>
-      <a href="blogs.html#ucp" class="marquee-item">University of Central Punjab</a>
-      <a href="blogs.html#usa" class="marquee-item">University of South Asia</a>
-      <a href="blogs.html#garrison" class="marquee-item">Lahore Garrison University</a>
-      <a href="blogs.html#uet" class="marquee-item">UET Lahore</a>
-      <a href="blogs.html#pu" class="marquee-item">University of the Punjab</a>
-      <a href="blogs.html#comsats" class="marquee-item">COMSATS Islamabad</a>
-      <a href="blogs.html#fast" class="marquee-item">FAST-NUCES</a>
-      <a href="blogs.html#lums" class="marquee-item">LUMS</a>
-      <a href="blogs.html#ucp" class="marquee-item">University of Central Punjab</a>
-      <a href="blogs.html#usa" class="marquee-item">University of South Asia</a>
-      <a href="blogs.html#garrison" class="marquee-item">Lahore Garrison University</a>
-      <a href="blogs.html#uet" class="marquee-item">UET Lahore</a>
-      <a href="blogs.html#pu" class="marquee-item">University of the Punjab</a>
-      <a href="blogs.html#comsats" class="marquee-item">COMSATS Islamabad</a>
-      <a href="blogs.html#fast" class="marquee-item">FAST-NUCES</a>
+      <a href="/blog/#lums" class="marquee-item">LUMS</a>
+      <a href="/blog/#ucp" class="marquee-item">University of Central Punjab</a>
+      <a href="/blog/#usa" class="marquee-item">University of South Asia</a>
+      <a href="/blog/#garrison" class="marquee-item">Lahore Garrison University</a>
+      <a href="/blog/#uet" class="marquee-item">UET Lahore</a>
+      <a href="/blog/#pu" class="marquee-item">University of the Punjab</a>
+      <a href="/blog/#comsats" class="marquee-item">COMSATS Islamabad</a>
+      <a href="/blog/#fast" class="marquee-item">FAST-NUCES</a>
+      <a href="/blog/#lums" class="marquee-item">LUMS</a>
+      <a href="/blog/#ucp" class="marquee-item">University of Central Punjab</a>
+      <a href="/blog/#usa" class="marquee-item">University of South Asia</a>
+      <a href="/blog/#garrison" class="marquee-item">Lahore Garrison University</a>
+      <a href="/blog/#uet" class="marquee-item">UET Lahore</a>
+      <a href="/blog/#pu" class="marquee-item">University of the Punjab</a>
+      <a href="/blog/#comsats" class="marquee-item">COMSATS Islamabad</a>
+      <a href="/blog/#fast" class="marquee-item">FAST-NUCES</a>
     </div>
   </div>
   <div class="marquee-row">
     <div class="marquee-track-reverse">
-      <a href="blogs.html#fast" class="marquee-item">FAST-NUCES</a>
-      <a href="blogs.html#comsats" class="marquee-item">COMSATS Islamabad</a>
-      <a href="blogs.html#pu" class="marquee-item">University of the Punjab</a>
-      <a href="blogs.html#uet" class="marquee-item">UET Lahore</a>
-      <a href="blogs.html#garrison" class="marquee-item">Lahore Garrison University</a>
-      <a href="blogs.html#usa" class="marquee-item">University of South Asia</a>
-      <a href="blogs.html#ucp" class="marquee-item">University of Central Punjab</a>
-      <a href="blogs.html#lums" class="marquee-item">LUMS</a>
-      <a href="blogs.html#fast" class="marquee-item">FAST-NUCES</a>
-      <a href="blogs.html#comsats" class="marquee-item">COMSATS Islamabad</a>
-      <a href="blogs.html#pu" class="marquee-item">University of the Punjab</a>
-      <a href="blogs.html#uet" class="marquee-item">UET Lahore</a>
-      <a href="blogs.html#garrison" class="marquee-item">Lahore Garrison University</a>
-      <a href="blogs.html#usa" class="marquee-item">University of South Asia</a>
-      <a href="blogs.html#ucp" class="marquee-item">University of Central Punjab</a>
-      <a href="blogs.html#lums" class="marquee-item">LUMS</a>
+      <a href="/blog/#fast" class="marquee-item">FAST-NUCES</a>
+      <a href="/blog/#comsats" class="marquee-item">COMSATS Islamabad</a>
+      <a href="/blog/#pu" class="marquee-item">University of the Punjab</a>
+      <a href="/blog/#uet" class="marquee-item">UET Lahore</a>
+      <a href="/blog/#garrison" class="marquee-item">Lahore Garrison University</a>
+      <a href="/blog/#usa" class="marquee-item">University of South Asia</a>
+      <a href="/blog/#ucp" class="marquee-item">University of Central Punjab</a>
+      <a href="/blog/#lums" class="marquee-item">LUMS</a>
+      <a href="/blog/#fast" class="marquee-item">FAST-NUCES</a>
+      <a href="/blog/#comsats" class="marquee-item">COMSATS Islamabad</a>
+      <a href="/blog/#pu" class="marquee-item">University of the Punjab</a>
+      <a href="/blog/#uet" class="marquee-item">UET Lahore</a>
+      <a href="/blog/#garrison" class="marquee-item">Lahore Garrison University</a>
+      <a href="/blog/#usa" class="marquee-item">University of South Asia</a>
+      <a href="/blog/#ucp" class="marquee-item">University of Central Punjab</a>
+      <a href="/blog/#lums" class="marquee-item">LUMS</a>
     </div>
   </div>
   <div class="container" style="text-align:center; margin-top:40px;">
-    <a href="blogs.html" class="btn btn-outline-gold">View All University Sessions</a>
+    <a href="/blog/" class="btn btn-outline-gold">View All University Sessions</a>
   </div>
 </section>
 
@@ -312,11 +365,11 @@
   <div class="container section-header animate-on-scroll">
     <span class="section-label">Published Works</span>
     <h2>Books &amp; Publications</h2>
-    <p class="section-intro">Writing on faith, family, character, and modern life. One title is available to read now &mdash; the rest are on the way.</p>
+    <p class="section-intro">Writing on faith, family, character, and modern life. One title is available to download now &mdash; the rest are on the way.</p>
   </div>
   <div class="container">
     <div class="books-grid animate-on-scroll">
-      <a href="seerat-mustafa-modern-science.html" class="book-card-link">
+      <a href="/seerat-mustafa-modern-science/" class="book-card-link">
         <div class="book-card">
           <div class="book-cover bc-cover-1">
             <div class="book-cover-title">SEERAT E MUSTAFA &amp; MODERN SCIENCE</div>
@@ -325,7 +378,7 @@
           <div class="book-card-body">
             <span class="book-card-tag">Seerah &amp; Science</span>
             <h4>Seerat e Mustafa and Modern Science</h4>
-            <span class="bc-live">Read Now</span>
+            <span class="bc-live">Download</span>
           </div>
         </div>
       </a>
@@ -540,7 +593,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="brand_assets/Logo_white.png" alt="Soban Attari" />
+        <img src="/brand_assets/Logo_white.png" alt="Soban Attari" />
         <p>Soban Attari is a Pakistani speaker who works with the youth on faith, family, and modern life through honest, plain-spoken talks.</p>
         <div class="footer-contact">
           <a href="mailto:team@sobanattari.com">team@sobanattari.com</a>
@@ -558,32 +611,32 @@
       </div>
       <div class="footer-col">
         <h4>Explore</h4>
-        <a href="index.html">Home</a>
-        <a href="biography.html">About</a>
-        <a href="event.html">Projects</a>
-        <a href="updates.html">Updates</a>
-        <a href="blogs.html">University Sessions</a>
-        <a href="books.html">Books</a>
-        <a href="courses.html">Courses</a>
-        <a href="index.html#contact">Contact</a>
+        <a href="/">Home</a>
+        <a href="/soban-attari-biography/">About</a>
+        <a href="/activities/">Projects</a>
+        <a href="/updates/">Updates</a>
+        <a href="/blog/">University Sessions</a>
+        <a href="/books/">Books</a>
+        <a href="/courses/">Courses</a>
+        <a href="/#contact">Contact</a>
       </div>
       <div class="footer-col">
         <h4>Programs</h4>
-        <a href="programs/youth-talks.html">Youth Talks</a>
-        <a href="programs/youth-seminar.html">Youth Seminar</a>
-        <a href="programs/growth-room.html">Growth Room</a>
-        <a href="programs/female-session.html">Females Session</a>
-        <a href="programs/masjid-night.html">Masjid Night</a>
-        <a href="programs/fos.html">FOS</a>
-        <a href="programs/deeni-tulba-and-ai.html">Deeni Tulba &amp; AI</a>
-        <a href="programs/overseas-session.html">Overseas Session</a>
-        <a href="programs/workers-convention.html">Workers Convention</a>
+        <a href="/programs/youth-talks/">Youth Talks</a>
+        <a href="/programs/youth-seminar/">Youth Seminar</a>
+        <a href="/programs/growth-room/">Growth Room</a>
+        <a href="/programs/female-session/">Females Session</a>
+        <a href="/programs/masjid-night/">Masjid Night</a>
+        <a href="/programs/fos/">FOS</a>
+        <a href="/programs/deeni-tulba-and-ai/">Deeni Tulba &amp; AI</a>
+        <a href="/programs/overseas-session/">Overseas Session</a>
+        <a href="/programs/workers-convention/">Workers Convention</a>
       </div>
       <div class="footer-col">
         <h4>Impact Programs</h4>
-        <a href="activities/blood-camp.html">Blood Donation</a>
-        <a href="activities/flood-relief.html">Flood Relief</a>
-        <a href="activities/plantation.html">Plantation Drive</a>
+        <a href="/activities/blood-camp/">Blood Donation</a>
+        <a href="/activities/flood-relief/">Flood Relief</a>
+        <a href="/activities/plantation/">Plantation Drive</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -591,15 +644,6 @@
     </div>
   </div>
 </footer>
-<!-- 
- ── Featured Flyer Popup ── -->
-<div id="flyer-popup" class="flyer-popup-overlay" role="dialog" aria-modal="true" aria-label="Featured announcement" hidden>
-  <div class="flyer-popup-box">
-    <button type="button" class="flyer-popup-close" id="flyer-popup-close" aria-label="Close announcement">&times;</button>
-    <img src="brand_assets/hero_flayer.png" alt="Featured announcement flyer" />
-  </div>
-</div>
-
 <!-- ── Terms & Conditions Modal — disabled while bookings are not open (see "Bookings Coming Soon Modal" below) ──
 <div id="terms-modal" class="terms-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="terms-modal-title" style="display:none;">
   <div class="terms-modal-box">
@@ -811,39 +855,6 @@
 
 
 
-<script>
-  // Homepage flyer popup — shown once per browser session.
-  (function () {
-    const popup = document.getElementById('flyer-popup');
-    const closeButton = document.getElementById('flyer-popup-close');
-    const POPUP_KEY = 'soban_flyer_popup_seen';
-    if (!popup || !closeButton || sessionStorage.getItem(POPUP_KEY) === 'true') return;
-
-    function closePopup() {
-      popup.hidden = true;
-      document.body.style.overflow = '';
-    }
-
-    function openPopup() {
-      popup.hidden = false;
-      document.body.style.overflow = 'hidden';
-      closeButton.focus();
-    }
-
-    closeButton.addEventListener('click', closePopup);
-    popup.addEventListener('click', function (event) {
-      if (event.target === popup) closePopup();
-    });
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape' && !popup.hidden) closePopup();
-    });
-
-    sessionStorage.setItem(POPUP_KEY, 'true');
-    openPopup();
-  })();
-</script>
-
-
-  <script src="main.js"></script>
+  <script src="/main.js"></script>
 </body>
 </html>

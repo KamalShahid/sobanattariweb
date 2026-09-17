@@ -1,10 +1,11 @@
 (function () {
-  const nestedPage = /\/(programs|activities)\//.test(window.location.pathname);
-  const root = nestedPage ? '../' : '';
-  const home = root + 'index.html';
-  const about = root + 'biography.html';
-  const updates = root + 'updates.html';
-  const events = root + 'event.html';
+  // Absolute clean URLs (Vercel rewrites map these to the underlying .html
+  // files) — they work identically no matter how deep the current page is,
+  // so there's no more "root"/relative-path calculation needed.
+  const home = '/';
+  const about = '/soban-attari-biography/';
+  const updates = '/updates/';
+  const projects = '/activities/';
 
   const nav = document.getElementById('navbar');
   const mobileMenu = document.getElementById('mobile-menu');
@@ -18,7 +19,7 @@
         <a href="${home}" data-nav="home">Home</a>
         <a href="${about}" data-nav="about">About</a>
         <a href="${updates}" data-nav="updates"><span class="updates-shine"></span>Updates</a>
-        <a href="${events}" data-nav="events">Projects</a>
+        <a href="${projects}" data-nav="projects">Projects</a>
         <a href="${home}#contact">Contact</a>
         <a href="${home}#book-session" class="nav-cta">Book a Session</a>
       </div>
@@ -31,27 +32,29 @@
       <a href="${home}" data-nav="home" onclick="closeMenu()">Home</a>
       <a href="${about}" data-nav="about" onclick="closeMenu()">About</a>
       <a href="${updates}" data-nav="updates" onclick="closeMenu()"><span class="updates-shine"></span>Updates</a>
-      <a href="${events}" data-nav="events" onclick="closeMenu()">Projects</a>
+      <a href="${projects}" data-nav="projects" onclick="closeMenu()">Projects</a>
       <a href="${home}#contact" onclick="closeMenu()">Contact</a>
       <a href="${home}#book-session" onclick="closeMenu()">Book a Session</a>`;
 
     /* ---- active / current link ---- */
-    // Match on the last path segment with any trailing slash and the .html
-    // extension stripped, so it works for both "/updates.html" (local) and
-    // "/updates" (Vercel clean URLs).
-    const clean = window.location.pathname.replace(/\/+$/, '');
-    const file = clean.slice(clean.lastIndexOf('/') + 1).toLowerCase().replace(/\.html$/, '');
+    // Read the first path segment. Works for clean URLs ("/programs/x/" ->
+    // "programs") and still degrades safely for a raw "/programs/x.html"
+    // fallback during local file testing.
+    const segments = window.location.pathname.split('/').filter(Boolean);
+    const first = (segments[0] || '').toLowerCase().replace(/\.html$/, '');
     const PAGE_NAV = {
       '': 'home',
+      'soban-attari-biography': 'about',
+      'updates': 'updates',
+      'activities': 'projects',
+      'programs': 'projects',
+      'events': 'updates',
+      // local .html fallback (pre-rewrite / file:// testing)
       'index': 'home',
       'biography': 'about',
-      'updates': 'updates',
-      'event': 'events',
-      'events': 'events'
+      'projects': 'projects'
     };
-    // programs/* and activities/* roll up to Events;
-    // blogs + booking-form fall through to '' => no active link.
-    const navKey = nestedPage ? 'events' : (PAGE_NAV[file] || '');
+    const navKey = PAGE_NAV[first] || '';
     if (navKey) {
       document.querySelectorAll('[data-nav="' + navKey + '"]').forEach(function (el) {
         el.classList.add('active');
