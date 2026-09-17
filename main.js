@@ -8,6 +8,10 @@
   const projects = '/activities/';
   const videos = '/videos/';
 
+  // Hand-drawn scribble highlight around "Updates" — desktop nav, every
+  // page, to catch a visitor's eye toward the Updates link site-wide.
+  const updatesScribble = `<svg class="updates-scribble" viewBox="0 0 100 50" preserveAspectRatio="none" aria-hidden="true"><path d="M50,4 C74,4 92,14 92,25 C92,37 73,46 50,46 C26,46 8,37 8,25 C8,13 25,5 49,4 C55,3 68,4 76,8" /></svg>`;
+
   const nav = document.getElementById('navbar');
   const mobileMenu = document.getElementById('mobile-menu');
 
@@ -19,7 +23,7 @@
       <div class="nav-links" id="nav-links">
         <a href="${home}" data-nav="home">Home</a>
         <a href="${about}" data-nav="about">About</a>
-        <a href="${updates}" data-nav="updates"><span class="updates-shine"></span>Updates</a>
+        <a href="${updates}" data-nav="updates"><span class="updates-shine"></span>Updates${updatesScribble}</a>
         <a href="${projects}" data-nav="projects">Projects</a>
         <a href="${videos}" data-nav="videos">Videos</a>
         <a href="${home}#contact">Contact</a>
@@ -519,4 +523,95 @@
       else openModal();
     });
   })();
+
+  /* ---- Combined platform cards (homepage) — a single tile shows a
+     platform's total audience; clicking it opens a popup listing each
+     of that platform's individual accounts. Shared by YouTube & Instagram. ---- */
+  function setupChannelsPopup(cfg) {
+    const trigger = document.getElementById(cfg.triggerId);
+    if (!trigger) return;
+
+    let modal, lastFocused;
+
+    function build() {
+      modal = document.createElement('div');
+      modal.id = cfg.modalId;
+      modal.className = 'terms-modal-overlay';
+      modal.setAttribute('role', 'dialog');
+      modal.setAttribute('aria-modal', 'true');
+      modal.setAttribute('aria-labelledby', cfg.modalId + '-title');
+      modal.setAttribute('aria-hidden', 'true');
+      modal.style.display = 'none';
+      modal.innerHTML = `
+        <div class="terms-modal-box channels-modal-box">
+          <button type="button" class="bk-close" aria-label="Close">&times;</button>
+          <div class="terms-modal-header">
+            <span class="terms-badge">${cfg.badge}</span>
+            <h2 id="${cfg.modalId}-title">${cfg.title}</h2>
+            <p class="terms-intro">${cfg.intro}</p>
+          </div>
+          <div class="channels-list">
+            ${cfg.channels.map(function (c) { return `
+            <a class="channels-row" href="${c.href}" target="_blank" rel="noopener">
+              <span class="channels-icon">${c.icon || cfg.icon}</span>
+              <span class="channels-info"><b>${c.name}</b><small>${c.count} followers</small></span>
+              <span class="channels-arrow" aria-hidden="true">&rarr;</span>
+            </a>`; }).join('')}
+          </div>
+        </div>`;
+      document.body.appendChild(modal);
+
+      modal.querySelector('.bk-close').addEventListener('click', closeModal);
+      modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.style.display === 'flex') closeModal();
+      });
+    }
+
+    function openModal() {
+      if (!modal) build();
+      lastFocused = document.activeElement;
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      modal.setAttribute('aria-hidden', 'false');
+      modal.querySelector('.bk-close').focus();
+    }
+    function closeModal() {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+      modal.setAttribute('aria-hidden', 'true');
+      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+    }
+
+    trigger.addEventListener('click', openModal);
+  }
+
+  const YT_ICON = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28"><path fill="#FF0000" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>';
+  setupChannelsPopup({
+    triggerId: 'yt-combined-card',
+    modalId: 'yt-modal',
+    badge: 'YouTube',
+    title: 'Our YouTube Channels',
+    intro: 'Three channels, one mission &mdash; pick where to watch.',
+    icon: YT_ICON,
+    channels: [
+      { name: 'Soban Attari', count: '1M', href: 'https://www.youtube.com/@SobanAttari26' },
+      { name: 'Soban Attari Shorts', count: '140K', href: 'https://www.youtube.com/@sobanattarishorts26' },
+      { name: 'Soban Attari Speeches', count: '69K', href: 'https://www.youtube.com/@SobanAttariSpeeches26' }
+    ]
+  });
+
+  const IG_ICON = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28"><defs><radialGradient id="ig-grad-modal" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#fdf497"/><stop offset="5%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs><path fill="url(#ig-grad-modal)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>';
+  setupChannelsPopup({
+    triggerId: 'ig-combined-card',
+    modalId: 'ig-modal',
+    badge: 'Instagram',
+    title: 'Our Instagram Accounts',
+    intro: 'Two accounts, one mission &mdash; pick where to follow.',
+    icon: IG_ICON,
+    channels: [
+      { name: 'Soban Attari', count: '545K', href: 'https://www.instagram.com/sobanattari26/' },
+      { name: 'Youth Talk', count: '24.3K', href: 'https://www.instagram.com/youthtalk.official/' }
+    ]
+  });
 })();
