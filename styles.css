@@ -239,10 +239,6 @@ p { font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: va
     background: transparent;
     box-shadow: none;
 
-    /* Was overflow:hidden — relaxed to visible so the homepage-only
-       scribble highlight (.updates-scribble) can extend past the text
-       bounds. The shine sweep below still clips itself independently
-       via its own overflow:hidden, so this is safe everywhere else. */
     overflow: visible;
 
     /* Keep the text itself subtly illuminated */
@@ -306,23 +302,13 @@ p { font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: va
     animation: updatesShine 2.6s linear infinite;
 }
 
-/* Wherever the hand-drawn circle is present, the sweeping light beam is
-   retired — the circle carries its own glow/pulse instead (see
-   .updates-scribble below), which reads cleaner than the beam ever
-   did inside a circular clip. */
-#navbar .nav-links > a[data-nav="updates"]:has(.updates-scribble) .updates-shine {
-    display: none;
-}
-
-
 /* =========================================================
-   LIVE DOT
+   LIVE DOT — pulsing indicator next to "Updates", every page
+   (matches the .updates-live-dot pulse on the Updates page itself)
    ========================================================= */
 
-.updates-dot { display: none !important; }
-
 #navbar .nav-links > a[data-nav="updates"] .updates-dot {
-    display: none;
+    display: inline-block;
     position: relative;
 
     width: 5px;
@@ -339,6 +325,22 @@ p { font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: va
         0 0 10px rgba(245, 197, 24, 0.55);
 
     z-index: 3;
+}
+#navbar .nav-links > a[data-nav="updates"] .updates-dot::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1px solid #f5c518;
+    opacity: 0.6;
+    animation: updatesDotPulse 1.8s ease-out infinite;
+}
+@keyframes updatesDotPulse {
+    0% { transform: scale(0.6); opacity: 0.6; }
+    100% { transform: scale(1.8); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+    #navbar .nav-links > a[data-nav="updates"] .updates-dot::after { animation: none; opacity: 0.35; }
 }
 
 
@@ -371,51 +373,6 @@ p { font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: va
         left: 130%;
         opacity: 0.2;
     }
-}
-
-
-/* =========================================================
-   HAND-DRAWN CIRCLE HIGHLIGHT — desktop nav, every page
-   A casual, hand-drawn circle sitting around "Updates" (text
-   stays centered inside it), continuously glowing/blinking to
-   catch a visitor's eye. Injected by main.js into the desktop
-   nav-links markup only — the mobile drawer doesn't get it.
-   ========================================================= */
-.updates-scribble {
-    position: absolute;
-    inset: -10px -16px;
-    pointer-events: none;
-    overflow: visible;
-    z-index: 2;
-}
-.updates-scribble path {
-    fill: none;
-    stroke: var(--accent);
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    animation: updatesCircleGlow 2.4s ease-in-out infinite;
-}
-@keyframes updatesCircleGlow {
-    0%, 100% {
-        opacity: 0.7;
-        stroke-width: 2;
-        filter:
-            drop-shadow(0 0 3px rgba(245, 197, 24, 0.6))
-            drop-shadow(0 0 9px rgba(245, 197, 24, 0.35))
-            drop-shadow(0 0 18px rgba(245, 197, 24, 0.15));
-    }
-    50% {
-        opacity: 1;
-        stroke-width: 2.6;
-        filter:
-            drop-shadow(0 0 7px rgba(245, 197, 24, 1))
-            drop-shadow(0 0 18px rgba(245, 197, 24, 0.7))
-            drop-shadow(0 0 32px rgba(245, 197, 24, 0.35));
-    }
-}
-@media (prefers-reduced-motion: reduce) {
-    .updates-scribble path { animation: none !important; opacity: 0.85 !important; }
 }
 
 
@@ -2539,7 +2496,6 @@ a.contact-card:focus-visible { outline: 2px solid var(--accent); outline-offset:
   background: var(--accent-dim); border: 1px dashed var(--accent);
   padding: 10px 16px; border-radius: 6px;
 }
-.fs-episode-wrap { max-width: 460px; margin: 0 auto; }
 
 /* Two-up grid — Updates page and Youth Talks "upcoming" */
 .fs-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; max-width: 980px; margin: 0 auto; align-items: stretch; grid-auto-rows: 1fr; }

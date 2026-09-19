@@ -73,10 +73,10 @@
   <div class="container">
     <div class="ovs-intro animate-on-scroll">
       <div class="prose">
-        <p>If you  want to contribute to positive and reformative work, we would love to hear from you.</p>
-        <p>We welcome people from countries outside Pakistan who want to be part of this initiative. If you would like to organize or participate in sessions in your own country and support this work in any way, please get in touch with us and fill out the form.</p>
-        <p>We are ready to guide and support you in every possible way, and we would also love to learn from your ideas, experiences, and guidance.</p>
-        <p><strong>Let&rsquo;s support each other, learn from one another, and work together to make a positive difference.</strong></p>
+        <p>If you would like to contribute to positive and reformative work, we would be pleased to hear from you.</p>
+        <p>We welcome individuals and communities from outside Pakistan who wish to become part of this initiative and contribute within their own countries. If you are interested in helping facilitate sessions, connecting us with relevant opportunities, or supporting this work in any way, please get in touch with us and fill out the form.</p>
+        <p>We are happy to guide and support you wherever possible, and we would also value your ideas, experiences, connections, and local insights.</p>
+        <p><strong>Let&rsquo;s connect, support one another, and work together to create a positive and lasting impact.</strong></p>
       </div>
       <a href="#ovs-form" class="btn btn-primary">Fill Out the Form</a>
     </div>
@@ -98,42 +98,32 @@
         <span class="section-label">Overseas Youth Talks — Get in Touch</span>
         <p>Fill in the details below &mdash; our team will follow up with you.</p>
       </div>
-      <!-- TODO: replace the form action URL and every entry.* field name below
-           with the real values from your Google Form once it's created (open
-           the form's HTML and match each field to its entry.NNNNNN name),
-           exactly like the FOS chapter form does. -->
       <form class="fos-form" id="ovs-form-el"
-            action="https://docs.google.com/forms/d/e/REPLACE_WITH_REAL_FORM_ID/formResponse"
+            action="https://docs.google.com/forms/d/e/1FAIpQLSc7hsKjmbagqgUWG6q9c8mJi8ZzzfjXTR8eyiKfvsDDO6PRcg/formResponse"
             method="POST" target="ovs-hidden-iframe" novalidate>
         <div class="fos-field">
-          <input type="text" id="ovs-name" name="entry.REPLACE_NAME" placeholder=" " autocomplete="name" required />
-          <label for="ovs-name">Full Name</label>
-          <div class="fos-field-msg">Please enter your full name.</div>
+          <input type="text" id="ovs-name" name="entry.1370994313" placeholder=" " autocomplete="name" required />
+          <label for="ovs-name">Name</label>
+          <div class="fos-field-msg">Please enter your name.</div>
         </div>
         <div class="fos-field">
-          <input type="email" id="ovs-email" name="entry.REPLACE_EMAIL" placeholder=" " autocomplete="email" required />
-          <label for="ovs-email">Email</label>
-          <div class="fos-field-msg">Enter a valid email address.</div>
-        </div>
-        <div class="fos-field">
-          <input type="tel" id="ovs-whatsapp" name="entry.REPLACE_WHATSAPP" placeholder=" " autocomplete="tel" inputmode="tel" required />
+          <input type="tel" id="ovs-whatsapp" name="entry.1871187537" placeholder=" " autocomplete="tel" inputmode="tel" required />
           <label for="ovs-whatsapp">WhatsApp Number</label>
           <div class="fos-field-msg">Enter a valid number (7–15 digits).</div>
         </div>
         <div class="fos-field">
-          <input type="text" id="ovs-country" name="entry.REPLACE_COUNTRY" placeholder=" " autocomplete="country-name" required />
+          <input type="email" id="ovs-email" name="entry.738361601" placeholder=" " autocomplete="email" required />
+          <label for="ovs-email">Email</label>
+          <div class="fos-field-msg">Enter a valid email address.</div>
+        </div>
+        <div class="fos-field">
+          <input type="text" id="ovs-country" name="entry.174100082" placeholder=" " autocomplete="country-name" required />
           <label for="ovs-country">Country</label>
           <div class="fos-field-msg">Please enter your country.</div>
         </div>
-        <div class="fos-field">
-          <input type="text" id="ovs-address" name="entry.REPLACE_ADDRESS" placeholder=" " autocomplete="street-address" required />
-          <label for="ovs-address">Address</label>
-          <div class="fos-field-msg">Please enter your address.</div>
-        </div>
         <div class="fos-field fos-field--full">
-          <textarea id="ovs-help" name="entry.REPLACE_HELP" placeholder=" " required></textarea>
-          <label for="ovs-help">What Can You Help Us With, or How Can We Help You?</label>
-          <div class="fos-field-msg">Please share a few details.</div>
+          <textarea id="ovs-help" name="entry.720280526" placeholder=" "></textarea>
+          <label for="ovs-help">How would you like to contribute or collaborate?</label>
         </div>
         <div class="fos-submit-row">
           <button type="submit" class="fos-submit">
@@ -230,11 +220,9 @@
 
     const rules = {
       'ovs-name':     v => v.trim().length >= 2,
-      'ovs-email':    v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),
       'ovs-whatsapp': v => { const d = v.replace(/\D/g, ''); return d.length >= 7 && d.length <= 15 && !/^(\d)\1+$/.test(d); },
-      'ovs-country':  v => v.trim().length >= 2,
-      'ovs-address':  v => v.trim().length >= 2,
-      'ovs-help':     v => v.trim().length >= 3
+      'ovs-email':    v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),
+      'ovs-country':  v => v.trim().length >= 2
     };
 
     function validateField(id) {

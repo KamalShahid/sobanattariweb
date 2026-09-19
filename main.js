@@ -7,10 +7,12 @@
   const updates = '/updates/';
   const projects = '/activities/';
   const videos = '/videos/';
+  const books = '/books/';
 
-  // Hand-drawn scribble highlight around "Updates" — desktop nav, every
-  // page, to catch a visitor's eye toward the Updates link site-wide.
-  const updatesScribble = `<svg class="updates-scribble" viewBox="0 0 100 50" preserveAspectRatio="none" aria-hidden="true"><path d="M50,4 C74,4 92,14 92,25 C92,37 73,46 50,46 C26,46 8,37 8,25 C8,13 25,5 49,4 C55,3 68,4 76,8" /></svg>`;
+  // Small pulsing live-dot next to "Updates" — desktop nav, every page,
+  // same treatment as the home page (the old hand-drawn circle is retired).
+  const updatesScribble = '';
+  const updatesDot = `<span class="updates-dot" aria-hidden="true"></span>`;
 
   const nav = document.getElementById('navbar');
   const mobileMenu = document.getElementById('mobile-menu');
@@ -23,9 +25,10 @@
       <div class="nav-links" id="nav-links">
         <a href="${home}" data-nav="home">Home</a>
         <a href="${about}" data-nav="about">About</a>
-        <a href="${updates}" data-nav="updates"><span class="updates-shine"></span>Updates${updatesScribble}</a>
+        <a href="${updates}" data-nav="updates"><span class="updates-shine"></span>Updates${updatesDot}${updatesScribble}</a>
         <a href="${projects}" data-nav="projects">Projects</a>
         <a href="${videos}" data-nav="videos">Videos</a>
+        <a href="${books}" data-nav="books">Books</a>
         <a href="${home}#contact">Contact</a>
         <a href="${home}#book-session" class="nav-cta">Book a Session</a>
       </div>
@@ -40,6 +43,7 @@
       <a href="${updates}" data-nav="updates" onclick="closeMenu()"><span class="updates-shine"></span>Updates</a>
       <a href="${projects}" data-nav="projects" onclick="closeMenu()">Projects</a>
       <a href="${videos}" data-nav="videos" onclick="closeMenu()">Videos</a>
+      <a href="${books}" data-nav="books" onclick="closeMenu()">Books</a>
       <a href="${home}#contact" onclick="closeMenu()">Contact</a>
       <a href="${home}#book-session" onclick="closeMenu()">Book a Session</a>`;
 
@@ -57,6 +61,7 @@
       'programs': 'projects',
       'events': 'updates',
       'videos': 'videos',
+      'books': 'books',
       // local .html fallback (pre-rewrite / file:// testing)
       'index': 'home',
       'biography': 'about',
