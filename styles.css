@@ -1995,6 +1995,90 @@ a.contact-card:focus-visible { outline: 2px solid var(--accent); outline-offset:
 
 .dta-session-card .btn { align-self: flex-start; margin-top: 4px; }
 
+/* Deeni Students and AI — registration form (events/deeni-tulba-ai-nov-2026/
+   and programs/deeni-tulba-and-ai/ share this same form). Native fields
+   styled like Google Forms' own per-question cards, posted to the real
+   Google Form via hidden-iframe POST (real entry.* IDs, no embedded iframe
+   of the Google UI itself — this is meant to feel like a website form). */
+.dta-form-wrap { max-width: 900px; margin: 0 auto; }
+.dta-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.dta-field--full,
+.dta-form .fos-submit-row,
+.dta-form .fos-success,
+.dta-form .fos-hp {
+  grid-column: 1 / -1;
+}
+.dta-field {
+  background: var(--bg-light);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 20px 22px;
+  margin: 0;
+}
+@media (max-width: 640px) {
+  .dta-form { grid-template-columns: minmax(0, 1fr); }
+}
+.dta-field.has-error { border-color: #c8341f; }
+.dta-q { display: block; font-size: 15px; line-height: 1.55; color: var(--text-dark); margin-bottom: 14px; padding: 0; overflow-wrap: break-word; }
+.dta-q-ur { display: block; direction: rtl; }
+.dta-req { color: #c8341f; margin-left: 4px; }
+.dta-input {
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--border-light);
+  padding: 4px 2px 8px;
+  font-size: 15px;
+  font-family: var(--font-body);
+  color: var(--text-dark);
+  background: transparent;
+  transition: border-color var(--transition);
+}
+.dta-input::placeholder { color: var(--text-muted); }
+.dta-input:hover { border-color: #c7c7c7; }
+.dta-input:focus { outline: none; border-bottom: 2px solid var(--accent-dark); padding-bottom: 7px; }
+.dta-field.has-error .dta-input { border-color: #c8341f; }
+.dta-field-msg { display: none; font-size: 12px; color: #c8341f; margin-top: 8px; }
+.dta-field.has-error .dta-field-msg { display: block; }
+
+.dta-radio-group { display: flex; flex-direction: column; gap: 12px; }
+.dta-radio-option { display: flex; align-items: flex-start; gap: 12px; font-size: 14.5px; color: var(--text-body); cursor: pointer; overflow-wrap: break-word; min-width: 0; }
+.dta-radio-option input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  flex-shrink: 0;
+  border: 2px solid #999;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+.dta-radio-option input[type="radio"]:checked { border-color: var(--accent-dark); }
+.dta-radio-option input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--accent-dark);
+}
+.dta-radio-option input[type="radio"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.dta-form.is-submitting .fos-submit { pointer-events: none; opacity: 0.8; }
+.dta-form.is-submitting .fos-submit .spinner { display: block; }
+.dta-form.is-submitting .fos-submit .label-send { opacity: 0.55; }
+.dta-form.is-done > *:not(.fos-success) { display: none; }
+
+@media (max-width: 480px) {
+  .dta-field { padding: 16px 16px; }
+}
+
 /* =========================================================
    BOOKS & COURSES landing pages (books.html / courses.html)
    ========================================================= */
@@ -2421,14 +2505,14 @@ a.contact-card:focus-visible { outline: 2px solid var(--accent); outline-offset:
    this stylesheet (repo root), so no "../".
    ========================================================= */
 
-/* Photo hero for the page header — single source (brand_assets/yt-large.png,
+/* Photo hero for the page header — single source (brand_assets/yt-large.webp,
    2400x1350). `cover` keeps it full-bleed at every width; the speaker sits
    left-of-centre and high, so the focal point is pulled up and slightly left
    and nudged back toward centre as the crop tightens on small screens. */
 .page-header.has-photo {
   background-image:
     linear-gradient(180deg, rgba(10,10,10,0.58) 0%, rgba(10,10,10,0.50) 45%, rgba(10,10,10,0.84) 100%),
-    url('brand_assets/yt-large.png');
+    url('brand_assets/yt-large.webp');
   background-size: cover;
   background-position: 42% 28%;
   background-repeat: no-repeat;
@@ -2441,7 +2525,7 @@ a.contact-card:focus-visible { outline: 2px solid var(--accent); outline-offset:
     background-position: 50% 24%;
     background-image:
       linear-gradient(180deg, rgba(10,10,10,0.52) 0%, rgba(10,10,10,0.48) 45%, rgba(10,10,10,0.88) 100%),
-      url('brand_assets/yt-large.png');
+      url('brand_assets/yt-large.webp');
   }
 }
 
@@ -2509,7 +2593,7 @@ a.contact-card:focus-visible { outline: 2px solid var(--accent); outline-offset:
 .page-header.fs-hero {
   background-image:
     linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.45) 45%, rgba(10,10,10,0.82) 100%),
-    url('brand_assets/females-session-bg.png');
+    url('brand_assets/females-session-bg.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -2523,7 +2607,7 @@ a.contact-card:focus-visible { outline: 2px solid var(--accent); outline-offset:
 .page-header.ys-hero {
   background-image:
     linear-gradient(180deg, rgba(10,10,10,0.60) 0%, rgba(10,10,10,0.52) 45%, rgba(10,10,10,0.85) 100%),
-    url('brand_assets/youth_seminar_hero.png');
+    url('brand_assets/youth-seminar-hero.webp');
   background-size: cover;
   background-position: center 64%;
   background-repeat: no-repeat;
@@ -2537,7 +2621,7 @@ a.contact-card:focus-visible { outline: 2px solid var(--accent); outline-offset:
 .page-header.fos-hero {
   background-image:
     linear-gradient(180deg, rgba(10,10,10,0.58) 0%, rgba(10,10,10,0.50) 45%, rgba(10,10,10,0.84) 100%),
-    url('brand_assets/fos-hero-bg.png');
+    url('brand_assets/fos-hero-bg.webp');
   background-size: cover;
   background-position: center 40%;
   background-repeat: no-repeat;
@@ -2549,7 +2633,7 @@ a.contact-card:focus-visible { outline: 2px solid var(--accent); outline-offset:
 .page-header.mn-hero {
   background-image:
     linear-gradient(180deg, rgba(10,10,10,0.58) 0%, rgba(10,10,10,0.50) 45%, rgba(10,10,10,0.84) 100%),
-    url('brand_assets/masjid_night_page_bg.png');
+    url('brand_assets/masjid-night-page-bg.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -2561,7 +2645,7 @@ a.contact-card:focus-visible { outline: 2px solid var(--accent); outline-offset:
 .page-header.wc-hero {
   background-image:
     linear-gradient(180deg, rgba(10,10,10,0.58) 0%, rgba(10,10,10,0.50) 45%, rgba(10,10,10,0.84) 100%),
-    url('brand_assets/workers_convention-hero.jpg');
+    url('brand_assets/workers-convention-hero.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -2573,7 +2657,7 @@ a.contact-card:focus-visible { outline: 2px solid var(--accent); outline-offset:
 .page-header.dta-hero {
   background-image:
     linear-gradient(180deg, rgba(10,10,10,0.58) 0%, rgba(10,10,10,0.50) 45%, rgba(10,10,10,0.84) 100%),
-    url('brand_assets/deeni-tulba-hero.jpg');
+    url('brand_assets/deeni-tulba-hero.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -2868,6 +2952,37 @@ a.contact-card:focus-visible { outline: 2px solid var(--accent); outline-offset:
   object-position: center;
 }
 
+.book-cover-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  background: rgba(17, 17, 17, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.32);
+  pointer-events: none;
+}
+.book-cover-badge::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px rgba(245, 197, 24, 0.32);
+  flex-shrink: 0;
+}
+
 .book-card-body {
   display: flex;
   flex-direction: column;
@@ -2989,21 +3104,34 @@ a.contact-card:focus-visible { outline: 2px solid var(--accent); outline-offset:
   box-shadow: 0 26px 55px -26px rgba(245, 197, 24, 0.28);
 }
 
+.course-card-image {
+  align-self: stretch;
+  aspect-ratio: 2 / 1;
+  margin: calc(var(--space-lg) * -1) calc(var(--space-md) * -1) 0;
+  overflow: hidden;
+}
+.course-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+.course-card:hover .course-card-image img { transform: scale(1.06); }
+
 .course-card-number {
-  position: absolute;
-  top: 12px;
-  right: 20px;
+  align-self: flex-end;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 60px;
+  font-size: 34px;
   line-height: 1;
   color: var(--accent);
-  opacity: 0.14;
+  opacity: 0.22;
   margin: 0;
   pointer-events: none;
   transition: opacity var(--transition);
 }
-.course-card:hover .course-card-number { opacity: 0.28; }
+.course-card:hover .course-card-number { opacity: 0.34; }
 
 .course-card-icon {
   display: inline-flex;
@@ -3086,7 +3214,7 @@ a.contact-card:focus-visible { outline: 2px solid var(--accent); outline-offset:
 @media (max-width: 768px) {
   .courses-grid { grid-template-columns: 1fr; gap: 14px; }
   .course-card { padding: 40px 22px 24px; }
-  .course-card-number { font-size: 52px; }
+  .course-card-image { margin: -40px -22px 0; }
 }
 
 /* =========================================================
@@ -3331,6 +3459,42 @@ a.contact-card:focus-visible { outline: 2px solid var(--accent); outline-offset:
 /* More Upcoming Events — bottom of every detail page */
 .event-more-heading { text-align: center; margin-bottom: 28px; }
 .event-more-cta { text-align: center; margin-top: var(--space-lg); }
+
+/* =========================================================
+   YOUTH SEMINARS — KARACHI (events/youth-seminar-karachi-sep-2026/)
+   Multi-session schedule cards — one Jamat per card.
+   ========================================================= */
+.ysk-schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-md);
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.ysk-schedule-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--bg-light);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: var(--space-lg) var(--space-md) var(--space-md);
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+.ysk-schedule-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(245, 197, 24, 0.5);
+  box-shadow: 0 20px 40px -22px rgba(26, 26, 26, 0.28);
+}
+.ysk-schedule-card h3 { font-size: 19px; line-height: 1.25; color: var(--text-dark); margin: 0; }
+.ysk-schedule-row { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.6; color: var(--text-body); }
+.ysk-schedule-row svg { flex-shrink: 0; stroke: var(--accent-dark); margin-top: 2px; }
+.ysk-schedule-row strong { color: var(--text-dark); font-weight: 700; }
+.ysk-schedule-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; padding-top: 6px; }
+.ysk-schedule-actions .btn { padding: 9px 16px; font-size: 11px; }
+@media (max-width: 640px) {
+  .ysk-schedule-actions .btn { flex: 1 1 auto; justify-content: center; }
+}
 
 /* ── 404 / Not Found page ── */
 .not-found-section {

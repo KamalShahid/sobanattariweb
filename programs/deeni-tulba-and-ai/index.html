@@ -106,13 +106,13 @@
     <div class="event-teasers event-teasers-1up animate-on-scroll">
       <a href="/events/deeni-tulba-ai-nov-2026/" class="event-teaser-link">
         <article class="event-teaser">
-          <div class="event-teaser-image" style="background-image:url('/brand_assets/deeni_tulba_and_ai_bg.jpeg')">
+          <div class="event-teaser-image" style="background-image:url('/brand_assets/deeni-tulba-and-ai-bg.webp')">
             <span class="event-teaser-tag">Online</span>
-            <div class="event-teaser-date is-tba"><span class="etd-tba">TBA</span></div>
+            <div class="event-teaser-date"><span class="etd-day">04</span><span class="etd-month">Oct</span></div>
           </div>
           <div class="event-teaser-body">
             <h3>Using AI in Your Deeni Studies</h3>
-            <div class="event-teaser-time"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Date to be announced</div>
+            <div class="event-teaser-time"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Sun, 4 Oct &middot; 9:00 PM</div>
             <span class="event-teaser-cta">View Full Details</span>
           </div>
         </article>
@@ -123,51 +123,107 @@
 
 <!-- REGISTER -->
 <section class="section-light" id="register">
-  <div class="container contact-grid">
-    <div class="animate-on-scroll">
-      <span class="section-label">Registrations Open</span>
-      <h2>Register Your Interest</h2>
-      <div class="prose" style="margin-top:20px;">
-        <p>The exact date for the next live lecture hasn&rsquo;t been announced yet, but registrations are already open. Fill in your details below and we&rsquo;ll reach out with the meeting link as soon as the date is confirmed.</p>
-      </div>
-    </div>
-    <div class="fos-form-card animate-on-scroll">
+  <div class="container">
+    <div class="dta-form-wrap">
+      <div class="fos-form-card animate-on-scroll">
       <div class="fos-form-head">
         <span class="section-label">Deeni Students and AI — Registration</span>
         <p>Free to join &mdash; brothers and sisters welcome, with separate arrangements for each.</p>
       </div>
-      <!-- TODO: replace the form action URL and every entry.* field name below
-           with the real values from your Google Form once it's created (open
-           the form's HTML and match each field to its entry.NNNNNN name),
-           exactly like the FOS chapter form does. -->
-      <form class="fos-form" id="dta-form"
-            action="https://docs.google.com/forms/d/e/REPLACE_WITH_REAL_FORM_ID/formResponse"
+      <form class="dta-form" id="dta-form"
+            action="https://docs.google.com/forms/d/e/1FAIpQLSdGsUt8vsPwrVl6uFmQhm7GDfiMFyKCdMdp1UXng80QPRhijw/formResponse"
             method="POST" target="dta-hidden-iframe" novalidate>
-        <div class="fos-field">
-          <input type="text" id="dta-name" name="entry.REPLACE_NAME" placeholder=" " autocomplete="name" required />
-          <label for="dta-name">Full Name</label>
-          <div class="fos-field-msg">Please enter your full name.</div>
+        <div class="dta-field">
+          <label class="dta-q" for="dta-f1"><span class="dta-q-en">Student Name with Father name</span><span class="dta-req">*</span><span class="dta-q-ur" dir="rtl" lang="ur">(نام بمعہ ولدیت)</span></label>
+          <input class="dta-input" type="text" id="dta-f1" name="entry.149873547" placeholder="Your answer" required />
+          <div class="dta-field-msg">This field is required.</div>
         </div>
-        <div class="fos-field">
-          <input type="email" id="dta-email" name="entry.REPLACE_EMAIL" placeholder=" " autocomplete="email" required />
-          <label for="dta-email">Email</label>
-          <div class="fos-field-msg">Enter a valid email address.</div>
+
+        <div class="dta-field">
+          <label class="dta-q" for="dta-f2"><span class="dta-q-en">Age (عمر)</span><span class="dta-req">*</span></label>
+          <input class="dta-input" type="text" id="dta-f2" name="entry.177283072" placeholder="Your answer" required />
+          <div class="dta-field-msg">This field is required.</div>
         </div>
-        <div class="fos-field">
-          <input type="tel" id="dta-whatsapp" name="entry.REPLACE_PHONE" placeholder=" " autocomplete="tel" inputmode="tel" required />
-          <label for="dta-whatsapp">WhatsApp / Phone Number</label>
-          <div class="fos-field-msg">Enter a valid number (7–15 digits).</div>
+
+        <div class="dta-field">
+          <label class="dta-q" for="dta-f3"><span class="dta-q-en">Educational Institute Name with City</span><span class="dta-req">*</span><span class="dta-q-ur" dir="rtl" lang="ur">(دُنیاوی تعلیمی ادارے کا نام اور شہر)</span></label>
+          <input class="dta-input" type="text" id="dta-f3" name="entry.1276451725" placeholder="Your answer" required />
+          <div class="dta-field-msg">This field is required.</div>
         </div>
-        <div class="fos-field">
-          <input type="text" id="dta-institute" name="entry.REPLACE_INSTITUTE" placeholder=" " required />
-          <label for="dta-institute">Institute / Madrassa</label>
-          <div class="fos-field-msg">Please enter your institute name.</div>
+
+        <div class="dta-field">
+          <label class="dta-q" for="dta-f4"><span class="dta-q-en">Islamic Institute with City Name</span><span class="dta-req">*</span><span class="dta-q-ur" dir="rtl" lang="ur">(دینی جامعہ ادارے کا نام اور شہر)</span></label>
+          <input class="dta-input" type="text" id="dta-f4" name="entry.575525182" placeholder="Your answer" required />
+          <div class="dta-field-msg">This field is required.</div>
         </div>
-        <div class="fos-field fos-field--full">
-          <input type="text" id="dta-city" name="entry.REPLACE_CITY" placeholder=" " autocomplete="address-level2" required />
-          <label for="dta-city">City</label>
-          <div class="fos-field-msg">Please enter your city.</div>
+
+        <fieldset class="dta-field dta-field--full" id="dta-f5-field">
+          <legend class="dta-q"><span class="dta-q-en">Studying online or on campus?</span><span class="dta-req">*</span><span class="dta-q-ur" dir="rtl" lang="ur">(آن لائن پڑھ رہے ہیں یا ادارے میں جاکر تعلیم حاصل کررہے ہیں؟)</span></legend>
+          <div class="dta-radio-group">
+          <label class="dta-radio-option" for="dta-f5-0"><input type="radio" id="dta-f5-0" name="entry.54117933" value="Online" required />Online</label>
+          <label class="dta-radio-option" for="dta-f5-1"><input type="radio" id="dta-f5-1" name="entry.54117933" value="On Campus" required />On Campus</label>
+          </div>
+          <div class="dta-field-msg">Please select an option.</div>
+        </fieldset>
+
+        <div class="dta-field dta-field--full">
+          <label class="dta-q" for="dta-f6"><span class="dta-q-en">Postal Address with City Name</span><span class="dta-req">*</span><span class="dta-q-ur" dir="rtl" lang="ur">(گھر کا ایڈریس بمعہ شہر کانام)</span></label>
+          <input class="dta-input" type="text" id="dta-f6" name="entry.631536444" placeholder="Your answer" required />
+          <div class="dta-field-msg">This field is required.</div>
         </div>
+
+        <div class="dta-field">
+          <label class="dta-q" for="dta-f7"><span class="dta-q-en">Email ID (ای میل آئی)</span><span class="dta-req">*</span></label>
+          <input class="dta-input" type="email" id="dta-f7" name="entry.933134480" placeholder="Your answer" autocomplete="email" required />
+          <div class="dta-field-msg">This field is required.</div>
+        </div>
+
+        <div class="dta-field">
+          <label class="dta-q" for="dta-f8"><span class="dta-q-en">Whatsapp Number (واٹس ایپ نمبر)</span><span class="dta-req">*</span></label>
+          <input class="dta-input" type="tel" id="dta-f8" name="entry.776022256" placeholder="Your answer" autocomplete="tel" inputmode="tel" required />
+          <div class="dta-field-msg">This field is required.</div>
+        </div>
+
+        <div class="dta-field">
+          <label class="dta-q" for="dta-f9"><span class="dta-q-en">Married or Not?</span><span class="dta-req">*</span><span class="dta-q-ur" dir="rtl" lang="ur">(شادی شدہ ہیں یا نہی؟)</span></label>
+          <input class="dta-input" type="text" id="dta-f9" name="entry.2011296185" placeholder="Your answer" required />
+          <div class="dta-field-msg">This field is required.</div>
+        </div>
+
+        <div class="dta-field">
+          <label class="dta-q" for="dta-f10"><span class="dta-q-en">Occupation (پیشہ)</span><span class="dta-req">*</span></label>
+          <input class="dta-input" type="text" id="dta-f10" name="entry.1438562743" placeholder="Your answer" required />
+          <div class="dta-field-msg">This field is required.</div>
+        </div>
+
+        <div class="dta-field dta-field--full">
+          <label class="dta-q" for="dta-f11"><span class="dta-q-en">What religious movement is it affiliated with?</span><span class="dta-req">*</span><span class="dta-q-ur" dir="rtl" lang="ur">کس مذہبی تحریک سے وابستگی ہے؟</span></label>
+          <input class="dta-input" type="text" id="dta-f11" name="entry.2144402429" placeholder="Your answer" required />
+          <div class="dta-field-msg">This field is required.</div>
+        </div>
+
+        <fieldset class="dta-field dta-field--full" id="dta-f12-field">
+          <legend class="dta-q"><span class="dta-q-en">Do you follow Soban Attari on social media?</span><span class="dta-req">*</span><span class="dta-q-ur" dir="rtl" lang="ur">کیا آپ ثوبان عطاری کو سوشل میڈیا پر فالو کرتے ہیں؟</span></legend>
+          <div class="dta-radio-group">
+          <label class="dta-radio-option" for="dta-f12-0"><input type="radio" id="dta-f12-0" name="entry.156833926" value="Yes" required />Yes</label>
+          <label class="dta-radio-option" for="dta-f12-1"><input type="radio" id="dta-f12-1" name="entry.156833926" value="No" required />No</label>
+          <label class="dta-radio-option" for="dta-f12-2"><input type="radio" id="dta-f12-2" name="entry.156833926" value="Maybe" required />Maybe</label>
+          </div>
+          <div class="dta-field-msg">Please select an option.</div>
+        </fieldset>
+
+        <fieldset class="dta-field dta-field--full" id="dta-f13-field">
+          <legend class="dta-q"><span class="dta-q-en">Where did you see the information regarding religious students and AI sessions?</span><span class="dta-req">*</span><span class="dta-q-ur" dir="rtl" lang="ur">آپ نے (دینی طلبہ اور اے آئی سیشن) کے حوالے سے کہاں سے دیکھا؟</span></legend>
+          <div class="dta-radio-group">
+          <label class="dta-radio-option" for="dta-f13-0"><input type="radio" id="dta-f13-0" name="entry.93736149" value="Social Media" required />Social Media</label>
+          <label class="dta-radio-option" for="dta-f13-1"><input type="radio" id="dta-f13-1" name="entry.93736149" value="Friends" required />Friends</label>
+          <label class="dta-radio-option" for="dta-f13-2"><input type="radio" id="dta-f13-2" name="entry.93736149" value="Family" required />Family</label>
+          <label class="dta-radio-option" for="dta-f13-3"><input type="radio" id="dta-f13-3" name="entry.93736149" value="School/Collage/University/Jamia/Madarasa Colleague" required />School/Collage/University/Jamia/Madarasa Colleague</label>
+          <label class="dta-radio-option" for="dta-f13-4"><input type="radio" id="dta-f13-4" name="entry.93736149" value="Teacher" required />Teacher</label>
+          </div>
+          <div class="dta-field-msg">Please select an option.</div>
+        </fieldset>
+
         <div class="fos-submit-row">
           <button type="submit" class="fos-submit">
             <span class="label-send">Register Now</span>
@@ -178,11 +234,12 @@
         <div class="fos-success" id="dta-success" role="status" aria-live="polite" hidden>
           <div class="check"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg></div>
           <h3>Registration received</h3>
-          <p>Thank you for registering. We&rsquo;ll message you on WhatsApp with the meeting link once the date is confirmed.</p>
+          <p>Thank you for registering. We&rsquo;ll message you on WhatsApp with the meeting link closer to the date.</p>
         </div>
         <p class="fos-hp" aria-hidden="true"><label>Do not fill this field <input type="text" name="dta_company" tabindex="-1" autocomplete="off" /></label></p>
       </form>
       <iframe class="fos-hidden-iframe" name="dta-hidden-iframe" title="Form response target" tabindex="-1" aria-hidden="true"></iframe>
+      </div>
     </div>
   </div>
 </section>
@@ -252,8 +309,8 @@
   const revealObs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); revealObs.unobserve(e.target); } }); }, { threshold: 0.1 });
   document.querySelectorAll('.animate-on-scroll').forEach(el => revealObs.observe(el));
 
-  /* Deeni Students and AI registration form — native fields, posts to Google
-     Forms via hidden iframe (same technique as the FOS chapter form). */
+  /* Deeni Students and AI registration form — native fields, posts to the
+     real Google Form via hidden iframe (real entry.* IDs). */
   (function () {
     const form = document.getElementById('dta-form');
     if (!form) return;
@@ -261,26 +318,44 @@
     const frame = document.querySelector('.fos-hidden-iframe[name="dta-hidden-iframe"]');
     let submitting = false, done = false, fallbackTimer = null;
 
-    const rules = {
-      'dta-name':      v => v.trim().length >= 2,
-      'dta-email':     v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),
-      'dta-whatsapp':  v => { const d = v.replace(/\D/g, ''); return d.length >= 7 && d.length <= 15 && !/^(\d)\1+$/.test(d); },
-      'dta-institute': v => v.trim().length >= 2,
-      'dta-city':      v => v.trim().length >= 2
+    const textRules = {
+      'dta-f1':  v => v.trim().length >= 1,
+      'dta-f2':  v => v.trim().length >= 1,
+      'dta-f3':  v => v.trim().length >= 1,
+      'dta-f4':  v => v.trim().length >= 1,
+      'dta-f6':  v => v.trim().length >= 1,
+      'dta-f7':  v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),
+      'dta-f8':  v => { const d = v.replace(/\D/g, ''); return d.length >= 7 && d.length <= 15 && !/^(\d)\1+$/.test(d); },
+      'dta-f9':  v => v.trim().length >= 1,
+      'dta-f10': v => v.trim().length >= 1,
+      'dta-f11': v => v.trim().length >= 1
     };
+    const radioFieldsets = ['dta-f5-field', 'dta-f12-field', 'dta-f13-field'];
 
-    function validateField(id) {
+    function validateText(id) {
       const input = document.getElementById(id);
-      const ok = rules[id](input.value);
-      input.closest('.fos-field').classList.toggle('has-error', !ok);
+      const ok = textRules[id](input.value);
+      input.closest('.dta-field').classList.toggle('has-error', !ok);
+      return ok;
+    }
+    function validateRadio(fieldsetId) {
+      const fieldset = document.getElementById(fieldsetId);
+      const ok = !!fieldset.querySelector('input[type="radio"]:checked');
+      fieldset.classList.toggle('has-error', !ok);
       return ok;
     }
 
-    Object.keys(rules).forEach(id => {
+    Object.keys(textRules).forEach(id => {
       const input = document.getElementById(id);
-      input.addEventListener('blur', () => validateField(id));
+      input.addEventListener('blur', () => validateText(id));
       input.addEventListener('input', () => {
-        if (input.closest('.fos-field').classList.contains('has-error')) validateField(id);
+        if (input.closest('.dta-field').classList.contains('has-error')) validateText(id);
+      });
+    });
+    radioFieldsets.forEach(fieldsetId => {
+      const fieldset = document.getElementById(fieldsetId);
+      fieldset.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', () => validateRadio(fieldsetId));
       });
     });
 
@@ -290,8 +365,6 @@
       clearTimeout(fallbackTimer);
       form.classList.remove('is-submitting');
       form.classList.add('is-done');
-      const head = form.closest('.fos-form-card').querySelector('.fos-form-head');
-      if (head) head.hidden = true;
       successPanel.hidden = false;
       void successPanel.offsetWidth;
       successPanel.classList.add('show');
@@ -303,10 +376,13 @@
       if (hp && hp.value !== '') { e.preventDefault(); return; }
 
       let firstInvalid = null;
-      Object.keys(rules).forEach(id => {
-        if (!validateField(id) && !firstInvalid) firstInvalid = document.getElementById(id);
+      Object.keys(textRules).forEach(id => {
+        if (!validateText(id) && !firstInvalid) firstInvalid = document.getElementById(id);
       });
-      if (firstInvalid) { e.preventDefault(); firstInvalid.focus(); return; }
+      radioFieldsets.forEach(fieldsetId => {
+        if (!validateRadio(fieldsetId) && !firstInvalid) firstInvalid = document.getElementById(fieldsetId);
+      });
+      if (firstInvalid) { e.preventDefault(); firstInvalid.focus(); firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
 
       submitting = true;
       form.classList.add('is-submitting');
