@@ -26,18 +26,21 @@ const mime = {
   '.webm': 'video/webm',
 };
 
-const server = http.createServer((req, res) => {
-  let urlPath = req.url.split('?')[0];
-  if (urlPath === '/') urlPath = '/index.html';
-
-  const filePath = path.join(__dirname, urlPath);
-
-  fs.readFile(filePath, (err, data) => {
+function sendNotFound(res) {
+  fs.readFile(path.join(__dirname, '404.html'), (err, data) => {
     if (err) {
       res.writeHead(404);
       res.end('Not found');
       return;
     }
+    res.writeHead(404, { 'Content-Type': 'text/html' });
+    res.end(data);
+  });
+}
+
+function sendFile(res, filePath) {
+  fs.readFile(filePath, (err, data) => {
+    if (err) return sendNotFound(res);
     const ext = path.extname(filePath).toLowerCase();
     res.writeHead(200, {
       'Content-Type': mime[ext] || 'application/octet-stream',
@@ -46,6 +49,22 @@ const server = http.createServer((req, res) => {
       'Expires': '0',
     });
     res.end(data);
+  });
+}
+
+const server = http.createServer((req, res) => {
+  const urlPath = decodeURIComponent(req.url.split('?')[0]);
+  const resolved = path.join(__dirname, urlPath);
+
+  // Guard against path traversal escaping the project root.
+  if (!resolved.startsWith(__dirname)) return sendNotFound(res);
+
+  fs.stat(resolved, (err, stats) => {
+    if (err) return sendNotFound(res);
+    // Mirror Vercel's clean-URL/static behavior: a directory request
+    // (e.g. "/activities/") resolves to its own index.html.
+    if (stats.isDirectory()) return sendFile(res, path.join(resolved, 'index.html'));
+    sendFile(res, resolved);
   });
 });
 
